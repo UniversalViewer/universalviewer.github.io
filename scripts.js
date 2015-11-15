@@ -1,8 +1,26 @@
 $(function() {
 
-    var bootstrapper, editor;
-    //var uvVersion = 'uv-1.5.26';
-    var uvVersion = 'uv';
+    var bootstrapper;
+
+    var $header = $('header');
+    var $main = $('main');
+    var $uv = $('#uv');
+    var $footer = $('footer');
+
+    window.onresize = function() {
+        resize();
+    };
+
+    function resize() {
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        $main.height(height - $header.outerHeight());
+        $main.width(width);
+        $uv.width(width);
+        $uv.height($main.height());
+    }
+    
+    resize();
 
     function loadViewer() {
 
@@ -15,7 +33,7 @@ $(function() {
     }
 
     function loadManifests(cb) {
-        var manifestsUri = '/manifests.json';
+        var manifestsUri = '/examples/manifests.json';
 
         if (!isLocalhost){
             manifestsUri = '/universalviewer-io/manifests.json'
