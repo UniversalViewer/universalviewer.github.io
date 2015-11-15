@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Universal Viewer Examples</title>
+    <link rel="icon" href="/examples/favicon.ico">
+    <link rel="stylesheet" href="lib/foundation/css/foundation.css" />
+    <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script type="text/javascript" id="embedUV" src="uv/lib/embed.js"></script>
+</head>
+<body>
+
+<header>
+    <select id="manifestSelect"></select>
+
+    <input id="manifest" type="text" value="" />
+
+    <a id="setManifestBtn" class="button">Set</a>
+
+    <a id="dragndrop">
+        <img src="iiif-dragndrop-100px.png" title="Drag and drop this icon into an IIIF viewer">
+    </a>
+</header>
+
+<main>
+    <div class="uv" data-no-load="true" style="width:800px; height:600px; background-color: #000"></div>
+</main>
+
+<footer style="display: none">
+
+</footer>
+
+<script type="text/javascript" src="browserdetect.js"></script>
+<script type="text/javascript" src="lib/utils/dist/utils.js"></script>
+<script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery-plugins/dist/jquery-plugins.js"></script>
+<script type="text/javascript" src="scripts.js"></script>
+
+</body>
+</html>
