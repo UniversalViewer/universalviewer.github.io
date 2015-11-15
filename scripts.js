@@ -14,28 +14,12 @@ $(function() {
         }
     }
 
-    function collapse(nodes){
-        setOption(nodes, 'collapsed', true);
-    }
-
-    function hide(nodes){
-        setOption(nodes, 'hidden', true);
-    }
-
-    function setOption(nodes, option, value){
-        for (var i = 0; i < nodes.length; i++){
-            var node = nodes[i];
-
-            if (!node.options){
-                node.options = {};
-            }
-
-            node.options[option] = value;
-        }
-    }
-
     function loadManifests(cb) {
-        var manifestsUri = '/manifests.json'
+        var manifestsUri = '/manifests.json';
+
+        if (!isLocalhost){
+            manifestsUri = '/universalviewer-io/manifests.json'
+        }
 
         // load manifests
         $.getJSON(manifestsUri, function(manifests){
@@ -526,8 +510,7 @@ $(function() {
         loadViewer();
     }
 
-    // if the embed script has been included in the page for testing, don't append it.
-    var scriptIncluded = $('#embedUV').length;
+    var isLocalhost = document.location.href.indexOf('localhost') != -1;
 
     loadManifests(function() {
         init();
