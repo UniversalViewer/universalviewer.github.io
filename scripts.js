@@ -32,38 +32,6 @@ $(function() {
         }
     }
 
-    function loadManifests(cb) {
-        var manifestsUri = '/examples/manifests.json';
-
-        if (!isLocalhost){
-            manifestsUri = '/universalviewer-io/manifests.json'
-        }
-
-        // load manifests
-        $.getJSON(manifestsUri, function(manifests){
-
-            var $manifestSelect = $('#manifestSelect');
-
-            for (var i = 0; i < manifests.collections.length; i++) {
-                var collection = manifests.collections[i];
-
-                $manifestSelect.append('<optgroup label="' + collection.label + '">');
-
-                for (var j = 0; j < collection.manifests.length; j++){
-                    var manifest = collection.manifests[j];
-
-                    if (manifest.visible !== false){
-                        $manifestSelect.append('<option value="' + manifest['@id'] + '">' + manifest.label + '</option>');
-                    }
-                }
-
-                $manifestSelect.append('</optgroup>');
-            }
-
-            cb();
-        });
-    }
-
     function isIE8(){
         return (browserDetect.browser === 'Explorer' && browserDetect.version === 8);
     }
@@ -92,16 +60,6 @@ $(function() {
     function setSelectedManifest(){
 
         var manifest = Utils.Urls.GetQuerystringParameter('manifest');
-
-        if (manifest) {
-            $('#manifestSelect').val(manifest);
-        } else {
-            var options = $('#manifestSelect option');
-
-            if (options.length){
-                manifest = options[0].value;
-            }
-        }
 
         $('#manifest').val(manifest);
         updateDragDrop();
@@ -521,16 +479,12 @@ $(function() {
 
         uvEventHandlers();
 
-        if ($('#manifestSelect option').length || $('#manifestSelect optgroup').length){
-            setSelectedManifest();
-        }
+        setSelectedManifest();
 
         loadViewer();
     }
 
     var isLocalhost = document.location.href.indexOf('localhost') != -1;
 
-    loadManifests(function() {
-        init();
-    });
+    init();
 });
