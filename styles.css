@@ -1,0 +1,38 @@
+body {
+    padding: 20px;
+}
+
+header {
+    padding: 20px 0 20px 0;
+}
+
+#dragndrop{
+    margin: 0 0 0 20px;
+}
+
+#dragndrop img{
+    width: 75px;
+    height: 75px;
+}
+
+.config-name{
+    font-size: 20px;
+}
+
+#editPnl #json{
+    margin: 10px 0 0 0;
+    width: 640px;
+    height: 480px;
+}
+
+#saveBtn, #resetBtn{
+    margin-left: 10px;
+}
+
+footer {
+    padding: 20px 0 20px 0;
+}
+
+.hide {
+    display: none;
+}
