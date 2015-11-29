@@ -5,7 +5,7 @@
   "collections": [
     {
       "@context": "http://iiif.io/api/presentation/2/context.json",
-      "@id": "http://universalviewer.io.s3.amazonaws.com/manifests/nelis/collection.json",
+      "@id": "http://files.universalviewer.io/manifests/nelis/collection.json",
       "@type": "sc:Collection",
       "label": "Nelis Antiques"
     }
