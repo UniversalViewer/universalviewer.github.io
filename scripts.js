@@ -61,10 +61,12 @@ $(function() {
 
         var manifest = Utils.Urls.GetQuerystringParameter('manifest');
 
-        $('#manifest').val(manifest);
-        updateDragDrop();
+        if (manifest) {
+            $('#manifest').val(manifest);
+            updateDragDrop();
 
-        $('.uv').attr('data-uri', manifest);
+            $('.uv').attr('data-uri', manifest);
+        }
     }
 
     function updateDragDrop(){
