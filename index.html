@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.css" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <!--<script type="text/javascript" id="embedUV" src="/src/lib/embed.js"></script>-->
-    <script type="text/javascript" id="embedUV" src="uv/lib/embed.js"></script>
+    <!--<script type="text/javascript" id="embedUV" src="uv/lib/embed.js"></script>-->
 </head>
 <body>
 
 <header>
     <select id="manifestSelect"></select>
 
-    <input id="manifest" type="text" value="" />
+    <input id="manifest" type="text" placeholder="IIIF Manifest URI" value="" />
 
     <div class="buttons">
         <a id="setManifestBtn" class="button tiny">Open</a>
@@ -30,9 +30,9 @@
     <div id="uv" class="uv" data-no-load="true"></div>
 </main>
 
-<!--<footer style="display: none">-->
+<footer>
 
-<!--</footer>-->
+</footer>
 
 <script type="text/javascript" src="browserdetect.js"></script>
 <script type="text/javascript" src="lib/utils/dist/utils.js"></script>

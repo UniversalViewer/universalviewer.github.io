@@ -1,6 +1,7 @@
 $(function() {
 
     var bootstrapper;
+    var isFullSreen = false;
 
     var $header = $('header');
     var $main = $('main');
@@ -12,12 +13,13 @@ $(function() {
     };
 
     function resize() {
-        var width = window.innerWidth;
-        var height = window.innerHeight;
-        $main.height(height - $header.outerHeight());
-        $main.width(width);
-        $uv.width(width);
-        $uv.height($main.height());
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+        var height = (isFullSreen) ? windowHeight : windowHeight - $header.outerHeight();
+        $main.height(height);
+        $main.width(windowWidth);
+        $uv.width(windowWidth);
+        $uv.height(height);
     }
     
     resize();
@@ -327,7 +329,7 @@ $(function() {
         });
 
         $(document).bind('uv.onToggleFullScreen', function (event, obj) {
-            console.log('uv.onToggleFullScreen', obj.isFullScreen);
+            isFullSreen = obj.isFullScreen;
         });
 
         $(document).bind('uv.onUpArrow', function (event, obj) {
@@ -469,6 +471,12 @@ $(function() {
 
     function init() {
 
+        if (isLocalhost){
+            if (!scriptIncluded) $('body').append('<script type="text/javascript" id="embedUV" src="/src/lib/embed.js"><\/script>');
+        } else {
+            $('body').append('<script type="text/javascript" id="embedUV" src="/uv/lib/embed.js"><\/script>');
+        }
+
         $('#manifestSelect').on('change', function(){
             $('#manifest').val($('#manifestSelect option:selected').val());
             updateDragDrop();
@@ -487,6 +495,9 @@ $(function() {
     }
 
     var isLocalhost = document.location.href.indexOf('localhost') != -1;
+
+    // if the embed script has been included in the page for testing, don't append it.
+    var scriptIncluded = $('#embedUV').length;
 
     init();
 });
