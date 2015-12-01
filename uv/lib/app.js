@@ -933,7 +933,8 @@ define('modules/uv-shared-module/BaseExtension',["require", "exports", "./BaseCo
                 bootstrapper: {
                     config: this.provider.bootstrapper.config,
                     params: this.provider.bootstrapper.params
-                }
+                },
+                preview: this.getSharePreview()
             });
             // add/remove classes.
             this.$element.empty();
@@ -1356,6 +1357,18 @@ define('modules/uv-shared-module/BaseExtension',["require", "exports", "./BaseCo
                         break;
                 }
             }, 1000);
+        };
+        BaseExtension.prototype.getSharePreview = function () {
+            var preview = {};
+            preview.title = this.provider.getTitle();
+            // todo: use getThumb (when implemented)
+            var canvas = this.provider.getCurrentCanvas();
+            var thumbnail = canvas.getProperty('thumbnail');
+            if (!thumbnail || !_.isString(thumbnail)) {
+                thumbnail = canvas.getThumbUri(this.provider.config.options.bookmarkThumbWidth, this.provider.config.options.bookmarkThumbHeight);
+            }
+            preview.image = thumbnail;
+            return preview;
         };
         BaseExtension.prototype.getExternalResources = function (resources) {
             var _this = this;

@@ -93,18 +93,13 @@ $(function() {
         $(document).bind('uv.onLoad', function (event, obj) {
 
             bootstrapper = obj.bootstrapper;
-            var locales = bootstrapper.config.localisation.locales;
             var manifestUri = bootstrapper.params.manifestUri;
 
-            trackEvent(items, 'Viewed', manifestUri);
+            trackEvent('Items', 'Viewed', manifestUri);
             trackVariable(1, 'Viewing', manifestUri, 2);
 
-            $('#locale').empty();
-
-            for (var i = 0; i < locales.length; i++){
-                var l = locales[i];
-                $('#locale').append('<option value="' + l.name + '">' + l.label + '</option>');
-            }
+            $('#title').html(obj.preview.title);
+            $('#image').attr('src', obj.preview.image);
         });
 
         $(document).bind('uv.onNotFound', function (event, obj) {
