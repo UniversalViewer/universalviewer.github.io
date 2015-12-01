@@ -33,6 +33,7 @@ header .buttons .button{
     margin: 0;
     padding-top: 0.77rem;
     padding-bottom: 0.77rem;
+    background-color: #14a4c3;
 }
 
 #dragndrop{

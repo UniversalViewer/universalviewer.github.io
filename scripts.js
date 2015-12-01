@@ -4,6 +4,7 @@ $(function() {
     var isFullSreen = false;
 
     var $header = $('header');
+    var $manifest = $('#manifest');
     var $main = $('main');
     var $uv = $('#uv');
     var $footer = $('footer');
@@ -59,15 +60,17 @@ $(function() {
         document.location.hash = '';
     }
 
-    function setSelectedManifest(){
+    function setSelectedManifest(manifestUri){
 
-        var manifest = Utils.Urls.GetQuerystringParameter('manifest');
+        if (!manifestUri){
+            manifestUri = Utils.Urls.GetQuerystringParameter('manifest');
+        }
 
-        if (manifest) {
-            $('#manifest').val(manifest);
+        if (manifestUri) {
+            $('#manifest').val(manifestUri);
             updateDragDrop();
 
-            $('.uv').attr('data-uri', manifest);
+            $('.uv').attr('data-uri', manifestUri);
         }
     }
 
@@ -485,6 +488,24 @@ $(function() {
         $('#setManifestBtn').on('click', function(e){
             e.preventDefault();
             reload();
+        });
+
+        $manifest.on('drop', function(e) {
+            e.preventDefault();
+            var dropUrl = e.originalEvent.dataTransfer.getData("URL");
+            var url = Utils.Urls.GetUrlParts(dropUrl);
+            var manifestUri = Utils.Urls.GetQuerystringParameterFromString('manifest', url.search);
+            //var canvasUri = Utils.Urls.GetQuerystringParameterFromString('canvas', url.search);
+
+            if (manifestUri){
+                setSelectedManifest(manifestUri);
+                reload();
+            }
+        });
+
+        $manifest.on('dragover', function(e) {
+            // allow drop
+            e.preventDefault();
         });
 
         uvEventHandlers();
