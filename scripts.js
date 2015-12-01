@@ -100,6 +100,7 @@ $(function() {
 
             $('#title').html(obj.preview.title);
             $('#image').attr('src', obj.preview.image);
+            $('#link').attr('href', location.href);
         });
 
         $(document).bind('uv.onNotFound', function (event, obj) {
