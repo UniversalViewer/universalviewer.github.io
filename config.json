@@ -6,6 +6,15 @@
       "options": {
         "minimiseButtons": true
       }
+    },
+    "searchFooterPanel":
+    {
+      "content":
+      {
+        "clearSearch": "Clear",
+        "displaying": "{0} {1} of {2}",
+        "searchWithin": "Search:"
+      }
     }
   }
 }
