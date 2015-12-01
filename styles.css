@@ -11,10 +11,6 @@ header {
     overflow: hidden;
 }
 
-#logo{
-    display: none;
-}
-
 #manifestSelect{
     display: none;
     margin: 8px 8px 8px 0;
