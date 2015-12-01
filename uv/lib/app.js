@@ -795,11 +795,13 @@ define('modules/uv-shared-module/GenericDialogue',["require", "exports", "./Base
             var _this = this;
             this.setConfig('genericDialogue');
             _super.prototype.create.call(this);
-            $.subscribe(BaseCommands.SHOW_GENERIC_DIALOGUE, function (e, params) {
+            this.openCommand = BaseCommands.SHOW_GENERIC_DIALOGUE;
+            this.closeCommand = BaseCommands.HIDE_GENERIC_DIALOGUE;
+            $.subscribe(this.openCommand, function (e, params) {
                 _this.acceptCallback = params.acceptCallback;
                 _this.showMessage(params);
             });
-            $.subscribe(BaseCommands.HIDE_GENERIC_DIALOGUE, function (e) {
+            $.subscribe(this.closeCommand, function (e) {
                 _this.close();
             });
             this.$message = $('<p></p>');
@@ -6710,9 +6712,15 @@ define('extensions/uv-seadragon-extension/Extension',["require", "exports", "../
             if (this.isLeftPanelEnabled()) {
                 this.leftPanel = new TreeViewLeftPanel(Shell.$leftPanel);
             }
+            else {
+                Shell.$leftPanel.hide();
+            }
             this.centerPanel = new SeadragonCenterPanel(Shell.$centerPanel);
             if (this.isRightPanelEnabled()) {
                 this.rightPanel = new MoreInfoRightPanel(Shell.$rightPanel);
+            }
+            else {
+                Shell.$rightPanel.hide();
             }
             this.footerPanel = new FooterPanel(Shell.$footerPanel);
             this.$helpDialogue = $('<div class="overlay help"></div>');
@@ -7512,8 +7520,14 @@ define('extensions/uv-virtex-extension/Extension',["require", "exports", "../../
             if (this.isLeftPanelEnabled()) {
                 this.leftPanel.init();
             }
+            else {
+                Shell.$leftPanel.hide();
+            }
             if (this.isRightPanelEnabled()) {
                 this.rightPanel.init();
+            }
+            else {
+                Shell.$rightPanel.hide();
             }
         };
         Extension.prototype.isLeftPanelEnabled = function () {
