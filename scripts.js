@@ -474,11 +474,21 @@ $(function() {
 
     function init() {
 
+        // append uv script
         if (isLocalhost){
             if (!scriptIncluded) $('body').append('<script type="text/javascript" id="embedUV" src="/src/lib/embed.js"><\/script>');
         } else {
             $('body').append('<script type="text/javascript" id="embedUV" src="/uv/lib/embed.js"><\/script>');
         }
+
+        // add data-config attribute to uv
+        var configPath = "/config.json";
+
+        if (isLocalhost){
+            configPath = '/examples' + configPath;
+        }
+
+        $uv.attr('data-config', configPath);
 
         $('#manifestSelect').on('change', function(){
             $('#manifest').val($('#manifestSelect option:selected').val());
