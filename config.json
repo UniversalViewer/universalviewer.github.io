@@ -5,6 +5,14 @@
     "footerPanel": {
       "options": {
         "minimiseButtons": true
+      },
+      "content": {
+        "embed": "Share"
+      }
+    },
+    "embedDialogue": {
+      "content": {
+        "title": "Share"
       }
     },
     "searchFooterPanel":

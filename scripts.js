@@ -98,9 +98,9 @@ $(function() {
             trackEvent('Items', 'Viewed', manifestUri);
             trackVariable(1, 'Viewing', manifestUri, 2);
 
-            $('#link').text(obj.preview.title);
-            $('#link').attr('href', location.href);
-            $('#image').attr('src', obj.preview.image);
+            //$('#link').text(obj.preview.title);
+            //$('#link').attr('href', location.href);
+            //$('#image').attr('src', obj.preview.image);
         });
 
         $(document).bind('uv.onNotFound', function (event, obj) {
