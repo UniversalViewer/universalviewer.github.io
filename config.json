@@ -4,7 +4,8 @@
   "modules": {
     "footerPanel": {
       "options": {
-        "minimiseButtons": true
+        "minimiseButtons": true,
+        "openEnabled": true
       },
       "content": {
         "embed": "Share"
