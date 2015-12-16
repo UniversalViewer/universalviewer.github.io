@@ -4,25 +4,7 @@
   "modules": {
     "footerPanel": {
       "options": {
-        "minimiseButtons": true,
         "openEnabled": true
-      },
-      "content": {
-        "embed": "Share"
-      }
-    },
-    "embedDialogue": {
-      "content": {
-        "title": "Share"
-      }
-    },
-    "searchFooterPanel":
-    {
-      "content":
-      {
-        "clearSearch": "Clear",
-        "displaying": "{0} {1} of {2}",
-        "searchWithin": "Search:"
       }
     }
   }
