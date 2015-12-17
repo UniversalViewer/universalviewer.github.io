@@ -1,4 +1,4 @@
-﻿
+
 //https://raw.githubusercontent.com/jfriend00/docReady/master/docready.js
 (function(funcName, baseObj) {
     // The public function name defaults to window.docReady

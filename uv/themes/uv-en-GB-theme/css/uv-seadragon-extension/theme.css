@@ -18,7 +18,9 @@
   height: 50px;
 }
 #app .overlay.embed .middle .firstRow .rightCol {
-  float: right;
+  float: left;
+  margin-left: 10px;
+  width: 380px;
 }
 #app .overlay.embed .middle .secondRow textarea.code {
   width: 100%;
@@ -329,6 +331,13 @@
 }
 #app .headerPanel a.imageBtn.disabled:hover {
   background-color: transparent;
+}
+#app .headerPanel .centerOptions .image-selectionbox-options {
+  float: left;
+  margin: 0 0 0 0;
+}
+#app .headerPanel .centerOptions .image-selectionbox {
+  height: 30px;
 }
 #app .headerPanel .centerOptions .prevOptions {
   float: left;
