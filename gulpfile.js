@@ -1,6 +1,7 @@
 var c = require('./gulpfile.config');
 var config = new c();
 var connect = require('gulp-connect');
+var del = require('del');
 var fs = require('fs');
 var glob = require("glob");
 var gulp = require('gulp');
@@ -12,8 +13,7 @@ function mount(connect, dir) {
 }
 
 gulp.task('delete', function(cb) {
-    fs.unlinkSync('./uv');
-    cb();
+    return del('./uv');
 });
 
 gulp.task('copy', function() {

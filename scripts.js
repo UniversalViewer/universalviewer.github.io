@@ -235,20 +235,7 @@ $(function() {
     function init() {
 
         // append uv script
-        if (isLocalhost){
-            if (!scriptIncluded) $('body').append('<script type="text/javascript" id="embedUV" src="/src/lib/embed.js"><\/script>');
-        } else {
-            $('body').append('<script type="text/javascript" id="embedUV" src="/uv/lib/embed.js"><\/script>');
-        }
-
-        // add data-config attribute to uv
-        var configPath = "/config.json";
-
-        if (isLocalhost){
-            configPath = '/examples' + configPath;
-        }
-
-        $uv.attr('data-config', configPath);
+        $('body').append('<script type="text/javascript" id="embedUV" src="/uv/lib/embed.js"><\/script>');
 
         $('#manifestSelect').on('change', function(){
             $('#manifest').val($('#manifestSelect option:selected').val());
@@ -288,8 +275,6 @@ $(function() {
 
         loadViewer();
     }
-
-    var isLocalhost = document.location.href.indexOf('localhost') != -1;
 
     // if the embed script has been included in the page for testing, don't append it.
     var scriptIncluded = $('#embedUV').length;

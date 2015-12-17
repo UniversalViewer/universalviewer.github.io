@@ -11,7 +11,9 @@
     "run-sequence": "^1.1.5",
     "universalviewer": "^1.6.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "del": "^2.2.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
