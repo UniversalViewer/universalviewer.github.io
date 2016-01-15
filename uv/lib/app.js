@@ -80,7 +80,6 @@ define('modules/uv-shared-module/BaseCommands',["require", "exports"], function 
 });
 
 define('Params',["require", "exports"], function (require, exports) {
-    // todo: zoom and rotation are not generic
     var Params;
     (function (Params) {
         Params[Params["collectionIndex"] = 0] = "collectionIndex";
@@ -89,6 +88,8 @@ define('Params',["require", "exports"], function (require, exports) {
         Params[Params["canvasIndex"] = 3] = "canvasIndex";
         Params[Params["zoom"] = 4] = "zoom";
         Params[Params["rotation"] = 5] = "rotation";
+        Params[Params["highlight"] = 6] = "highlight";
+        Params[Params["anchor"] = 7] = "anchor";
     })(Params || (Params = {}));
     return Params;
 });
@@ -96,7 +97,7 @@ define('Params',["require", "exports"], function (require, exports) {
 define('BootstrapParams',["require", "exports", "./Params"], function (require, exports, Params) {
     var BootstrapParams = (function () {
         function BootstrapParams() {
-            this.paramMap = ['c', 'm', 's', 'cv', 'z', 'r']; // todo: remove z, r
+            this.paramMap = ['c', 'm', 's', 'cv', 'z', 'r', 'h', 'a']; // todo: move z, r, h, a to their respective extensions
             this.config = Utils.Urls.GetQuerystringParameter('config');
             this.domain = Utils.Urls.GetQuerystringParameter('domain');
             this.embedDomain = Utils.Urls.GetQuerystringParameter('embedDomain');
@@ -355,6 +356,7 @@ define('Bootstrapper',["require", "exports", "./modules/uv-shared-module/BaseCom
 define('modules/uv-shared-module/Panel',["require", "exports", "./BaseCommands"], function (require, exports, BaseCommands) {
     var Panel = (function () {
         function Panel($element, fitToParentWidth, fitToParentHeight) {
+            this.isResized = false;
             this.$element = $element;
             this.fitToParentWidth = fitToParentWidth || false;
             this.fitToParentHeight = fitToParentHeight || false;
@@ -374,6 +376,7 @@ define('modules/uv-shared-module/Panel',["require", "exports", "./BaseCommands"]
             if (this.fitToParentHeight) {
                 this.$element.height($parent.height());
             }
+            this.isResized = true;
         };
         return Panel;
     })();
@@ -913,6 +916,7 @@ define('modules/uv-shared-module/BaseExtension',["require", "exports", "./BaseCo
         }
         BaseExtension.prototype.create = function (overrideDependencies) {
             var _this = this;
+            var that = this;
             this.$element = $('#app');
             this.$element.data("bootstrapper", this.bootstrapper);
             // initial sizing.
@@ -978,58 +982,38 @@ define('modules/uv-shared-module/BaseExtension',["require", "exports", "./BaseCo
                 // keyboard events.
                 $(document).on('keyup keydown', function (e) {
                     _this.shifted = e.shiftKey;
-                    _this.tabbing = e.keyCode === 9;
-                });
-                $(document).keyup(function (e) {
-                    var event = null;
-                    if (e.keyCode === 13)
-                        event = BaseCommands.RETURN;
-                    if (e.keyCode === 27)
-                        event = BaseCommands.ESCAPE;
-                    if (e.keyCode === 33)
-                        event = BaseCommands.PAGE_UP;
-                    if (e.keyCode === 34)
-                        event = BaseCommands.PAGE_DOWN;
-                    if (e.keyCode === 35)
-                        event = BaseCommands.END;
-                    if (e.keyCode === 36)
-                        event = BaseCommands.HOME;
-                    if (e.keyCode === 37)
-                        event = BaseCommands.LEFT_ARROW;
-                    if (e.keyCode === 38)
-                        event = BaseCommands.UP_ARROW;
-                    if (e.keyCode === 39)
-                        event = BaseCommands.RIGHT_ARROW;
-                    if (e.keyCode === 40)
-                        event = BaseCommands.DOWN_ARROW;
-                    if (event) {
-                        e.preventDefault();
-                        $.publish(event);
-                    }
+                    _this.tabbing = e.keyCode === KeyCodes.KeyDown.Tab;
                 });
                 $(document).keydown(function (e) {
-                    //Prevent home, end, page up and page down from scrolling the window.
-                    if (e.keyCode === 33 || e.keyCode === 34 || e.keyCode === 35 || e.keyCode === 36)
-                        e.preventDefault();
                     var event = null;
-                    if (!_this.useArrowKeysToNavigate()) {
-                        //Prevent arrow keys from their default action.
-                        if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40)
-                            e.preventDefault();
-                        if (e.keyCode === 37)
+                    if (e.keyCode === KeyCodes.KeyDown.Enter)
+                        event = BaseCommands.RETURN;
+                    if (e.keyCode === KeyCodes.KeyDown.Escape)
+                        event = BaseCommands.ESCAPE;
+                    if (e.keyCode === KeyCodes.KeyDown.PageUp)
+                        event = BaseCommands.PAGE_UP;
+                    if (e.keyCode === KeyCodes.KeyDown.PageDown)
+                        event = BaseCommands.PAGE_DOWN;
+                    if (e.keyCode === KeyCodes.KeyDown.End)
+                        event = BaseCommands.END;
+                    if (e.keyCode === KeyCodes.KeyDown.Home)
+                        event = BaseCommands.HOME;
+                    if (e.keyCode === KeyCodes.KeyDown.NumpadPlus || e.keyCode === 171 || e.keyCode === KeyCodes.KeyDown.Equals)
+                        event = BaseCommands.PLUS;
+                    if (e.keyCode === KeyCodes.KeyDown.NumpadMinus || e.keyCode === 173 || e.keyCode === KeyCodes.KeyDown.Dash)
+                        event = BaseCommands.MINUS;
+                    if (that.useArrowKeysToNavigate()) {
+                        if (e.keyCode === KeyCodes.KeyDown.LeftArrow)
                             event = BaseCommands.LEFT_ARROW;
-                        if (e.keyCode === 38)
+                        if (e.keyCode === KeyCodes.KeyDown.UpArrow)
                             event = BaseCommands.UP_ARROW;
-                        if (e.keyCode === 39)
+                        if (e.keyCode === KeyCodes.KeyDown.RightArrow)
                             event = BaseCommands.RIGHT_ARROW;
-                        if (e.keyCode === 40)
+                        if (e.keyCode === KeyCodes.KeyDown.DownArrow)
                             event = BaseCommands.DOWN_ARROW;
                     }
-                    if (e.keyCode === 107 || e.keyCode === 171 || e.keyCode === 187)
-                        event = BaseCommands.PLUS;
-                    if (e.keyCode === 109 || e.keyCode === 173 || e.keyCode === 189)
-                        event = BaseCommands.MINUS;
                     if (event) {
+                        e.preventDefault();
                         $.publish(event);
                     }
                 });
@@ -2923,6 +2907,50 @@ define('modules/uv-moreinforightpanel-module/MoreInfoRightPanel',["require", "ex
             else if (limitType === "chars") {
                 limit = this.config.options.textLimit ? this.config.options.textLimit : 130;
             }
+            var displayOrderConfig = this.options.displayOrder;
+            if (displayOrderConfig) {
+                displayOrderConfig = displayOrderConfig.toLowerCase();
+                displayOrderConfig = displayOrderConfig.replace(/ /g, "");
+                var displayOrder = displayOrderConfig.split(',');
+                // sort items
+                var sorted = [];
+                _.each(displayOrder, function (item) {
+                    var match = data.en().where((function (x) { return x.label.toLowerCase() === item; })).first();
+                    if (match) {
+                        sorted.push(match);
+                        data.remove(match);
+                    }
+                });
+                // add remaining items that were not in the displayOrder.
+                _.each(data, function (item) {
+                    sorted.push(item);
+                });
+                data = sorted;
+            }
+            // Exclusions
+            var excludeConfig = this.options.exclude;
+            if (excludeConfig) {
+                excludeConfig = excludeConfig.toLowerCase();
+                excludeConfig = excludeConfig.replace(/ /g, "");
+                var exclude = excludeConfig.split(',');
+                _.each(exclude, function (item) {
+                    var match = data.en().where((function (x) { return x.label.toLowerCase() === item; })).first();
+                    if (match) {
+                        data.remove(match);
+                    }
+                });
+            }
+            // flatten metadata into array.
+            var flattened = [];
+            _.each(data, function (item) {
+                if (_.isArray(item.value)) {
+                    flattened = flattened.concat(item.value);
+                }
+                else {
+                    flattened.push(item);
+                }
+            });
+            data = flattened;
             _.each(data, function (item) {
                 var built = _this.buildItem(item);
                 _this.$items.append(built);
@@ -2940,16 +2968,21 @@ define('modules/uv-moreinforightpanel-module/MoreInfoRightPanel',["require", "ex
             var $text = $elem.find('.text');
             item.label = this.provider.sanitize(item.label);
             item.value = this.provider.sanitize(item.value);
-            switch (item.label.toLowerCase()) {
-                case "attribution":
-                    item.label = this.content.attribution;
-                    break;
-                case "description":
-                    item.label = this.content.description;
-                    break;
-                case "license":
-                    item.label = this.content.license;
-                    break;
+            if (item.isRootLevel) {
+                switch (item.label.toLowerCase()) {
+                    case "attribution":
+                        item.label = this.content.attribution;
+                        break;
+                    case "description":
+                        item.label = this.content.description;
+                        break;
+                    case "license":
+                        item.label = this.content.license;
+                        break;
+                    case "logo":
+                        item.label = this.content.logo;
+                        break;
+                }
             }
             // replace \n with <br>
             item.value = item.value.replace('\n', '<br>');
@@ -2971,7 +3004,7 @@ define('modules/uv-moreinforightpanel-module/MoreInfoRightPanel',["require", "ex
 });
 
 define('_Version',["require", "exports"], function (require, exports) {
-    exports.Version = '1.6.6';
+    exports.Version = '1.6.13';
 });
 
 var __extends = (this && this.__extends) || function (d, b) {
@@ -3879,7 +3912,7 @@ define('modules/uv-treeviewleftpanel-module/TreeViewLeftPanel',["require", "expo
             });
             this.$tabs = $('<div class="tabs"></div>');
             this.$main.append(this.$tabs);
-            this.$treeButton = $('<a class="index tab first">' + this.content.index + '</a>');
+            this.$treeButton = $('<a class="index tab">' + this.content.index + '</a>');
             this.$treeButton.prop('title', this.content.index);
             this.$tabs.append(this.$treeButton);
             this.$thumbsButton = $('<a class="thumbs tab">' + this.content.thumbnails + '</a>');
@@ -3928,6 +3961,20 @@ define('modules/uv-treeviewleftpanel-module/TreeViewLeftPanel',["require", "expo
             this.$title.text(this.content.title);
             this.$closedTitle.text(this.content.title);
             this.$sortByVolumeButton.addClass('on');
+            var tabOrderConfig = this.options.tabOrder;
+            if (tabOrderConfig) {
+                // sort tabs
+                tabOrderConfig = tabOrderConfig.toLowerCase();
+                tabOrderConfig = tabOrderConfig.replace(/ /g, "");
+                var tabOrder = tabOrderConfig.split(',');
+                if (tabOrder[0] === 'thumbs') {
+                    this.$treeButton.before(this.$thumbsButton);
+                    this.$thumbsButton.addClass('first');
+                }
+                else {
+                    this.$treeButton.addClass('first');
+                }
+            }
         };
         TreeViewLeftPanel.prototype.createTreeView = function () {
             this.treeView = new TreeView(this.$treeView);
@@ -4246,7 +4293,25 @@ define('extensions/uv-mediaelement-extension/Extension',["require", "exports", "
     return Extension;
 });
 
-define('modules/uv-shared-module/BaseProvider',["require", "exports", "../../BootstrapParams", "../../Params"], function (require, exports, BootstrapParams, Params) {
+define('modules/uv-shared-module/UriLabeller',["require", "exports"], function (require, exports) {
+    // This class formats URIs into HTML <a> links, applying labels when available
+    var UriLabeller = (function () {
+        function UriLabeller(labels) {
+            this.labels = labels;
+        }
+        UriLabeller.prototype.format = function (url) {
+            // if already a link, do nothing.
+            if (url.indexOf('<a') != -1)
+                return url;
+            var label = this.labels[url] ? this.labels[url] : url;
+            return '<a href="' + url + '">' + label + '</a>';
+        };
+        return UriLabeller;
+    })();
+    return UriLabeller;
+});
+
+define('modules/uv-shared-module/BaseProvider',["require", "exports", "../../BootstrapParams", "../../Params", "./UriLabeller"], function (require, exports, BootstrapParams, Params, UriLabeller) {
     // providers contain methods that could be implemented differently according
     // to factors like varying back end data provisioning systems.
     // todo: expose the provider as an external API to the containing page.
@@ -4278,6 +4343,7 @@ define('modules/uv-shared-module/BaseProvider',["require", "exports", "../../Boo
             this.manifestIndex = this.bootstrapper.params.manifestIndex;
             this.sequenceIndex = this.bootstrapper.params.sequenceIndex;
             this.canvasIndex = this.bootstrapper.params.canvasIndex;
+            this.licenseFormatter = new UriLabeller(this.config.license ? this.config.license : {});
         }
         // re-bootstraps the application with new querystring params
         BaseProvider.prototype.reload = function (params) {
@@ -4480,31 +4546,44 @@ define('modules/uv-shared-module/BaseProvider',["require", "exports", "../../Boo
             return this.embedDomain;
         };
         BaseProvider.prototype.getMetadata = function () {
+            var result = [];
             var metadata = this.manifest.getMetadata();
+            if (metadata) {
+                result.push({
+                    label: "metadata",
+                    value: metadata,
+                    isRootLevel: true
+                });
+            }
             if (this.manifest.getDescription()) {
-                metadata.unshift({
-                    "label": "description",
-                    "value": this.manifest.getDescription()
+                result.push({
+                    label: "description",
+                    value: this.manifest.getDescription(),
+                    isRootLevel: true
                 });
             }
             if (this.manifest.getAttribution()) {
-                metadata.unshift({
-                    "label": "attribution",
-                    "value": this.manifest.getAttribution()
+                result.push({
+                    label: "attribution",
+                    value: this.manifest.getAttribution(),
+                    isRootLevel: true
                 });
             }
             if (this.manifest.getLicense()) {
-                metadata.unshift({
-                    "label": "license",
-                    "value": this.manifest.getLicense()
+                result.push({
+                    label: "license",
+                    value: this.licenseFormatter.format(this.manifest.getLicense()),
+                    isRootLevel: true
                 });
             }
             if (this.manifest.getLogo()) {
-                metadata.push({
-                    "label": "logo",
-                    "value": '<img src="' + this.manifest.getLogo() + '"/>' });
+                result.push({
+                    label: "logo",
+                    value: '<img src="' + this.manifest.getLogo() + '"/>',
+                    isRootLevel: true
+                });
             }
-            return metadata;
+            return result;
         };
         BaseProvider.prototype.defaultToThumbsView = function () {
             switch (this.getManifestType().toString()) {
@@ -4573,6 +4652,7 @@ define('modules/uv-shared-module/BaseProvider',["require", "exports", "../../Boo
             // if items contains sort item, add it to results.
             // if sort item has a label, substitute it
             // mark item as added.
+            // if limitLocales is disabled,
             // loop through remaining items and add to results.
             _.each(sorting, function (sortItem) {
                 var match = _.filter(items, function (item) { return item.name === sortItem.name; });
@@ -4584,12 +4664,15 @@ define('modules/uv-shared-module/BaseProvider',["require", "exports", "../../Boo
                     result.push(m);
                 }
             });
-            _.each(items, function (item) {
-                if (!item.added) {
-                    result.push(item);
-                }
-                delete item.added;
-            });
+            var limitLocales = Utils.Bools.GetBool(this.config.options.limitLocales, false);
+            if (!limitLocales) {
+                _.each(items, function (item) {
+                    if (!item.added) {
+                        result.push(item);
+                    }
+                    delete item.added;
+                });
+            }
             return this.locales = result;
         };
         BaseProvider.prototype.getAlternateLocale = function () {
@@ -4744,7 +4827,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define('modules/uv-pdfcenterpanel-module/PDFCenterPanel',["require", "exports", "../uv-shared-module/BaseCommands", "../uv-shared-module/CenterPanel"], function (require, exports, BaseCommands, CenterPanel) {
+define('modules/uv-pdfcenterpanel-module/PDFCenterPanel',["require", "exports", "../uv-shared-module/BaseCommands", "../uv-shared-module/CenterPanel", "../../Params"], function (require, exports, BaseCommands, CenterPanel, Params) {
     var PDFCenterPanel = (function (_super) {
         __extends(PDFCenterPanel, _super);
         function PDFCenterPanel($element) {
@@ -4760,6 +4843,7 @@ define('modules/uv-pdfcenterpanel-module/PDFCenterPanel',["require", "exports", 
         };
         PDFCenterPanel.prototype.openMedia = function (resources) {
             var _this = this;
+            var that = this;
             this.extension.getExternalResources(resources).then(function () {
                 var canvas = _this.provider.getCurrentCanvas();
                 var pdfUri = canvas.id;
@@ -4790,6 +4874,8 @@ define('modules/uv-pdfcenterpanel-module/PDFCenterPanel',["require", "exports", 
                             PDFJS.workerSrc = 'lib/pdf.worker.min.js';
                         }
                         PDFJS.DEFAULT_URL = pdfUri;
+                        var anchorIndex = (1 + parseInt(that.extension.getParam(Params.anchor))) || 0;
+                        PDFView.initialBookmark = "page=" + anchorIndex;
                         window.webViewerLoad();
                         _this.resize();
                     });
@@ -5068,7 +5154,7 @@ define('extensions/uv-seadragon-extension/DownloadDialogue',["require", "exports
             this.$downloadOptions.find('.dynamic').remove();
         };
         DownloadDialogue.prototype.addDownloadOptionsForRenderings = function (resource, defaultLabel) {
-            var renderings = manifesto.getRenderings(resource);
+            var renderings = resource.getRenderings();
             for (var i = 0; i < renderings.length; i++) {
                 var rendering = renderings[i];
                 if (rendering) {
@@ -5210,6 +5296,8 @@ define('modules/uv-searchfooterpanel-module/AutoComplete',["require", "exports"]
     var AutoComplete = (function () {
         function AutoComplete(element, autoCompleteUri, delay, parseResults, onSelect) {
             var _this = this;
+            this.validKeyDownCodes = [KeyCodes.KeyDown.Backspace, KeyCodes.KeyDown.Spacebar, KeyCodes.KeyDown.Tab, KeyCodes.KeyDown.LeftArrow, KeyCodes.KeyDown.RightArrow, KeyCodes.KeyDown.Delete];
+            this.lastKeyDownWasValid = false;
             this.$element = element;
             this.autoCompleteUri = autoCompleteUri;
             this.delay = delay;
@@ -5230,9 +5318,27 @@ define('modules/uv-searchfooterpanel-module/AutoComplete',["require", "exports"]
             })();
             var that = this;
             // validate
-            // prevent invalid characters being entered
             this.$element.on("keydown", function (e) {
-                if (!that.isValidKey(e.keyCode)) {
+                var originalEvent = e.originalEvent;
+                that.lastKeyDownWasValid = that.isValidKeyDown(originalEvent);
+                var charCode = Utils.Keyboard.GetCharCode(originalEvent);
+                var cancelEvent = false;
+                if (charCode === KeyCodes.KeyDown.LeftArrow) {
+                    cancelEvent = true;
+                }
+                else if (charCode === KeyCodes.KeyDown.RightArrow) {
+                    cancelEvent = true;
+                }
+                if (cancelEvent) {
+                    originalEvent.cancelBubble = true;
+                    if (originalEvent.stopPropagation)
+                        originalEvent.stopPropagation();
+                }
+            });
+            // prevent invalid characters being entered
+            this.$element.on("keypress", function (e) {
+                var isValidKeyPress = that.isValidKeyPress(e.originalEvent);
+                if (!(that.lastKeyDownWasValid || isValidKeyPress)) {
                     e.preventDefault();
                     return false;
                 }
@@ -5240,38 +5346,31 @@ define('modules/uv-searchfooterpanel-module/AutoComplete',["require", "exports"]
             });
             // auto complete
             this.$element.on("keyup", function (e) {
-                e.preventDefault();
                 // if pressing enter without a list item selected
-                if (!that.getSelectedListItem().length && e.keyCode === 13) {
+                if (!that.getSelectedListItem().length && e.keyCode === KeyCodes.KeyDown.Enter) {
                     that.onSelect(that.getTerms());
                     return;
                 }
                 // If there are search results
                 if (that.$searchResultsList.is(':visible') && that.results.length) {
-                    if (e.keyCode === 13) {
-                        // enter
+                    if (e.keyCode === KeyCodes.KeyDown.Enter) {
                         that.searchForItem(that.getSelectedListItem());
                     }
-                    else if (e.keyCode === 40) {
+                    else if (e.keyCode === KeyCodes.KeyDown.DownArrow) {
                         that.setSelectedResultIndex(1);
                         return;
                     }
-                    else if (e.keyCode === 38) {
+                    else if (e.keyCode === KeyCodes.KeyDown.UpArrow) {
                         that.setSelectedResultIndex(-1);
                         return;
                     }
                 }
                 // after a delay, show autocomplete list.
                 typewatch(function () {
-                    // don't do anything if not a valid key.
-                    if (!that.isValidKey(e.keyCode)) {
-                        e.preventDefault();
-                        return false;
-                    }
                     var val = that.getTerms();
                     // if there are more than 2 chars and no spaces
                     // update the autocomplete list.
-                    if (val && val.length > 2 && val.indexOf(' ') === -1) {
+                    if (val && val.length > 2 && !val.contains(' ')) {
                         that.search(val);
                     }
                     else {
@@ -5279,7 +5378,6 @@ define('modules/uv-searchfooterpanel-module/AutoComplete',["require", "exports"]
                         that.clearResults();
                         that.hideResults();
                     }
-                    return true;
                 }, that.delay);
             });
             // hide results if clicked outside.
@@ -5291,6 +5389,15 @@ define('modules/uv-searchfooterpanel-module/AutoComplete',["require", "exports"]
             });
             this.hideResults();
         }
+        AutoComplete.prototype.isValidKeyDown = function (e) {
+            return this.validKeyDownCodes.contains(Utils.Keyboard.GetCharCode(e));
+        };
+        AutoComplete.prototype.isValidKeyPress = function (e) {
+            // is alphanumeric
+            var regExp = /^[a-zA-Z0-9]*$/;
+            var key = String.fromCharCode(Utils.Keyboard.GetCharCode(e));
+            return regExp.test(key);
+        };
         AutoComplete.prototype.getTerms = function () {
             return this.$element.val().trim();
         };
@@ -5316,25 +5423,6 @@ define('modules/uv-searchfooterpanel-module/AutoComplete',["require", "exports"]
             //var top = selectedItem.offset().top;
             var top = selectedItem.outerHeight(true) * this.selectedResultIndex;
             this.$searchResultsList.scrollTop(top);
-        };
-        AutoComplete.prototype.isValidKey = function (keyCode) {
-            // up and down are invalid. otherwise get converted to
-            // '&'' and '(' respectively.
-            if (keyCode === 38 || keyCode === 40)
-                return false;
-            // ignore if it's a backspace, space, or tab.
-            if (keyCode !== 8 && keyCode !== 32 && keyCode !== 9) {
-                // prev:  new RegExp("^[a-zA-Z]+$");
-                // standard keyboard non-control characters
-                var regex = new RegExp("^[\\w()!£$%^&*()-+=@'#~?<>|/\\\\]+$");
-                //var regex = new RegExp("^[\\w]+$");
-                //var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-                var key = String.fromCharCode(keyCode);
-                if (!regex.test(key)) {
-                    return false;
-                }
-            }
-            return true;
         };
         AutoComplete.prototype.search = function (term) {
             this.results = [];
@@ -5424,11 +5512,11 @@ define('modules/uv-searchfooterpanel-module/FooterPanel',["require", "exports", 
             $.subscribe(Commands.MODE_CHANGED, function (e, mode) {
                 _this.settingsChanged();
             });
+            $.subscribe(Commands.SEARCH, function (e, terms) {
+                _this.terms = terms;
+            });
             $.subscribe(Commands.SEARCH_RESULTS, function (e, obj) {
                 _this.displaySearchResults(obj.terms, obj.results);
-            });
-            $.subscribe(BaseCommands.CREATED, function (e) {
-                _this.checkForSearchParams();
             });
             // search input.
             this.$searchContainer = $('<div class="search"></div>');
@@ -5527,19 +5615,6 @@ define('modules/uv-searchfooterpanel-module/FooterPanel',["require", "exports", 
                 }, function (terms) {
                     _this.search(terms);
                 });
-            }
-        };
-        FooterPanel.prototype.checkForSearchParams = function () {
-            // if a h or q value is in the hash params, do a search.
-            if (this.provider.isDeepLinkingEnabled()) {
-                var terms = Utils.Urls.GetHashParameter('h', parent.document)
-                    || Utils.Urls.GetHashParameter('q', parent.document);
-                if (terms) {
-                    this.terms = terms.replace(/\+/g, " ").replace(/"/g, "");
-                    // blur search field
-                    this.$searchText.blur();
-                    $.publish(Commands.SEARCH, [this.terms]);
-                }
             }
         };
         FooterPanel.prototype.search = function (terms) {
@@ -5967,11 +6042,13 @@ define('modules/uv-pagingheaderpanel-module/PagingHeaderPanel',["require", "expo
             // Get visible element in centerOptions with greatest tabIndex
             var $elementWithGreatestTabIndex = this.$centerOptions.getVisibleElementWithGreatestTabIndex();
             // cycle focus back to start.
-            $elementWithGreatestTabIndex.blur(function () {
-                if (_this.extension.tabbing && !_this.extension.shifted) {
-                    _this.$nextButton.focus();
-                }
-            });
+            if ($elementWithGreatestTabIndex) {
+                $elementWithGreatestTabIndex.blur(function () {
+                    if (_this.extension.tabbing && !_this.extension.shifted) {
+                        _this.$nextButton.focus();
+                    }
+                });
+            }
             this.$nextButton.blur(function () {
                 if (_this.extension.tabbing && _this.extension.shifted) {
                     setTimeout(function () {
@@ -6140,22 +6217,17 @@ define('modules/uv-seadragoncenterpanel-module/SeadragonCenterPanel',["require",
             this.$viewer = $('<div id="viewer"></div>');
             this.$content.prepend(this.$viewer);
             $.subscribe(BaseCommands.OPEN_EXTERNAL_RESOURCE, function (e, resources) {
-                // todo: OPEN_EXTERNAL_RESOURCE should be able to waitFor RESIZE
-                // https://facebook.github.io/flux/docs/dispatcher.html
-                if (!_this.isCreated) {
-                    setTimeout(function () {
+                Utils.Async.WaitFor(function () {
+                    return _this.isResized;
+                }, function () {
+                    if (!_this.isCreated)
                         _this.createUI();
-                        _this.openMedia(resources);
-                    }, 500); // hack to allow time for panel open animations to complete.
-                }
-                else {
                     _this.openMedia(resources);
-                }
+                });
             });
         };
         SeadragonCenterPanel.prototype.createUI = function () {
             var _this = this;
-            //console.log("create ui");
             this.$spinner = $('<div class="spinner"></div>');
             this.$content.append(this.$spinner);
             this.showAttribution();
@@ -6543,7 +6615,6 @@ define('modules/uv-seadragoncenterpanel-module/SeadragonCenterPanel',["require",
             return newRects;
         };
         SeadragonCenterPanel.prototype.resize = function () {
-            //console.log("resize");
             _super.prototype.resize.call(this);
             this.$viewer.height(this.$content.height() - this.$viewer.verticalMargins());
             this.$viewer.width(this.$content.width() - this.$viewer.horizontalMargins());
@@ -6868,6 +6939,11 @@ define('extensions/uv-seadragon-extension/Extension',["require", "exports", "../
                 _this.triggerSocket(Commands.VIEW_PAGE, index);
                 _this.viewPage(index);
             });
+            Utils.Async.WaitFor(function () {
+                return _this.centerPanel && _this.centerPanel.isCreated;
+            }, function () {
+                _this.checkForSearchParam();
+            });
         };
         Extension.prototype.createModules = function () {
             _super.prototype.createModules.call(this);
@@ -6906,6 +6982,17 @@ define('extensions/uv-seadragon-extension/Extension',["require", "exports", "../
             }
             if (this.isRightPanelEnabled()) {
                 this.rightPanel.init();
+            }
+        };
+        Extension.prototype.checkForSearchParam = function () {
+            // if a h value is in the hash params, do a search.
+            if (this.provider.isDeepLinkingEnabled()) {
+                // if a highlight param is set, use it to search.
+                var highlight = this.getParam(Params.highlight);
+                if (highlight) {
+                    highlight.replace(/\+/g, " ").replace(/"/g, "");
+                    $.publish(Commands.SEARCH, [highlight]);
+                }
             }
         };
         Extension.prototype.updateSettings = function () {
@@ -8401,13 +8488,42 @@ var Manifesto;
             }
             return metadata;
         };
-        // todo: once UV download menu uses manifesto parsed objects, this can be moved back from Utils
         ManifestResource.prototype.getRendering = function (format) {
-            return Manifesto.Utils.getRendering(this, format);
+            var renderings = this.getRenderings();
+            // normalise format to string
+            if (typeof format !== 'string') {
+                format = format.toString();
+            }
+            for (var i = 0; i < renderings.length; i++) {
+                var rendering = renderings[i];
+                if (rendering.getFormat().toString() === format) {
+                    return rendering;
+                }
+            }
+            return null;
         };
-        // todo: once UV download menu uses manifesto parsed objects, this can be moved back from Utils
         ManifestResource.prototype.getRenderings = function () {
-            return Manifesto.Utils.getRenderings(this);
+            var rendering;
+            // if passing a manifesto-parsed object, use the __jsonld.rendering property,
+            // otherwise look for a rendering property
+            if (this.__jsonld) {
+                rendering = this.__jsonld.rendering;
+            }
+            else {
+                rendering = this.rendering;
+            }
+            var renderings = [];
+            if (!rendering)
+                return renderings;
+            // coerce to array
+            if (!_isArray(rendering)) {
+                rendering = [rendering];
+            }
+            for (var i = 0; i < rendering.length; i++) {
+                var r = rendering[i];
+                renderings.push(new Manifesto.Rendering(r, this.options));
+            }
+            return renderings;
         };
         ManifestResource.prototype.getService = function (profile) {
             return Manifesto.Utils.getService(this, profile);
@@ -9174,6 +9290,9 @@ var Manifesto;
         }
         Service.prototype.getProfile = function () {
             var profile = this.getProperty('profile');
+            if (!profile) {
+                profile = this.getProperty('dcterms:conformsTo');
+            }
             if (_isArray(profile)) {
                 return new Manifesto.ServiceProfile(profile[0]);
             }
@@ -9464,43 +9583,6 @@ var Manifesto;
                 });
             });
         };
-        Utils.getRendering = function (resource, format) {
-            var renderings = this.getRenderings(resource);
-            // normalise format to string
-            if (typeof format !== 'string') {
-                format = format.toString();
-            }
-            for (var i = 0; i < renderings.length; i++) {
-                var rendering = renderings[i];
-                if (rendering.getFormat().toString() === format) {
-                    return rendering;
-                }
-            }
-            return null;
-        };
-        Utils.getRenderings = function (resource) {
-            var rendering;
-            // if passing a manifesto-parsed object, use the __jsonld.rendering property,
-            // otherwise look for a rendering property
-            if (resource.__jsonld) {
-                rendering = resource.__jsonld.rendering;
-            }
-            else {
-                rendering = resource.rendering;
-            }
-            var renderings = [];
-            if (!rendering)
-                return renderings;
-            // coerce to array
-            if (!_isArray(rendering)) {
-                rendering = [rendering];
-            }
-            for (var i = 0; i < rendering.length; i++) {
-                var r = rendering[i];
-                renderings.push(new Manifesto.Rendering(r, resource.options));
-            }
-            return renderings;
-        };
         Utils.getService = function (resource, profile) {
             var services = this.getServices(resource);
             // coerce profile to string
@@ -9574,10 +9656,6 @@ module.exports = {
     ViewingHint: new Manifesto.ViewingHint(),
     create: function (manifest, options) {
         return Manifesto.Deserialiser.parse(manifest, options);
-    },
-    // todo: deprecate this - temporary to enable current UV download menu
-    getRenderings: function (resource) {
-        return Manifesto.Utils.getRenderings(resource);
     },
     getService: function (resource, profile) {
         return Manifesto.Utils.getService(resource, profile);
@@ -18930,6 +19008,191 @@ define("httpstatuscodes", function(){});
  */;
 define("jsviews", ["jquery"], function(){});
 
+var KeyCodes;
+(function (KeyCodes) {
+    var KeyDown;
+    (function (KeyDown) {
+        KeyDown.Backspace = 8;
+        KeyDown.Tab = 9;
+        KeyDown.Enter = 13;
+        KeyDown.Shift = 16;
+        KeyDown.Ctrl = 17;
+        KeyDown.Alt = 18;
+        KeyDown.PauseBreak = 19;
+        KeyDown.CapsLock = 20;
+        KeyDown.Escape = 27;
+        KeyDown.Spacebar = 32;
+        KeyDown.PageUp = 33;
+        KeyDown.PageDown = 34;
+        KeyDown.End = 35;
+        KeyDown.Home = 36;
+        KeyDown.LeftArrow = 37;
+        KeyDown.UpArrow = 38;
+        KeyDown.RightArrow = 39;
+        KeyDown.DownArrow = 40;
+        KeyDown.PrintScrn = 44;
+        KeyDown.Insert = 45;
+        KeyDown.Delete = 46;
+        KeyDown.Zero = 48;
+        KeyDown.One = 49;
+        KeyDown.Two = 50;
+        KeyDown.Three = 51;
+        KeyDown.Four = 52;
+        KeyDown.Five = 53;
+        KeyDown.Six = 54;
+        KeyDown.Seven = 55;
+        KeyDown.Eight = 56;
+        KeyDown.Nine = 57;
+        KeyDown.a = 65;
+        KeyDown.b = 66;
+        KeyDown.c = 67;
+        KeyDown.d = 68;
+        KeyDown.e = 69;
+        KeyDown.f = 70;
+        KeyDown.g = 71;
+        KeyDown.h = 72;
+        KeyDown.i = 73;
+        KeyDown.j = 74;
+        KeyDown.k = 75;
+        KeyDown.l = 76;
+        KeyDown.m = 77;
+        KeyDown.n = 78;
+        KeyDown.o = 79;
+        KeyDown.p = 80;
+        KeyDown.q = 81;
+        KeyDown.r = 82;
+        KeyDown.s = 83;
+        KeyDown.t = 84;
+        KeyDown.u = 85;
+        KeyDown.v = 86;
+        KeyDown.w = 87;
+        KeyDown.x = 88;
+        KeyDown.y = 89;
+        KeyDown.z = 90;
+        KeyDown.LeftWindowKey = 91;
+        KeyDown.RightWindowKey = 92;
+        KeyDown.SelectKey = 93;
+        KeyDown.Numpad0 = 96;
+        KeyDown.Numpad1 = 97;
+        KeyDown.Numpad2 = 98;
+        KeyDown.Numpad3 = 99;
+        KeyDown.Numpad4 = 100;
+        KeyDown.Numpad5 = 101;
+        KeyDown.Numpad6 = 102;
+        KeyDown.Numpad7 = 103;
+        KeyDown.Numpad8 = 104;
+        KeyDown.Numpad9 = 105;
+        KeyDown.Multiply = 106;
+        KeyDown.NumpadPlus = 107;
+        KeyDown.NumpadMinus = 109;
+        KeyDown.DecimalPoint = 110;
+        KeyDown.Divide = 111;
+        KeyDown.F1 = 112;
+        KeyDown.F2 = 113;
+        KeyDown.F3 = 114;
+        KeyDown.F4 = 115;
+        KeyDown.F5 = 116;
+        KeyDown.F6 = 117;
+        KeyDown.F7 = 118;
+        KeyDown.F8 = 119;
+        KeyDown.F9 = 120;
+        KeyDown.F10 = 121;
+        KeyDown.F11 = 122;
+        KeyDown.F12 = 123;
+        KeyDown.NumLock = 144;
+        KeyDown.ScrollLock = 145;
+        KeyDown.Semicolon = 186;
+        KeyDown.Equals = 187;
+        KeyDown.Comma = 188;
+        KeyDown.LessThan = 188;
+        KeyDown.Dash = 189;
+        KeyDown.Period = 190;
+        KeyDown.GreaterThan = 190;
+        KeyDown.ForwardSlash = 191;
+        KeyDown.QuestionMark = 191;
+        KeyDown.GraveAccent = 192;
+        KeyDown.Tilde = 192;
+        KeyDown.OpenCurlyBracket = 219;
+        KeyDown.OpenSquareBracket = 219;
+        KeyDown.BackSlash = 220;
+        KeyDown.VerticalPipe = 220;
+        KeyDown.CloseCurlyBracket = 221;
+        KeyDown.CloseSquareBracket = 221;
+        KeyDown.Quote = 222;
+        KeyDown.CommandFF = 224;
+    })(KeyDown = KeyCodes.KeyDown || (KeyCodes.KeyDown = {}));
+})(KeyCodes || (KeyCodes = {}));
+var KeyCodes;
+(function (KeyCodes) {
+    var KeyPress;
+    (function (KeyPress) {
+        KeyPress.Backspace = 8;
+        KeyPress.Enter = 13;
+        KeyPress.Spacebar = 32;
+        KeyPress.Hash = 35;
+        KeyPress.GraveAccent = 39;
+        KeyPress.ForwardSlash = 32;
+        KeyPress.Asterisk = 42;
+        KeyPress.Plus = 43;
+        KeyPress.Comma = 44;
+        KeyPress.Minus = 45;
+        KeyPress.Period = 46;
+        KeyPress.ForwardSlash = 47;
+        KeyPress.Zero = 48;
+        KeyPress.One = 49;
+        KeyPress.Two = 50;
+        KeyPress.Three = 51;
+        KeyPress.Four = 52;
+        KeyPress.Five = 53;
+        KeyPress.Six = 54;
+        KeyPress.Seven = 55;
+        KeyPress.Eight = 56;
+        KeyPress.Nine = 57;
+        KeyPress.Colon = 58;
+        KeyPress.Semicolon = 59;
+        KeyPress.LessThan = 60;
+        KeyPress.Equals = 61;
+        KeyPress.GreaterThan = 62;
+        KeyPress.QuestionMark = 63;
+        KeyPress.At = 64;
+        KeyPress.OpenSquareBracket = 91;
+        KeyPress.BackSlash = 92;
+        KeyPress.CloseSquareBracket = 93;
+        KeyPress.a = 97;
+        KeyPress.b = 98;
+        KeyPress.c = 99;
+        KeyPress.d = 100;
+        KeyPress.e = 101;
+        KeyPress.f = 102;
+        KeyPress.g = 103;
+        KeyPress.h = 104;
+        KeyPress.i = 105;
+        KeyPress.j = 106;
+        KeyPress.k = 107;
+        KeyPress.l = 108;
+        KeyPress.m = 109;
+        KeyPress.n = 110;
+        KeyPress.o = 111;
+        KeyPress.p = 112;
+        KeyPress.q = 113;
+        KeyPress.r = 114;
+        KeyPress.s = 115;
+        KeyPress.t = 116;
+        KeyPress.u = 117;
+        KeyPress.v = 118;
+        KeyPress.w = 119;
+        KeyPress.x = 120;
+        KeyPress.y = 121;
+        KeyPress.z = 122;
+        KeyPress.OpenCurlyBracket = 123;
+        KeyPress.VerticalPipe = 124;
+        KeyPress.CloseCurlyBracket = 125;
+        KeyPress.Tilde = 126;
+    })(KeyPress = KeyCodes.KeyPress || (KeyCodes.KeyPress = {}));
+})(KeyCodes || (KeyCodes = {}));
+
+define("keycodes", function(){});
+
 /**
  * Copyright (c) 2011-2013 Fabien Cazenave, Mozilla.
  *
@@ -20732,6 +20995,36 @@ if ( typeof define === "function" ) {
 };
 var Utils;
 (function (Utils) {
+    var Async = (function () {
+        function Async() {
+        }
+        Async.WaitFor = function (test, successCallback, failureCallback, interval, maxTries, numTries) {
+            if (!interval)
+                interval = 200;
+            if (!maxTries)
+                maxTries = 100; // try 100 times over 20 seconds
+            if (!numTries)
+                numTries = 0;
+            numTries += 1;
+            if (numTries > maxTries) {
+                if (failureCallback)
+                    failureCallback();
+            }
+            else if (test()) {
+                successCallback();
+            }
+            else {
+                setTimeout(function () {
+                    Async.WaitFor(test, successCallback, failureCallback, interval, maxTries, numTries);
+                }, interval);
+            }
+        };
+        return Async;
+    })();
+    Utils.Async = Async;
+})(Utils || (Utils = {}));
+var Utils;
+(function (Utils) {
     var Bools = (function () {
         function Bools() {
         }
@@ -20750,11 +21043,10 @@ var Utils;
 // Licensed under MIT open source license http://opensource.org/licenses/MIT
 //
 // Orginal javascript code was by Mauricio Santos
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
  * @namespace Top level namespace for collections, a TypeScript data structure library.
@@ -23312,7 +23604,11 @@ var Utils;
         }
         Device.GetPixelRatio = function (ctx) {
             var dpr = window.devicePixelRatio || 1;
-            var bsr = ctx.webkitBackingStorePixelRatio || ctx.mozBackingStorePixelRatio || ctx.msBackingStorePixelRatio || ctx.oBackingStorePixelRatio || ctx.backingStorePixelRatio || 1;
+            var bsr = ctx.webkitBackingStorePixelRatio ||
+                ctx.mozBackingStorePixelRatio ||
+                ctx.msBackingStorePixelRatio ||
+                ctx.oBackingStorePixelRatio ||
+                ctx.backingStorePixelRatio || 1;
             return dpr / bsr;
         };
         return Device;
@@ -23325,12 +23621,19 @@ var Utils;
         function Documents() {
         }
         Documents.IsInIFrame = function () {
+            // see http://stackoverflow.com/questions/326069/how-to-identify-if-a-webpage-is-being-loaded-inside-an-iframe-or-directly-into-t
             try {
                 return window.self !== window.top;
             }
             catch (e) {
                 return true;
             }
+        };
+        Documents.SupportsFullscreen = function () {
+            var doc = document.documentElement;
+            var support = doc.requestFullscreen || doc.mozRequestFullScreen ||
+                doc.webkitRequestFullScreen || doc.msRequestFullscreen;
+            return support != undefined;
         };
         return Documents;
     })();
@@ -23367,6 +23670,19 @@ var Utils;
         return Events;
     })();
     Utils.Events = Events;
+})(Utils || (Utils = {}));
+var Utils;
+(function (Utils) {
+    var Keyboard = (function () {
+        function Keyboard() {
+        }
+        Keyboard.GetCharCode = function (e) {
+            var charCode = (typeof e.which == "number") ? e.which : e.keyCode;
+            return charCode;
+        };
+        return Keyboard;
+    })();
+    Utils.Keyboard = Keyboard;
 })(Utils || (Utils = {}));
 var Utils;
 (function (Utils) {
@@ -23520,7 +23836,11 @@ var Utils;
         }
         Numbers.NumericalInput = function (event) {
             // Allow: backspace, delete, tab and escape
-            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
+            if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 ||
+                // Allow: Ctrl+A
+                (event.keyCode == 65 && event.ctrlKey === true) ||
+                // Allow: home, end, left, right
+                (event.keyCode >= 35 && event.keyCode <= 39)) {
                 // let it happen, don't do anything
                 return true;
             }
@@ -23769,6 +24089,7 @@ var Utils;
                 kvp.shift();
             var i = kvp.length;
             var x;
+            // replace if already present.
             while (i--) {
                 x = kvp[i].split('=');
                 if (x[0] == key) {
@@ -23996,6 +24317,7 @@ require.config({
         'httpstatuscodes': 'lib/http-status-codes',
         'jquery': 'lib/jquery-1.10.2.min',
         'jsviews': 'lib/jsviews.min',
+        'keycodes': 'lib/key-codes',
         'l10n': 'lib/l10n',
         'length': 'lib/Length.min',
         'lodash': 'lib/lodash.min',
@@ -24050,6 +24372,7 @@ require([
     'httpstatuscodes',
     'jquery',
     'jsviews',
+    'keycodes',
     'l10n',
     'length',
     'lodash',
