@@ -1,0 +1,36 @@
+{
+  "@context": [
+    {
+      "uv": "http://universalviewer.io/services#",
+      "rdfs": "http://www.w3.org/2000/01/rdf-schema#",   
+
+      "manifestType": {
+        "@id": "uv:manifestType",
+        "@type": "@vocab"
+      },
+      "manuscript": {
+        "@id": "uv:manuscriptManifest",
+        "@type": "uv:ManifestType"
+      },
+      "suppressMetadata": {
+        "@id": "uv:suppressMetadata",
+        "@container": "@list"
+      },
+      "trackingLabel": {
+          "@id": "uv:trackingLabel"          
+      },
+      "disableUI": {
+        "@id": "uv:disableUI",
+        "@type": "@vocab"
+      },
+      "embed": {
+        "@id": "uv:disableEmbed",
+        "@type": "uv:DisableUI"
+      },
+      "mediaDownload": {
+        "@id": "uv:disableMediaDownload",
+        "@type": "uv:DisableUI"
+      }
+    }
+  ]
+}
