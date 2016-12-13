@@ -3,16 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
-  "dependencies": {
-    "glob": "^6.0.1",
-    "gulp": "^3.9.0",
-    "gulp-connect": "^2.2.0",
-    "gulp-rename": "^1.2.2",
-    "run-sequence": "^1.1.5",
-    "universalviewer": "^1.6.13"
-  },
   "devDependencies": {
-    "del": "^2.2.0"
+    "bootstrap": "^3.3.7",
+    "browser-sync": "^2.13.0",
+    "font-awesome": "^4.6.3",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-header": "^1.8.7",
+    "gulp-less": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.4",
+    "jquery": "^1.11.3",
+    "magnific-popup": "^1.1.0",
+    "scrollreveal": "^3.1.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,44 +1,100 @@
-var c = require('./gulpfile.config');
-var config = new c();
-var connect = require('gulp-connect');
-var del = require('del');
+var browserSync = require('browser-sync').create();
+var cleanCSS = require('gulp-clean-css');
 var fs = require('fs');
 var glob = require("glob");
 var gulp = require('gulp');
+var header = require('gulp-header');
+var less = require('gulp-less');
+var pkg = require('./package.json');
 var rename = require("gulp-rename");
-var runSequence = require('run-sequence');
+var uglify = require('gulp-uglify');
 
-function mount(connect, dir) {
-    return connect.static(path.resolve(dir));
-}
+// Set the banner content
+var banner = ['/*!\n',
+    ' * Start Bootstrap - <%= pkg.title %> v<%= pkg.version %> (<%= pkg.homepage %>)\n',
+    ' * Copyright 2013-' + (new Date()).getFullYear(), ' <%= pkg.author %>\n',
+    ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n',
+    ' */\n',
+    ''
+].join('');
 
-gulp.task('delete', function(cb) {
-    return del('./uv');
+// Compile LESS files from /less into /css
+gulp.task('less', function() {
+    return gulp.src('less/creative.less')
+        .pipe(less())
+        .pipe(header(banner, { pkg: pkg }))
+        .pipe(gulp.dest('css'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
 });
 
+// Minify compiled CSS
+gulp.task('minify-css', ['less'], function() {
+    return gulp.src('css/creative.css')
+        .pipe(cleanCSS({ compatibility: 'ie8' }))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('css'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
+
+// Minify JS
+gulp.task('minify-js', function() {
+    return gulp.src('js/creative.js')
+        .pipe(uglify())
+        .pipe(header(banner, { pkg: pkg }))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(gulp.dest('js'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
+
+// Copy vendor libraries from /node_modules into /vendor
 gulp.task('copy', function() {
-    return gulp.src('**', { base: './node_modules/universalviewer/dist/uv-*/' })
-        .pipe(gulp.dest('./uv'));
-});
+    gulp.src(['node_modules/bootstrap/dist/**/*', '!**/npm.js', '!**/bootstrap-theme.*', '!**/*.map'])
+        .pipe(gulp.dest('vendor/bootstrap'))
 
-gulp.task('rename', function(cb) {
-    var file = glob.sync('./uv-*/');
-    fs.renameSync(file[0], './uv/');
-    cb();
-});
+    gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
+        .pipe(gulp.dest('vendor/jquery'))
 
-gulp.task('serve', function() {
-    connect.server({
-        root: './'
-        // middleware: function(connect, opt) {
-        //     return [
-        //         // serve contents of the dist folder
-        //         mount(connect, './')
-        //     ]
-        // }
-    });
-});
+    gulp.src(['node_modules/magnific-popup/dist/*'])
+        .pipe(gulp.dest('vendor/magnific-popup'))
 
-gulp.task('sync', function(cb) {
-    runSequence('delete', 'copy', 'rename', cb);
+    gulp.src(['node_modules/scrollreveal/dist/*.js'])
+        .pipe(gulp.dest('vendor/scrollreveal'))
+
+    gulp.src([
+            'node_modules/font-awesome/**',
+            '!node_modules/font-awesome/**/*.map',
+            '!node_modules/font-awesome/.npmignore',
+            '!node_modules/font-awesome/*.txt',
+            '!node_modules/font-awesome/*.md',
+            '!node_modules/font-awesome/*.json'
+        ])
+        .pipe(gulp.dest('vendor/font-awesome'))
+})
+
+// Run everything
+gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
+
+// Configure the browserSync task
+gulp.task('browserSync', function() {
+    browserSync.init({
+        server: {
+            baseDir: ''
+        },
+    })
+})
+
+// Dev task with browserSync
+gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function() {
+    gulp.watch('less/*.less', ['less']);
+    gulp.watch('css/*.css', ['minify-css']);
+    gulp.watch('js/*.js', ['minify-js']);
+    // Reloads the browser whenever HTML or JS files change
+    gulp.watch('*.html', browserSync.reload);
+    gulp.watch('js/**/*.js', browserSync.reload);
 });

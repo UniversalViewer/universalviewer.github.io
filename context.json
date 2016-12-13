@@ -23,6 +23,10 @@
         "@id": "uv:disableUI",
         "@type": "@vocab"
       },
+      "enableUI": {
+        "@id": "uv:enableUI",
+        "@type": "@vocab"
+      },
       "embed": {
         "@id": "uv:disableEmbed",
         "@type": "uv:DisableUI"
@@ -30,6 +34,10 @@
       "mediaDownload": {
         "@id": "uv:disableMediaDownload",
         "@type": "uv:DisableUI"
+      },
+      "print": {
+        "@id": "uv:enablePrint",
+        "@type": "uv:EnableUI"
       }
     }
   ]
