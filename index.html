@@ -1,66 +1,359 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
     <title>Universal Viewer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="lib/foundation/css/foundation.css" />
-    <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.css" />
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-    <!--<meta property="og:title" content="UniversalViewer"/>-->
-    <!--<meta property="og:image" content="http://universalviewer.io/logo.jpg"/>-->
-    <!--<meta property="og:image:type" content="image/jpeg" />-->
-    <!--<meta property="og:image:width" content="600" />-->
-    <!--<meta property="og:image:height" content="600" />-->
-    <!--<meta property="fb:app_id" content="1061317590587322" />-->
-    <!--<script type="text/javascript" id="embedUV" src="/src/lib/embed.js"></script>-->
-    <!--<script type="text/javascript" id="embedUV" src="uv/lib/embed.js"></script>-->
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
-<body>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">UV</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#view">View IIIF Manifest</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#features">Features</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#showcase">Showcase</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
     <header>
-
-        <a id="link"></a>
-
-        <img id="image" />
-
-        <select id="manifestSelect"></select>
-
-        <input id="manifest" type="text" placeholder="IIIF Manifest URI" value="" />
-
-        <div class="buttons">
-            <a id="setManifestBtn" class="button tiny">Open</a>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <img src="/img/logo.png" alt="UV" />
+                <hr class="clear">
+                <p>The Universal Viewer is a community-developed open source project on a mission to help you share your content with the world</p>
+                <a href="#features" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            </div>
         </div>
-
     </header>
 
-    <main>
-        <div id="uv" class="uv" data-config="/config.json" data-no-load="true"></div>
-    </main>
+    <section class="bg-primary" id="view">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">View a IIIF Manifest</h2>
+                    <hr class="light">
+                    <p>Paste the URL of a IIIF manifest here to see the UV in action!</p>
+                    <p>
+                        <input id="manifest" type="text" placeholder="IIIF Manifest URL" value="" />
+                    </p>
+                    <a id="viewManifest" class="btn btn-default btn-xl sr-button">View</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
+    <section id="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Features</h2>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="feature-box">
+                        <i class="fa fa-4x fa-search-plus text-primary sr-icons"></i>
+                        <h3>Zoomable</h3>
+                        <p class="text-muted"><a href="https://openseadragon.github.io/">OpenSeadragon</a> image zooming using the <a href="http://iiif.io/api/image/2.0/">IIIF image API</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="feature-box">
+                        <i class="fa fa-4x fa-share-alt text-primary sr-icons"></i>
+                        <h3>Embeddable</h3>
+                        <p class="text-muted">YouTube-style embedding with deep links to specific pages/zoom regions.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="feature-box">
+                        <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
+                        <h3>Themable</h3>
+                        <p class="text-muted">Fork the <a href="https://github.com/UniversalViewer/uv-en-GB-theme">UV theme</a> on github to create your own.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="feature-box">
+                        <i class="fa fa-4x fa-wrench text-primary sr-icons"></i>
+                        <h3>Configurable</h3>
+                        <p class="text-muted">The UV has its own visual configuration editor allowing all settings to be customised.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="feature-box">
+                        <i class="fa fa-4x fa-plug text-primary sr-icons"></i>
+                        <h3>Extensible</h3>
+                        <p class="text-muted">Supports "IxIF" out of the box, allowing <a href="http://universalviewer.io/examples/?manifest=http://files.universalviewer.io/manifests/nelis/ecorche.json">3D</a>, <a href="http://universalviewer.io/examples/?manifest=http://wellcomelibrary.org/iiif/b17307922/manifest">audio</a>, <a href="http://universalviewer.io/examples/?manifest=http://wellcomelibrary.org/iiif/b16659090/manifest">video</a>, and <a href="http://universalviewer.io/examples/?manifest=http://wellcomelibrary.org/iiif/b17502792/manifest">pdf</a> viewing experiences.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="feature-box">
+                        <i class="fa fa-4x fa-search text-primary sr-icons"></i>
+                        <h3>Searchable</h3>
+                        <p class="text-muted">Supports <a href="http://iiif.io/api/search/">search and autocomplete</a> service integration with overlayed search results.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="feature-box">
+                        <i class="fa fa-4x fa-quote-left text-primary sr-icons"></i>
+                        <h3>Translatable</h3>
+                        <p class="text-muted">Internationalised UI using <a href="https://www.transifex.com/">transifex.com</a></p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 text-center">
+                    <div class="feature-box">
+                        <i class="fa fa-4x fa-lock text-primary sr-icons"></i>
+                        <h3>Securable</h3>
+                        <p class="text-muted">The UV supports the <a href="http://iiif.io/api/auth/">IIIF Auth API</a>, so your content can be password protected.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    </footer>
+    <section class="no-padding" id="showcase">
+        <div class="container-fluid">
+            <div class="row no-gutter popup-gallery">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://access.bl.uk/item/viewer/ark:/81055/vdc_00000004216E" data-manifest="http://api.bl.uk/metadata/iiif/ark:/81055/vdc_00000004216E/manifest.json" class="showcase-box">
+                        <img src="/img/showcase/bl.jpg" class="img-responsive" alt="">
+                        <div class="showcase-box-caption">
+                            <div class="showcase-box-caption-content">
+                                <div class="project-category text-faded">
+                                    British Library
+                                </div>
+                                <div class="project-name">
+                                    The Works of Charles Dickens
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://wellcomelibrary.org/item/b20417081" data-manifest="http://wellcomelibrary.org/iiif/collection/b20417081" class="showcase-box">
+                        <img src="/img/showcase/wellcome.jpg" class="img-responsive" alt="">
+                        <div class="showcase-box-caption">
+                            <div class="showcase-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Wellcome Library
+                                </div>
+                                <div class="project-name">
+                                    The Natural Method of Healing: A New and Complete Guide to Health
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="https://digital.library.villanova.edu/Item/vudl:92879" data-manifest="https://digital.library.villanova.edu/Item/vudl:92879/Manifest" class="showcase-box">
+                        <img src="/img/showcase/villanova.jpg" class="img-responsive" alt="">
+                        <div class="showcase-box-caption">
+                            <div class="showcase-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Villanova University: Falvey Memorial Library
+                                </div>
+                                <div class="project-name">
+                                    Portrait gallery of pugilists of America and their contemporaries
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="https://viewer.library.wales/4389767" data-manifest="https://damsssl.llgc.org.uk/iiif/2.0/4389767/manifest.json" class="showcase-box">
+                        <img src="/img/showcase/nlw.jpg" class="img-responsive" alt="">
+                        <div class="showcase-box-caption">
+                            <div class="showcase-box-caption-content">
+                                <div class="project-category text-faded">
+                                    National Library of Wales
+                                </div>
+                                <div class="project-name">
+                                    Cardiganshire Constabulary register of criminals
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://bluemountain.princeton.edu/exist/apps/bluemountain/issue.html?issueURN=bmtnaab_1920-02_01" data-manifest="http://bluemountain.princeton.edu/exist/restxq/iiif/collection/top" class="showcase-box">
+                        <img src="/img/showcase/princeton.jpg" class="img-responsive" alt="">
+                        <div class="showcase-box-caption">
+                            <div class="showcase-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Princeton University Library
+                                </div>
+                                <div class="project-name">
+                                    Action, Première Année, Numéro 1
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="https://d.lib.ncsu.edu/collections/catalog/nubian-message-1992-11-30" data-manifest="https://d.lib.ncsu.edu/collections/catalog/nubian-message-1992-11-30/manifest" class="showcase-box">
+                        <img src="/img/showcase/ncsu.jpg" class="img-responsive" alt="">
+                        <div class="showcase-box-caption">
+                            <div class="showcase-box-caption-content">
+                                <div class="project-category text-faded">
+                                    NCSU Libraries
+                                </div>
+                                <div class="project-name">
+                                    The Nubian Message
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://lib.ugent.be/viewer/archive.ugent.be%3A4B39C8CA-6FF9-11E1-8C42-C8A93B7C8C91" data-manifest="http://adore.ugent.be/IIIF/manifests/archive.ugent.be%3A4B39C8CA-6FF9-11E1-8C42-C8A93B7C8C91" class="showcase-box">
+                        <img src="/img/showcase/ghent.jpg" class="img-responsive" alt="">
+                        <div class="showcase-box-caption">
+                            <div class="showcase-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Ghent University Library
+                                </div>
+                                <div class="project-name">
+                                    Document uit het archief van de dichter Dioskoros van Aphrodite
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://iiif.bodleian.ox.ac.uk/iiif/viewer/60834383-7146-41ab-bfe1-48ee97bc04be" data-manifest="http://iiif.bodleian.ox.ac.uk/iiif/manifest/60834383-7146-41ab-bfe1-48ee97bc04be.json" class="showcase-box">
+                        <img src="/img/showcase/bodleian.jpg" class="img-responsive" alt="">
+                        <div class="showcase-box-caption">
+                            <div class="showcase-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Bodleian Libraries, University of Oxford
+                                </div>
+                                <div class="project-name">
+                                    MS. Bodl. 264
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="http://universalviewer.io/examples/?manifest=https%3A%2F%2Fiiif.riksarkivet.se%2Farkis!C0000263%2Fmanifest" data-manifest="https://iiif.riksarkivet.se/arkis!C0000263/manifest" class="showcase-box">
+                        <img src="/img/showcase/riksarkivet.jpg" class="img-responsive" alt="">
+                        <div class="showcase-box-caption">
+                            <div class="showcase-box-caption-content">
+                                <div class="project-category text-faded">
+                                    Riksarkivet
+                                </div>
+                                <div class="project-name">
+                                    Ervalla kyrkoarkiv, Husförhörslängder
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script type="text/javascript" src="browserdetect.js"></script>
-    <script type="text/javascript" src="lib/utils/dist/utils.js"></script>
-    <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="lib/jquery-plugins/dist/jquery-plugins.js"></script>
-    <script type="text/javascript" src="scripts.js"></script>
+    <!--<aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Free Download at Start Bootstrap!</h2>
+                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">Download Now!</a>
+            </div>
+        </div>
+    </aside>-->
 
-    <script>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Get In Touch</h2>
+                    <hr class="primary">
+                    <p>
+                        <a href="https://universalviewerinvite.herokuapp.com/">Join the UV Slack</a>
+                        <span class="explanatory">This is where most of the conversation happens</span>
+                    </p>
+                    <p>
+                        <a href="https://groups.google.com/forum/#!forum/universalviewer">Join the UV Google Group</a>
+                        <span class="explanatory">A good place to ask questions if you are just trying out the UV</span>
+                    </p>
+                    <p>
+                        <a href="https://github.com/universalviewer/universalviewer">Fork the UV on Github</a>
+                        <span class="explanatory">We &hearts; pull requests</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-47890586-2']);
-        _gaq.push(['_trackPageview']);
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
 
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    </script>
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/creative.min.js"></script>
 
 </body>
+
 </html>
