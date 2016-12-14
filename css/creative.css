@@ -423,3 +423,7 @@ img::-moz-selection {
 body {
   webkit-tap-highlight-color: #222222;
 }
+span.explanatory {
+  display: block;
+  font-size: 12px;
+}
