@@ -46,11 +46,25 @@
     }, 300);
 
     var $manifest = $('#manifest');
+
+    $manifest.click(function() {
+        $(this).select();
+    });
+
     var $viewManifestBtn = $('#viewManifest');
 
     $viewManifestBtn.on('click', function() {
         window.location.href = 'http://universalviewer.io/examples/?manifest=' + $manifest.val();
     });
+
+    // pick a manifest from the showcase at random to pre-fill the manifest input field.
+    var $showcaseBoxes = $('.showcase-box');
+
+    var rand = Math.floor(Math.random() * $showcaseBoxes.length);
+
+    var manifestUrl = $($showcaseBoxes[rand]).data('manifest');
+
+    $manifest.val(manifestUrl);
 
     // Initialize and Configure Magnific Popup Lightbox Plugin
     // $('.popup-gallery').magnificPopup({
