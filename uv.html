@@ -4,8 +4,7 @@
     <title>Universal Viewer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="lib/foundation/css/foundation.css" />
-    <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.css" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <!--<meta property="og:title" content="UniversalViewer"/>-->
     <!--<meta property="og:image" content="http://universalviewer.io/logo.jpg"/>-->
@@ -20,16 +19,10 @@
 
     <header>
 
-        <a id="link"></a>
-
-        <img id="image" />
-
-        <select id="manifestSelect"></select>
-
-        <input id="manifest" type="text" placeholder="IIIF Manifest URI" value="" />
+        <input id="manifest" type="text" placeholder="IIIF Manifest URL" value="" />
 
         <div class="buttons">
-            <a id="setManifestBtn" class="button tiny">Open</a>
+            <a id="setManifestBtn" class="btn btn-default btn-xl sr-button">View</a>
         </div>
 
     </header>
@@ -43,10 +36,10 @@
     </footer>
 
     <script type="text/javascript" src="browserdetect.js"></script>
-    <script type="text/javascript" src="lib/utils/dist/utils.js"></script>
-    <script type="text/javascript" src="lib/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="lib/jquery-plugins/dist/jquery-plugins.js"></script>
-    <script type="text/javascript" src="scripts.js"></script>
+    <script type="text/javascript" src="vendor/utils/dist/utils.js"></script>
+    <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="vendor/jquery-plugins/dist/jquery-plugins.js"></script>
+    <script type="text/javascript" src="uv.js"></script>
 
     <script>
 
