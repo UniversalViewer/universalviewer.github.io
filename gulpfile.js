@@ -1,5 +1,6 @@
 var browserSync = require('browser-sync').create();
 var cleanCSS = require('gulp-clean-css');
+var del = require('del');
 var fs = require('fs');
 var glob = require("glob");
 var gulp = require('gulp');
@@ -54,6 +55,9 @@ gulp.task('minify-js', function() {
 
 // Copy vendor libraries from /node_modules into /vendor
 gulp.task('copy', function() {
+    gulp.src('**', { base: './node_modules/universalviewer/dist/uv-*/' })
+        .pipe(gulp.dest('./uv'))
+    
     gulp.src(['node_modules/bootstrap/dist/**/*', '!**/npm.js', '!**/bootstrap-theme.*', '!**/*.map'])
         .pipe(gulp.dest('vendor/bootstrap'))
 
@@ -75,10 +79,20 @@ gulp.task('copy', function() {
             '!node_modules/font-awesome/*.json'
         ])
         .pipe(gulp.dest('vendor/font-awesome'))
-})
+});
+
+gulp.task('clean', function(cb) {
+    return del('./uv');
+});
+
+gulp.task('rename', function(cb) {
+    var file = glob.sync('./uv-*/');
+    fs.renameSync(file[0], './uv/');
+    cb();
+});
 
 // Run everything
-gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
+gulp.task('default', ['clean', 'less', 'minify-css', 'minify-js', 'copy', 'rename']);
 
 // Configure the browserSync task
 gulp.task('browserSync', function() {
@@ -87,7 +101,7 @@ gulp.task('browserSync', function() {
             baseDir: ''
         },
     })
-})
+});
 
 // Dev task with browserSync
 gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function() {
