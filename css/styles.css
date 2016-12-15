@@ -150,42 +150,19 @@ body.viewer {
   background-color: #211f1f;
   overflow: hidden;
 }
-body.viewer header {
-  /*padding: 20px 0 20px 0;*/
-  padding: 0 8px 0 8px;
-  overflow: hidden;
+body.viewer nav {
+  margin-bottom: 0px;
 }
-body.viewer #logo {
-  display: none;
+body.viewer .navbar-default {
+  background-color: #211f1f;
+  border-color: rgba(255, 255, 255, 0.3);
 }
-body.viewer #manifestSelect {
-  display: none;
-  margin: 8px 8px 8px 0;
-  width: 300px;
-  float: left;
+body.viewer .navbar-default .navbar-header .navbar-brand {
+  color: rgba(255, 255, 255, 0.95);
 }
-body.viewer #manifest {
-  margin: 8px 0 8px 0;
-  width: 300px;
-  float: left;
-}
-body.viewer header .buttons {
-  float: left;
-  margin: 8px 0 0 8px;
-}
-body.viewer header .buttons .button {
-  margin: 0;
-  padding-top: 0.77rem;
-  padding-bottom: 0.77rem;
-  background-color: #14a4c3;
-}
-body.viewer #dragndrop {
-  display: none;
-  margin: 0 0 0 20px;
-}
-body.viewer #dragndrop img {
-  width: 30px;
-  height: 30px;
+body.viewer .navbar-default .navbar-header .navbar-brand:hover,
+body.viewer .navbar-default .navbar-header .navbar-brand:focus {
+  color: white;
 }
 body.viewer footer {
   display: none;

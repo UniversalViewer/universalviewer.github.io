@@ -1,6 +1,16 @@
 (function($) {
     "use strict"; // Start of use strict
 
+    function viewManifest(manifest) {
+        window.location.href = '/uv.html?manifest=' + manifest;
+    }
+
+    var manifest = Utils.Urls.getQuerystringParameter('manifest');
+
+    if (manifest) {
+        viewManifest(manifest);
+    }
+
     // jQuery for page scrolling feature - requires jQuery Easing plugin
     $('a.page-scroll').bind('click', function(event) {
         var $anchor = $(this);
@@ -54,7 +64,7 @@
     var $viewManifestBtn = $('#viewManifest');
 
     $viewManifestBtn.on('click', function() {
-        window.location.href = '/uv.html?manifest=' + $manifest.val();
+        viewManifest($manifest.val());
     });
 
     // pick a manifest from the showcase at random to pre-fill the manifest input field.

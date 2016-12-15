@@ -3,7 +3,7 @@ $(function() {
     var bootstrapper;
     var isFullSreen = false;
 
-    var $header = $('header');
+    var $nav = $('nav');
     var $manifest = $('#manifest');
     var $main = $('main');
     var $uv = $('#uv');
@@ -19,9 +19,10 @@ $(function() {
     };
 
     function resize() {
+        console.log($nav.outerHeight());
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
-        var height = (isFullSreen) ? windowHeight : windowHeight - $header.outerHeight();
+        var height = (isFullSreen) ? windowHeight : windowHeight - $nav.outerHeight();
         $main.height(height);
         $main.width(windowWidth);
         $uv.width(windowWidth);
@@ -52,7 +53,7 @@ $(function() {
         clearHashParams();
 
         var qs = document.location.search.replace('?', '');
-        qs = Utils.Urls.UpdateURIKeyValuePair(qs, 'manifest', manifest);
+        qs = Utils.Urls.updateURIKeyValuePair(qs, 'manifest', manifest);
 
         if (window.location.search === '?' + qs){
             window.location.reload();
@@ -251,8 +252,8 @@ $(function() {
             e.preventDefault();
             var dropUrl = e.originalEvent.dataTransfer.getData("URL");
             var url = Utils.Urls.GetUrlParts(dropUrl);
-            var manifestUri = Utils.Urls.GetQuerystringParameterFromString('manifest', url.search);
-            //var canvasUri = Utils.Urls.GetQuerystringParameterFromString('canvas', url.search);
+            var manifestUri = Utils.Urls.getQuerystringParameterFromString('manifest', url.search);
+            //var canvasUri = Utils.Urls.getQuerystringParameterFromString('canvas', url.search);
 
             if (manifestUri){
                 setSelectedManifest(manifestUri);

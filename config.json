@@ -2,10 +2,5 @@
   "options": {
   },
   "modules": {
-    "footerPanel": {
-      "options": {
-        "openEnabled": true
-      }
-    }
   }
 }
