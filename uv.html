@@ -4,8 +4,8 @@
     <title>Universal Viewer</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="icon" href="favicon.ico">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.min.css" rel="stylesheet">
     <!--<meta property="og:title" content="UniversalViewer"/>-->
     <!--<meta property="og:image" content="http://universalviewer.io/logo.jpg"/>-->
     <!--<meta property="og:image:type" content="image/jpeg" />-->
@@ -15,8 +15,8 @@
     <!--<script type="text/javascript" id="embedUV" src="/src/lib/embed.js"></script>-->
     <!--<script type="text/javascript" id="embedUV" src="uv/lib/embed.js"></script>-->
 </head>
-<body>
-
+<body class="viewer">
+    
     <header>
 
         <input id="manifest" type="text" placeholder="IIIF Manifest URL" value="" />
@@ -35,11 +35,11 @@
 
     </footer>
 
-    <script type="text/javascript" src="browserdetect.js"></script>
-    <script type="text/javascript" src="vendor/utils/dist/utils.js"></script>
-    <script type="text/javascript" src="vendor/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="vendor/jquery-plugins/dist/jquery-plugins.js"></script>
-    <script type="text/javascript" src="uv.js"></script>
+    <script type="text/javascript" src="/browserdetect.js"></script>
+    <script type="text/javascript" src="/vendor/utils/utils.js"></script>
+    <script type="text/javascript" src="/vendor/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/vendor/jquery-plugins/jquery-plugins.js"></script>
+    <script type="text/javascript" src="/js/uv.js"></script>
 
     <script>
 

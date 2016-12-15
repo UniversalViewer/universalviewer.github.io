@@ -1,0 +1,153 @@
+body.home {
+
+    header {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        .background-cover;
+        background-position: center;
+        background-image: url('../img/header.jpg');
+        text-align: center;
+        color: white;
+        .header-content {
+            position: relative;
+            text-align: center;
+            padding: 100px 15px 100px;
+            width: 100%;
+            .header-content-inner {
+                h1 {
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    font-size: 30px;
+                }
+                hr {
+                    margin: 30px auto;
+                }
+                p {
+                    font-weight: 400;
+                    color: fade(white, 95%);
+                    font-size: 18px;
+                    margin-bottom: 50px;
+                    text-shadow: 1px 1px #000000;
+                }
+            }
+        }
+        @media (min-width: 768px) {
+            min-height: 100%;
+            .header-content {
+                position: absolute;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                -ms-transform: translateY(-50%);
+                transform: translateY(-50%);
+                padding: 0 50px;
+                .header-content-inner {
+                    max-width: 1000px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    h1 {
+                        font-size: 50px;
+                    }
+                    p {
+                        font-size: 21px;
+                        //max-width: 80%;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+            }
+        }
+    }
+
+    #view {
+        input {
+            color: black;
+            font-weight: normal;
+            .sans-serif-font;
+            width: 290px;
+        }
+    }
+
+    .feature-box {
+        max-width: 400px;
+        margin: 50px auto 0;
+        @media (min-width: 992px) {
+            margin: 20px auto 0;
+        }
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    .showcase-box {
+        position: relative;
+        display: block;
+        max-width: 650px;
+        margin: 0 auto;
+        .showcase-box-caption {
+            color: white;
+            opacity: 0;
+            display: block;
+            background: fade(@theme-primary, 90%);
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            .transition-all;
+            .showcase-box-caption-content {
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                .project-category,
+                .project-name {
+                    .sans-serif-font;
+                    padding: 0 15px;
+                }
+                .project-category {
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 14px;
+                }
+                .project-name {
+                    font-size: 18px;
+                }
+            }
+        }
+        &:hover {
+            .showcase-box-caption {
+                opacity: 1;
+            }
+        }
+        &:focus {
+            outline: none;
+        }
+        @media (min-width: 768px) {
+            .showcase-box-caption {
+                .showcase-box-caption-content {
+                    .project-category {
+                        font-size: 16px;
+                    }
+                    .project-name {
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+    }
+
+    .call-to-action {
+        h2 {
+            margin: 0 auto 20px;
+        }
+    }
+
+    span.explanatory {
+        display: block;
+        font-size: 12px;
+    }
+}

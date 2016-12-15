@@ -1,0 +1,223 @@
+@import "variables.less";
+@import "mixins.less";
+@import "home.less";
+@import "viewer.less";
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    .serif-font;
+    webkit-tap-highlight-color: @gray-darker;
+}
+
+hr {
+    border-color: @theme-primary;
+    border-width: 3px;
+    max-width: 50px;
+}
+
+hr.light {
+    border-color: white;
+}
+
+hr.clear {
+    border-color: transparent;
+}
+
+a {
+    .transition-all;
+    color: @theme-primary;
+    &:hover,
+    &:focus {
+        color: darken(@theme-primary, 10%);
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    .sans-serif-font;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.bg-primary {
+    background-color: @theme-primary;
+}
+
+.bg-dark {
+    background-color: @gray-darker;
+    color: white;
+}
+
+.text-faded {
+    color: fade(white, 70%);
+}
+
+section {
+    padding: 100px 0;
+}
+
+aside {
+    padding: 50px 0;
+}
+
+// Navigation
+
+.navbar-default {
+    background-color: white;
+    border-color: fade(@gray-darker, 5%);
+    .sans-serif-font;
+    .transition-all;
+    .navbar-header .navbar-brand {
+        color: @theme-primary;
+        .sans-serif-font;
+        font-weight: 700;
+        text-transform: uppercase;
+        &:hover,
+        &:focus {
+            color: darken(@theme-primary, 10%);
+        }
+    }
+    .navbar-header .navbar-toggle {
+        font-weight: 700;
+        font-size: 12px;
+        color: @gray-darker;
+        text-transform: uppercase;
+    }
+    .nav {
+        > li {
+            > a,
+            > a:focus {
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 13px;
+                color: @gray-darker;
+                &:hover {
+                    color: @theme-primary;
+                }
+            }
+            &.active {
+                > a,
+                > a:focus {
+                    color: @theme-primary !important;
+                    background-color: transparent;
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: 768px) {
+        background-color: transparent;
+        border-color: fade(white, 30%);
+        .navbar-header .navbar-brand {
+            color: fade(white, 95%);
+            &:hover,
+            &:focus {
+                color: white;
+            }
+        }
+        .nav > li > a,
+        .nav > li > a:focus {
+            color: fade(white, 95%);
+            &:hover {
+                color: white;
+            }
+        }
+        &.affix {
+            background-color: white;
+            border-color: fade(@gray-darker, 5%);
+            .navbar-header .navbar-brand {
+                color: @theme-primary;
+                font-size: 14px;
+                &:hover,
+                &:focus {
+                    color: darken(@theme-primary, 10%);
+                }
+            }
+            .nav > li > a,
+            .nav > li > a:focus {
+                color: @gray-darker;
+                &:hover {
+                    color: @theme-primary;
+                }
+            }
+        }
+    }
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.section-heading {
+    margin-top: 0;
+}
+
+// Bootstrap Overrides
+.text-primary {
+    color: @theme-primary;
+}
+
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+
+// Button Styles
+.btn-default {
+    .button-variant(@gray-darker;white;white);
+}
+
+.btn-primary {
+    .button-variant(white;@theme-primary;@theme-primary);
+}
+
+.btn {
+    .sans-serif-font;
+    border: none;
+    border-radius: 300px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.btn-xl {
+    padding: 15px 30px;
+}
+
+// Extras
+// -- Highlight Color Customization
+::-moz-selection {
+    color: white;
+    text-shadow: none;
+    background: @gray-darker;
+}
+
+::selection {
+    color: white;
+    text-shadow: none;
+    background: @gray-darker;
+}
+
+img::selection {
+    color: white;
+    background: transparent;
+}
+
+img::-moz-selection {
+    color: white;
+    background: transparent;
+}
