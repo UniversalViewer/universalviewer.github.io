@@ -70,7 +70,7 @@ body.home #view input {
   font-weight: normal;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
   width: 100%;
-  max-width: 300px;
+  max-width: 480px;
 }
 body.home .feature-box {
   max-width: 400px;
