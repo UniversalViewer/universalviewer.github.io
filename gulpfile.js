@@ -56,7 +56,7 @@ gulp.task('minify-js', function() {
 });
 
 // Copy vendor libraries from /node_modules into /vendor
-gulp.task('copy', function(cb) {
+gulp.task('sync', function(cb) {
 
     async.series([
         function (next) {
@@ -125,7 +125,7 @@ gulp.task('rename', function(cb) {
 });
 
 gulp.task('default', function(cb) {
-    runSequence('clean', 'less', 'minify-css', 'minify-js', 'copy', 'rename', cb);
+    runSequence('clean', 'less', 'minify-css', 'minify-js', 'sync', 'rename', cb);
 });
 
 // Configure the browserSync task

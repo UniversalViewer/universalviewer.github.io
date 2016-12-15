@@ -69,7 +69,8 @@ body.home #view input {
   color: black;
   font-weight: normal;
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-  width: 290px;
+  width: 100%;
+  max-width: 300px;
 }
 body.home .feature-box {
   max-width: 400px;
