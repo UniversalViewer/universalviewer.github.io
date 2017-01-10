@@ -19,7 +19,6 @@ $(function() {
     };
 
     function resize() {
-        console.log($nav.outerHeight());
         var windowWidth = window.innerWidth;
         var windowHeight = window.innerHeight;
         var height = (isFullSreen) ? windowHeight : windowHeight - $nav.outerHeight();
