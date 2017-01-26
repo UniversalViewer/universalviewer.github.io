@@ -145,6 +145,17 @@ body.home span.explanatory {
   display: block;
   font-size: 12px;
 }
+body.home #moreinfo {
+  padding-bottom: 0px;
+}
+body.home #moreinfo a {
+  display: block;
+  padding-bottom: 5px;
+}
+body.home #contact a {
+  display: block;
+  padding-bottom: 5px;
+}
 body.viewer {
   margin: 0;
   padding: 0;
