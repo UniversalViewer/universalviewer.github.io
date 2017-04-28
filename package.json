@@ -18,7 +18,7 @@
     "jquery-plugins": "edsilv/jquery-plugins",
     "magnific-popup": "^1.1.0",
     "scrollreveal": "^3.1.4",
-    "universalviewer": "universalviewer/universalviewer#dev",
+    "universalviewer": "universalviewer/universalviewer#v2.0.2",
     "utils": "edsilv/utils"
   },
   "author": "Edward Silverton <e.silverton@gmail.com> (http://edsilv.com)",
