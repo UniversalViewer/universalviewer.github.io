@@ -1,3 +1,4 @@
 #universalviewer.github.io
 
-universalviewer.io
+    npm i
+    gulp dev
