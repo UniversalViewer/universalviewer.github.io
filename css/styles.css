@@ -152,7 +152,14 @@ body.home #moreinfo a {
   display: block;
   padding-bottom: 5px;
 }
+body.home #contact {
+  padding-bottom: 0px;
+}
 body.home #contact a {
+  display: block;
+  padding-bottom: 5px;
+}
+body.home #support a {
   display: block;
   padding-bottom: 5px;
 }
