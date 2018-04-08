@@ -14,11 +14,11 @@
     </style>
 </head>
 <body>
-    <audio data-dashjs-player controls src="http://resources.digirati.com/bl/C1685_98/vdc_100052359795.0x000019/manifest.mpd"></audio>
+    <audio data-dashjs-player controls></audio>
 
     <script>
         var player = dashjs.MediaPlayer().create();
-        player.initialize(document.querySelector('audio'));
+        player.initialize(document.querySelector('audio'), 'http://resources.digirati.com/bl/C1685_98/vdc_100052359795.0x000019/manifest.mpd');
     </script>
 </body>
 </html>
