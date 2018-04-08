@@ -84,6 +84,9 @@ body.home .feature-box {
 body.home .feature-box p {
   margin-bottom: 0;
 }
+body.home #showreel {
+  padding-bottom: 0;
+}
 body.home .showcase-box {
   position: relative;
   display: block;
