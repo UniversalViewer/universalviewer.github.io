@@ -38,6 +38,7 @@ body.home header .header-content .header-content-inner p {
   font-size: 18px;
   margin-bottom: 50px;
   text-shadow: 1px 1px #000000;
+  max-width: 700px;
 }
 @media (min-width: 768px) {
   body.home header {

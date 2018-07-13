@@ -1,114 +1,17 @@
-// extensions v0.1.11 https://github.com/edsilv/extensions
-if (!Array.prototype.clone) {
-    Array.prototype.clone = function () {
-        return this.slice(0);
-    };
-}
-if (!Array.prototype.contains) {
-    Array.prototype.contains = function (val) {
+// extensions v0.2.1 https://github.com/edsilv/extensions
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.extensions = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
+Array.prototype.clone = function () {
+    return this.slice(0);
+};
+if (!Array.prototype.includes) {
+    Array.prototype.includes = function (val) {
         return this.indexOf(val) !== -1;
     };
 }
-if (!Array.prototype.indexOf) {
-    Array.prototype.indexOf = function (searchElement, fromIndex) {
-        var i = (fromIndex || 0);
-        var j = this.length;
-        for (i; i < j; i++) {
-            if (this[i] === searchElement) {
-                return i;
-            }
-        }
-        return -1;
-    };
-}
-Array.prototype.indexOfTest = function (test, fromIndex) {
-    var i = (fromIndex || 0);
-    var j = this.length;
-    for (i; i < j; i++) {
-        if (test(this[i]))
-            return i;
-    }
-    return -1;
-};
 Array.prototype.insert = function (item, index) {
     this.splice(index, 0, item);
 };
-if (!Array.prototype.last) {
-    Array.prototype.last = function () {
-        return this[this.length - 1];
-    };
-}
-// Production steps of ECMA-262, Edition 5, 15.4.4.19
-// Reference: http://es5.github.io/#x15.4.4.19
-if (!Array.prototype.map) {
-    Array.prototype.map = function (callback, thisArg) {
-        var T, A, k;
-        if (this == null) {
-            throw new TypeError(' this is null or not defined');
-        }
-        // 1. Let O be the result of calling ToObject passing the |this| 
-        //    value as the argument.
-        var O = Object(this);
-        // 2. Let lenValue be the result of calling the Get internal 
-        //    method of O with the argument "length".
-        // 3. Let len be ToUint32(lenValue).
-        var len = O.length >>> 0;
-        // 4. If IsCallable(callback) is false, throw a TypeError exception.
-        // See: http://es5.github.com/#x9.11
-        if (typeof callback !== 'function') {
-            throw new TypeError(callback + ' is not a function');
-        }
-        // 5. If thisArg was supplied, let T be thisArg; else let T be undefined.
-        if (arguments.length > 1) {
-            T = thisArg;
-        }
-        // 6. Let A be a new array created as if by the expression new Array(len) 
-        //    where Array is the standard built-in constructor with that name and 
-        //    len is the value of len.
-        A = new Array(len);
-        // 7. Let k be 0
-        k = 0;
-        // 8. Repeat, while k < len
-        while (k < len) {
-            var kValue, mappedValue;
-            // a. Let Pk be ToString(k).
-            //   This is implicit for LHS operands of the in operator
-            // b. Let kPresent be the result of calling the HasProperty internal 
-            //    method of O with argument Pk.
-            //   This step can be combined with c
-            // c. If kPresent is true, then
-            if (k in O) {
-                // i. Let kValue be the result of calling the Get internal 
-                //    method of O with argument Pk.
-                kValue = O[k];
-                // ii. Let mappedValue be the result of calling the Call internal 
-                //     method of callback with T as the this value and argument 
-                //     list containing kValue, k, and O.
-                mappedValue = callback.call(T, kValue, k, O);
-                // iii. Call the DefineOwnProperty internal method of A with arguments
-                // Pk, Property Descriptor
-                // { Value: mappedValue,
-                //   Writable: true,
-                //   Enumerable: true,
-                //   Configurable: true },
-                // and false.
-                // In browsers that support Object.defineProperty, use the following:
-                // Object.defineProperty(A, k, {
-                //   value: mappedValue,
-                //   writable: true,
-                //   enumerable: true,
-                //   configurable: true
-                // });
-                // For best browser support, use the following:
-                A[k] = mappedValue;
-            }
-            // d. Increase k by 1.
-            k++;
-        }
-        // 9. return A
-        return A;
-    };
-}
 Array.prototype.move = function (fromIndex, toIndex) {
     this.splice(toIndex, 0, this.splice(fromIndex, 1)[0]);
 };
@@ -121,17 +24,19 @@ Array.prototype.remove = function (item) {
 Array.prototype.removeAt = function (index) {
     this.splice(index, 1);
 };
-Math.clamp = function (value, min, max) {
-    return Math.min(Math.max(value, min), max);
-};
-Math.constrain = function (value, low, high) {
-    return Math.clamp(value, low, high);
-};
-Math.degreesToRadians = function (degrees) {
-    return Math.TAU * (degrees / 360);
-};
+
+if (!Math.clamp) {
+    Math.clamp = function (value, min, max) {
+        return Math.min(Math.max(value, min), max);
+    };
+}
+if (!Math.radians) {
+    Math.radians = function (degrees) {
+        return Math.TAU * (degrees / 360);
+    };
+}
 Math.distanceBetween = function (x1, y1, x2, y2) {
-    return Math.sqrt(Math.sq(x2 - x1) + Math.sq(y2 - y1));
+    return Math.sqrt(((x2 - x1) * 2) + ((y2 - y1) * 2));
 };
 Math.lerp = function (start, stop, amount) {
     return start + (stop - start) * amount;
@@ -155,9 +60,11 @@ Math.median = function (values) {
 Math.normalise = function (num, min, max) {
     return (num - min) / (max - min);
 };
-Math.radiansToDegrees = function (radians) {
-    return (radians * 360) / Math.TAU;
-};
+if (!Math.degrees) {
+    Math.degrees = function (radians) {
+        return (radians * 360) / Math.TAU;
+    };
+}
 /**
  * Get a random number between two numbers.
  * If 'high' isn't passed, get a number from 0 to 'low'.
@@ -176,82 +83,11 @@ Math.randomBetween = function (low, high) {
 Math.roundToDecimalPlace = function (num, dec) {
     return Math.round(num * Math.pow(10, dec)) / Math.pow(10, dec);
 };
-Math.sq = function (n) {
-    return n * n;
-};
 Math.TAU = Math.PI * 2;
-if (!Number.prototype.isInteger) {
-    Number.prototype.isInteger = function () { return this % 1 === 0; };
-}
-// Object.create Partial Polyfill
-// Support for second parameter is non-standard
-if (typeof Object.create !== 'function') {
-    Object.create = function (o, props) {
-        // Create new object whose prototype is o
-        function F() { }
-        F.prototype = o;
-        var result = new F();
-        // Copy properties of second parameter into new object
-        if (typeof (props) === "object") {
-            for (var prop in props) {
-                if (props.hasOwnProperty((prop))) {
-                    // Even though we don't support all of the functionality that the second
-                    // parameter would normally have, we respect the format for the object
-                    // passed as that second parameter its specification.
-                    result[prop] = props[prop].value;
-                }
-            }
-        }
-        // Return new object
-        return result;
-    };
-}
-/**
- * Polyfill for Object.keys
- *
- * @see: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Object/keys
- */
-if (!Object.keys) {
-    Object.keys = (function () {
-        var hasOwnProperty = Object.prototype.hasOwnProperty, hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'), dontEnums = [
-            'toString',
-            'toLocaleString',
-            'valueOf',
-            'hasOwnProperty',
-            'isPrototypeOf',
-            'propertyIsEnumerable',
-            'constructor'
-        ], dontEnumsLength = dontEnums.length;
-        return function (obj) {
-            if (typeof obj !== 'object' && typeof obj !== 'function' || obj === null)
-                throw new TypeError('Object.keys called on non-object');
-            var result = [];
-            for (var prop in obj) {
-                if (hasOwnProperty.call(obj, prop))
-                    result.push(prop);
-            }
-            if (hasDontEnumBug) {
-                for (var i = 0; i < dontEnumsLength; i++) {
-                    if (hasOwnProperty.call(obj, dontEnums[i]))
-                        result.push(dontEnums[i]);
-                }
-            }
-            return result;
-        };
-    })();
-}
-;
+
 String.prototype.b64_to_utf8 = function () {
     return decodeURIComponent(escape(window.atob(this)));
 };
-String.prototype.contains = function (str) {
-    return this.indexOf(str) !== -1;
-};
-if (!String.prototype.endsWith) {
-    String.prototype.endsWith = function (str) {
-        return this.indexOf(str, this.length - str.length) !== -1;
-    };
-}
 String.format = function () {
     var s = arguments[0];
     for (var i = 0; i < arguments.length - 1; i++) {
@@ -260,17 +96,11 @@ String.format = function () {
     }
     return s;
 };
-String.prototype.hashCode = function () {
-    var hash = 0, i, chr, len;
-    if (this.length === 0)
-        return hash.toString();
-    for (i = 0, len = this.length; i < len; i++) {
-        chr = this.charCodeAt(i);
-        hash = ((hash << 5) - hash) + chr;
-        hash |= 0; // Convert to 32bit integer
-    }
-    return hash.toString();
-};
+if (!String.prototype.includes) {
+    String.prototype.includes = function (str) {
+        return this.indexOf(str) !== -1;
+    };
+}
 String.prototype.isAlphanumeric = function () {
     return /^[a-zA-Z0-9]*$/.test(this);
 };
@@ -280,11 +110,6 @@ String.prototype.ltrim = function () {
 String.prototype.rtrim = function () {
     return this.replace(/\s+$/, '');
 };
-if (!String.prototype.startsWith) {
-    String.prototype.startsWith = function (str) {
-        return this.indexOf(str) == 0;
-    };
-}
 String.prototype.toCssClass = function () {
     return this.replace(/[^a-z0-9]/g, function (s) {
         var c = s.charCodeAt(0);
@@ -298,11 +123,9 @@ String.prototype.toCssClass = function () {
 String.prototype.toFileName = function () {
     return this.replace(/[^a-z0-9]/gi, '_').toLowerCase();
 };
-if (!String.prototype.trim) {
-    String.prototype.trim = function () {
-        return this.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-    };
-}
 String.prototype.utf8_to_b64 = function () {
     return window.btoa(unescape(encodeURIComponent(this)));
 };
+
+},{}]},{},[1])(1)
+});
