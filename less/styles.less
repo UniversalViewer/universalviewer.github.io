@@ -10,7 +10,7 @@ body {
 }
 
 body {
-    .serif-font;
+    .sans-serif-font;
     webkit-tap-highlight-color: @gray-darker;
 }
 
@@ -43,7 +43,7 @@ h3,
 h4,
 h5,
 h6 {
-    .sans-serif-font;
+    .header-font;
 }
 
 p {
@@ -78,11 +78,11 @@ aside {
 .navbar-default {
     background-color: white;
     border-color: fade(@gray-darker, 5%);
-    .sans-serif-font;
+    .header-font;
     .transition-all;
     .navbar-header .navbar-brand {
         color: @theme-primary;
-        .sans-serif-font;
+        .header-font;
         font-weight: 700;
         text-transform: uppercase;
         &:hover,
@@ -175,6 +175,12 @@ aside {
 .no-gutter > [class*='col-'] {
     padding-right:0;
     padding-left:0;
+}
+
+@media (min-width: 1200px) {
+    .col-lg-3 {
+        width: 24%;
+    }
 }
 
 // Button Styles
