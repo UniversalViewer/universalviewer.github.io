@@ -2,7 +2,7 @@
     "use strict"; // Start of use strict
 
     function viewManifest(manifest) {
-        window.location.href = '/uv.html?manifest=' + manifest;
+        window.location.href = 'https://uv-v4.netlify.app#?manifest=' + manifest;
     }
 
     var manifest = Utils.Urls.getQuerystringParameter('manifest');
