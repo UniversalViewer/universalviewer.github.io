@@ -10,7 +10,7 @@
     "graceful-fs": "^4.2.4"
   },
   "devDependencies": {
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "browser-sync": "^2.26.7",
     "del": "^3.0.0",
     "extensions": "edsilv/extensions",
