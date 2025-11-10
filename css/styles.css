@@ -1,6 +1,6 @@
 /*!
  * Start Bootstrap -  v1.0.0 (https://github.com/UniversalViewer/universalviewer.github.io#readme)
- * Copyright 2013-2020 Edward Silverton <e.silverton@gmail.com> (http://edsilv.com)
+ * Copyright 2013-2025 Edward Silverton <e.silverton@gmail.com> (http://edsilv.com)
  * Licensed under  ()
  */
 body.home header {
@@ -88,8 +88,10 @@ body.home .feature-box p {
 body.home .showcase-box {
   position: relative;
   display: block;
-  max-width: 650px;
   margin: 0 auto;
+}
+body.home .showcase-box img {
+  width: 100%;
 }
 body.home .showcase-box .showcase-box-caption {
   color: white;
