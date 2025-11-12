@@ -132,8 +132,9 @@ gulp.task('default', function(cb) {
 gulp.task('browserSync', function() {
     browserSync.init({
         server: {
-            baseDir: ''
+            baseDir: './',
         },
+        startPath: 'index.html',
     })
 });
 
