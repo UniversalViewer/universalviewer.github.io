@@ -1,39 +1,14 @@
 {
-  "name": "universalviewer.github.io",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
+  "name": "astro-base-12-2025",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "preinstall": "npx npm-force-resolutions"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "resolutions": {
-    "graceful-fs": "^4.2.4"
-  },
-  "devDependencies": {
-    "bootstrap": "^3.3.7",
-    "browser-sync": "^2.26.7",
-    "del": "^3.0.0",
-    "extensions": "edsilv/extensions",
-    "font-awesome": "^4.6.3",
-    "gulp": "^3.9.1",
-    "gulp-clean-css": "^3.9.4",
-    "gulp-header": "^2.0.5",
-    "gulp-less": "^4.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^3.0.0",
-    "jquery": "^3.3.1",
-    "jquery-plugins": "edsilv/jquery-plugins",
-    "magnific-popup": "^1.1.0",
-    "natives": "^1.1.6",
-    "run-sequence": "^2.2.1",
-    "scrollreveal": "^3.1.4",
-    "universalviewer": "universalviewer/universalviewer#v2.0.2",
-    "utils": "edsilv/utils"
-  },
-  "author": "Edward Silverton <e.silverton@gmail.com> (http://edsilv.com)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/UniversalViewer/universalviewer.github.io/issues"
-  },
-  "homepage": "https://github.com/UniversalViewer/universalviewer.github.io#readme"
+  "dependencies": {
+    "astro": "^5.16.3"
+  }
 }
