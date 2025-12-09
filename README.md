@@ -6,11 +6,13 @@ The site has been rebuilt using Astro, however all frontend assets remain the sa
 
 ## Making Changes
 
-Edit `/src/pages/index.astro` as if it were `index.html`.
+Edit `/src/pages/index.astro` as if it were `index.html`
 
 ## Publishing Changes
 
 Changes are built and deployed automatically when updates are made to the `main` branch via a GitHub Pages workflow.
+
+In the Environment settings of the repo there is a list of branches from which deployments are allowed. This currently only contains the `main` branch to prevent any other branches being a source of deployment.
 
 # Astro Starter Kit: Basics
 
