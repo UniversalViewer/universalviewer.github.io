@@ -1,3 +1,17 @@
+# Universal Viewer Main Website
+
+## Current State
+
+The site has been rebuilt using Astro, however all frontend assets remain the same, meaning that the website is visually and functionally the same despite the underlying systems having changed.
+
+## Making Changes
+
+Edit `/src/pages/index.astro` as if it were `index.html`.
+
+## Publishing Changes
+
+Changes are built and deployed automatically when updates are made to the `main` branch via a GitHub Pages workflow.
+
 # Astro Starter Kit: Basics
 
 ```sh
