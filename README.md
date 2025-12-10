@@ -12,7 +12,7 @@ Making changes to the JS is not recommended as this was copied from the old site
 
 ## Publishing Changes
 
-Changes are built and deployed automatically when updates are made to the `main` branch via a GitHub Pages workflow which can be found in the .github/workflows directory. This is the standard Astro workflow for Pages so shouldn't need alterning apart from changes to which branches trigger it.
+Changes are built and deployed automatically when updates are made to the `main` branch via a GitHub Pages workflow which can be found in the .github/workflows directory. This is the standard Astro workflow for Pages so shouldn't need altering apart from changes to which branches trigger it.
 
 ### Environment protection
 
