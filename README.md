@@ -6,43 +6,27 @@ The site has been rebuilt using Astro, however all frontend assets remain the sa
 
 ## Making Changes
 
-Edit `/src/pages/index.astro` as if it were `index.html`.
+Edit `/src/pages/index.astro` as if it were `index.html`
+
+Making changes to the JS is not recommended as this was copied from the old site in its minified form. If new functionality is needed please either add a new script block or edit the JS using the legacy branch and re-copy to dev.
 
 ## Publishing Changes
 
-Changes are built and deployed automatically when updates are made to the `main` branch via a GitHub Pages workflow.
+Changes are built and deployed automatically when updates are made to the `main` branch via a GitHub Pages workflow which can be found in the .github/workflows directory. This is the standard Astro workflow for Pages so shouldn't need altering apart from changes to which branches trigger it.
 
-# Astro Starter Kit: Basics
+### Environment protection
 
-```sh
-npm create astro@latest -- --template basics
-```
+In the Environment settings of the repo there is a list of branches from which deployments are allowed. This currently only contains the `main` branch to prevent any other branches being a source of deployment.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+When developing the site in a fork you may need to add the dev branch to this list in ***your own*** Github account.
 
-## 🚀 Project Structure
+# Astro Basics
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+TODO: Pending recode
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -55,6 +39,6 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+## Astro docs
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Check [Astro documentation](https://docs.astro.build).
