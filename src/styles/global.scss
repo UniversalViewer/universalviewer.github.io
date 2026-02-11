@@ -1,3 +1,8 @@
+@use 'vars';
+@use 'props';
+@use 'header';
+@use 'main-nav';
+
 html {
   background-color: #f1f5f9;
   font-family: sans-serif;
@@ -21,18 +26,16 @@ main {
   flex: 1;
 }
 
-
 // header
 
 header {
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgb(255 255 255 / 80%);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
 
   nav {
     max-width: 1200px;
@@ -60,7 +63,9 @@ header {
           text-decoration: none;
           color: #333;
           font-weight: 500;
-          transition: background-color 0.2s ease, color 0.2s ease;
+          transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
 
           &:hover,
           &:focus {
@@ -76,7 +81,7 @@ header {
     }
   }
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     nav {
       padding: 0 2rem;
 
@@ -96,7 +101,7 @@ header {
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     nav ul {
       gap: 1rem;
     }
@@ -107,8 +112,8 @@ header {
 
 footer {
   width: 100%;
-  background-color: rgba(255, 255, 255);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgb(255 255 255);
+  border-top: 1px solid rgb(0 0 0 / 10%);
   margin-top: 4rem;
   padding: 2rem 1rem;
 
@@ -122,7 +127,7 @@ footer {
 
   .footer-logo {
     h2 {
-      margin: 0 0 0.5rem 0;
+      margin: 0 0 0.5rem;
       font-size: 1.5rem;
       color: #333;
     }
@@ -138,8 +143,7 @@ footer {
   .footer-links,
   .footer-social {
     h3 {
-      margin: 0 0 1rem 0;
-      font-size: 1rem;
+      margin: 0 0 1rem;
       font-weight: 600;
       color: #333;
       text-transform: uppercase;
@@ -174,7 +178,7 @@ footer {
     }
   }
 
-  @media (min-width: 768px) {
+  @media (width >= 768px) {
     padding: 3rem 2rem;
 
     .footer-content {
@@ -187,7 +191,7 @@ footer {
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     .footer-content {
       grid-template-columns: 2fr 1fr 1fr;
     }

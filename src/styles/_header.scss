@@ -1,0 +1,6 @@
+@use 'vars';
+@use 'props';
+
+.site-header {
+  background: var(--uv-header-bg-color);
+}
