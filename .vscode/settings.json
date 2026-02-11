@@ -1,0 +1,45 @@
+{
+  // =============================
+  // Format on Save
+  // =============================
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "modifications",
+
+  // Use Prettier as the main formatter
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Astro formatter
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+
+  // JS / JSON / Markdown / SCSS → Prettier
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // =============================
+  // Prettier
+  // =============================
+  "prettier.enable": true,
+
+  // Prevent VSCode built-in validation from conflicting
+  "css.validate": false,
+  "scss.validate": false,
+
+  // Let Stylelint handle CSS/SCSS
+  "stylelint.validate": ["css", "scss"],
+  "stylelint.enable": true
+}
