@@ -1,10 +1,12 @@
 ---
-
+const locale = Astro.currentLocale;
+const urlPrefix = locale === 'en' ? '' : `/${locale}`;
+const href = (p: string) => `${urlPrefix}${p}`;
 ---
 
 <header class="site-header">
   <a
-    href=""
+    href={href('')}
     class="logo-link"
   >
     <img
@@ -17,42 +19,42 @@
     <ul class="main-nav-list">
       <li class="main-nav-list-item">
         <a
-          href="/"
+          href={href('')}
           class="main-nav-link"
           >Home</a
         >
       </li>
       <li class="main-nav-list-item">
         <a
-          href="/demo"
+          href={href('/demo')}
           class="main-nav-link"
           >Demo</a
         >
       </li>
       <li class="main-nav-list-item">
         <a
-          href="/events"
+          href={href('/events')}
           class="main-nav-link"
           >Events</a
         >
       </li>
       <li class="main-nav-list-item">
         <a
-          href="/docs"
+          href={href('/docs')}
           class="main-nav-link"
           >Documentation</a
         >
       </li>
       <li class="main-nav-list-item">
         <a
-          href="/blog"
+          href={href('/blog')}
           class="main-nav-link"
           >Blog</a
         >
       </li>
       <li class="main-nav-list-item">
         <a
-          href="/community"
+          href={href('/community')}
           class="main-nav-link"
           >Community</a
         >
