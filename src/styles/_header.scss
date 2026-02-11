@@ -1,6 +1,20 @@
-@use 'vars';
+@use 'sass:map';
+@use 'fn' as *;
+@use 'vars' as *;
 @use 'props';
 
 .site-header {
   background: var(--uv-header-bg-color);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: remval(16);
+}
+
+.logo-link {
+  display: block;
+  width: remval(64);
+  height: remval(64);
+  background: #fff;
+  border-radius: 50%;
 }
