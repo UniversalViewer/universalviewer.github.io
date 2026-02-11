@@ -1,3 +1,48 @@
+@use 'sass:map';
+@use 'fn' as *;
+@use 'vars' as *;
+@use 'props';
+
 .main-nav {
-  background: red;
+  width: 100%;
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+    margin-left: auto;
+    width: auto;
+  }
+}
+
+.main-nav-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+    flex-direction: row;
+  }
+}
+
+.main-nav-list-item {
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav-link {
+  display: block;
+  padding: remval(12) remval(16);
+  color: var(--uv-main-nav-link-color);
+  text-decoration: none;
+  text-underline-offset: remval(2);
+  text-align: center;
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+    text-align: left;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    background-color: var(--uv-main-nav-link-hover-bg-color);
+  }
 }

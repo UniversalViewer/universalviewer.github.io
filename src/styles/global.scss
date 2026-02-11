@@ -1,4 +1,6 @@
-@use 'vars';
+@use 'sass:map';
+@use 'fn' as *;
+@use 'vars' as *;
 @use 'props';
 @use 'header';
 @use 'main-nav';
@@ -6,10 +8,11 @@
 html {
   background-color: #f1f5f9;
   font-family: sans-serif;
-  height: 100%;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -29,15 +32,15 @@ main {
 // header
 
 header {
-  width: 100%;
+  /* width: 100%;
   background-color: rgb(255 255 255 / 80%);
   backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid rgb(0 0 0 / 10%);
+  border-bottom: 1px solid rgb(0 0 0 / 10%); */
 
-  nav {
+  /* nav {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
@@ -79,9 +82,9 @@ header {
         }
       }
     }
-  }
+  } */
 
-  @media (width >= 768px) {
+  /* @media (width >= 768px) {
     nav {
       padding: 0 2rem;
 
@@ -99,13 +102,13 @@ header {
         }
       }
     }
-  }
+  } */
 
-  @media (width >= 1024px) {
+  /* @media (width >= 1024px) {
     nav ul {
       gap: 1rem;
     }
-  }
+  } */
 }
 
 // footer
