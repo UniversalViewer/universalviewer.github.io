@@ -2,7 +2,13 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.scss';
-const { pageTitle } = Astro.props;
+
+interface Props {
+  pageTitle?: string;
+  mainClass?: string;
+}
+
+const { pageTitle = 'Universal Viewer', mainClass } = Astro.props;
 ---
 
 <html lang="en">
@@ -21,9 +27,8 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <Header />
-    <main>
-    <h1>{pageTitle}</h1>
-    <slot />
+    <main class:list={['main', mainClass]}>
+      <slot />
     </main>
     <Footer />
     <!-- <script>
