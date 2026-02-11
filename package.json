@@ -6,13 +6,21 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint:css": "stylelint \"src/**/*.{css,scss}\"",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "@astrojs/vercel": "^9.0.4",
     "astro": "^5.16.3"
   },
   "devDependencies": {
-    "sass": "^1.97.3"
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "sass": "^1.97.3",
+    "stylelint": "^17.2.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-scss": "^7.0.0"
   }
 }
