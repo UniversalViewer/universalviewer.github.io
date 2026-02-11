@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use 'fn' as *;
+@use 'vars' as *;
+
+:root {
+  // COLORS
+  --uv-primary: #212;
+
+  // GENERIC
+  --uv-bg-color: var(--uv-primary);
+  --uv-header-bg-color: var(--uv-primary);
+
+  // MAIN NAV
+  --uv-main-nav-link-color: #eee;
+  --uv-main-nav-link-hover-bg-color: #000;
+
+  // HOMEPAGE
+}
