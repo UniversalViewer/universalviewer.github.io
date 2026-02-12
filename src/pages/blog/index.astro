@@ -1,10 +1,32 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogLayout from '@layouts/BlogLayout.astro';
+
+const posts = await getCollection('blog');
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+function postUrl(post: any) {
+  const d = new Date(post.data.date);
+  return `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${post.id}`;
+}
+
 const pageTitle = 'Blog';
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  EN Blog
-  <BlogLayout />
+  <h1>Blog</h1>
+  <p>latest news....</p>
+  <p>some sort of hero image</p>
+
+  <ul>
+    {
+      posts.slice(0, 2).map((post) => (
+        <li>
+          <a href={postUrl(post)}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+  <p><a href="/blog/page/2"> older posts </a></p>
 </BaseLayout>

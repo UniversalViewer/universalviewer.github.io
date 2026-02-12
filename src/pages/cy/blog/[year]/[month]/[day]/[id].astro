@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => {
+    const d = new Date(post.data.date);
+    const year = d.getFullYear().toString();
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+
+    return {
+      params: {
+        year,
+        month,
+        day,
+        id: post.id,
+      },
+      props: { target: `/blog/${year}/${month}/${day}/${post.id}` },
+    };
+ });
+}
+
+const { target } = Astro.props;
+---
+
+<head>
+  <meta http-equiv="refresh" content={`0; url=${target}`} />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href={target} />
+</head>
+<body>
+  <a href={target}>Redirecting to main blog...</a>
+</body>

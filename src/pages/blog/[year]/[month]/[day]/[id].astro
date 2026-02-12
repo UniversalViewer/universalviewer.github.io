@@ -1,0 +1,80 @@
+---
+import { Debug } from "astro:components";
+import { getCollection, render } from "astro:content";
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => {
+    const d = new Date(post.data.date);
+    const year = d.getFullYear().toString();
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const day = String(d.getDate()).padStart(2, "0");
+
+    return {
+      params: {
+        year,
+        month,
+        day,
+        id: post.id,
+      },
+      props: { post },
+    };
+ });
+}
+
+const { id } = Astro.params;
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// 1. Load all posts
+const posts = await getCollection('blog');
+
+// 2. sort newest first
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// 3. Find current post
+const index = posts.findIndex((p) => p.id === id);
+const entry = posts[index];
+if (!entry) throw new Error(`Post not found: ${id}`);
+
+// 4. Compute previous & next
+const prev = posts[index + 1]; // because sorted descending
+const next = posts[index - 1];
+
+function postUrl(post: any) {
+  const d = new Date(post.data.date);
+  return `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${post.id}`;
+}
+
+---
+<!-- <Debug prev={posts} />
+<Debug prev={postUrl(prev)} />
+<Debug prev={postUrl(next)} /> -->
+<BaseLayout pageTitle={post.data.title}>
+    <h1>{post.data.title}</h1>
+    <Content />
+    
+  <nav class="post-nav" style="display:flex;gap:3em;justify-content:space-between">
+    {
+        prev && (
+            <div class="prev-post">  
+                <strong>Previous post</strong>
+                <br />
+                <a href={postUrl(prev)}>{prev.data.title}</a>
+            </div>
+        )
+    }
+    
+    {
+        next && (
+            <div class="next-post">
+                <strong>Next post</strong>
+                <br />
+                <a href={postUrl(next)}>{next.data.title}</a>
+            </div>
+        )
+    }
+  </nav>
+</BaseLayout>
