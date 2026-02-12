@@ -1,8 +1,10 @@
 ---
+import { Debug } from 'astro:components';
 const locale = Astro.currentLocale;
-const currentPath = Astro.url.pathname;
 const urlPrefix = locale === 'en' ? '' : `/${locale}`;
+const currentPath = Astro.url.pathname;
 const href = (p: string) => `${urlPrefix}${p}`;
+const currentPathWithoutLocale = currentPath.replace(urlPrefix, '') || '/';
 ---
 
 <header class="site-header">
@@ -69,7 +71,7 @@ const href = (p: string) => `${urlPrefix}${p}`;
       class="show-languages-button"
       aria-label="Select language"
       aria-expanded="false"
-      >Language</button
+      >{locale}</button
     >
     <nav
       id="langNav"
@@ -78,14 +80,14 @@ const href = (p: string) => `${urlPrefix}${p}`;
       <ul class="lang-nav-list">
         <li class="lang-nav-list-item">
           <a
-            href={href(currentPath)}
+            href={currentPathWithoutLocale}
             class="lang-nav-link"
             >en</a
           >
         </li>
         <li class="lang-nav-list-item">
           <a
-            href={href(`/cy${currentPath}`)}
+            href={`/cy${currentPathWithoutLocale}`}
             class="lang-nav-link"
             >cy</a
           >
@@ -99,5 +101,11 @@ const href = (p: string) => `${urlPrefix}${p}`;
   const langNav = document.getElementById('langNav');
   langButton?.addEventListener('click', () => {
     langNav?.classList.toggle('show');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (e.target != langButton) {
+      langNav?.classList.remove('show');
+    }
   });
 </script>
