@@ -4,9 +4,7 @@
 @use 'props';
 
 .languages-container {
-  background: red;
   position: relative;
-  padding: 10px;
   flex-grow: 1;
   flex-basis: 100%;
 
@@ -17,20 +15,40 @@
 }
 
 .show-languages-button {
-  background: lime;
+  background: #222;
+  color: #fff;
   display: block;
   border: none;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 0 remval(16);
+  height: remval(44);
+  border-radius: remval(4);
+  text-transform: uppercase;
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+    margin-left: remval(16);
+  }
+
+  &:hover {
+    background: red;
+  }
 }
 
 .lang-nav {
   display: none;
   position: absolute;
-  background: pink;
-  width: remval(320);
-  right: 0;
-  top: 100%;
+  background: #333;
+  border-radius: remval(4);
+  width: remval(100);
+  top: calc(100% + remval(10));
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+    right: 0;
+    left: auto;
+    transform: none;
+  }
 
   &.show {
     display: block;
@@ -52,8 +70,15 @@
   display: block;
   text-decoration: none;
   color: #fff;
+  height: remval(44);
+  line-height: remval(46);
+  text-align: center;
+  text-transform: uppercase;
 
   &:hover {
-    background: red;
+    border-radius: remval(4);
+    background-color: red;
+    text-decoration: underline;
+    text-underline-offset: remval(2);
   }
 }
