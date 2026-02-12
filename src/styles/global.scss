@@ -4,6 +4,7 @@
 @use 'props';
 @use 'header';
 @use 'main-nav';
+@use 'events';
 
 html {
   background-color: #f1f5f9;
@@ -27,7 +28,6 @@ body {
 
 main {
   flex: 1;
-  max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
 }

@@ -1,0 +1,19 @@
+.events-main {
+    text-align: center;
+}
+
+section {
+  margin: 1.5rem auto;
+}
+
+.events-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.event-card {
+  flex: 1;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border: 1px solid gray;
+}
