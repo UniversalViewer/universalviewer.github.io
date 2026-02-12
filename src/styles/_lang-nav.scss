@@ -1,0 +1,59 @@
+@use 'sass:map';
+@use 'fn' as *;
+@use 'vars' as *;
+@use 'props';
+
+.languages-container {
+  background: red;
+  position: relative;
+  padding: 10px;
+  flex-grow: 1;
+  flex-basis: 100%;
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+    flex-grow: 0;
+    flex-basis: auto;
+  }
+}
+
+.show-languages-button {
+  background: lime;
+  display: block;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lang-nav {
+  display: none;
+  position: absolute;
+  background: pink;
+  width: remval(320);
+  right: 0;
+  top: 100%;
+
+  &.show {
+    display: block;
+  }
+}
+
+.lang-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.lang-nav-list-item {
+  display: block;
+}
+
+.lang-nav-link {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+
+  &:hover {
+    background: red;
+  }
+}
