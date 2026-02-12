@@ -2,8 +2,10 @@
 const locale = Astro.currentLocale;
 const urlPrefix = locale === 'en' ? '' : `/${locale}`;
 const href = (p: string) => `${urlPrefix}${p}`;
+const currentPath = Astro.url.pathname;
 ---
 
+{currentPath}
 <header class="site-header">
   <a
     href={href('')}
@@ -58,6 +60,16 @@ const href = (p: string) => `${urlPrefix}${p}`;
           class="main-nav-link"
           >Community</a
         >
+      </li>
+    </ul>
+  </nav>
+  <nav>
+    <ul>
+      <li>
+        <a href={href(currentPath)}>en</a>
+      </li>
+      <li>
+        <a href={href(`/cy${currentPath}`)}>cy</a>
       </li>
     </ul>
   </nav>
