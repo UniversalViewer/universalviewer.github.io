@@ -1,11 +1,10 @@
 ---
 const locale = Astro.currentLocale;
+const currentPath = Astro.url.pathname;
 const urlPrefix = locale === 'en' ? '' : `/${locale}`;
 const href = (p: string) => `${urlPrefix}${p}`;
-const currentPath = Astro.url.pathname;
 ---
 
-{currentPath}
 <header class="site-header">
   <a
     href={href('')}
@@ -63,14 +62,42 @@ const currentPath = Astro.url.pathname;
       </li>
     </ul>
   </nav>
-  <nav>
-    <ul>
-      <li>
-        <a href={href(currentPath)}>en</a>
-      </li>
-      <li>
-        <a href={href(`/cy${currentPath}`)}>cy</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="languages-container">
+    <button
+      type="button"
+      id="showLanguagesButton"
+      class="show-languages-button"
+      aria-label="Select language"
+      aria-expanded="false"
+      >Language</button
+    >
+    <nav
+      id="langNav"
+      class="lang-nav"
+    >
+      <ul class="lang-nav-list">
+        <li class="lang-nav-list-item">
+          <a
+            href={href(currentPath)}
+            class="lang-nav-link"
+            >en</a
+          >
+        </li>
+        <li class="lang-nav-list-item">
+          <a
+            href={href(`/cy${currentPath}`)}
+            class="lang-nav-link"
+            >cy</a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
+<script>
+  const langButton = document.getElementById('showLanguagesButton');
+  const langNav = document.getElementById('langNav');
+  langButton?.addEventListener('click', () => {
+    langNav?.classList.toggle('show');
+  });
+</script>
