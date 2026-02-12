@@ -1,7 +1,24 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-const pageTitle = 'Docs'
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Docs";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} mainClass="docs-main">
+  <p>
+    See the <a
+      href="https://github.com/UniversalViewer/universalviewer/wiki/UV-Examples"
+      >examples</a
+    > for how to use the UV in various scenarios.
+  </p>
+  <p>
+    Read the technical <a href="https://docs.universalviewer.io/modules.html"
+      >docs</a
+    > to learn more about the code and available configuration options.
+  </p>
+  <p>
+    Read the <a
+      href="https://github.com/UniversalViewer/universalviewer/blob/dev/manual/index.md"
+      >manual</a
+    > for information on using, configuring, and developing for the UV.
+  </p>
 </BaseLayout>

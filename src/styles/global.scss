@@ -5,6 +5,7 @@
 @use 'header';
 @use 'main-nav';
 @use 'lang-nav';
+@use 'events';
 
 html {
   background-color: #f1f5f9;
@@ -28,6 +29,8 @@ body {
 
 main {
   flex: 1;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 // header
