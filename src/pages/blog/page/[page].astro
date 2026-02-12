@@ -13,6 +13,11 @@ export async function getStaticPaths({ paginate }: { paginate: any }) {
   return paginate(posts, { pageSize: 2 });
 }
 
+function postUrl(post: any) {
+  const d = new Date(post.data.date);
+  return `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${post.id}`;
+}
+
 // manually defined so vscode doesn't show errors
 // it will still work without
 interface Props {
@@ -37,7 +42,7 @@ const { page } = Astro.props as Props;
 <BaseLayout>
   <h1>
     <!-- Blog {page.currentPage > 1 ? ' - Page ' + page.currentPage : ''} -->
-     Blog page {page.currentPage}
+    Blog page {page.currentPage}
   </h1>
   <!-- {
     page.currentPage == 1 && (
@@ -50,7 +55,7 @@ const { page } = Astro.props as Props;
     {
       page.data.map((post) => (
         <li>
-          <a href={`/blog/${post.id}`}>{post.data.title}</a>
+          <a href={postUrl(post)}>{post.data.title}</a>
         </li>
       ))
     }
