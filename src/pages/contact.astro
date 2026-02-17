@@ -1,6 +1,20 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-const pageTitle = 'Contact';
+import BaseLayout from "@layouts/BaseLayout.astro";
+const pageTitle = "Contact";
 ---
 
-<BaseLayout pageTitle={pageTitle} />
+<BaseLayout pageTitle={pageTitle} mainClass="contact-main">
+  <p>universalviewerapp@gmail.com</p>
+  <p>
+    <a href="https://bsky.app/profile/universalviewer.io"
+      >Follow the UV on BlueSky</a
+    >
+  </p>
+  <p>
+    <a href="https://glammr.us/@universalviewer">Follow the UV on Mastodon</a>
+  </p>
+  <p>
+    Join the <a href="universalviewer.slack.com">UV Slack</a>: send an email to
+    universalviewerapp@gmail.com to request an invite.
+  </p>
+</BaseLayout>
