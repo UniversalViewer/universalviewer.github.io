@@ -48,7 +48,7 @@ const next = posts[index - 1];
 <!-- <Debug prev={posts} />
 <Debug prev={postUrl(prev)} />
 <Debug prev={postUrl(next)} /> -->
-<BaseLayout pageTitle={post.data.title}>
+<BaseLayout pageTitle={post.data.title} mainClass="blog-main">
   <BlogLayout post={post} prev={prev} next={next}>
     <Content />
   </BlogLayout>

@@ -7,6 +7,9 @@
 @use 'lang-nav';
 @use 'events';
 @use 'demo';
+@use 'blog/index';
+@use 'blog/page';
+@use 'blog/post';
 
 html {
   background-color: #f1f5f9;

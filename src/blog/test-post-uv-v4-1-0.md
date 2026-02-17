@@ -2,7 +2,7 @@
 title: 'Universal Viewer v4.1.0 is here!'
 description: 'Another test blog post taken from an old BL blog'
 date: 2026-02-17
-author: 'Universal Viewer'
+author: 'Universal Viewer Steering Group'
 ---
 
 We're excited to announce the release of [Universal Viewer](https://universalviewer.io/) (UV) version 4.1.0, packed with new updates and features.
