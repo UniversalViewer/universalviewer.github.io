@@ -1,0 +1,66 @@
+---
+interface Props {
+  post: any;
+  prev?: any;
+  next?: any;
+}
+
+const { post, prev, next } = Astro.props;
+
+const { title, date, author } = post.data;
+
+const formattedDate = date.toLocaleDateString("en-GB", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+function postUrl(p: any) {
+  const d = new Date(p.data.date);
+  return `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}/${p.id}`;
+}
+---
+
+<article>
+  <header>
+    <h1>{title}</h1>
+    <p class="post-data">
+      <time datetime={date.toISOString()}>{formattedDate}</time>
+    </p>
+    {
+      author && (
+        <p>
+          <span class="post-author">{author}</span>
+        </p>
+      )
+    }
+  </header>
+  <slot />
+  <nav
+    class="post-nav"
+    style="display:flex;gap:3em;justify-content:space-between"
+  >
+    {
+      prev && (
+        <div class="prev-post">
+          <>
+            <strong>Previous post</strong>
+            <br />
+          </>
+          <a href={postUrl(prev)}>{prev.data.title}</a>
+        </div>
+      )
+    }
+    {
+      next && (
+        <div class="next-post">
+          <>
+            <strong>Next post</strong>
+            <br />
+          </>
+          <a href={postUrl(next)}>{next.data.title}</a>
+        </div>
+      )
+    }
+  </nav>
+</article>
