@@ -1,10 +1,14 @@
 ---
 import { Debug } from 'astro:components';
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
 const locale = Astro.currentLocale;
 const urlPrefix = locale === 'en' ? '' : `/${locale}`;
 const currentPath = Astro.url.pathname;
 const href = (p: string) => `${urlPrefix}${p}`;
 const currentPathWithoutLocale = currentPath.replace(urlPrefix, '') || '/';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header class="site-header">
@@ -24,42 +28,42 @@ const currentPathWithoutLocale = currentPath.replace(urlPrefix, '') || '/';
         <a
           href={href('/')}
           class="main-nav-link"
-          >Home</a
+          >{t('nav.home')}</a
         >
       </li>
       <li class="main-nav-list-item">
         <a
           href={href('/demo')}
           class="main-nav-link"
-          >Demo</a
+          >{t('nav.demo')}</a
         >
       </li>
       <li class="main-nav-list-item">
         <a
           href={href('/events')}
           class="main-nav-link"
-          >Events</a
+          >{t('nav.events')}</a
         >
       </li>
       <li class="main-nav-list-item">
         <a
           href={href('/docs')}
           class="main-nav-link"
-          >Documentation</a
+          >{t('nav.documentation')}</a
         >
       </li>
       <li class="main-nav-list-item">
         <a
           href="/blog"
           class="main-nav-link"
-          >Blog</a
+          >{t('nav.blog')}</a
         >
       </li>
       <li class="main-nav-list-item">
         <a
           href={href('/community')}
           class="main-nav-link"
-          >Community</a
+          >{t('nav.community')}</a
         >
       </li>
     </ul>
