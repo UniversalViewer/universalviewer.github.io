@@ -1,0 +1,83 @@
+@mixin blog-container {
+  width: 80ch;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+
+  .blog-header {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid currentColor;
+
+    h1 {
+      margin: 0;
+    }
+  }
+
+  .post-list {
+    margin: 0;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .post-item {
+      padding: 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      
+      &:first-child {
+        padding-top: 0;
+      }
+
+      article {
+        position: relative;
+        padding: 1rem;
+        border-radius: 4px;
+        transition: background 0.15s ease;
+
+        &:hover {
+          background: rgba(0, 0, 0, 0.04);
+        }
+
+        h2 {
+          margin: 0 0 0.75rem;
+          font-size: 1.25rem;
+
+          a {
+            text-decoration: none;
+
+            &::after {
+              content: '';
+              position: absolute;
+              inset: 0;
+            }
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+
+        .post-description,
+        .post-date, .post-author {
+          margin: 0 0 0.75rem;
+          font-size: 0.9rem;
+          line-height: 1.6;
+          opacity: 0.7;
+        }
+
+        .post-description {
+          font-style: italic;
+        }
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+  }
+}

@@ -1,12 +1,12 @@
 ---
-import { Debug } from 'astro:components';
-import BaseLayout from '@layouts/BaseLayout.astro';
-import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
+import { Debug } from "astro:components";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
 // paginate:any is just to stop TS error which isn't a real error in Astro
 export async function getStaticPaths({ paginate }: { paginate: any }) {
-  const posts = (await getCollection('blog')).sort(
+  const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.date.getTime() - a.data.date.getTime(),
   );
 
@@ -15,14 +15,14 @@ export async function getStaticPaths({ paginate }: { paginate: any }) {
 
 function postUrl(post: any) {
   const d = new Date(post.data.date);
-  return `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${post.id}`;
+  return `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}/${post.id}`;
 }
 
 // manually defined so vscode doesn't show errors
 // it will still work without
 interface Props {
   page: {
-    data: CollectionEntry<'blog'>[];
+    data: CollectionEntry<"blog">[];
     start: number;
     end: number;
     size: number;
@@ -37,33 +37,52 @@ interface Props {
 }
 
 const { page } = Astro.props as Props;
+const pageTitle = "Blog page " + page.currentPage;
 ---
 
-<BaseLayout>
-  <h1>
-    <!-- Blog {page.currentPage > 1 ? ' - Page ' + page.currentPage : ''} -->
-    Blog page {page.currentPage}
-  </h1>
-  <!-- {
-    page.currentPage == 1 && (
-      <p>
-        <strong>Welcome to our blog!</strong>
-      </p>
-    )
-  } -->
-  <ul>
-    {
-      page.data.map((post) => (
-        <li>
-          <a href={postUrl(post)}>{post.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
+<BaseLayout pageTitle={pageTitle} mainClass="blog-page-main">
+  <div class="blog-header">
+    <h1>
+      Blog {page.currentPage > 1 && <span> Page {page.currentPage}</span>}
+    </h1>
+  </div>
 
-  <nav>
-    {page.url.prev && <a href={page.url.prev}>Previous page</a>}
-    {page.url.next && <a href={page.url.next}>Next page</a>}
-  </nav>
+  <section class="post-list">
+    <ul>
+      {
+        page.data.map((post) => {
+          const date = new Date(post.data.date);
+          const formattedDate = date.toLocaleDateString("en-GB", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+          return (
+            <li class="post-item">
+              <article>
+                <p class="post-date">
+                  <time datetime={date.toISOString()}>{formattedDate}</time>
+                </p>
+                <h2>
+                  <a href={postUrl(post)}>{post.data.title}</a>
+                </h2>
+                {post.data.author && (
+                  <p class="post-author">{post.data.author}</p>
+                )}
+                {post.data.description && (
+                  <p class="post-description">{post.data.description}</p>
+                )}
+              </article>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <nav class="pagination">
+      {page.url.prev && <a href={page.url.prev}>← Newer posts</a>}
+      {page.url.next && <a href={page.url.next}>Older posts →</a>}
+    </nav>
+  </section>
 </BaseLayout>
 <!-- <Debug {page} /> -->

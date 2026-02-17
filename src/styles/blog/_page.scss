@@ -1,0 +1,5 @@
+@use 'mixins' as *;
+
+.blog-page-main {
+  @include blog-container;
+}
