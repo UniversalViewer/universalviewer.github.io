@@ -22,44 +22,30 @@
     }
 
     .post-item {
-      padding: 0;
       border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-      
-      &:first-child {
-        padding-top: 0;
+    }
+
+    .post-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s ease;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.08);
       }
 
       article {
-        position: relative;
         padding: 1rem;
-        border-radius: 4px;
-        transition: background 0.15s ease;
-
-        &:hover {
-          background: rgba(0, 0, 0, 0.04);
-        }
 
         h2 {
           margin: 0 0 0.75rem;
           font-size: 1.25rem;
-
-          a {
-            text-decoration: none;
-
-            &::after {
-              content: '';
-              position: absolute;
-              inset: 0;
-            }
-
-            &:hover {
-              text-decoration: none;
-            }
-          }
         }
 
         .post-description,
-        .post-date, .post-author {
+        .post-date,
+        .post-author {
           margin: 0 0 0.75rem;
           font-size: 0.9rem;
           line-height: 1.6;

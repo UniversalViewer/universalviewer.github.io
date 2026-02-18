@@ -1,15 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import BlogLayout from "@layouts/BlogLayout.astro";
+import BlogPostItem from "../../components/BlogPostItem.astro";
 
 const posts = await getCollection("blog");
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
-function postUrl(post: any) {
-  const d = new Date(post.data.date);
-  return `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}/${post.id}`;
-}
 
 const pageTitle = "Blog";
 ---
@@ -23,34 +18,7 @@ const pageTitle = "Blog";
 
   <section class="post-list">
     <ul>
-      {
-        posts.slice(0, 2).map((post) => {
-          const date = new Date(post.data.date);
-          const formattedDate = date.toLocaleDateString("en-GB", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          });
-          return (
-            <li class="post-item">
-              <article>
-                <p class="post-date">
-                  <time datetime={date.toISOString()}>{formattedDate}</time>
-                </p>
-                <h2>
-                  <a href={postUrl(post)}>{post.data.title}</a>
-                </h2>
-                {post.data.author && (
-                  <p class="post-author">{post.data.author}</p>
-                )}
-                {post.data.description && (
-                  <p class="post-description">{post.data.description}</p>
-                )}
-              </article>
-            </li>
-          );
-        })
-      }
+      {posts.slice(0, 2).map((post) => <BlogPostItem post={post} />)}
     </ul>
 
     <nav class="pagination">

@@ -3,6 +3,7 @@ import { Debug } from "astro:components";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
+import BlogPostItem from "../../../components/BlogPostItem.astro";
 
 // paginate:any is just to stop TS error which isn't a real error in Astro
 export async function getStaticPaths({ paginate }: { paginate: any }) {
@@ -11,11 +12,6 @@ export async function getStaticPaths({ paginate }: { paginate: any }) {
   );
 
   return paginate(posts, { pageSize: 2 });
-}
-
-function postUrl(post: any) {
-  const d = new Date(post.data.date);
-  return `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}/${post.id}`;
 }
 
 // manually defined so vscode doesn't show errors
@@ -49,34 +45,7 @@ const pageTitle = "Blog page " + page.currentPage;
 
   <section class="post-list">
     <ul>
-      {
-        page.data.map((post) => {
-          const date = new Date(post.data.date);
-          const formattedDate = date.toLocaleDateString("en-GB", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          });
-          return (
-            <li class="post-item">
-              <article>
-                <p class="post-date">
-                  <time datetime={date.toISOString()}>{formattedDate}</time>
-                </p>
-                <h2>
-                  <a href={postUrl(post)}>{post.data.title}</a>
-                </h2>
-                {post.data.author && (
-                  <p class="post-author">{post.data.author}</p>
-                )}
-                {post.data.description && (
-                  <p class="post-description">{post.data.description}</p>
-                )}
-              </article>
-            </li>
-          );
-        })
-      }
+      {page.data.map((post) => <BlogPostItem post={post} />)}
     </ul>
 
     <nav class="pagination">
