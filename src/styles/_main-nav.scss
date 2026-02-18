@@ -5,10 +5,20 @@
 
 .main-nav {
   width: 100%;
+  display: none;
+  order: 4;
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     margin-left: auto;
     width: auto;
+  }
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    display: block;
+  }
+
+  &.show {
+    display: block;
   }
 }
 
@@ -19,7 +29,7 @@
   padding: 0;
   list-style: none;
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     flex-direction: row;
   }
 }
@@ -37,7 +47,7 @@
   text-underline-offset: remval(2);
   text-align: center;
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     text-align: left;
   }
 

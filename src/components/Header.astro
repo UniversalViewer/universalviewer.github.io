@@ -23,6 +23,15 @@ const t = useTranslations(lang);
       class="logo-image"
     />
   </a>
+  <button
+    type="button"
+    id="mobileNavButton"
+    class="hamburger mobile-main-nav-button"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
   <MainNav />
   <div class="languages-container">
     <button
@@ -66,6 +75,18 @@ const t = useTranslations(lang);
   document.addEventListener('click', (e) => {
     if (e.target != langButton) {
       langNav?.classList.remove('show');
+    }
+  });
+
+  const mobileNavButton = document.getElementById('mobileNavButton');
+  const mainNav = document.getElementById('mainNav');
+  mobileNavButton?.addEventListener('click', function () {
+    this.classList.toggle('active');
+
+    if (this.classList.contains('active')) {
+      mainNav?.classList.add('show');
+    } else {
+      mainNav?.classList.remove('show');
     }
   });
 </script>
