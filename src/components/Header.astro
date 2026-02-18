@@ -1,6 +1,7 @@
 ---
 import { Debug } from 'astro:components';
 import { getLangFromUrl, useTranslations } from '@i18n/utils';
+import MainNav from './MainNav.astro';
 const locale = Astro.currentLocale;
 const urlPrefix = locale === 'en' ? '' : `/${locale}`;
 const currentPath = Astro.url.pathname;
@@ -22,52 +23,7 @@ const t = useTranslations(lang);
       class="logo-image"
     />
   </a>
-  <nav class="main-nav">
-    <ul class="main-nav-list">
-      <li class="main-nav-list-item">
-        <a
-          href={href('/')}
-          class="main-nav-link"
-          >{t('nav.home')}</a
-        >
-      </li>
-      <li class="main-nav-list-item">
-        <a
-          href={href('/demo')}
-          class="main-nav-link"
-          >{t('nav.demo')}</a
-        >
-      </li>
-      <li class="main-nav-list-item">
-        <a
-          href={href('/events')}
-          class="main-nav-link"
-          >{t('nav.events')}</a
-        >
-      </li>
-      <li class="main-nav-list-item">
-        <a
-          href={href('/docs')}
-          class="main-nav-link"
-          >{t('nav.documentation')}</a
-        >
-      </li>
-      <li class="main-nav-list-item">
-        <a
-          href="/blog"
-          class="main-nav-link"
-          >{t('nav.blog')}</a
-        >
-      </li>
-      <li class="main-nav-list-item">
-        <a
-          href={href('/community')}
-          class="main-nav-link"
-          >{t('nav.community')}</a
-        >
-      </li>
-    </ul>
-  </nav>
+  <MainNav />
   <div class="languages-container">
     <button
       type="button"
