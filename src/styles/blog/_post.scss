@@ -42,8 +42,12 @@
     a {
       text-decoration: underline;
     }
-  
 
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  
   .post-nav {
     display: flex;
     justify-content: space-between;

@@ -5,6 +5,8 @@ date: 2026-02-17
 author: 'Universal Viewer Steering Group'
 ---
 
+![A screenshot of Universal Viewer v4.1.0](../blog/images/uv.png)
+
 We're excited to announce the release of [Universal Viewer](https://universalviewer.io/) (UV) version 4.1.0, packed with new updates and features.
 
 *New image manipulation controls in UV 4.1.0*
