@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 interface Props {
   post: CollectionEntry<"blog">;
@@ -23,16 +24,25 @@ const formattedDate = date.toLocaleDateString("en-GB", {
 <li class="post-item">
   <a href={postUrl(post)} class="post-link">
     <article>
-      <p class="post-date">
-        <time datetime={date.toISOString()}>{formattedDate}</time>
-      </p>
-      <h2>{post.data.title}</h2>
-      {post.data.author && (
-        <p class="post-author">{post.data.author}</p>
-      )}
-      {post.data.description && (
-        <p class="post-description">{post.data.description}</p>
-      )}
+      {
+        post.data.cover && post.data.coverAlt && (
+          <div class="post-thumbnail">
+            <Image src={post.data.cover} alt={post.data.coverAlt} />
+          </div>
+        )
+      }
+      <div class="post-meta">
+        <p class="post-date">
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+        </p>
+        <h2>{post.data.title}</h2>
+        {post.data.author && <p class="post-author">{post.data.author}</p>}
+        {
+          post.data.description && (
+            <p class="post-description">{post.data.description}</p>
+          )
+        }
+      </div>
     </article>
   </a>
 </li>

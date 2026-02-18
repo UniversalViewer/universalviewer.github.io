@@ -3,9 +3,10 @@ title: 'Universal Viewer v4.1.0 is here!'
 description: 'Another test blog post taken from an old BL blog'
 date: 2026-02-17
 author: 'Universal Viewer Steering Group'
+cover: ../blog/images/uv.png
+coverAlt: 'A screenshot of Universal Viewer v4.1.0'
 ---
 
-![A screenshot of Universal Viewer v4.1.0](../blog/images/uv.png)
 
 We're excited to announce the release of [Universal Viewer](https://universalviewer.io/) (UV) version 4.1.0, packed with new updates and features.
 
@@ -18,6 +19,8 @@ Accessibility Improvements:
 - Easier navigation for keyboard-only users.
 - Better support for assistive technologies such as screen readers.
 - Improved contrast and visibility of page elements.
+
+![A screenshot of Universal Viewer v4.1.0](../blog/images/uv.png)
 
 New Features:
 
