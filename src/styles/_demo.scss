@@ -7,23 +7,45 @@
 
 #demo-layout {
   display: flex;
-  height: calc(100vh - 150px);
+  flex-direction: column;
+  height: auto;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    height: calc(100vh - 150px);
+  }
 }
 
 #uv {
-  flex: 4;
-  height: 100%;
-  margin: 1rem;
+  width: 100%;
+  height: 90vh;
+  margin: 0;
+  order: 2;
+  min-width: 0;
+
+  @media (min-width: 768px) {
+    order: 1;
+    flex: 4;
+    height: 100%;
+    margin: 1rem;
+  }
 }
 
 #controls {
-  flex: 1;
-  height: 100%;
+  width: 100%;
   overflow-y: auto;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  order: 1;
+  min-width: 0;
+
+  @media (min-width: 768px) {
+    flex: 1;
+    height: 100%;
+    order: 2;
+  }
 }
 
 .controls-section {
@@ -71,5 +93,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.25rem 0.5rem;
+  }
+}
+
+  #customise, #advanced {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
   }
 }
