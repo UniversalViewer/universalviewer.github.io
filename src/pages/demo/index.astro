@@ -91,6 +91,9 @@ const groups = collection.collections
                             checked
                         /> Navigator</label
                     >
+                    <label
+                        ><input type="checkbox" id="cfg-titleEnabled" checked /> Title</label
+                    >
                 </div>
             </div>
 
@@ -141,6 +144,30 @@ const groups = collection.collections
                                 showAdjustImageControl: document.getElementById(
                                     "cfg-showAdjustImageControl",
                                 ).checked,
+                                titleEnabled:
+                                    document.getElementById("cfg-titleEnabled")
+                                        .checked,
+                            },
+                        },
+                        avCenterPanel: {
+                            options: {
+                                titleEnabled:
+                                    document.getElementById("cfg-titleEnabled")
+                                        .checked,
+                            },
+                        },
+                        pdfCenterPanel: {
+                            options: {
+                                titleEnabled:
+                                    document.getElementById("cfg-titleEnabled")
+                                        .checked,
+                            },
+                        },
+                        mediaElementCenterPanel: {
+                            options: {
+                                titleEnabled:
+                                    document.getElementById("cfg-titleEnabled")
+                                        .checked,
                             },
                         },
                     },
@@ -194,6 +221,7 @@ const groups = collection.collections
                 "cfg-navigatorEnabled",
                 "cfg-showHomeControl",
                 "cfg-showAdjustImageControl",
+                "cfg-titleEnabled",
             ].forEach((id) => {
                 document
                     .getElementById(id)
