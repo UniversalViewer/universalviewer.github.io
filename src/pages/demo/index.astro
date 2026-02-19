@@ -1,0 +1,95 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import * as collection from "./demo_collection.json";
+const pageTitle = "Demo";
+
+const groups = collection.collections
+  .filter((g: any) => g.visible !== false)
+  .map((g: any) => ({
+    label: g.label,
+    manifests: (g.manifests ?? []).filter((m: any) => m.visible !== false),
+  }))
+  .filter((g: any) => g.manifests.length > 0);
+---
+
+<BaseLayout pageTitle={pageTitle} mainClass="demo-main">
+
+  <fragment slot="head">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/universalviewer@latest/dist/uv.css"
+    />
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/universalviewer@latest/dist/umd/UV.js"
+    ></script>
+  </fragment>
+
+  <div id="demo-layout">
+
+    <div id="uv" class="uv"></div>
+
+    <div id="controls">
+      <div class="controls-section">
+        <h3>Content</h3>
+        <select id="manifest-select">
+          {groups.map((group) => (
+            <optgroup label={group.label}>
+              {group.manifests.map((m: any) => (
+                <option value={m["@id"]}>{m.label}</option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
+        <h3>Load IIIF Manifest</h3>
+        <div class="url-input">
+            <input type="text" id="manifest-input" placeholder="Input URL…" />
+        <button id="load-btn">Load</button></div>
+      </div>
+    </div>
+
+  </div>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const select = document.getElementById("manifest-select");
+      const manifestInput = document.getElementById("manifest-input");
+      const loadButton = document.getElementById("load-btn");
+
+      let uv = null;
+      let currentManifestId = select.options[0]?.value ?? null;
+
+      function loadManifest(manifestId) {
+        if (!manifestId) return;
+        currentManifestId = manifestId;
+
+        if (uv) {
+          try { uv.dispose(); } catch {}
+          uv = null;
+        }
+
+        const urlAdapter = new UV.IIIFURLAdapter();
+        const data = urlAdapter.getInitialData({ iiifManifestId: manifestId });
+        uv = UV.init("uv", data);
+        urlAdapter.bindTo(uv);
+      }
+
+      // load first manifest on page load
+      loadManifest(currentManifestId);
+
+      select.addEventListener("change", () => {
+        loadManifest(select.value);
+      });
+
+      loadButton.addEventListener("click", () => {
+        const url = manifestInput.value.trim();
+        if (url) loadManifest(url);
+      });
+
+      manifestInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") loadButton.click();
+      });
+    });
+  </script>
+
+</BaseLayout>
