@@ -1,15 +1,16 @@
 ---
-import { Debug } from 'astro:components';
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
-import MainNav from './MainNav.astro';
-const locale = Astro.currentLocale;
-const urlPrefix = locale === 'en' ? '' : `/${locale}`;
-const currentPath = Astro.url.pathname;
-const href = (p: string) => `${urlPrefix}${p}`;
-const currentPathWithoutLocale = currentPath.replace(urlPrefix, '') || '/';
+import { useTranslations } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+import MainNav from './MainNav.astro';
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+const urlPrefix = locale === 'en' ? '' : `/${locale}`;
+const currentPathWithoutLocale =
+  Astro.url.pathname.replace(urlPrefix, '') || '/';
+const href = (p: string) => `${urlPrefix}${p}`;
 ---
 
 <header class="site-header">
