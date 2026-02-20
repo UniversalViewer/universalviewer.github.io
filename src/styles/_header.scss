@@ -8,7 +8,11 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: remval(16);
+  padding: remval(16) 0;
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    padding: remval(16);
+  }
 }
 
 .logo-link {
@@ -21,6 +25,11 @@
   color: #fff;
   font-size: remval(30);
   position: relative;
+  margin-left: remval(16);
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    margin-left: 0;
+  }
 
   span {
     position: absolute;
@@ -45,7 +54,7 @@
   order: 3;
   background: transparent;
   border: none;
-  margin: 0 0 0 remval(16);
+  margin: 0 remval(16);
   padding: 0;
   position: relative;
   width: remval(44);
