@@ -1,21 +1,24 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import { useTranslations } from '@i18n/utils';
 import type { Lang } from '@i18n/ui';
-
 import MainNav from './MainNav.astro';
 
 const locale = Astro.currentLocale as Lang;
+
 const t = useTranslations(locale);
 
-const urlPrefix = locale === 'en' ? '' : `/${locale}`;
-const currentPathWithoutLocale =
-  Astro.url.pathname.replace(urlPrefix, '') || '/';
-const href = (p: string) => `${urlPrefix}${p}`;
+const currentPathWithoutLocale = Astro.url.pathname.replace(
+  new RegExp(`^/(?:${locale})(/|$)`, 'i'),
+  '/',
+);
+
+const homeUrl = getRelativeLocaleUrl(locale, '');
 ---
 
 <header class="site-header">
   <a
-    href={href('')}
+    href={homeUrl}
     class="logo-link"
   >
     <img
