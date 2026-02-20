@@ -7,7 +7,4 @@ export default defineConfig({
     locales: ['en', 'cy'],
     defaultLocale: 'en',
   },
-  redirects: {
-    '/cy/blog': '/blog',
-  },
 });
