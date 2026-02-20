@@ -2,6 +2,7 @@
 title: 'Universal Viewer v4.1.0 is here!'
 description: 'Another test blog post taken from an old BL blog'
 date: 2026-02-16
+language: 'en'
 author: 'Universal Viewer Steering Group'
 cover: ../blog/images/uv.png
 coverAlt: 'A screenshot of Universal Viewer v4.1.0'

@@ -3,8 +3,11 @@ import { getCollection } from 'astro:content';
 import { siteConfig } from '@config/site';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogPostItem from '../../components/BlogPostItem.astro';
+import { date } from 'astro:schema';
 
-const posts = await getCollection('blog');
+const posts = await getCollection('blog', ({ data }) => {
+  return data.language == 'en';
+});
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const pageTitle = 'Blog';

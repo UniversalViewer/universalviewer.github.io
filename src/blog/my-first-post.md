@@ -2,6 +2,7 @@
 title: 'My first post!'
 description: 'This is the first post for the new site'
 date: 2026-02-12
+language: 'en'
 author: 'Universal Viewer'
 ---
 
