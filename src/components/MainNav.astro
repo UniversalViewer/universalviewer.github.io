@@ -1,10 +1,12 @@
 ---
-import { getLangFromUrl, useTranslations } from '@i18n/utils';
-const locale = Astro.currentLocale;
+import { useTranslations } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
 const urlPrefix = locale === 'en' ? '' : `/${locale}`;
 const href = (p: string) => `${urlPrefix}${p}`;
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
 <nav
