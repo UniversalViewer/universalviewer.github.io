@@ -1,16 +1,16 @@
 ---
 title: 'Universal Viewer v4.1.0 is here!'
 description: 'Another test blog post taken from an old BL blog'
-date: 2026-02-17
+date: 2026-02-16
+language: 'en'
 author: 'Universal Viewer Steering Group'
 cover: ../blog/images/uv.png
 coverAlt: 'A screenshot of Universal Viewer v4.1.0'
 ---
 
-
 We're excited to announce the release of [Universal Viewer](https://universalviewer.io/) (UV) version 4.1.0, packed with new updates and features.
 
-*New image manipulation controls in UV 4.1.0*
+_New image manipulation controls in UV 4.1.0_
 
 This version builds on the momentum from our [community accessibility sprint](https://blogs.bl.uk/digital-scholarship/2024/11/working-together-the-community-sprint-experience-.html), where the wider UV community came together to address key usability challenges. Highlights of the new release include:
 

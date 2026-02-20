@@ -7,14 +7,15 @@
   width: 100%;
   display: none;
   order: 4;
+  margin-top: remval(16);
+  margin-bottom: remval(-16);
+  background-color: #0003;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
-    margin-left: auto;
     width: auto;
-  }
-
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     display: block;
+    margin: 0 0 0 auto;
+    background-color: transparent;
   }
 
   &.show {
@@ -41,7 +42,7 @@
 
 .main-nav-link {
   display: block;
-  padding: remval(12) remval(16);
+  padding: remval(16);
   color: var(--uv-main-nav-link-color);
   text-decoration: none;
   text-underline-offset: remval(2);
@@ -49,10 +50,10 @@
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     text-align: left;
+    padding: remval(12) remval(16);
   }
 
   &:hover {
     text-decoration: underline;
-    background-color: var(--uv-main-nav-link-hover-bg-color);
   }
 }

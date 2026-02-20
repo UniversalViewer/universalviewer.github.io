@@ -15,39 +15,46 @@
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     order: 5;
-    margin-left: 0;
+    margin-left: remval(8);
   }
 }
 
+.language-flag {
+  line-height: remval(24);
+  width: remval(32);
+  min-width: remval(32);
+}
+
+.language-name {
+  display: block;
+}
+
 .show-languages-button {
-  background: #222;
+  background: transparent;
   color: #fff;
   display: block;
-  border: none;
   margin: 0 auto;
-  padding: 0 remval(16);
+  padding: 0 remval(10);
   height: remval(44);
-  border-radius: remval(4);
-  text-transform: uppercase;
-
-  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
-    margin-left: remval(16);
-  }
+  min-width: remval(44);
+  border-radius: remval(6);
+  border: none;
+  cursor: pointer;
 
   &:hover {
-    background: red;
+    background: #0009;
   }
 }
 
 .lang-nav {
   display: none;
   position: absolute;
-  background: #333;
+  background: #fff;
   border-radius: remval(4);
-  width: remval(100);
   top: calc(100% + remval(10));
   left: 50%;
   transform: translateX(-50%);
+  border: 1px solid #ddd;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
     right: 0;
@@ -63,8 +70,7 @@
 .lang-nav-list {
   list-style: none;
   margin: 0;
-  padding: 0;
-  width: 100%;
+  padding: remval(4) remval(12);
 }
 
 .lang-nav-list-item {
@@ -72,18 +78,18 @@
 }
 
 .lang-nav-link {
-  display: block;
+  display: flex;
+  gap: remval(12);
   text-decoration: none;
-  color: #fff;
   height: remval(44);
   line-height: remval(46);
   text-align: center;
-  text-transform: uppercase;
+  padding: 0;
 
   &:hover {
-    border-radius: remval(4);
-    background-color: red;
-    text-decoration: underline;
-    text-underline-offset: remval(2);
+    .language-name {
+      text-decoration: underline;
+      text-underline-offset: remval(2);
+    }
   }
 }

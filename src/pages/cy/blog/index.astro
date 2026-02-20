@@ -1,4 +1,46 @@
 ---
+import { getCollection } from 'astro:content';
+import { siteConfig } from '@config/site';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BlogPostItem from '@components/BlogPostItem.astro';
 
+const posts = await getCollection('blog', ({ data }) => {
+  return data.language == Astro.currentLocale;
+});
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const pageTitle = 'Blog';
+
+const postsToShow = posts.slice(0, siteConfig.blog.postsPerPage);
 ---
-CY blog index
+
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="blog-index-main"
+>
+  <header class="blog-header">
+    <div class="blog-hero">
+      <h1>Blog</h1>
+    </div>
+  </header>
+
+  <section class="post-list">
+
+    {
+      postsToShow.length > 0 ? (
+        <ul>
+          {postsToShow.map((post) => (
+            <BlogPostItem post={post} />
+          ))}
+        </ul>
+        <nav class="pagination">
+          todo: check that there are actually any older posts
+          <a href="/blog/page/2">Older posts →</a>
+        </nav>
+      ) : (
+        <p>No posts</p>
+      )
+    }
+
+  </section>
+</BaseLayout>

@@ -1,4 +1,5 @@
 ---
+import 'flag-icons/css/flag-icons.min.css';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { useTranslations } from '@i18n/utils';
 import type { Lang } from '@i18n/ui';
@@ -14,6 +15,21 @@ const currentPathWithoutLocale = Astro.url.pathname.replace(
 );
 
 const homeUrl = getRelativeLocaleUrl(locale, '');
+
+const localeMap = {
+  en: {
+    localeName: 'En',
+    localeFlagClass: 'gb',
+    localeLangKey: 'locale.english',
+  },
+  cy: {
+    localeName: 'Cy',
+    localeFlagClass: 'gb-wls',
+    localeLangKey: 'locale.welsh',
+  },
+};
+
+const { localeName, localeFlagClass, localeLangKey } = localeMap[locale];
 ---
 
 <header class="site-header">
@@ -40,7 +56,11 @@ const homeUrl = getRelativeLocaleUrl(locale, '');
       class="show-languages-button"
       aria-label="Select language"
       aria-expanded="false"
-      >{locale}</button
+    >
+      <span
+        class={`fi fi-${localeFlagClass} language-flag current-language-flag`}
+      ></span>
+      <!-- {localeName} --></button
     >
     <nav
       id="langNav"
@@ -51,15 +71,19 @@ const homeUrl = getRelativeLocaleUrl(locale, '');
           <a
             href={currentPathWithoutLocale}
             class="lang-nav-link"
-            >en</a
           >
+            <span class="fi fi-gb language-flag"></span>
+            <span class="language-name">English</span>
+          </a>
         </li>
         <li class="lang-nav-list-item">
           <a
             href={`/cy${currentPathWithoutLocale}`}
             class="lang-nav-link"
-            >cy</a
           >
+            <span class="fi fi-gb-wls language-flag"></span>
+            <span class="language-name">Welsh</span>
+          </a>
         </li>
       </ul>
     </nav>
@@ -72,8 +96,12 @@ const homeUrl = getRelativeLocaleUrl(locale, '');
     langNav?.classList.toggle('show');
   });
 
-  document.addEventListener('click', (e) => {
-    if (e.target != langButton) {
+  document.addEventListener('click', (e: Event) => {
+    const target = e.target;
+
+    if (!(target instanceof HTMLElement)) return;
+
+    if (target != langButton && target.parentElement != langButton) {
       langNav?.classList.remove('show');
     }
   });
