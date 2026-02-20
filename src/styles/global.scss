@@ -2,6 +2,7 @@
 @use 'fn' as *;
 @use 'vars' as *;
 @use 'props';
+@use 'fonts';
 @use 'header';
 @use 'main-nav';
 @use 'lang-nav';
@@ -13,7 +14,6 @@
 
 html {
   background-color: #f1f5f9;
-  font-family: sans-serif;
 }
 
 *,
