@@ -1,24 +1,24 @@
 ---
-import { Debug } from "astro:components";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import type { CollectionEntry } from "astro:content";
-import { getCollection } from "astro:content";
-import BlogPostItem from "../../../components/BlogPostItem.astro";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import { siteConfig } from '@config/site';
+import BlogPostItem from '../../../components/BlogPostItem.astro';
 
 // paginate:any is just to stop TS error which isn't a real error in Astro
 export async function getStaticPaths({ paginate }: { paginate: any }) {
-  const posts = (await getCollection("blog")).sort(
+  const posts = (await getCollection('blog')).sort(
     (a, b) => b.data.date.getTime() - a.data.date.getTime(),
   );
 
-  return paginate(posts, { pageSize: 2 });
+  return paginate(posts, { pageSize: siteConfig.blog.postsPerPage });
 }
 
 // manually defined so vscode doesn't show errors
 // it will still work without
 interface Props {
   page: {
-    data: CollectionEntry<"blog">[];
+    data: CollectionEntry<'blog'>[];
     start: number;
     end: number;
     size: number;
@@ -33,10 +33,13 @@ interface Props {
 }
 
 const { page } = Astro.props as Props;
-const pageTitle = "Blog page " + page.currentPage;
+const pageTitle = 'Blog page ' + page.currentPage;
 ---
 
-<BaseLayout pageTitle={pageTitle} mainClass="blog-page-main">
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="blog-page-main"
+>
   <div class="blog-header">
     <h1>
       Blog {page.currentPage > 1 && <span> Page {page.currentPage}</span>}
