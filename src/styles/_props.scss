@@ -4,11 +4,17 @@
 
 :root {
   // COLORS
-  --uv-primary: #212;
+  --uv-primary: #3e114e;
+  --uv-primary-dark: rgb(33 9 42);
+  --uv-secondary: #0098a6;
+  --uv-white: #fbfbfc;
 
   // GENERIC
   --uv-bg-color: var(--uv-primary);
-  --uv-header-bg-color: var(--uv-primary);
+  --uv-header-bg-color: var(--uv-secondary);
+
+  // LOGO
+  --uv-logo-bg-color: var(--uv-primary);
 
   // MAIN NAV
   --uv-main-nav-link-color: #eee;
