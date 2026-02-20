@@ -1,5 +1,13 @@
 ---
+import { getLangFromUrl, useTranslations } from '@i18n/utils';
+const locale = Astro.currentLocale;
+const urlPrefix = locale === 'en' ? '' : `/${locale}`;
+const currentPath = Astro.url.pathname;
+const href = (p: string) => `${urlPrefix}${p}`;
+const currentPathWithoutLocale = currentPath.replace(urlPrefix, '') || '/';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer>
@@ -13,16 +21,16 @@
       <h3>Links</h3>
       <ul>
         <li>
-          <a href="/policy">Policies</a>
+          <a href={href('/policy')}>Policies</a>
         </li>
         <li>
-          <a href="/contact">Contact Us</a>
+          <a href={href('/contact')}>Contact Us</a>
         </li>
         <li>
-          <a href="/accessibility">Accessibility</a>
+          <a href={href('/accessibility')}>Accessibility</a>
         </li>
         <li>
-          <a href="/roadmap">Roadmap & Strategy</a>
+          <a href={href('/roadmap')}>Roadmap & Strategy</a>
         </li>
       </ul>
     </div>
@@ -34,28 +42,32 @@
           <a
             href="https://github.com/universalviewer"
             target="_blank"
-            rel="noopener">GitHub</a
+            rel="noopener"
+            >GitHub</a
           >
         </li>
         <li>
           <a
             href="https://bsky.app/profile/universalviewer.io"
             target="_blank"
-            rel="noopener">BlueSky</a
+            rel="noopener"
+            >BlueSky</a
           >
         </li>
         <li>
           <a
             href="https://glammr.us/@universalviewer"
             target="_blank"
-            rel="noopener">Mastodon</a
+            rel="noopener"
+            >Mastodon</a
           >
         </li>
         <li>
           <a
             href="https://universalviewer.slack.com"
             target="_blank"
-            rel="noopener">Slack</a
+            rel="noopener"
+            >Slack</a
           >
         </li>
       </ul>
