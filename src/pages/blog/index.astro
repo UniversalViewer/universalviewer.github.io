@@ -2,15 +2,16 @@
 import { getCollection } from 'astro:content';
 import { siteConfig } from '@config/site';
 import BaseLayout from '@layouts/BaseLayout.astro';
-import BlogPostItem from '../../components/BlogPostItem.astro';
-import { date } from 'astro:schema';
+import BlogPostItem from '@components/BlogPostItem.astro';
 
 const posts = await getCollection('blog', ({ data }) => {
-  return data.language == 'en';
+  return data.language == Astro.currentLocale;
 });
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const pageTitle = 'Blog';
+
+const postsToShow = posts.slice(0, siteConfig.blog.postsPerPage);
 ---
 
 <BaseLayout
@@ -24,13 +25,17 @@ const pageTitle = 'Blog';
   </header>
 
   <section class="post-list">
-    <ul>
-      {
-        posts
-          .slice(0, siteConfig.blog.postsPerPage)
-          .map((post) => <BlogPostItem post={post} />)
-      }
-    </ul>
+    {
+      postsToShow.length > 0 ? (
+        <ul>
+          {postsToShow.map((post) => (
+            <BlogPostItem post={post} />
+          ))}
+        </ul>
+      ) : (
+        <p>No posts</p>
+      )
+    }
 
     <nav class="pagination">
       todo: check that there are actually any older posts
