@@ -1,12 +1,18 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import { useTranslations } from '@i18n/utils';
 import type { Lang } from '@i18n/ui';
 
 const locale = Astro.currentLocale as Lang;
+
 const t = useTranslations(locale);
 
-const urlPrefix = locale === 'en' ? '' : `/${locale}`;
-const href = (p: string) => `${urlPrefix}${p}`;
+const homeUrl = getRelativeLocaleUrl(locale, '');
+const demoUrl = getRelativeLocaleUrl(locale, 'demo');
+const eventsUrl = getRelativeLocaleUrl(locale, 'events');
+const docsUrl = getRelativeLocaleUrl(locale, 'docs');
+const blogUrl = getRelativeLocaleUrl(locale, 'blog');
+const commUrl = getRelativeLocaleUrl(locale, 'community');
 ---
 
 <nav
@@ -16,42 +22,42 @@ const href = (p: string) => `${urlPrefix}${p}`;
   <ul class="main-nav-list">
     <li class="main-nav-list-item">
       <a
-        href={href('/')}
+        href={homeUrl}
         class="main-nav-link"
         >{t('nav.home')}</a
       >
     </li>
     <li class="main-nav-list-item">
       <a
-        href={href('/demo')}
+        href={demoUrl}
         class="main-nav-link"
         >{t('nav.demo')}</a
       >
     </li>
     <li class="main-nav-list-item">
       <a
-        href={href('/events')}
+        href={eventsUrl}
         class="main-nav-link"
         >{t('nav.events')}</a
       >
     </li>
     <li class="main-nav-list-item">
       <a
-        href={href('/docs')}
+        href={docsUrl}
         class="main-nav-link"
         >{t('nav.documentation')}</a
       >
     </li>
     <li class="main-nav-list-item">
       <a
-        href={href('/blog')}
+        href={blogUrl}
         class="main-nav-link"
         >{t('nav.blog')}</a
       >
     </li>
     <li class="main-nav-list-item">
       <a
-        href={href('/community')}
+        href={commUrl}
         class="main-nav-link"
         >{t('nav.community')}</a
       >

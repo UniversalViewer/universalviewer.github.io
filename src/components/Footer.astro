@@ -1,12 +1,16 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
 import { useTranslations } from '@i18n/utils';
 import type { Lang } from '@i18n/ui';
 
 const locale = Astro.currentLocale as Lang;
+
 const t = useTranslations(locale);
 
-const urlPrefix = locale === 'en' ? '' : `/${locale}`;
-const href = (p: string) => `${urlPrefix}${p}`;
+const policyUrl = getRelativeLocaleUrl(locale, 'policy');
+const contactUrl = getRelativeLocaleUrl(locale, 'contact');
+const accessibilityUrl = getRelativeLocaleUrl(locale, 'accessibility');
+const roadmapUrl = getRelativeLocaleUrl(locale, 'roadmap');
 ---
 
 <footer>
@@ -20,16 +24,16 @@ const href = (p: string) => `${urlPrefix}${p}`;
       <h3>Links</h3>
       <ul>
         <li>
-          <a href={href('/policy')}>Policies</a>
+          <a href={policyUrl}>Policies</a>
         </li>
         <li>
-          <a href={href('/contact')}>Contact Us</a>
+          <a href={contactUrl}>Contact Us</a>
         </li>
         <li>
-          <a href={href('/accessibility')}>Accessibility</a>
+          <a href={accessibilityUrl}>Accessibility</a>
         </li>
         <li>
-          <a href={href('/roadmap')}>Roadmap & Strategy</a>
+          <a href={roadmapUrl}>Roadmap & Strategy</a>
         </li>
       </ul>
     </div>

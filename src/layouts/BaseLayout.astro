@@ -1,28 +1,50 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import "../styles/global.scss";
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.scss';
 
 interface Props {
   pageTitle?: string;
   mainClass?: string;
 }
 
-const { pageTitle = "Universal Viewer", mainClass } = Astro.props;
+const { pageTitle = 'Universal Viewer', mainClass } = Astro.props;
 ---
 
-<html lang="en">
+<html
+  lang="en"
+  class="dm-sans-regular"
+>
   <head>
     <meta charset="utf-8" />
     <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
     <title>{pageTitle}</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
     <slot name="head" />
   </head>
   <body>
     <Header />
-    <main class:list={["main", mainClass]}>
+    <main class:list={['main', mainClass]}>
       <slot />
     </main>
     <Footer />
