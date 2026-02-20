@@ -19,7 +19,6 @@
   aspect-ratio: cos(30deg);
   clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
   color: #fff;
-  text-decoration: none;
   font-size: remval(30);
   position: relative;
 
@@ -30,6 +29,15 @@
     width: 100%;
     text-align: center;
     letter-spacing: remval(1);
+  }
+
+  &:hover {
+    background-color: var(--uv-logo-hover-bg-color);
+
+    span {
+      text-decoration: underline;
+      text-underline-offset: remval(3);
+    }
   }
 }
 
