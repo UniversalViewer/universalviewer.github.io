@@ -22,6 +22,10 @@ const pageTitle = "Demo";
     <div id="controls">
       <div class="controls-section" id="content-control">
         <h3>Content</h3>
+        <p>
+          Pick a content type from this menu to see how the Universal Viewer
+          presents different kinds of materials.
+        </p>
         <select id="manifest-select">
           {
             collection.manifests.map((m: any) => (
@@ -29,7 +33,14 @@ const pageTitle = "Demo";
             ))
           }
         </select>
+      </div>
+      <div class="controls-section" id="iiif-selection">
         <h3>Load IIIF Manifest</h3>
+        <p>
+          The Universal Viewer supports <a href="https://iiif.io/">IIIF</a> presentation
+          manifests, a common mechanism for content sharing. You can paste any IIIF
+          Manifest URL here, and the UV will display it!
+        </p>
         <div class="url-input">
           <input type="text" id="manifest-input" placeholder="Input URL…" />
           <button id="load-btn">Load</button>
