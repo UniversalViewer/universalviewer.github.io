@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use 'fn' as *;
+@use 'vars' as *;
+
 .dm-mono-light {
   font-family: 'DM Mono', monospace;
   font-weight: 300;
@@ -38,7 +42,6 @@
 // CONFIG
 // ---------------------------------------------
 
-$dm-sans-name: 'DM Sans', sans-serif;
 $dm-sans-prefix: 'dm-sans'; // becomes .dm-sans-regular, .dm-sans-700, etc.
 
 // Weights you want to expose:
