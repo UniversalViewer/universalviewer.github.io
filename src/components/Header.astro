@@ -1,5 +1,4 @@
 ---
-import 'flag-icons/css/flag-icons.min.css';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { useTranslations } from '@i18n/utils';
 import type { Lang } from '@i18n/ui';
@@ -18,18 +17,16 @@ const homeUrl = getRelativeLocaleUrl(locale, '');
 
 const localeMap = {
   en: {
-    localeName: 'En',
-    localeFlagClass: 'gb',
+    localeName: 'English',
     localeLangKey: 'locale.english',
   },
   cy: {
-    localeName: 'Cy',
-    localeFlagClass: 'gb-wls',
+    localeName: 'Cymraeg',
     localeLangKey: 'locale.welsh',
   },
 };
 
-const { localeName, localeFlagClass, localeLangKey } = localeMap[locale];
+const { localeName, localeLangKey } = localeMap[locale];
 ---
 
 <header class="site-header">
@@ -57,10 +54,7 @@ const { localeName, localeFlagClass, localeLangKey } = localeMap[locale];
       aria-label="Select language"
       aria-expanded="false"
     >
-      <span
-        class={`fi fi-${localeFlagClass} language-flag current-language-flag`}
-      ></span>
-      <!-- {localeName} --></button
+      {localeName}</button
     >
     <nav
       id="langNav"
@@ -72,7 +66,6 @@ const { localeName, localeFlagClass, localeLangKey } = localeMap[locale];
             href={currentPathWithoutLocale}
             class="lang-nav-link"
           >
-            <span class="fi fi-gb language-flag"></span>
             <span class="language-name">English</span>
           </a>
         </li>
@@ -81,8 +74,7 @@ const { localeName, localeFlagClass, localeLangKey } = localeMap[locale];
             href={`/cy${currentPathWithoutLocale}`}
             class="lang-nav-link"
           >
-            <span class="fi fi-gb-wls language-flag"></span>
-            <span class="language-name">Welsh</span>
+            <span class="language-name">Cymraeg</span>
           </a>
         </li>
       </ul>
