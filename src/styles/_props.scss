@@ -13,6 +13,9 @@
   --uv-bg-color: var(--uv-primary);
   --uv-header-bg-color: var(--uv-secondary);
 
+  // HEADER
+  --uv-header-position: static;
+
   // LOGO
   --uv-logo-bg-color: var(--uv-primary);
   --uv-logo-hover-bg-color: var(--uv-primary-dark);
@@ -20,5 +23,6 @@
   // MAIN NAV
   --uv-main-nav-link-color: var(--uv-white);
 
-  // HOMEPAGE
+  // LANG NAV
+  --uv-lang-nav-font-family: #{$dm-sans-name}; // HOMEPAGE
 }
