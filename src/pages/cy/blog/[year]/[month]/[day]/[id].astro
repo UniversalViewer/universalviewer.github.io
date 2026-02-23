@@ -1,5 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BlogLayout from '@layouts/BlogLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -17,21 +19,40 @@ export async function getStaticPaths() {
         day,
         id: post.id,
       },
-      props: { target: `/blog/${year}/${month}/${day}/${post.id}` },
+      props: { post },
     };
   });
 }
 
-const { target } = Astro.props;
+const { id } = Astro.params;
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// 1. Load all posts
+const posts = await getCollection('blog');
+
+// 2. sort newest first
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// 3. Find current post
+const index = posts.findIndex((p) => p.id === id);
+const entry = posts[index];
+if (!entry) throw new Error(`Post not found: ${id}`);
+
+// 4. Compute previous & next
+const prev = posts[index + 1]; // because sorted descending
+const next = posts[index - 1];
 ---
 
-<!-- <head>
-  <meta http-equiv="refresh" content={`0; url=${target}`} />
-  <meta name="robots" content="noindex" />
-  <link rel="canonical" href={target} />
-</head>
-<body>
-  <a href={target}>Redirecting to main blog...</a>
-</body> -->I
-used to redirect. Now I need to show the blog post selected, regardless of
-whether it's in CY or not
+<BaseLayout
+  pageTitle={post.data.title}
+  mainClass="blog-post-main"
+>
+  <BlogLayout
+    post={post}
+    prev={prev}
+    next={next}
+  >
+    <Content />
+  </BlogLayout>
+</BaseLayout>
