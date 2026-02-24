@@ -5,34 +5,34 @@
   "label": "Demo Manifests",
   "manifests": [
     {
-      "label": "Book",
+      "label": "Book | Wellcome Library",
       "@type": "sc:Manifest",
       "@id": "https://wellcomelibrary.org/iiif/b18035723/manifest"
     },
     {
-      "label": "Manuscript",
+      "label": "Manuscript | British Library",
       "@type": "sc:Manifest",
       "@id": "https://bl.digirati.io/iiif/ark:/81055/vdc_100104060212.0x000001"
     },
     {
       "@id": "https://iiif.library.ucla.edu/ark%3A%2F21198%2Fzz001nwthk/manifest",
       "@type": "sc:Manifest",
-      "label": "Scroll (Vertical)"
+      "label": "Scroll (Vertical) | UCLA Library"
     },
     {
       "@id": "https://data.idp.bl.uk/iiif/3/manifest/967B14BF8CFF43A3B12837F2829B7BAE",
       "@type": "sc:Manifest",
-      "label": "Scroll (Horizontal)"
+      "label": "Scroll (Horizontal) | British Library"
     },
     {
       "@id": "https://wellcomelibrary.org/iiif/b23984958/manifest",
       "@type": "sc:Manifest",
-      "label": "Image"
+      "label": "Image | Wellcome Collection"
     },
     {
       "@id": "https://damsssl.llgc.org.uk/iiif/2.0/2373813/manifest.json",
       "@type": "sc:Collection",
-      "label": "IIIF Collection"
+      "label": "IIIF Collection | The National Library of Wales"
     },
     {
       "@id": "https://biiif-template-example-3kntb3jpl-mnemoscene.vercel.app/audio/index.json",
@@ -53,7 +53,7 @@
       "visible": true
     },
     {
-      "label": "PDF",
+      "label": "PDF | Villanova University",
       "@type": "sc:Manifest",
       "@id": "https://digital.library.villanova.edu/Item/vudl:294631/Manifest",
       "visible": true

@@ -1,11 +1,241 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-const pageTitle = 'Home';
+import BaseLayout from "@layouts/BaseLayout.astro";
+const pageTitle = "Home";
 ---
 
-<BaseLayout
-  pageTitle={pageTitle}
-  mainClass="home-main"
->
-  Good morning!
+<BaseLayout pageTitle={pageTitle} mainClass="home-main">
+  <fragment slot="head">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/universalviewer@latest/dist/uv.css"
+    />
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/universalviewer@latest/dist/umd/UV.js"
+    ></script>
+  </fragment>
+
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h3>One interface for all of your content</h3>
+      <iframe
+        id="uv"
+        src="https://universalviewer.dev/uv.html#?manifest=https%3A%2F%2Fwellcomelibrary.org%2Fiiif%2Fb18035723%2Fmanifest"
+        allowfullscreen
+        frameborder="0"
+        title="Universal Viewer"></iframe>
+      <div class="manifest-input">
+        <input
+          type="text"
+          id="manifest-url"
+          placeholder="Paste a IIIF manifest URL…"
+        />
+        <button id="manifest-load">View</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section id="getting-started">
+    <div class="container">
+      <h2>Getting Started</h2>
+      <div class="gs-grid">
+        <a href="/docs" class="gs-card">
+          <span>Are you integrating UV?</span>
+        </a>
+        <a href="/community" class="gs-card">
+          <span>Are you participating in the community?</span>
+        </a>
+        <a href="/demo" class="gs-card">
+          <span>Do you want to see what UV does?</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="container">
+      <h2>Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Zoomable</h3>
+          <p>OpenSeadragon image zooming using the IIIF image API</p>
+        </div>
+        <div class="feature-card">
+          <h3>Embeddable</h3>
+          <p>
+            YouTube-style embedding with deep links to specific pages/zoom
+            regions.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Translatable</h3>
+          <p>
+            Internationalised UI supporting English, Welsh, Swedish and more.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Configurable</h3>
+          <p>
+            The UV is highly configurable with an array of customisable
+            settings.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Accessible</h3>
+          <p>
+            Built with keyboard navigation and screen reader support in mind.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Extensible</h3>
+          <p>Supports 3D, audio, video, and pdf viewing experiences.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Searchable</h3>
+          <p>
+            Supports search and autocomplete service integration with overlaid
+            search results.
+          </p>
+        </div>
+        <div class="feature-card">
+          <h3>Securable</h3>
+          <p>
+            The UV supports the IIIF Auth API, so your content can be password
+            protected.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase -->
+  <section id="showcase">
+    <div class="container">
+      <h2>Showcase</h2>
+    </div>
+    <div class="showcase-grid">
+      <a
+        href="https://digital.library.villanova.edu/Item/vudl:92879"
+        class="showcase-box"
+      >
+        <img src="/img/showcase/villanova.jpg" alt="Villanova University" />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category">
+              Villanova University: Falvey Memorial Library
+            </div>
+            <div class="project-name">
+              Portrait gallery of pugilists of America and their contemporaries
+            </div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="https://viewer.library.wales/4389767"
+        data-manifest="https://damsssl.llgc.org.uk/iiif/2.0/4389767/manifest.json"
+        class="showcase-box"
+      >
+        <img src="img/showcase/nlw.jpg" class="img-responsive" alt="" />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category text-faded">
+              National Library of Wales
+            </div>
+            <div class="project-name">
+              Cardiganshire Constabulary register of criminals
+            </div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="https://d.lib.ncsu.edu/collections/catalog/nubian-message-1992-11-30"
+        data-manifest="https://d.lib.ncsu.edu/collections/catalog/nubian-message-1992-11-30/manifest"
+        class="showcase-box"
+      >
+        <img src="img/showcase/ncsu.jpg" class="img-responsive" alt="" />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category text-faded">NCSU Libraries</div>
+            <div class="project-name">The Nubian Message</div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/manifests/ark:/81055/man_10000006.0x000001"
+        data-manifest="https://bl.digirati.io/manifests/ark:/81055/man_10000006.0x000001"
+        class="showcase-box"
+      >
+        <img src="img/showcase/bl.jpg" class="img-responsive" alt="" />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category text-faded">The British Library</div>
+            <div class="project-name">Lindisfarne Gospels</div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="https://iiif.bodleian.ox.ac.uk/iiif/viewer/60834383-7146-41ab-bfe1-48ee97bc04be"
+        data-manifest="https://iiif.bodleian.ox.ac.uk/iiif/manifest/60834383-7146-41ab-bfe1-48ee97bc04be.json"
+        class="showcase-box"
+      >
+        <img src="img/showcase/bodleian.jpg" class="img-responsive" alt="" />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category text-faded">
+              Bodleian Libraries, University of Oxford
+            </div>
+            <div class="project-name">MS. Bodl. 264</div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="https://sok.riksarkivet.se/bildvisning/R0000004_00001?viewer=UV"
+        data-manifest="https://iiif.riksarkivet.se/arkis!R0000004/manifest"
+        class="showcase-box"
+      >
+        <img src="img/showcase/riksarkivet.jpg" class="img-responsive" alt="" />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category text-faded">
+              Riksarkivet (The Swedish National Archives)
+            </div>
+            <div class="project-name">
+              Originaltraktater med främmande makter (traktater)
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Supported By -->
+  <section id="supported-by">
+    <div class="container">
+      <h2>Supported By</h2>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const iframe = document.getElementById("uv");
+      const input = document.getElementById("manifest-url");
+      const button = document.getElementById("manifest-load");
+
+      function loadManifest(url) {
+        iframe.src = `https://universalviewer.dev/uv.html#?manifest=${encodeURIComponent(url)}`;
+      }
+
+      button.addEventListener("click", () => {
+        const url = input.value.trim();
+        if (url) loadManifest(url);
+      });
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") button.click();
+      });
+    });
+  </script>
 </BaseLayout>
