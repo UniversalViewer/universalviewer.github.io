@@ -1,20 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
-import { siteConfig, blogCollectionLocales } from '@config/site';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { useTranslations } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+import { siteConfig } from '@config/site';
+import { getBlogPosts } from '@utils/blog';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogPostItem from '@components/BlogPostItem.astro';
 
-// TODO: Make helper function for this that accepts default and optional locale posts
-const defaultPosts = await getCollection(blogCollectionLocales['en']);
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+const blogPageTwoUrl = getRelativeLocaleUrl(locale, '/blog/page/2');
 
-const postsMap = new Map();
-
-for (const post of defaultPosts) {
-  postsMap.set(post.id, post);
-}
-
-const posts = Array.from(postsMap.values());
-posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = await getBlogPosts({ sort: true });
 
 const pageTitle = 'Blog';
 const morePages = Math.ceil(posts.length / siteConfig.blog.postsPerPage) > 1;
@@ -46,7 +43,7 @@ const postsToShow = posts.slice(0, siteConfig.blog.postsPerPage);
     {
       morePages && (
         <nav class="pagination blog-pagination">
-          <a href="/blog/page/2">Older posts →</a>
+          <a href={blogPageTwoUrl}>{t('blog.olderPosts')} &rarr;</a>
         </nav>
       )
     }

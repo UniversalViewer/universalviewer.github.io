@@ -5,4 +5,7 @@ export default {
     'nav.documentation': 'Documentation',
     'nav.blog': 'Blog',
     'nav.community': 'Community',
+
+    'blog.heading': 'Blog',
+    'blog.olderPosts': 'Older posts',
 }

@@ -25,7 +25,7 @@ function postUrl(p: any) {
   const d = new Date(p.data.date);
   return getRelativeLocaleUrl(
     locale,
-    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${post.id}`,
+    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${p.id}`,
   );
 }
 ---

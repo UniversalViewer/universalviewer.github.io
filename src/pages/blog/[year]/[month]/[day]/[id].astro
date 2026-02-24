@@ -1,17 +1,18 @@
 ---
-import { Debug } from "astro:components";
-import { getCollection, render } from "astro:content";
-import BaseLayout from "@layouts/BaseLayout.astro";
-import BlogLayout from "@layouts/BlogLayout.astro";
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import BlogLayout from '@layouts/BlogLayout.astro';
+import { siteConfig, blogCollectionLocales } from '@config/site';
+import { getBlogPosts } from '@utils/blog';
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getBlogPosts();
 
   return posts.map((post) => {
     const d = new Date(post.data.date);
     const year = d.getFullYear().toString();
-    const month = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
 
     return {
       params: {
@@ -29,11 +30,7 @@ const { id } = Astro.params;
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-// 1. Load all posts
-const posts = await getCollection("blog");
-
-// 2. sort newest first
-posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = await getBlogPosts({ sort: true });
 
 // 3. Find current post
 const index = posts.findIndex((p) => p.id === id);
@@ -45,11 +42,15 @@ const prev = posts[index + 1]; // because sorted descending
 const next = posts[index - 1];
 ---
 
-<!-- <Debug prev={posts} />
-<Debug prev={postUrl(prev)} />
-<Debug prev={postUrl(next)} /> -->
-<BaseLayout pageTitle={post.data.title} mainClass="blog-post-main">
-  <BlogLayout post={post} prev={prev} next={next}>
+<BaseLayout
+  pageTitle={post.data.title}
+  mainClass="blog-post-main"
+>
+  <BlogLayout
+    post={post}
+    prev={prev}
+    next={next}
+  >
     <Content />
   </BlogLayout>
 </BaseLayout>

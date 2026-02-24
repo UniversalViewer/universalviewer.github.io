@@ -5,4 +5,7 @@ export default {
     'nav.documentation': 'Dogfennaeth',
     'nav.blog': 'Blog',
     'nav.community': 'Cymuned',
+
+    'blog.heading': 'Blog',
+    'blog.olderPosts': 'Postiadau hŷn',
 }

@@ -3,22 +3,10 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogLayout from '@layouts/BlogLayout.astro';
 import { siteConfig, blogCollectionLocales } from '@config/site';
+import { getBlogPosts } from '@utils/blog';
 
 export async function getStaticPaths() {
-  const defaultPosts = await getCollection(blogCollectionLocales['en']);
-  const localePosts = await getCollection(blogCollectionLocales['cy']);
-
-  const postsMap = new Map();
-
-  for (const post of defaultPosts) {
-    postsMap.set(post.id, post);
-  }
-
-  for (const post of localePosts) {
-    postsMap.set(post.id, post);
-  }
-
-  const posts = Array.from(postsMap.values());
+  const posts = await getBlogPosts({ locale: 'cy' });
 
   return posts.map((post) => {
     const d = new Date(post.data.date);
@@ -31,7 +19,6 @@ export async function getStaticPaths() {
         year,
         month,
         day,
-        language: post.data.language,
         id: post.id,
       },
       props: { post },
@@ -39,15 +26,11 @@ export async function getStaticPaths() {
   });
 }
 
-const { id, language } = Astro.params;
+const { id } = Astro.params;
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-// 1. Load all posts
-const posts = await getCollection('blog');
-
-// 2. sort newest first
-posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = await getBlogPosts({ sort: true, locale: 'cy' });
 
 // 3. Find current post
 const index = posts.findIndex((p) => p.id === id);
