@@ -15,6 +15,7 @@ const pageTitle = "Home";
     ></script>
   </fragment>
 
+  <!-- UV embed -->
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
@@ -213,29 +214,115 @@ const pageTitle = "Home";
 
   <!-- Supported By -->
   <section id="supported-by">
-    <div class="container">
-      <h2>Supported By</h2>
+    <h2>Supported By</h2>
+
+    <h3>Steering Group Members</h3>
+    <div class="logos-grid" id="steering-logos">
+      <a href="https://www.library.wales" class="logo-item">
+        <img src="/img/logos/llgc-logo.png" alt="National Library of Wales" />
+      </a>
+      <a href="https://www.bl.uk" class="logo-item">
+        <img src="/img/logos/330px-BritishLibrary.png" alt="British Library" />
+      </a>
+      <a href="https://library.villanova.edu" class="logo-item">
+        <img
+          src="/img/logos/villanova-TRANSPARENT.png"
+          alt="Falvey Library, Villanova University"
+        />
+      </a>
+      <a href="https://www.tind.io" class="logo-item">
+        <img src="/img/logos/TIND-logo.png" alt="TIND" />
+      </a>
+      <a href="https://library.princeton.edu" class="logo-item">
+        <img
+          src="/img/logos/princeton university logo.png"
+          alt="Princeton University"
+        />
+      </a>
+      <a href="https://library.ucla.edu" class="logo-item">
+        <img src="/img/logos/ucls-library.png" alt="UCLA Library" />
+      </a>
+      <a href="https://www.st-andrews.ac.uk/library/" class="logo-item">
+        <img
+          src="/img/logos/uni-st-andrews-standard-vertical-black.png"
+          alt="University of St Andrews"
+        />
+      </a>
+      <a href="https://digirati.com" class="logo-item">
+        <img src="/img/logos/digirati-logo.png" alt="Digirati" />
+      </a>
+      <a href="https://mnemoscene.io" class="logo-item">
+        <img src="/img/logos/mnemoscene logo.jfif" alt="Mnemoscene" />
+      </a>
     </div>
+
+    <h3>Major Contributors</h3>
+    <div class="logos-grid" id="contributors-logos">
+      <a href="https://www.britishonlinearchives.com" class="logo-item">
+        <img
+          src="/img/logos/british online archives logo.png"
+          alt="British Online Archives"
+        />
+      </a>
+      <a href="https://www.nls.uk" class="logo-item">
+        <img
+          src="/img/logos/National_Library_of_Scotland_logo.svg.png"
+          alt="National Library of Scotland"
+        />
+      </a>
+      <a href="https://www.notch8.com" class="logo-item">
+        <img src="/img/logos/Notch8_Color.avif" alt="Notch8" />
+      </a>
+      <a href="https://www.peoplescollection.wales" class="logo-item">
+        <!-- <img src="/img/logos/" alt="People's Collection Wales" /> -->
+        logo
+      </a>
+      <a href="https://www.cogapp.com" class="logo-item">
+        <img src="/img/logos/Cogapp_Logo_lg_black.png" alt="Cogapp" />
+      </a>
+      <a href="https://www.vam.ac.uk" class="logo-item">
+        <!-- <img src="/img/logos/" alt="Victoria & Albert Museum" /> -->
+        logo
+      </a>
+      <a href="https://www.riksarkivet.se" class="logo-item">
+        <img
+          src="/img/logos/Riksarkivet-swedish archives-TRANSPARENT.png"
+          alt="Riksarkivet"
+        />
+      </a>
+      <a href="https://github.com/Geoffsc" class="logo-item">Geoff </a>
+    </div>
+    <a href="https://github.com/staceyred" class="logo-item">Stacey </a>
   </section>
-
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-      const iframe = document.getElementById("uv");
-      const input = document.getElementById("manifest-url");
-      const button = document.getElementById("manifest-load");
-
-      function loadManifest(url) {
-        iframe.src = `https://universalviewer.dev/uv.html#?manifest=${encodeURIComponent(url)}`;
-      }
-
-      button.addEventListener("click", () => {
-        const url = input.value.trim();
-        if (url) loadManifest(url);
-      });
-
-      input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") button.click();
-      });
-    });
-  </script>
 </BaseLayout>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const iframe = document.getElementById("uv");
+    const input = document.getElementById("manifest-url");
+    const button = document.getElementById("manifest-load");
+
+    function loadManifest(url) {
+      iframe.src = `https://universalviewer.dev/uv.html#?manifest=${encodeURIComponent(url)}`;
+    }
+
+    button.addEventListener("click", () => {
+      const url = input.value.trim();
+      if (url) loadManifest(url);
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") button.click();
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    ["steering-logos", "contributors-logos"].forEach((id) => {
+      const grid = document.getElementById(id);
+      if (!grid) return;
+      const items = Array.from(grid.children);
+      items.sort(() => Math.random() - 0.5);
+      items.forEach((item) => grid.appendChild(item));
+    });
+  });
+</script>
