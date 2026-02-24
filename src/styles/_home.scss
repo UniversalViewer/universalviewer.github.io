@@ -230,8 +230,43 @@
   }
 }
 
-@media (max-width: 640px) {
-  .gs-grid {
-    grid-template-columns: 1fr;
+// supported by
+#supported-by {
+  padding: 4rem 0;
+  text-align: center;
+
+
+  h3 {
+    font-size: 0.85rem;
+    margin-bottom: 3rem;
+  }
+
+  .logos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 50px;
+      width: auto;
+      max-width: 160px; 
+      object-fit: contain;
+      display: block;
+    }
   }
 }
+
+  @media (max-width: 640px) {
+    .gs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
