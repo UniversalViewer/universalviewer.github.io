@@ -11,24 +11,24 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: remval(16) 0;
+  padding: remval(12) 0;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     --uv-header-position: sticky;
 
-    padding: remval(16);
+    padding: remval(12) remval(16);
   }
 }
 
 .logo-link {
   display: block;
-  height: remval(72);
+  height: remval(56);
   background: var(--uv-logo-bg-color);
   order: 1;
   aspect-ratio: cos(30deg);
   clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
   color: #fff;
-  font-size: remval(30);
+  font-size: remval(20);
   position: relative;
   margin-left: remval(16);
 

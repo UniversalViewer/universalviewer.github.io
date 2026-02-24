@@ -1,27 +1,26 @@
-  .home-main {
-    padding: 0;
+.home-main {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+
+  section {
+    padding: 2rem 0 3rem 0;
     margin: 0;
-    width: 100%;
-    max-width: 100%;
-
-    section {
-      padding: 2rem 0 3rem 0;
-      margin: 0;
-    }
-
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    h2 {
-      font-size: 1.75rem;
-      margin: 0 0 2rem 0;
-      text-align: center;
-    }
   }
 
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    margin: 0 0 2rem 0;
+    text-align: center;
+  }
+}
 
 // UV embed
 #hero {
@@ -37,8 +36,8 @@
     inset: 0;
     background-image: url('/img/header.jpg');
     background-size: cover;
-     background-size: 160%;
-    background-position: center 60% ;
+    background-size: 160%;
+    background-position: center 60%;
     z-index: 0;
   }
 
@@ -48,6 +47,7 @@
 
     h3 {
       color: #fff;
+      text-shadow: 1px 1px 2px #000;
       padding: 2rem 0;
       margin: 0;
     }
@@ -105,63 +105,62 @@
 }
 
 // getting started
-  .gs-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
+.gs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
 
-  .gs-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-    padding: 2rem 1rem;
-    background: #f5f5f5;
-    border: 1px solid #ddd;
-    text-decoration: none;
-    color: inherit;
-    transition: background 0.15s;
-  }
+.gs-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
 
-  .gs-card:hover {
-    background: #eaeaea;
-  }
+.gs-card:hover {
+  background: #eaeaea;
+}
 
 // features
-  #features {
-    background: #fafafa;
-  }
+#features {
+  background: #fafafa;
+}
 
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.25rem;
-  }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
 
-  .feature-card {
-    padding: 1rem 1.25rem;
-    background: #fff;
-    border: 1px solid #e0e0e0;
-    text-align: center;
-  }
+.feature-card {
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
 
-  .feature-card h3 {
-    font-size: 1rem;
-    margin: 0 0 0.25rem 0;
-  }
+.feature-card h3 {
+  font-size: 1rem;
+  margin: 0 0 0.25rem 0;
+}
 
-  .feature-card p {
-    font-size: 0.9rem;
-    color: #555;
-    margin: 0;
-    line-height: 1.5;
-  }
+.feature-card p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0;
+  line-height: 1.5;
+}
 
 // showcase
 #showcase {
-
   padding-bottom: 0;
 
   .showcase-grid {
@@ -193,7 +192,7 @@
       position: absolute;
       inset: 0;
       text-align: center;
-      transition: opacity 0.20s;
+      transition: opacity 0.2s;
 
       .showcase-box-caption-content {
         width: 100%;
@@ -231,8 +230,8 @@
   }
 }
 
-  @media (max-width: 640px) {
-    .gs-grid {
-      grid-template-columns: 1fr;
-    }
+@media (max-width: 640px) {
+  .gs-grid {
+    grid-template-columns: 1fr;
   }
+}
