@@ -20,6 +20,11 @@
     margin: 0 0 2rem 0;
     text-align: center;
   }
+
+    h3 {
+    text-align:center;
+    margin: 0 0 2rem 0;
+  }
 }
 
 // UV embed
@@ -145,6 +150,7 @@
   background: #fff;
   border: 1px solid #e0e0e0;
   text-align: center;
+
 }
 
 .feature-card h3 {
@@ -234,12 +240,6 @@
 #supported-by {
   padding: 4rem 0;
   text-align: center;
-
-
-  h3 {
-    font-size: 0.85rem;
-    margin-bottom: 3rem;
-  }
 
   .logos-grid {
     display: flex;
