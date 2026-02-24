@@ -1,17 +1,13 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
+import { getBlogPosts } from '@utils/blog';
 import { siteConfig } from '@config/site';
 import BlogPostItem from '@components/BlogPostItem.astro';
 
 // paginate:any is just to stop TS error which isn't a real error in Astro
 export async function getStaticPaths({ paginate }: { paginate: any }) {
-  const posts = await getCollection('blog', ({ data }) => {
-    return data.language == 'en';
-  });
-  posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
+  const posts = await getBlogPosts({ sort: true });
   return paginate(posts, { pageSize: siteConfig.blog.postsPerPage });
 }
 
@@ -58,4 +54,3 @@ const pageTitle = 'Blog page ' + page.currentPage;
     </nav>
   </section>
 </BaseLayout>
-<!-- <Debug {page} /> -->
