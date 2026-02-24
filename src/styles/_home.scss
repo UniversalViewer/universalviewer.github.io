@@ -3,22 +3,25 @@
     margin: 0;
     width: 100%;
     max-width: 100%;
+
+    section {
+      padding: 2rem 0 3rem 0;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      margin: 0 0 2rem 0;
+      text-align: center;
+    }
   }
 
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-
-  section {
-    padding: 4rem 0;
-  }
-
-  h2 {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
-  }
 
 // UV embed
 #hero {
@@ -137,14 +140,15 @@
   }
 
   .feature-card {
-    padding: 1.25rem;
+    padding: 1rem 1.25rem;
     background: #fff;
     border: 1px solid #e0e0e0;
+    text-align: center;
   }
 
   .feature-card h3 {
     font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.25rem 0;
   }
 
   .feature-card p {
@@ -156,6 +160,8 @@
 
 // showcase
 #showcase {
+
+  padding-bottom: 0;
 
   .showcase-grid {
     display: grid;
