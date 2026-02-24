@@ -1,42 +1,73 @@
 ---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
+import { siteConfig, blogCollectionLocales } from '@config/site';
+import BlogPostItem from '@components/BlogPostItem.astro';
 
-export async function getStaticPaths() {
-  const perPage = 2;
-  const posts = await getCollection('blog');
-  const totalPages = Math.max(1, Math.ceil(posts.length / perPage));
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const defaultPosts = await getCollection(blogCollectionLocales['en']);
+  const localePosts = await getCollection(blogCollectionLocales['cy']);
 
-  const paths = [];
+  const postsMap = new Map();
 
-  for (let i = 1; i <= totalPages; i++) {
-    const target = i === 1 ? '/blog' : `/blog/page/${i}`;
-
-    paths.push({
-      params: { page: i },
-      props: { target },
-    });
+  for (const post of defaultPosts) {
+    postsMap.set(post.id, post);
   }
 
-  return paths;
+  for (const post of localePosts) {
+    postsMap.set(post.id, post);
+  }
+
+  const posts = Array.from(postsMap.values());
+  posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  return paginate(posts, {
+    pageSize: siteConfig.blog.postsPerPage,
+  });
+};
+
+// manually defined so vscode doesn't show errors
+// it will still work without
+interface Props {
+  page: {
+    data: CollectionEntry<'blog' | 'blogCy'>[];
+    start: number;
+    end: number;
+    size: number;
+    total: number;
+    currentPage: number;
+    lastPage: number;
+    url: {
+      prev?: string;
+      next?: string;
+    };
+  };
 }
 
-const { target } = Astro.props;
+const { page } = Astro.props as Props;
+const pageTitle = 'Blog page ' + page.currentPage;
 ---
 
-<head>
-  <meta
-    http-equiv="refresh"
-    content={`0; url=${target}`}
-  />
-  <meta
-    name="robots"
-    content="noindex"
-  />
-  <link
-    rel="canonical"
-    href={target}
-  />
-</head>
-<body>
-  <a href={target}>Redirecting to {target}…</a>
-</body>
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="blog-page-main"
+>
+  <div class="blog-header">
+    <h1>
+      Blog {page.currentPage > 1 && <span> Page {page.currentPage}</span>}
+    </h1>
+  </div>
+
+  <section class="post-list">
+    <ul>
+      {page.data.map((post) => <BlogPostItem post={post} />)}
+    </ul>
+
+    <nav class="pagination">
+      {page.url.prev && <a href={page.url.prev}>← Newer posts</a>}
+      {page.url.next && <a href={page.url.next}>Older posts →</a>}
+    </nav>
+  </section>
+</BaseLayout>

@@ -1,16 +1,23 @@
 ---
 import { getCollection } from 'astro:content';
-import { siteConfig } from '@config/site';
+import { siteConfig, blogCollectionLocales } from '@config/site';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogPostItem from '@components/BlogPostItem.astro';
 
-const posts = await getCollection('blog', ({ data }) => {
-  return data.language == Astro.currentLocale;
-});
+// TODO: Make helper function for this that accepts default and optional locale posts
+const defaultPosts = await getCollection(blogCollectionLocales['en']);
+
+const postsMap = new Map();
+
+for (const post of defaultPosts) {
+  postsMap.set(post.id, post);
+}
+
+const posts = Array.from(postsMap.values());
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const pageTitle = 'Blog';
-
+const morePages = Math.ceil(posts.length / siteConfig.blog.postsPerPage) > 1;
 const postsToShow = posts.slice(0, siteConfig.blog.postsPerPage);
 ---
 
@@ -36,10 +43,12 @@ const postsToShow = posts.slice(0, siteConfig.blog.postsPerPage);
         <p>No posts</p>
       )
     }
-
-    <nav class="pagination">
-      todo: check that there are actually any older posts
-      <a href="/blog/page/2">Older posts →</a>
-    </nav>
+    {
+      morePages && (
+        <nav class="pagination blog-pagination">
+          <a href="/blog/page/2">Older posts →</a>
+        </nav>
+      )
+    }
   </section>
 </BaseLayout>

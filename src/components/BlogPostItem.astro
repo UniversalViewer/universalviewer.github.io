@@ -1,33 +1,46 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { Image } from "astro:assets";
+import type { CollectionEntry } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { Image } from 'astro:assets';
+import type { Lang } from '@i18n/ui';
+
+const locale = Astro.currentLocale as Lang;
 
 interface Props {
-  post: CollectionEntry<"blog">;
+  post: CollectionEntry<'blog' | 'blogCy'>;
 }
 
 const { post } = Astro.props;
 
-function postUrl(post: CollectionEntry<"blog">) {
+function postUrl(post: CollectionEntry<'blog' | 'blogCy'>) {
   const d = new Date(post.data.date);
-  return `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}/${post.id}`;
+  return getRelativeLocaleUrl(
+    locale,
+    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${post.id}`,
+  );
 }
 
 const date = new Date(post.data.date);
-const formattedDate = date.toLocaleDateString("en-GB", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
+const formattedDate = date.toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
 });
 ---
 
 <li class="post-item">
-  <a href={postUrl(post)} class="post-link">
+  <a
+    href={postUrl(post)}
+    class="post-link"
+  >
     <article>
       {
         post.data.cover && post.data.coverAlt && (
           <div class="post-thumbnail">
-            <Image src={post.data.cover} alt={post.data.coverAlt} />
+            <Image
+              src={post.data.cover}
+              alt={post.data.coverAlt}
+            />
           </div>
         )
       }

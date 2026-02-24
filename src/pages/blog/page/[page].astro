@@ -3,7 +3,7 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 import { siteConfig } from '@config/site';
-import BlogPostItem from '../../../components/BlogPostItem.astro';
+import BlogPostItem from '@components/BlogPostItem.astro';
 
 // paginate:any is just to stop TS error which isn't a real error in Astro
 export async function getStaticPaths({ paginate }: { paginate: any }) {

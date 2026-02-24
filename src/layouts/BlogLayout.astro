@@ -1,24 +1,32 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import type { Lang } from '@i18n/ui';
+
 interface Props {
   post: any;
   prev?: any;
   next?: any;
 }
 
+const locale = Astro.currentLocale as Lang;
+
 const { post, prev, next } = Astro.props;
 
 const { title, date, author } = post.data;
 
-const formattedDate = date.toLocaleDateString("en-GB", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
+const formattedDate = date.toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
 });
 
 function postUrl(p: any) {
   const d = new Date(p.data.date);
-  return `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}/${p.id}`;
+  return getRelativeLocaleUrl(
+    locale,
+    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${post.id}`,
+  );
 }
 ---
 
@@ -31,7 +39,10 @@ function postUrl(p: any) {
     {
       post.data.cover && post.data.coverAlt && (
         <div class="post-cover">
-          <Image src={post.data.cover} alt={post.data.coverAlt} />
+          <Image
+            src={post.data.cover}
+            alt={post.data.coverAlt}
+          />
         </div>
       )
     }

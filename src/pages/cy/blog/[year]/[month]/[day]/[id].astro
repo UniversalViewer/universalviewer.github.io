@@ -2,9 +2,23 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogLayout from '@layouts/BlogLayout.astro';
+import { siteConfig, blogCollectionLocales } from '@config/site';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const defaultPosts = await getCollection(blogCollectionLocales['en']);
+  const localePosts = await getCollection(blogCollectionLocales['cy']);
+
+  const postsMap = new Map();
+
+  for (const post of defaultPosts) {
+    postsMap.set(post.id, post);
+  }
+
+  for (const post of localePosts) {
+    postsMap.set(post.id, post);
+  }
+
+  const posts = Array.from(postsMap.values());
 
   return posts.map((post) => {
     const d = new Date(post.data.date);
@@ -17,6 +31,7 @@ export async function getStaticPaths() {
         year,
         month,
         day,
+        language: post.data.language,
         id: post.id,
       },
       props: { post },
@@ -24,7 +39,7 @@ export async function getStaticPaths() {
   });
 }
 
-const { id } = Astro.params;
+const { id, language } = Astro.params;
 const { post } = Astro.props;
 const { Content } = await render(post);
 

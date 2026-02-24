@@ -82,6 +82,12 @@ const { localeName, localeLangKey } = localeMap[locale];
   </div>
 </header>
 <script>
+  // alert(
+  //   'Get all en posts. Get all cy posts. Merge the two, overwriting en with cy.',
+  // );
+  // alert('For blog homepage, slice as usual?');
+  // alert('For pagination, do as usual?');
+  // alert('For [id], see if post exists in CY collection, if not, use EN one.');
   const langButton = document.getElementById('showLanguagesButton');
   const langNav = document.getElementById('langNav');
   langButton?.addEventListener('click', () => {
