@@ -12,6 +12,7 @@
 @use 'blog/page';
 @use 'blog/post';
 @use 'home';
+@use 'community';
 
 html {
   background-color: #f1f5f9;
@@ -37,6 +38,23 @@ main {
   margin: 0 auto;
   padding: 2rem;
 }
+
+// global text styling
+
+  p {
+    max-width: 720px;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    max-width: 720px;
+    padding-left: 1.5rem;
+
+    li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+  }
 
 // footer
 
