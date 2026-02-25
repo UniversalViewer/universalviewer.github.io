@@ -43,9 +43,22 @@ h6 {
   font-weight: 400;
 }
 
+h1 {
+  line-height: 1.2;
+}
+
 h1,
 h2 {
   font-weight: 500;
+}
+
+a {
+  text-decoration: underline;
+  text-underline-offset: remval(2);
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 main {
