@@ -4,6 +4,11 @@ import type { CollectionEntry } from 'astro:content';
 import { getBlogPosts } from '@utils/blog';
 import { siteConfig } from '@config/site';
 import BlogPostItem from '@components/BlogPostItem.astro';
+import type { Lang } from '@i18n/ui';
+import { useTranslations } from '@i18n/utils';
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
 
 // paginate:any is just to stop TS error which isn't a real error in Astro
 export async function getStaticPaths({ paginate }: { paginate: any }) {
@@ -30,7 +35,7 @@ interface Props {
 }
 
 const { page } = Astro.props as Props;
-const pageTitle = 'Blog page ' + page.currentPage;
+const pageTitle = t('blog.heading') + t('blog.page') + page.currentPage;
 ---
 
 <BaseLayout
@@ -49,8 +54,16 @@ const pageTitle = 'Blog page ' + page.currentPage;
     </ul>
 
     <nav class="pagination">
-      {page.url.prev && <a href={page.url.prev}>← Newer posts</a>}
-      {page.url.next && <a href={page.url.next}>Older posts →</a>}
+      {
+        page.url.prev && (
+          <a href={page.url.prev}>&larr; {t('blog.newerPosts')}</a>
+        )
+      }
+      {
+        page.url.next && (
+          <a href={page.url.next}>{t('blog.olderPosts')} &rarr;</a>
+        )
+      }
     </nav>
   </section>
 </BaseLayout>

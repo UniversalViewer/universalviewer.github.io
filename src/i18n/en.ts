@@ -7,7 +7,9 @@ export default {
     'nav.community': 'Community',
 
     'blog.heading': 'Blog',
+    'blog.page': 'Page',
     'blog.olderPosts': 'Older posts',
+    'blog.newerPosts': 'Newer posts',
 
     'footer.links': 'Links',
     'footer.policies': 'Policies',

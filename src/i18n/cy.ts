@@ -7,7 +7,9 @@ export default {
     'nav.community': 'Cymuned',
 
     'blog.heading': 'Blog',
+    'blog.page': 'Tudalen',
     'blog.olderPosts': 'Postiadau hŷn',
+    'blog.newerPosts': 'Postiadau mwy newydd',
 
     'footer.links': 'Cysylltiadau',
     'footer.policies': 'Polisïau',
