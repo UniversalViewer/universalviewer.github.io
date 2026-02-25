@@ -1,6 +1,235 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-const pageTitle = 'Community';
+import BaseLayout from "@layouts/BaseLayout.astro";
+const pageTitle = "Community";
 ---
 
-<BaseLayout pageTitle={pageTitle} />
+<BaseLayout pageTitle={pageTitle} mainClass="community-main">
+  <div class="container">
+    <!-- Getting Started -->
+    <section id="getting-started">
+      <h1>Community</h1>
+      <h2>Getting Started</h2>
+      <p>
+        The Universal Viewer is an open-source project that thrives on community
+        collaboration. There are a number of ways to get involved — a great
+        place to start is joining our <a
+          href="https://universalviewer.slack.com">Slack channel</a
+        > and connecting with other community members.
+      </p>
+      <p>
+        A monthly community call is held on the first Thursday of each month and
+        is open to all. These calls provide an opportunity to discuss and
+        advance UV related topics, troubleshoot any technical issues, and
+        connect with other users of the Universal Viewer.
+      </p>
+      <p>
+        Our <a
+          href="https://github.com/UniversalViewer/universalviewer?tab=readme-ov-file#-contributing-and-giving-feedback"
+          >contributing guide</a
+        > tells you how to run, modify and contribute to the software. Further information
+        can be found in our online documentation.
+      </p>
+    </section>
+
+    <!-- Community Sprints -->
+    <section id="community-sprints">
+      <h2>Community Sprints</h2>
+      <p>
+        Our community sprint programme is central to Universal Viewer
+        development, helping to keep the project sustainable and closely aligned
+        with user needs. Anyone is welcome to join these collaborative
+        development efforts, regardless of technical skill. Upcoming sprints are
+        listed on our <a href="/events">events page</a>, and you are welcome to
+        reach out on <a href="https://universalviewer.slack.com">Slack</a> or join
+        a community call for more information on how you can contribute.
+      </p>
+
+      <div class="community-links">
+        <ul>
+            <li>        <a href="/events" class="community-link">View upcoming events</a>
+</li>
+            <li>        <a href="/contact" class="community-link">Contact us</a>
+</li>
+        </ul>
+      </div>
+
+      <div class="calendar-embed">
+        <iframe
+          src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FLondon&showPrint=0&showTitle=0&showTabs=0&showCalendars=0&src=dW5pdmVyc2Fsdmlld2VyYXBwQGdtYWlsLmNvbQ&color=%239e69af"
+          style="border:solid 1px #777"
+          width="800"
+          height="600"
+          frameborder="0"
+          scrolling="no"></iframe>
+      </div>
+
+      <div class="social-links">
+        <a
+          href="https://github.com/UniversalViewer/universalviewer"
+          class="social-link"
+          aria-label="GitHub"
+        >
+          Github logo
+        </a>
+        <a
+          href="https://universalviewer.slack.com"
+          class="social-link"
+          aria-label="Slack"
+        >
+          Slack logo
+        </a>
+        <a
+          href="https://bsky.app/profile/universalviewer.io"
+          class="social-link"
+          aria-label="Bluesky"
+        >
+          BlueSky logo
+        </a>
+        <a href="https://glammr.us/@universalviewer" class="social-link" aria-label="Mastodon">
+          Mastodon logo
+        </a>
+      </div>
+    </section>
+
+    <!-- Steering Group -->
+    <section id="steering-group">
+      <h2>Steering Group</h2>
+      <p>
+        The role of the Steering Group is to provide a unified strategic
+        direction and sustainability to the UV Community and to allocate
+        <a href="https://opencollective.com/universalviewer">Open Collective</a>
+        funds as appropriate.
+      </p>
+      <p>The group's responsibilities include:</p>
+      <ul>
+        <li>
+          develop value proposition and a formal inter-institutional roadmap for
+          Universal Viewer development
+        </li>
+        <li>ensure sustainability to allow shared ownership and diversity</li>
+        <li>
+          setting priorities for the allocation of the Open Collective funds
+          received
+        </li>
+        <li>discussing development requests received through user stories</li>
+        <li>
+          discussing developments resulting from projects funded outside of the
+          OC
+        </li>
+      </ul>
+      <h3>Who are the Steering Group members?</h3>
+      <p>
+        Membership is currently restricted to those representatives of
+        institutions contributing to the
+        <a href="https://opencollective.com/universalviewer"
+          >Open Collective UV fund</a
+        >
+        but welcomes new members at all times.
+      </p>
+
+      <div class="logos-grid" id="steering-logos">
+        <a href="https://www.library.wales" class="logo-item">
+          <img src="/img/logos/llgc-logo.png" alt="National Library of Wales" />
+        </a>
+        <a href="https://www.bl.uk" class="logo-item">
+          <img
+            src="/img/logos/330px-BritishLibrary.png"
+            alt="British Library"
+          />
+        </a>
+        <a href="https://library.villanova.edu" class="logo-item">
+          <img
+            src="/img/logos/villanova-TRANSPARENT.png"
+            alt="Falvey Library, Villanova University"
+          />
+        </a>
+        <a href="https://www.tind.io" class="logo-item">
+          <img src="/img/logos/TIND-logo.png" alt="TIND" />
+        </a>
+        <a href="https://library.princeton.edu" class="logo-item">
+          <img
+            src="/img/logos/princeton university logo.png"
+            alt="Princeton University"
+          />
+        </a>
+        <a href="https://library.ucla.edu" class="logo-item">
+          <img src="/img/logos/ucls-library.png" alt="UCLA Library" />
+        </a>
+        <a href="https://www.st-andrews.ac.uk/library/" class="logo-item">
+          <img
+            src="/img/logos/uni-st-andrews-standard-vertical-black.png"
+            alt="University of St Andrews"
+          />
+        </a>
+        <a href="https://digirati.com" class="logo-item">
+          <img src="/img/logos/digirati-logo.png" alt="Digirati" />
+        </a>
+        <a href="https://mnemoscene.io" class="logo-item">
+          <img src="/img/logos/mnemoscene logo.jfif" alt="Mnemoscene" />
+        </a>
+      </div>
+    </section>
+
+    <!-- Contributors -->
+    <section id="contributors">
+      <h2>Thank you to our contributors</h2>
+      <p>
+        The Universal Viewer evolves through community input and we gratefully
+        acknowledge the contributors and institutions whose support drives the
+        project forward. Their collaboration and commitment make ongoing
+        development and sustainability possible.
+      </p>
+
+      <div class="logos-grid" id="contributors-logos">
+        <a href="https://www.britishonlinearchives.com" class="logo-item">
+          <img
+            src="/img/logos/british online archives logo.png"
+            alt="British Online Archives"
+          />
+        </a>
+        <a href="https://www.nls.uk" class="logo-item">
+          <img
+            src="/img/logos/National_Library_of_Scotland_logo.svg.png"
+            alt="National Library of Scotland"
+          />
+        </a>
+        <a href="https://www.notch8.com" class="logo-item">
+          <img src="/img/logos/Notch8_Color.avif" alt="Notch8" />
+        </a>
+        <a href="https://www.peoplescollection.wales" class="logo-item">
+          <img src="/img/logos/pcw.jpg" alt="People's Collection Wales" />
+        </a>
+        <a href="https://www.cogapp.com" class="logo-item">
+          <img src="/img/logos/Cogapp_Logo_lg_black.png" alt="Cogapp" />
+        </a>
+        <a href="https://www.vam.ac.uk" class="logo-item">
+          <img src="/img/logos/V&A.png" alt="Victoria & Albert Museum" />
+        </a>
+        <a href="https://www.riksarkivet.se" class="logo-item">
+          <img
+            src="/img/logos/Riksarkivet-swedish archives-TRANSPARENT.png"
+            alt="Riksarkivet"
+          />
+        </a>
+        <a href="https://github.com/Geoffsc" class="logo-item">
+          <img src="/img/logos/geoff.jpeg" alt="Geoff Scholl" />
+        </a>
+        <a href="https://github.com/staceyred" class="logo-item">
+          <img src="/img/logos/stacey.jpeg" alt="Stacey Redick" />
+        </a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    ["steering-logos", "contributors-logos"].forEach((id) => {
+      const grid = document.getElementById(id);
+      if (!grid) return;
+      const items = Array.from(grid.children);
+      items.sort(() => Math.random() - 0.5);
+      items.forEach((item) => grid.appendChild(item));
+    });
+  });
+</script>
