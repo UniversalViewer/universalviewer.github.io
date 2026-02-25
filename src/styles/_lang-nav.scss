@@ -39,6 +39,19 @@
     text-decoration: underline;
     text-underline-offset: remval(2);
   }
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    &::after {
+      content: "";
+      position: absolute;
+      left: remval(-6);
+      top: 50%;
+      transform: translateY(-50%);
+      width: remval(1);
+      height: remval(24);
+      background-color: #fffc;
+    }
+  }
 }
 
 .lang-nav {
