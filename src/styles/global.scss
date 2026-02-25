@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @use "sass:map";
 @use "fn" as *;
 @use "vars" as *;
@@ -13,6 +14,24 @@
 @use "blog/post";
 @use "home";
 @use "community";
+=======
+@use 'sass:map';
+@use 'fn' as *;
+@use 'vars' as *;
+@use 'props';
+@use 'fonts';
+@use 'header';
+@use 'main-nav';
+@use 'lang-nav';
+@use 'events';
+@use 'demo';
+@use 'blog/index';
+@use 'blog/page';
+@use 'blog/post';
+@use 'home';
+@use 'community';
+@use 'contact';
+>>>>>>> 09f8bdd (Add contact content)
 
 html {
   background-color: #f1f5f9;
