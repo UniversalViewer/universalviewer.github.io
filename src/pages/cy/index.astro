@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
+import UVHead from '@components/UVHead.astro';
+import UVEmbed from '@components/UVEmbed.astro';
 const pageTitle = 'Hafan';
 ---
 
@@ -7,5 +9,7 @@ const pageTitle = 'Hafan';
   pageTitle={pageTitle}
   mainClass="home-main"
 >
-  Bore da!
+  <UVHead />
+
+  <UVEmbed />
 </BaseLayout>

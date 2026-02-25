@@ -1,48 +1,27 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-const pageTitle = "Home";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import UVHead from '@components/UVHead.astro';
+import UVEmbed from '@components/UVEmbed.astro';
+const pageTitle = 'Home';
 ---
 
-<BaseLayout pageTitle={pageTitle} mainClass="home-main">
-  <fragment slot="head">
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/universalviewer@latest/dist/uv.css"
-    />
-    <script
-      is:inline
-      src="https://cdn.jsdelivr.net/npm/universalviewer@latest/dist/umd/UV.js"
-    ></script>
-  </fragment>
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="home-main"
+>
+  <UVHead />
 
-  <!-- UV embed -->
-  <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <h3>One interface for all of your content</h3>
-      <iframe
-        id="uv"
-        src="https://universalviewer.dev/uv.html#?manifest=https%3A%2F%2Fwellcomelibrary.org%2Fiiif%2Fb18035723%2Fmanifest"
-        allowfullscreen
-        frameborder="0"
-        title="Universal Viewer"></iframe>
-      <div class="manifest-input">
-        <input
-          type="text"
-          id="manifest-url"
-          placeholder="Paste a IIIF manifest URL…"
-        />
-        <button id="manifest-load">View</button>
-      </div>
-    </div>
-  </section>
+  <UVEmbed />
 
   <!-- Getting Started -->
   <section id="getting-started">
     <div class="container">
       <h2>Getting Started</h2>
       <div class="gs-grid">
-        <a href="/docs" class="gs-card">
+        <a
+          href="/docs"
+          class="gs-card"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -55,7 +34,10 @@ const pageTitle = "Home";
           >
           <span>Are you integrating UV?</span>
         </a>
-        <a href="/community" class="gs-card">
+        <a
+          href="/community"
+          class="gs-card"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -68,7 +50,10 @@ const pageTitle = "Home";
           >
           <span>Are you participating in the community?</span>
         </a>
-        <a href="/demo" class="gs-card">
+        <a
+          href="/demo"
+          class="gs-card"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -236,7 +221,10 @@ const pageTitle = "Home";
         href="https://digital.library.villanova.edu/Item/vudl:92879"
         class="showcase-box"
       >
-        <img src="/img/showcase/villanova.jpg" alt="Villanova University" />
+        <img
+          src="/img/showcase/villanova.jpg"
+          alt="Villanova University"
+        />
         <div class="showcase-box-caption">
           <div class="showcase-box-caption-content">
             <div class="project-category">
@@ -253,7 +241,11 @@ const pageTitle = "Home";
         data-manifest="https://damsssl.llgc.org.uk/iiif/2.0/4389767/manifest.json"
         class="showcase-box"
       >
-        <img src="img/showcase/nlw.jpg" class="img-responsive" alt="" />
+        <img
+          src="img/showcase/nlw.jpg"
+          class="img-responsive"
+          alt=""
+        />
         <div class="showcase-box-caption">
           <div class="showcase-box-caption-content">
             <div class="project-category text-faded">
@@ -270,7 +262,11 @@ const pageTitle = "Home";
         data-manifest="https://d.lib.ncsu.edu/collections/catalog/nubian-message-1992-11-30/manifest"
         class="showcase-box"
       >
-        <img src="img/showcase/ncsu.jpg" class="img-responsive" alt="" />
+        <img
+          src="img/showcase/ncsu.jpg"
+          class="img-responsive"
+          alt=""
+        />
         <div class="showcase-box-caption">
           <div class="showcase-box-caption-content">
             <div class="project-category text-faded">NCSU Libraries</div>
@@ -283,7 +279,11 @@ const pageTitle = "Home";
         data-manifest="https://bl.digirati.io/manifests/ark:/81055/man_10000006.0x000001"
         class="showcase-box"
       >
-        <img src="img/showcase/bl.jpg" class="img-responsive" alt="" />
+        <img
+          src="img/showcase/bl.jpg"
+          class="img-responsive"
+          alt=""
+        />
         <div class="showcase-box-caption">
           <div class="showcase-box-caption-content">
             <div class="project-category text-faded">The British Library</div>
@@ -296,7 +296,11 @@ const pageTitle = "Home";
         data-manifest="https://iiif.bodleian.ox.ac.uk/iiif/manifest/60834383-7146-41ab-bfe1-48ee97bc04be.json"
         class="showcase-box"
       >
-        <img src="img/showcase/bodleian.jpg" class="img-responsive" alt="" />
+        <img
+          src="img/showcase/bodleian.jpg"
+          class="img-responsive"
+          alt=""
+        />
         <div class="showcase-box-caption">
           <div class="showcase-box-caption-content">
             <div class="project-category text-faded">
@@ -311,7 +315,11 @@ const pageTitle = "Home";
         data-manifest="https://iiif.riksarkivet.se/arkis!R0000004/manifest"
         class="showcase-box"
       >
-        <img src="img/showcase/riksarkivet.jpg" class="img-responsive" alt="" />
+        <img
+          src="img/showcase/riksarkivet.jpg"
+          class="img-responsive"
+          alt=""
+        />
         <div class="showcase-box-caption">
           <div class="showcase-box-caption-content">
             <div class="project-category text-faded">
@@ -331,109 +339,205 @@ const pageTitle = "Home";
     <h2>Supported By</h2>
 
     <h3>Steering Group Members</h3>
-    <div class="logos-grid" id="steering-logos">
-      <a href="https://www.library.wales" class="logo-item">
-        <img src="/img/logos/llgc-logo.png" alt="National Library of Wales" />
+    <div
+      class="logos-grid"
+      id="steering-logos"
+    >
+      <a
+        href="https://www.library.wales"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/llgc-logo.png"
+          alt="National Library of Wales"
+        />
       </a>
-      <a href="https://www.bl.uk" class="logo-item">
-        <img src="/img/logos/330px-BritishLibrary.png" alt="British Library" />
+      <a
+        href="https://www.bl.uk"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/330px-BritishLibrary.png"
+          alt="British Library"
+        />
       </a>
-      <a href="https://library.villanova.edu" class="logo-item">
+      <a
+        href="https://library.villanova.edu"
+        class="logo-item"
+      >
         <img
           src="/img/logos/villanova-TRANSPARENT.png"
           alt="Falvey Library, Villanova University"
         />
       </a>
-      <a href="https://www.tind.io" class="logo-item">
-        <img src="/img/logos/TIND-logo.png" alt="TIND" />
+      <a
+        href="https://www.tind.io"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/TIND-logo.png"
+          alt="TIND"
+        />
       </a>
-      <a href="https://library.princeton.edu" class="logo-item">
+      <a
+        href="https://library.princeton.edu"
+        class="logo-item"
+      >
         <img
           src="/img/logos/princeton university logo.png"
           alt="Princeton University"
         />
       </a>
-      <a href="https://library.ucla.edu" class="logo-item">
-        <img src="/img/logos/ucls-library.png" alt="UCLA Library" />
+      <a
+        href="https://library.ucla.edu"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/ucls-library.png"
+          alt="UCLA Library"
+        />
       </a>
-      <a href="https://www.st-andrews.ac.uk/library/" class="logo-item">
+      <a
+        href="https://www.st-andrews.ac.uk/library/"
+        class="logo-item"
+      >
         <img
           src="/img/logos/uni-st-andrews-standard-vertical-black.png"
           alt="University of St Andrews"
         />
       </a>
-      <a href="https://digirati.com" class="logo-item">
-        <img src="/img/logos/digirati-logo.png" alt="Digirati" />
+      <a
+        href="https://digirati.com"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/digirati-logo.png"
+          alt="Digirati"
+        />
       </a>
-      <a href="https://mnemoscene.io" class="logo-item">
-        <img src="/img/logos/mnemoscene logo.jfif" alt="Mnemoscene" />
+      <a
+        href="https://mnemoscene.io"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/mnemoscene logo.jfif"
+          alt="Mnemoscene"
+        />
       </a>
     </div>
 
     <h3>Major Contributors</h3>
-    <div class="logos-grid" id="contributors-logos">
-      <a href="https://www.britishonlinearchives.com" class="logo-item">
+    <div
+      class="logos-grid"
+      id="contributors-logos"
+    >
+      <a
+        href="https://www.britishonlinearchives.com"
+        class="logo-item"
+      >
         <img
           src="/img/logos/british online archives logo.png"
           alt="British Online Archives"
         />
       </a>
-      <a href="https://www.nls.uk" class="logo-item">
+      <a
+        href="https://www.nls.uk"
+        class="logo-item"
+      >
         <img
           src="/img/logos/National_Library_of_Scotland_logo.svg.png"
           alt="National Library of Scotland"
         />
       </a>
-      <a href="https://www.notch8.com" class="logo-item">
-        <img src="/img/logos/Notch8_Color.avif" alt="Notch8" />
+      <a
+        href="https://www.notch8.com"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/Notch8_Color.avif"
+          alt="Notch8"
+        />
       </a>
-      <a href="https://www.peoplescollection.wales" class="logo-item">
-        <img src="/img/logos/pcw.jpg" alt="People's Collection Wales" />
+      <a
+        href="https://www.peoplescollection.wales"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/pcw.jpg"
+          alt="People's Collection Wales"
+        />
       </a>
-      <a href="https://www.cogapp.com" class="logo-item">
-        <img src="/img/logos/Cogapp_Logo_lg_black.png" alt="Cogapp" />
+      <a
+        href="https://www.cogapp.com"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/Cogapp_Logo_lg_black.png"
+          alt="Cogapp"
+        />
       </a>
-      <a href="https://www.vam.ac.uk" class="logo-item">
-        <img src="/img/logos/V&A.png" alt="Victoria & Albert Museum" />
+      <a
+        href="https://www.vam.ac.uk"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/V&A.png"
+          alt="Victoria & Albert Museum"
+        />
       </a>
-      <a href="https://www.riksarkivet.se" class="logo-item">
+      <a
+        href="https://www.riksarkivet.se"
+        class="logo-item"
+      >
         <img
           src="/img/logos/Riksarkivet-swedish archives-TRANSPARENT.png"
           alt="Riksarkivet"
         />
       </a>
-      <a href="https://github.com/Geoffsc" class="logo-item">
-      <img
-    src="img/logos/geoff.jpeg"
-    alt="Geoff Scholl"></a>
+      <a
+        href="https://github.com/Geoffsc"
+        class="logo-item"
+      >
+        <img
+          src="img/logos/geoff.jpeg"
+          alt="Geoff Scholl"
+        /></a
+      >
     </div>
-    <a href="https://github.com/staceyred" class="logo-item">
-    <img src="img/logos/stacey.jpeg" alt="Stacey Redick"></img> </a>
+    <a
+      href="https://github.com/staceyred"
+      class="logo-item"
+    >
+      <img
+        src="img/logos/stacey.jpeg"
+        alt="Stacey Redick"
+      /></a
+    >
   </section>
 </BaseLayout>
 
 <script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const iframe = document.getElementById("uv");
-    const input = document.getElementById("manifest-url");
-    const button = document.getElementById("manifest-load");
+  document.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('uv');
+    const input = document.getElementById('manifest-url');
+    const button = document.getElementById('manifest-load');
 
     function loadManifest(url) {
       iframe.src = `https://universalviewer.dev/uv.html#?manifest=${encodeURIComponent(url)}`;
     }
 
-    button.addEventListener("click", () => {
+    button.addEventListener('click', () => {
       const url = input.value.trim();
       if (url) loadManifest(url);
     });
 
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") button.click();
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') button.click();
     });
   });
 
-  document.addEventListener("DOMContentLoaded", () => {
-    ["steering-logos", "contributors-logos"].forEach((id) => {
+  document.addEventListener('DOMContentLoaded', () => {
+    ['steering-logos', 'contributors-logos'].forEach((id) => {
       const grid = document.getElementById(id);
       if (!grid) return;
       const items = Array.from(grid.children);

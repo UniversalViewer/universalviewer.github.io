@@ -1,0 +1,30 @@
+---
+import { useTranslations } from '@i18n/utils';
+import type { Lang } from '@i18n/ui';
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+---
+
+<!-- UV embed -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h3>{t('home.viewer.heading')}</h3>
+      <iframe
+        id="uv"
+        src="https://universalviewer.dev/uv.html#?manifest=https%3A%2F%2Fwellcomelibrary.org%2Fiiif%2Fb18035723%2Fmanifest"
+        allowfullscreen
+        frameborder="0"
+        title="Universal Viewer"
+      ></iframe>
+      <div class="manifest-input">
+        <input
+          type="text"
+          id="manifest-url"
+          placeholder="Paste a IIIF manifest URL…"
+        />
+        <button id="manifest-load">{t('home.viewer.view')}</button>
+      </div>
+    </div>
+  </section>

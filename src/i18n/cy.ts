@@ -6,6 +6,9 @@ export default {
     'nav.blog': 'Blog',
     'nav.community': 'Cymuned',
 
+    'home.viewer.heading': 'Un rhyngwyneb ar gyfer eich holl gynnwys',
+    'home.viewer.view': 'Golwg',
+
     'blog.heading': 'Blog',
     'blog.page': 'Tudalen',
     'blog.olderPosts': 'Postiadau hŷn',

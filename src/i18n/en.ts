@@ -6,6 +6,9 @@ export default {
     'nav.blog': 'Blog',
     'nav.community': 'Community',
 
+    'home.viewer.heading': 'One interface for all of your content',
+    'home.viewer.view': 'View',
+
     'blog.heading': 'Blog',
     'blog.page': 'Page',
     'blog.olderPosts': 'Older posts',
