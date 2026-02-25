@@ -134,3 +134,24 @@
 .hamburger.active .hamburger-inner::after {
   transform: translate3d(-8px, -4px, 0) rotate(45deg) scale(0.6, 1);
 }
+
+.header-title {
+  order: 2;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1rem;
+  display: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+  h1 {
+    margin: 0;
+    font-size: inherit;
+  }
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    display: block;
+  }
+}
