@@ -4,7 +4,6 @@ import { useTranslations } from '@i18n/utils';
 import type { Lang } from '@i18n/ui';
 
 const locale = Astro.currentLocale as Lang;
-
 const t = useTranslations(locale);
 
 const policyUrl = getRelativeLocaleUrl(locale, 'policy');
@@ -21,25 +20,25 @@ const roadmapUrl = getRelativeLocaleUrl(locale, 'roadmap');
     </div>
 
     <div class="footer-links">
-      <h3>Links</h3>
+      <h3>{t('footer.links')}</h3>
       <ul>
         <li>
-          <a href={policyUrl}>Policies</a>
+          <a href={policyUrl}>{t('footer.policies')}</a>
         </li>
         <li>
-          <a href={contactUrl}>Contact Us</a>
+          <a href={contactUrl}>{t('footer.contactus')}</a>
         </li>
         <li>
-          <a href={accessibilityUrl}>Accessibility</a>
+          <a href={accessibilityUrl}>{t('footer.accessibility')}</a>
         </li>
         <li>
-          <a href={roadmapUrl}>Roadmap & Strategy</a>
+          <a href={roadmapUrl}>{t('footer.roadmap')}</a>
         </li>
       </ul>
     </div>
 
     <div class="footer-social">
-      <h3>Social</h3>
+      <h3>{t('footer.social')}</h3>
       <ul>
         <li>
           <a

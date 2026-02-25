@@ -8,4 +8,11 @@ export default {
 
     'blog.heading': 'Blog',
     'blog.olderPosts': 'Postiadau hŷn',
+
+    'footer.links': 'Cysylltiadau',
+    'footer.policies': 'Polisïau',
+    'footer.contactus': 'Cysylltwch â Ni',
+    'footer.accessibility': 'Hygyrchedd',
+    'footer.roadmap': 'Map Ffordd a Strategaethau',
+    'footer.social': 'Cymdeithasol',
 }

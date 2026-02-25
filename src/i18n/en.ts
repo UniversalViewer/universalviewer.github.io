@@ -8,4 +8,11 @@ export default {
 
     'blog.heading': 'Blog',
     'blog.olderPosts': 'Older posts',
+
+    'footer.links': 'Links',
+    'footer.policies': 'Policies',
+    'footer.contactus': 'Contact Us',
+    'footer.accessibility': 'Accessibility',
+    'footer.roadmap': 'Roadmap & Strategies',
+    'footer.social': 'Social',
 }
