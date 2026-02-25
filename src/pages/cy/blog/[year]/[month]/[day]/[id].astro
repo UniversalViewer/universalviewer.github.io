@@ -4,26 +4,11 @@ import BaseLayout from '@layouts/BaseLayout.astro';
 import BlogLayout from '@layouts/BlogLayout.astro';
 import { siteConfig, blogCollectionLocales } from '@config/site';
 import { getBlogPosts } from '@utils/blog';
+import { mapBlogPosts } from '@utils/blog';
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts({ locale: 'cy' });
-
-  return posts.map((post) => {
-    const d = new Date(post.data.date);
-    const year = d.getFullYear().toString();
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-
-    return {
-      params: {
-        year,
-        month,
-        day,
-        id: post.id,
-      },
-      props: { post },
-    };
-  });
+  return mapBlogPosts(posts);
 }
 
 const { id } = Astro.params;

@@ -1,5 +1,5 @@
 import { blogCollectionLocales, siteConfig } from '@config/site';
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry, type DataEntryMap } from 'astro:content';
 
 export async function getBlogPosts({ locale, sort }: { locale?: string; sort?: boolean } = {}) {
   const defaultPosts = await getCollection(blogCollectionLocales['en']);
@@ -25,4 +25,23 @@ export async function getBlogPosts({ locale, sort }: { locale?: string; sort?: b
   }
 
   return posts;
+}
+
+export function mapBlogPosts(posts: Array<CollectionEntry<'blog'>>) {
+  return posts.map((post: CollectionEntry<'blog'>) => {
+    const d = new Date(post.data.date);
+    const year = d.getFullYear().toString();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+
+    return {
+      params: {
+        year,
+        month,
+        day,
+        id: post.id,
+      },
+      props: { post },
+    };
+  });
 }
