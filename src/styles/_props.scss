@@ -1,6 +1,6 @@
-@use 'sass:map';
-@use 'fn' as *;
-@use 'vars' as *;
+@use "sass:map";
+@use "fn" as *;
+@use "vars" as *;
 
 :root {
   // COLORS
@@ -8,6 +8,10 @@
   --uv-primary-dark: rgb(33 9 42);
   --uv-secondary: #0098a6;
   --uv-white: #fbfbfc;
+
+  // FONTS
+  --uv-font-family-dm-sans: "DM Sans", sans-serif;
+  --uv-font-family-headings: "DM Mono", sans-serif;
 
   // GENERIC
   --uv-bg-color: var(--uv-primary);

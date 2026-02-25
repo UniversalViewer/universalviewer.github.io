@@ -1,7 +1,7 @@
-@use 'sass:map';
-@use 'fn' as *;
-@use 'vars' as *;
-@use 'props';
+@use "sass:map";
+@use "fn" as *;
+@use "vars" as *;
+@use "props";
 
 .languages-container {
   position: relative;
@@ -33,6 +33,7 @@
   border: none;
   cursor: pointer;
   font-size: remval(16);
+  font-family: var(--uv-font-family-dm-sans);
 
   &:hover {
     text-decoration: underline;

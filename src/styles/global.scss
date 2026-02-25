@@ -1,18 +1,18 @@
-@use 'sass:map';
-@use 'fn' as *;
-@use 'vars' as *;
-@use 'props';
-@use 'fonts';
-@use 'header';
-@use 'main-nav';
-@use 'lang-nav';
-@use 'events';
-@use 'demo';
-@use 'blog/index';
-@use 'blog/page';
-@use 'blog/post';
-@use 'home';
-@use 'community';
+@use "sass:map";
+@use "fn" as *;
+@use "vars" as *;
+@use "props";
+@use "fonts";
+@use "header";
+@use "main-nav";
+@use "lang-nav";
+@use "events";
+@use "demo";
+@use "blog/index";
+@use "blog/page";
+@use "blog/post";
+@use "home";
+@use "community";
 
 html {
   background-color: #f1f5f9;
@@ -33,6 +33,21 @@ body {
   flex-direction: column;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--uv-font-family-headings);
+  font-weight: 400;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+}
+
 main {
   flex: 1;
   margin: 0 auto;
@@ -41,20 +56,20 @@ main {
 
 // global text styling
 
-  p {
-    max-width: 720px;
-    margin-bottom: 1rem;
-  }
+p {
+  max-width: 720px;
+  margin-bottom: 1rem;
+}
 
-  ul {
-    max-width: 720px;
-    padding-left: 1.5rem;
+ul {
+  max-width: 720px;
+  padding-left: 1.5rem;
 
-    li {
-      margin-bottom: 0.5rem;
-      line-height: 1.6;
-    }
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
   }
+}
 
 // footer
 

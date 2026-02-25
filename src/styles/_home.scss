@@ -5,7 +5,7 @@
   max-width: 100%;
 
   section {
-    padding: 2rem 0 3rem 0;
+    padding: 2rem 0 3rem;
     margin: 0;
   }
 
@@ -17,13 +17,13 @@
 
   h2 {
     font-size: 1.75rem;
-    margin: 0 0 2rem 0;
+    margin: 0 0 2rem;
     text-align: center;
   }
 
-    h3 {
-    text-align:center;
-    margin: 0 0 2rem 0;
+  h3 {
+    text-align: center;
+    margin: 0 0 2rem;
   }
 }
 
@@ -39,7 +39,7 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background-image: url('/img/header.jpg');
+    background-image: url("/img/header.jpg");
     background-size: cover;
     background-size: 160%;
     background-position: center 60%;
@@ -50,9 +50,12 @@
     position: relative;
     z-index: 2;
 
-    h3 {
+    .hero-heading {
       color: #fff;
-      text-shadow: 1px 1px 2px #000;
+      text-shadow:
+        1px 1px 0 #000,
+        1px 1px 2px #000,
+        1px 1px 5px var(--uv-primary);
       padding: 2rem 0;
       margin: 0;
     }
@@ -62,7 +65,7 @@
       height: 70vh;
       margin: 0 auto;
       display: block;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.7);
+      box-shadow: 0 8px 15px rgb(0 0 0 / 70%);
       background-color: black;
     }
 
@@ -76,20 +79,20 @@
       input {
         flex: 1;
         padding: 0.6rem 0.9rem;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 1px solid rgb(255 255 255 / 30%);
         font-size: 0.9rem;
-        background: rgba(0, 0, 10, 0.45);
+        background: rgb(0 0 10 / 45%);
         color: #fff;
         backdrop-filter: blur(8px);
 
         &::placeholder {
-          color: rgba(255, 255, 255, 0.45);
+          color: rgb(255 255 255 / 45%);
         }
 
         &:focus {
           outline: none;
-          border-color: rgba(255, 255, 255, 0.65);
-          background: rgba(0, 0, 10, 0.6);
+          border-color: rgb(255 255 255 / 65%);
+          background: rgb(0 0 10 / 60%);
         }
       }
 
@@ -150,12 +153,11 @@
   background: #fff;
   border: 1px solid #e0e0e0;
   text-align: center;
-
 }
 
 .feature-card h3 {
   font-size: 1rem;
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.25rem;
 }
 
 .feature-card p {
@@ -174,7 +176,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 0;
 
-    @media (min-width: 992px) {
+    @media (width >= 992px) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -194,7 +196,7 @@
       color: #fff;
       opacity: 0;
       display: block;
-      background: rgba(62, 17, 78, 0.9);
+      background: rgb(62 17 78 / 90%);
       position: absolute;
       inset: 0;
       text-align: center;
@@ -210,9 +212,9 @@
       }
 
       .project-category {
-        color: rgba(255, 255, 255, 0.7);
+        color: rgb(255 255 255 / 70%);
 
-        @media (min-width: 768px) {
+        @media (width >= 768px) {
           font-size: 16px;
         }
       }
@@ -220,7 +222,7 @@
       .project-name {
         font-size: 18px;
 
-        @media (min-width: 768px) {
+        @media (width >= 768px) {
           font-size: 22px;
         }
       }
@@ -258,15 +260,15 @@
     img {
       height: 50px;
       width: auto;
-      max-width: 160px; 
+      max-width: 160px;
       object-fit: contain;
       display: block;
     }
   }
 }
 
-  @media (max-width: 640px) {
-    .gs-grid {
-      grid-template-columns: 1fr;
-    }
+@media (width <= 640px) {
+  .gs-grid {
+    grid-template-columns: 1fr;
   }
+}
