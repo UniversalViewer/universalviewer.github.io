@@ -35,7 +35,7 @@ interface Props {
 }
 
 const { page } = Astro.props as Props;
-const pageTitle = t('blog.heading') + t('blog.page') + page.currentPage;
+const pageTitle = `${t('blog.heading')} ${t('blog.page')}  ${page.currentPage}`;
 ---
 
 <BaseLayout
