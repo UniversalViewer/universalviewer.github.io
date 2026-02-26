@@ -1,5 +1,5 @@
 @mixin blog-container {
-  width: 80ch;
+  width: 70ch;
   margin: 0 auto;
   padding: 2rem 1rem;
 
@@ -19,6 +19,11 @@
       list-style: none;
       margin: 0;
       padding: 0;
+        max-width: none;
+
+        li {
+          margin-bottom: 0;
+        }
     }
 
     .post-item {
