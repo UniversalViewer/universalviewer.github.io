@@ -3,7 +3,7 @@ import type { CollectionKey } from 'astro:content';
 
 export const siteConfig = {
   blog: {
-    postsPerPage: 2,
+    postsPerPage: 5,
   },
 };
 
