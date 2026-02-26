@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { Image } from 'astro:assets';
 import type { Lang } from '@i18n/ui';
+import { getLocaleISOString } from '@i18n/utils';
 
 const locale = Astro.currentLocale as Lang;
 
@@ -16,12 +17,14 @@ function postUrl(post: CollectionEntry<'blog' | 'blogCy'>) {
   const d = new Date(post.data.date);
   return getRelativeLocaleUrl(
     locale,
-    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${post.id}`,
+    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${post.id}`
   );
 }
 
+const localeISOString = getLocaleISOString(locale);
+
 const date = new Date(post.data.date);
-const formattedDate = date.toLocaleDateString('en-GB', {
+const formattedDate = date.toLocaleDateString(localeISOString, {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
