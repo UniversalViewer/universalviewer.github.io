@@ -2,14 +2,552 @@
 import BaseLayout from '@layouts/BaseLayout.astro';
 import UVHead from '@components/UVHead.astro';
 import UVEmbed from '@components/UVEmbed.astro';
-const pageTitle = 'Hafan';
+const pageTitle = 'Home';
 ---
 
 <BaseLayout
   pageTitle={pageTitle}
   mainClass="home-main"
 >
-  <UVHead />
+  <!-- <UVHead />
 
-  <UVEmbed />
+  <UVEmbed /> -->
+
+  <section id="header">
+    <h1>Universal Viewer</h1>
+    <h3>
+      Un rhyngwyneb ar gyfer eich holl gynnwys. Mae Universal Viewer yn dangos
+      delweddau, eitemau amlgyfrwng, dogfennau a modelau 3D mewn rhaglen
+      ffynhonnell agored estynadwy y gellir ei mewnblannu.
+    </h3>
+  </section>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="container">
+      <h2>Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Zm-40-60v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80Z"
+            ></path></svg
+          >
+          <h3>Zoomable</h3>
+          <p>OpenSeadragon image zooming using the IIIF image API</p>
+        </div>
+        <div class="feature-card">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="M240-320h480v-320H240v320Zm-80 160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h640v-480H160v480Zm0 0v-480 480Zm160-160 85-113 55 73 75-100 105 140H320Z"
+            ></path></svg
+          >
+          <h3>Embeddable</h3>
+          <p>
+            YouTube-style embedding with deep links to specific pages/zoom
+            regions.
+          </p>
+        </div>
+        <div class="feature-card">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="m476-80 182-480h84L924-80h-84l-43-122H603L560-80h-84ZM160-200l-56-56 202-202q-35-35-63.5-80T190-640h84q20 39 40 68t48 58q33-33 68.5-92.5T484-720H40v-80h280v-80h80v80h280v80H564q-21 72-63 148t-83 116l96 98-30 82-122-125-202 201Zm468-72h144l-72-204-72 204Z"
+            ></path></svg
+          >
+          <h3>Translatable</h3>
+          <p>
+            Internationalised UI supporting English, Welsh, Swedish and more.
+          </p>
+        </div>
+        <div class="feature-card">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="M686-132 444-376q-20 8-40.5 12t-43.5 4q-100 0-170-70t-70-170q0-36 10-68.5t28-61.5l146 146 72-72-146-146q29-18 61.5-28t68.5-10q100 0 170 70t70 170q0 23-4 43.5T584-516l244 242q12 12 12 29t-12 29l-84 84q-12 12-29 12t-29-12Zm29-85 27-27-256-256q18-20 26-46.5t8-53.5q0-60-38.5-104.5T386-758l74 74q12 12 12 28t-12 28L332-500q-12 12-28 12t-28-12l-74-74q9 57 53.5 95.5T360-440q26 0 52-8t47-25l256 256ZM472-488Z"
+            ></path></svg
+          >
+          <h3>Configurable</h3>
+          <p>
+            The UV is highly configurable with an array of customisable
+            settings.
+          </p>
+        </div>
+        <div class="feature-card">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="M423.5-743.5Q400-767 400-800t23.5-56.5Q447-880 480-880t56.5 23.5Q560-833 560-800t-23.5 56.5Q513-720 480-720t-56.5-23.5ZM360-80v-520q-60-5-122-15t-118-25l20-80q78 21 166 30.5t174 9.5q86 0 174-9.5T820-720l20 80q-56 15-118 25t-122 15v520h-80v-240h-80v240h-80Z"
+            ></path></svg
+          >
+          <h3>Accessible</h3>
+          <p>
+            Built with keyboard navigation and screen reader support in mind.
+          </p>
+        </div>
+        <div class="feature-card">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="M280-160v-40h-40q-50 0-85-35t-35-85v-120H40v-80h80v-120q0-50 35-85t85-35h40v-40h80v640h-80Zm-40-120h40v-400h-40q-17 0-28.5 11.5T200-640v320q0 17 11.5 28.5T240-280Zm360 120v-160H440v-80h160v-160H440v-80h160v-160h80v40h40q50 0 85 35t35 85v120h80v80h-80v120q0 50-35 85t-85 35h-40v40h-80Zm80-120h40q17 0 28.5-11.5T760-320v-320q0-17-11.5-28.5T720-680h-40v400ZM280-480Zm400 0Z"
+            ></path></svg
+          >
+          <h3>Extensible</h3>
+          <p>Supports 3D, audio, video, and pdf viewing experiences.</p>
+        </div>
+        <div class="feature-card">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+            ></path></svg
+          >
+          <h3>Searchable</h3>
+          <p>
+            Supports search and autocomplete service integration with overlaid
+            search results.
+          </p>
+        </div>
+        <div class="feature-card">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="M480-80q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q97-30 162-118.5T718-480H480v-315l-240 90v207q0 7 2 18h238v316Z"
+            ></path></svg
+          >
+          <h3>Securable</h3>
+          <p>
+            The UV supports the IIIF Auth API, so your content can be password
+            protected.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Showcase -->
+  <section id="showcase">
+    <div class="container">
+      <h2>Showcase</h2>
+    </div>
+    <div class="showcase-grid">
+      <a
+        href="https://digital.library.villanova.edu/Item/vudl:92879"
+        class="showcase-box"
+      >
+        <img
+          src="/img/showcase/villanova.jpg"
+          alt="Villanova University"
+        />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category">
+              Villanova University: Falvey Memorial Library
+            </div>
+            <div class="project-name">
+              Portrait gallery of pugilists of America and their contemporaries
+            </div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="https://viewer.library.wales/4389767"
+        data-manifest="https://damsssl.llgc.org.uk/iiif/2.0/4389767/manifest.json"
+        class="showcase-box"
+      >
+        <img
+          src="/img/showcase/nlw.jpg"
+          class="img-responsive"
+          alt=""
+        />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category text-faded">
+              National Library of Wales
+            </div>
+            <div class="project-name">
+              Cardiganshire Constabulary register of criminals
+            </div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="https://d.lib.ncsu.edu/collections/catalog/nubian-message-1992-11-30"
+        data-manifest="https://d.lib.ncsu.edu/collections/catalog/nubian-message-1992-11-30/manifest"
+        class="showcase-box"
+      >
+        <img
+          src="/img/showcase/ncsu.jpg"
+          class="img-responsive"
+          alt=""
+        />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category text-faded">NCSU Libraries</div>
+            <div class="project-name">The Nubian Message</div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="https://iiif.bl.uk/uv/#?manifest=https://bl.digirati.io/manifests/ark:/81055/man_10000006.0x000001"
+        data-manifest="https://bl.digirati.io/manifests/ark:/81055/man_10000006.0x000001"
+        class="showcase-box"
+      >
+        <img
+          src="/img/showcase/bl.jpg"
+          class="img-responsive"
+          alt=""
+        />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category text-faded">The British Library</div>
+            <div class="project-name">Lindisfarne Gospels</div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="https://iiif.bodleian.ox.ac.uk/iiif/viewer/60834383-7146-41ab-bfe1-48ee97bc04be"
+        data-manifest="https://iiif.bodleian.ox.ac.uk/iiif/manifest/60834383-7146-41ab-bfe1-48ee97bc04be.json"
+        class="showcase-box"
+      >
+        <img
+          src="/img/showcase/bodleian.jpg"
+          class="img-responsive"
+          alt=""
+        />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category text-faded">
+              Bodleian Libraries, University of Oxford
+            </div>
+            <div class="project-name">MS. Bodl. 264</div>
+          </div>
+        </div>
+      </a>
+      <a
+        href="https://sok.riksarkivet.se/bildvisning/R0000004_00001?viewer=UV"
+        data-manifest="https://iiif.riksarkivet.se/arkis!R0000004/manifest"
+        class="showcase-box"
+      >
+        <img
+          src="/img/showcase/riksarkivet.jpg"
+          class="img-responsive"
+          alt=""
+        />
+        <div class="showcase-box-caption">
+          <div class="showcase-box-caption-content">
+            <div class="project-category text-faded">
+              Riksarkivet (The Swedish National Archives)
+            </div>
+            <div class="project-name">
+              Originaltraktater med främmande makter (traktater)
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section id="getting-started">
+    <div class="container">
+      <h2>Getting Started</h2>
+      <div class="gs-grid">
+        <a
+          href="/docs"
+          class="gs-card"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="m384-336 56-57-87-87 87-87-56-57-144 144 144 144Zm192 0 144-144-144-144-56 57 87 87-87 87 56 57ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"
+            ></path></svg
+          >
+          <span>Are you integrating UV?</span>
+        </a>
+        <a
+          href="/community"
+          class="gs-card"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="M475-160q4 0 8-2t6-4l328-328q12-12 17.5-27t5.5-30q0-16-5.5-30.5T817-607L647-777q-11-12-25.5-17.5T591-800q-15 0-30 5.5T534-777l-11 11 74 75q15 14 22 32t7 38q0 42-28.5 70.5T527-522q-20 0-38.5-7T456-550l-75-74-175 175q-3 3-4.5 6.5T200-435q0 8 6 14.5t14 6.5q4 0 8-2t6-4l136-136 56 56-135 136q-3 3-4.5 6.5T285-350q0 8 6 14t14 6q4 0 8-2t6-4l136-135 56 56-135 136q-3 2-4.5 6t-1.5 8q0 8 6 14t14 6q4 0 7.5-1.5t6.5-4.5l136-135 56 56-136 136q-3 3-4.5 6.5T454-180q0 8 6.5 14t14.5 6Zm-1 80q-37 0-65.5-24.5T375-166q-34-5-57-28t-28-57q-34-5-56.5-28.5T206-336q-38-5-62-33t-24-66q0-20 7.5-38.5T149-506l232-231 131 131q2 3 6 4.5t8 1.5q9 0 15-5.5t6-14.5q0-4-1.5-8t-4.5-6L398-777q-11-12-25.5-17.5T342-800q-15 0-30 5.5T285-777L144-635q-9 9-15 21t-8 24q-2 12 0 24.5t8 23.5l-58 58q-17-23-25-50.5T40-590q2-28 14-54.5T87-692l141-141q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l11 11 11-11q24-23 53.5-35t60.5-12q31 0 60.5 12t52.5 35l169 169q23 23 35 53t12 61q0 31-12 60.5T873-437L545-110q-14 14-32.5 22T474-80Zm-99-560Z"
+            ></path></svg
+          >
+          <span>Are you participating in the community?</span>
+        </a>
+        <a
+          href="/demo"
+          class="gs-card"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#1f1f1f"
+            ><path
+              d="m380-300 280-180-280-180v360ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+            ></path></svg
+          >
+          <span>Do you want to see what UV does?</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Supported By -->
+  <section id="supported-by">
+    <h2>Supported By</h2>
+
+    <h3>Steering Group Members</h3>
+    <div
+      class="logos-grid"
+      id="steering-logos"
+    >
+      <a
+        href="https://www.library.wales"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/llgc-logo.png"
+          alt="National Library of Wales"
+        />
+      </a>
+      <a
+        href="https://www.bl.uk"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/330px-BritishLibrary.png"
+          alt="British Library"
+        />
+      </a>
+      <a
+        href="https://library.villanova.edu"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/villanova-TRANSPARENT.png"
+          alt="Falvey Library, Villanova University"
+        />
+      </a>
+      <a
+        href="https://www.tind.io"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/TIND-logo.png"
+          alt="TIND"
+        />
+      </a>
+      <a
+        href="https://library.princeton.edu"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/princeton university logo.png"
+          alt="Princeton University"
+        />
+      </a>
+      <a
+        href="https://library.ucla.edu"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/ucls-library.png"
+          alt="UCLA Library"
+        />
+      </a>
+      <a
+        href="https://www.st-andrews.ac.uk/library/"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/uni-st-andrews-standard-vertical-black.png"
+          alt="University of St Andrews"
+        />
+      </a>
+      <a
+        href="https://digirati.com"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/digirati-logo.png"
+          alt="Digirati"
+        />
+      </a>
+      <a
+        href="https://mnemoscene.io"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/mnemoscene logo.jfif"
+          alt="Mnemoscene"
+        />
+      </a>
+    </div>
+
+    <h3>Major Contributors</h3>
+    <div
+      class="logos-grid"
+      id="contributors-logos"
+    >
+      <a
+        href="https://www.britishonlinearchives.com"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/british online archives logo.png"
+          alt="British Online Archives"
+        />
+      </a>
+      <a
+        href="https://www.nls.uk"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/National_Library_of_Scotland_logo.svg.png"
+          alt="National Library of Scotland"
+        />
+      </a>
+      <a
+        href="https://www.notch8.com"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/Notch8_Color.avif"
+          alt="Notch8"
+        />
+      </a>
+      <a
+        href="https://www.peoplescollection.wales"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/pcw.jpg"
+          alt="People's Collection Wales"
+        />
+      </a>
+      <a
+        href="https://www.cogapp.com"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/Cogapp_Logo_lg_black.png"
+          alt="Cogapp"
+        />
+      </a>
+      <a
+        href="https://www.vam.ac.uk"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/V&A.png"
+          alt="Victoria & Albert Museum"
+        />
+      </a>
+      <a
+        href="https://www.riksarkivet.se"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/Riksarkivet-swedish archives-TRANSPARENT.png"
+          alt="Riksarkivet"
+        />
+      </a>
+      <a
+        href="https://github.com/Geoffsc"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/geoff.jpeg"
+          alt="Geoff Scholl"
+        /></a
+      >
+      <a
+        href="https://github.com/staceyred"
+        class="logo-item"
+      >
+        <img
+          src="/img/logos/stacey.jpeg"
+          alt="Stacey Redick"
+        /></a
+      >
+    </div>
+  </section>
 </BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('uv');
+    const input = document.getElementById('manifest-url');
+    const button = document.getElementById('manifest-load');
+
+    function loadManifest(url) {
+      iframe.src = `https://universalviewer.dev/uv.html#?manifest=${encodeURIComponent(url)}`;
+    }
+
+    button.addEventListener('click', () => {
+      const url = input.value.trim();
+      if (url) loadManifest(url);
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') button.click();
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    ['steering-logos', 'contributors-logos'].forEach((id) => {
+      const grid = document.getElementById(id);
+      if (!grid) return;
+      const items = Array.from(grid.children);
+      items.sort(() => Math.random() - 0.5);
+      items.forEach((item) => grid.appendChild(item));
+    });
+  });
+</script>
