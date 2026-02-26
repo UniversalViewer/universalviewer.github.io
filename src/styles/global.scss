@@ -1,18 +1,19 @@
-@use "sass:map";
-@use "fn" as *;
-@use "vars" as *;
-@use "props";
-@use "fonts";
-@use "header";
-@use "main-nav";
-@use "lang-nav";
-@use "events";
-@use "demo";
-@use "blog/index";
-@use "blog/page";
-@use "blog/post";
-@use "home";
-@use "community";
+@use 'sass:map';
+@use 'fn' as *;
+@use 'vars' as *;
+@use 'props';
+@use 'fonts';
+@use 'header';
+@use 'main-nav';
+@use 'lang-nav';
+@use 'events';
+@use 'demo';
+@use 'blog/index';
+@use 'blog/page';
+@use 'blog/post';
+@use 'home';
+@use 'community';
+@use 'contact';
 
 html {
   background-color: #f1f5f9;
@@ -65,12 +66,12 @@ main {
   flex: 1;
   margin: 0 auto;
   padding: 2rem;
+  max-width: 70ch;
 }
 
 // global text styling
 
 p {
-  max-width: 720px;
   margin-bottom: 1rem;
 }
 
