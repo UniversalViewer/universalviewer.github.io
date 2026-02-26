@@ -66,12 +66,12 @@ main {
   flex: 1;
   margin: 0 auto;
   padding: 2rem;
+  max-width: 70ch;
 }
 
 // global text styling
 
 p {
-  max-width: 720px;
   margin-bottom: 1rem;
 }
 
