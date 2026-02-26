@@ -48,6 +48,7 @@
   text-underline-offset: remval(2);
   text-align: center;
   font-size: remval(16);
+  font-weight: 500;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     text-align: left;

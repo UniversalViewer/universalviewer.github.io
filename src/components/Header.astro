@@ -10,7 +10,7 @@ const t = useTranslations(locale);
 
 const currentPathWithoutLocale = Astro.url.pathname.replace(
   new RegExp(`^/(?:${locale})(/|$)`, 'i'),
-  '/',
+  '/'
 );
 
 const homeUrl = getRelativeLocaleUrl(locale, '');
@@ -27,6 +27,13 @@ const localeMap = {
 };
 
 const { localeName, localeLangKey } = localeMap[locale];
+
+const switchLangLink =
+  locale == 'en'
+    ? getRelativeLocaleUrl('cy', currentPathWithoutLocale)
+    : getRelativeLocaleUrl('en', currentPathWithoutLocale);
+
+const switchLangLinkText = locale == 'en' ? 'Cymraeg' : 'English';
 ---
 
 <header class="site-header">
@@ -36,7 +43,11 @@ const { localeName, localeLangKey } = localeMap[locale];
   >
     <span>UV</span>
   </a>
-  <a class="header-title" href={homeUrl}><h1>Universal Viewer</h1></a>
+  <a
+    class="header-title"
+    href={homeUrl}
+    ><h1>Universal Viewer</h1></a
+  >
   <button
     type="button"
     id="mobileNavButton"
@@ -48,6 +59,14 @@ const { localeName, localeLangKey } = localeMap[locale];
   </button>
   <MainNav />
   <div class="languages-container">
+    <a
+      href={switchLangLink}
+      class="switch-lang-link"
+    >
+      {switchLangLinkText}
+    </a>
+  </div>
+  <!-- <div class="languages-container">
     <button
       type="button"
       id="showLanguagesButton"
@@ -80,7 +99,7 @@ const { localeName, localeLangKey } = localeMap[locale];
         </li>
       </ul>
     </nav>
-  </div>
+  </div> -->
 </header>
 <script>
   // alert(

@@ -142,9 +142,9 @@
   margin-left: 1rem;
   display: none;
 
-    &:hover {
-      text-decoration: underline;
-    }
+  &:hover {
+    text-decoration: underline;
+  }
 
   h1 {
     margin: 0;
@@ -153,5 +153,18 @@
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     display: block;
+  }
+}
+
+.switch-lang-link {
+  color: #fff;
+  font-size: remval(15);
+  text-decoration: none;
+  border-left: 1px solid #fff6;
+  padding: remval(2) remval(0) remval(2) remval(16);
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: remval(3);
   }
 }
