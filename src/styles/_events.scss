@@ -1,9 +1,25 @@
-.events-main {
-    text-align: center;
+main.events-main {
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 section {
   margin: 1.5rem auto;
+}
+
+.calendar-embed {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: solid 1px #777;
+  }
 }
 
 .events-row {
