@@ -13,6 +13,8 @@ export default {
     'blog.page': 'Tudalen',
     'blog.olderPosts': 'Postiadau hŷn',
     'blog.newerPosts': 'Postiadau mwy newydd',
+    'blog.nextPost': 'Post nesaf',
+    'blog.previousPost': 'Post blaenorol',
 
     'footer.links': 'Cysylltiadau',
     'footer.policies': 'Polisïau',

@@ -13,6 +13,8 @@ export default {
     'blog.page': 'Page',
     'blog.olderPosts': 'Older posts',
     'blog.newerPosts': 'Newer posts',
+    'blog.nextPost': 'Next post',
+    'blog.previousPost': 'Previous post',
 
     'footer.links': 'Links',
     'footer.policies': 'Policies',

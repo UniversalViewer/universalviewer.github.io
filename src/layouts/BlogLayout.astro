@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import type { Lang } from '@i18n/ui';
+import { useTranslations, getLocaleISOString } from '@i18n/utils';
 
 interface Props {
   post: any;
@@ -10,12 +11,15 @@ interface Props {
 }
 
 const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
 
 const { post, prev, next } = Astro.props;
 
 const { title, date, author } = post.data;
 
-const formattedDate = date.toLocaleDateString('en-GB', {
+const localeISOString = getLocaleISOString(locale);
+
+const formattedDate = date.toLocaleDateString(localeISOString, {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -25,7 +29,7 @@ function postUrl(p: any) {
   const d = new Date(p.data.date);
   return getRelativeLocaleUrl(
     locale,
-    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${p.id}`,
+    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${p.id}`
   );
 }
 ---
@@ -60,7 +64,7 @@ function postUrl(p: any) {
       prev && (
         <div class="prev-post">
           <>
-            <strong>Previous post</strong>
+            <strong>{t('blog.previousPost')}</strong>
             <br />
           </>
           <a href={postUrl(prev)}>{prev.data.title}</a>
@@ -71,7 +75,7 @@ function postUrl(p: any) {
       next && (
         <div class="next-post">
           <>
-            <strong>Next post</strong>
+            <strong>{t('blog.nextPost')}</strong>
             <br />
           </>
           <a href={postUrl(next)}>{next.data.title}</a>

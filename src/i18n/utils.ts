@@ -6,3 +6,12 @@ export function useTranslations(locale: Lang) {
     return ui[locale][key] || ui[defaultLang][key];
   };
 }
+
+export function getLocaleISOString(locale: string): string {
+  const localeToISO: Record<string, string> = {
+    en: "en-GB",
+    cy: "cy-GB",
+  };
+
+  return localeToISO[locale] ?? locale;
+}
