@@ -1,10 +1,13 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import * as collection from "./demo_collection.json";
-const pageTitle = "Demo";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import * as collection from '@data/demo_collection.json';
+const pageTitle = 'Demo';
 ---
 
-<BaseLayout pageTitle={pageTitle} mainClass="demo-main">
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="demo-main"
+>
   <fragment slot="head">
     <link
       rel="stylesheet"
@@ -17,10 +20,17 @@ const pageTitle = "Demo";
   </fragment>
 
   <div id="demo-layout">
-    <div id="uv" class="uv"></div>
+    <div
+      id="uv"
+      class="uv"
+    >
+    </div>
 
     <div id="controls">
-      <div class="controls-section" id="content-control">
+      <div
+        class="controls-section"
+        id="content-control"
+      >
         <h3>Content</h3>
         <p>
           Pick a content type from this menu to see how the Universal Viewer
@@ -29,12 +39,15 @@ const pageTitle = "Demo";
         <select id="manifest-select">
           {
             collection.manifests.map((m: any) => (
-              <option value={m["@id"]}>{m.label}</option>
+              <option value={m['@id']}>{m.label}</option>
             ))
           }
         </select>
       </div>
-      <div class="controls-section" id="iiif-selection">
+      <div
+        class="controls-section"
+        id="iiif-selection"
+      >
         <h3>Load IIIF Manifest</h3>
         <p>
           The Universal Viewer supports <a href="https://iiif.io/">IIIF</a> presentation
@@ -42,43 +55,84 @@ const pageTitle = "Demo";
           Manifest URL here, and the UV will display it!
         </p>
         <div class="url-input">
-          <input type="text" id="manifest-input" placeholder="Input URL…" />
+          <input
+            type="text"
+            id="manifest-input"
+            placeholder="Input URL…"
+          />
           <button id="load-btn">Load</button>
         </div>
       </div>
 
-      <div class="controls-section" id="customise">
+      <div
+        class="controls-section"
+        id="customise"
+      >
         <h3>Customise</h3>
         <div class="checkbox-grid">
           <label
-            ><input type="checkbox" id="cfg-leftPanel" checked /> Left panel</label
+            ><input
+              type="checkbox"
+              id="cfg-leftPanel"
+              checked
+            /> Left panel</label
           >
           <label
-            ><input type="checkbox" id="cfg-rightPanel" checked /> Right panel</label
+            ><input
+              type="checkbox"
+              id="cfg-rightPanel"
+              checked
+            /> Right panel</label
           >
           <label
-            ><input type="checkbox" id="cfg-footerPanel" checked /> Footer panel</label
+            ><input
+              type="checkbox"
+              id="cfg-footerPanel"
+              checked
+            /> Footer panel</label
           >
           <label
-            ><input type="checkbox" id="cfg-headerPanel" checked /> Header panel</label
+            ><input
+              type="checkbox"
+              id="cfg-headerPanel"
+              checked
+            /> Header panel</label
           >
           <label
-            ><input type="checkbox" id="cfg-showHomeControl" checked /> Home button</label
+            ><input
+              type="checkbox"
+              id="cfg-showHomeControl"
+              checked
+            /> Home button</label
           >
           <label
-            ><input type="checkbox" id="cfg-showAdjustImageControl" checked /> Adjust
-            image button</label
+            ><input
+              type="checkbox"
+              id="cfg-showAdjustImageControl"
+              checked
+            /> Adjust image button</label
           >
           <label
-            ><input type="checkbox" id="cfg-navigatorEnabled" checked /> Navigator</label
+            ><input
+              type="checkbox"
+              id="cfg-navigatorEnabled"
+              checked
+            /> Navigator</label
           >
           <label
-            ><input type="checkbox" id="cfg-titleEnabled" checked /> Title</label
+            ><input
+              type="checkbox"
+              id="cfg-titleEnabled"
+              checked
+            /> Title</label
           >
         </div>
       </div>
 
-      <div class="controls-section" id="advanced">
+      <div
+        class="controls-section"
+        id="advanced"
+      >
         <h3>Advanced Demo</h3>
         <p>
           Developers may want to see the <a href="https://universalviewer.dev"
@@ -92,10 +146,10 @@ const pageTitle = "Demo";
   </div>
 
   <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-      const select = document.getElementById("manifest-select");
-      const manifestInput = document.getElementById("manifest-input");
-      const loadButton = document.getElementById("load-btn");
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('manifest-select');
+      const manifestInput = document.getElementById('manifest-input');
+      const loadButton = document.getElementById('load-btn');
 
       let uv = null;
       let currentManifestId = select.options[0]?.value ?? null;
@@ -103,44 +157,44 @@ const pageTitle = "Demo";
       function buildConfig() {
         return {
           options: {
-            leftPanelEnabled: document.getElementById("cfg-leftPanel").checked,
+            leftPanelEnabled: document.getElementById('cfg-leftPanel').checked,
             rightPanelEnabled:
-              document.getElementById("cfg-rightPanel").checked,
+              document.getElementById('cfg-rightPanel').checked,
             footerPanelEnabled:
-              document.getElementById("cfg-footerPanel").checked,
+              document.getElementById('cfg-footerPanel').checked,
             headerPanelEnabled:
-              document.getElementById("cfg-headerPanel").checked,
-            navigatorEnabled: document.getElementById("cfg-navigatorEnabled")
+              document.getElementById('cfg-headerPanel').checked,
+            navigatorEnabled: document.getElementById('cfg-navigatorEnabled')
               .checked,
           },
           modules: {
             openSeadragonCenterPanel: {
               options: {
-                showHomeControl: document.getElementById("cfg-showHomeControl")
+                showHomeControl: document.getElementById('cfg-showHomeControl')
                   .checked,
                 showAdjustImageControl: document.getElementById(
-                  "cfg-showAdjustImageControl",
+                  'cfg-showAdjustImageControl'
                 ).checked,
                 titleEnabled:
-                  document.getElementById("cfg-titleEnabled").checked,
+                  document.getElementById('cfg-titleEnabled').checked,
               },
             },
             avCenterPanel: {
               options: {
                 titleEnabled:
-                  document.getElementById("cfg-titleEnabled").checked,
+                  document.getElementById('cfg-titleEnabled').checked,
               },
             },
             pdfCenterPanel: {
               options: {
                 titleEnabled:
-                  document.getElementById("cfg-titleEnabled").checked,
+                  document.getElementById('cfg-titleEnabled').checked,
               },
             },
             mediaElementCenterPanel: {
               options: {
                 titleEnabled:
-                  document.getElementById("cfg-titleEnabled").checked,
+                  document.getElementById('cfg-titleEnabled').checked,
               },
             },
           },
@@ -162,10 +216,10 @@ const pageTitle = "Demo";
         const data = urlAdapter.getInitialData({
           iiifManifestId: manifestId,
         });
-        uv = UV.init("uv", data);
+        uv = UV.init('uv', data);
         urlAdapter.bindTo(uv);
 
-        uv.on("configure", ({ config, cb }) => {
+        uv.on('configure', ({ config, cb }) => {
           cb(buildConfig());
         });
       }
@@ -173,32 +227,32 @@ const pageTitle = "Demo";
       // load first manifest on page load
       loadManifest(currentManifestId);
 
-      select.addEventListener("change", () => {
+      select.addEventListener('change', () => {
         loadManifest(select.value);
       });
 
-      loadButton.addEventListener("click", () => {
+      loadButton.addEventListener('click', () => {
         const url = manifestInput.value.trim();
         if (url) loadManifest(url);
       });
 
-      manifestInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") loadButton.click();
+      manifestInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') loadButton.click();
       });
 
       [
-        "cfg-leftPanel",
-        "cfg-rightPanel",
-        "cfg-footerPanel",
-        "cfg-headerPanel",
-        "cfg-navigatorEnabled",
-        "cfg-showHomeControl",
-        "cfg-showAdjustImageControl",
-        "cfg-titleEnabled",
+        'cfg-leftPanel',
+        'cfg-rightPanel',
+        'cfg-footerPanel',
+        'cfg-headerPanel',
+        'cfg-navigatorEnabled',
+        'cfg-showHomeControl',
+        'cfg-showAdjustImageControl',
+        'cfg-titleEnabled',
       ].forEach((id) => {
         document
           .getElementById(id)
-          .addEventListener("change", () => loadManifest(currentManifestId));
+          .addEventListener('change', () => loadManifest(currentManifestId));
       });
     });
   </script>

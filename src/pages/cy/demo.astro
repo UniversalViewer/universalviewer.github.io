@@ -1,7 +1,266 @@
 ---
+import { useTranslations } from '@i18n/utils';
+import { getLocalesForUV } from '@config/uv';
+import type { Lang } from '@i18n/ui';
+
 import BaseLayout from '@layouts/BaseLayout.astro';
-const pageTitle = 'Demo'
+import UVHead from '@components/UVHead.astro';
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+const uvLocales = JSON.stringify(getLocalesForUV(locale));
+
+import * as collection from '@data/demo_collection.json';
+const pageTitle = 'Demo';
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="demo-main"
+>
+  <UVHead />
+
+  <div id="demo-layout">
+    <div
+      id="uv"
+      class="uv"
+      data-locales={uvLocales}
+    >
+    </div>
+
+    <div id="controls">
+      <div
+        class="controls-section"
+        id="content-control"
+      >
+        <h3>Cynnwys</h3>
+        <p>
+          Dewiswch fath o gynnwys o’r ddewislen hon i weld sut mae’r Universal
+          Viewer yn dangos gwahanol fathau o ddeunyddiau.
+        </p>
+        <select id="manifest-select">
+          {
+            collection.manifests.map((m: any) => (
+              <option value={m['@id']}>{m.label}</option>
+            ))
+          }
+        </select>
+      </div>
+      <div
+        class="controls-section"
+        id="iiif-selection"
+      >
+        <h3>Llwytho Maniffest IIIF</h3>
+        <p>
+          Mae’r Universal Viewer yn cefnogi maniffestau cyflwyno <a
+            href="https://iiif.io/">IIIF</a
+          >, sef dull cyffredin o rannu cynnwys. Gallwch ludo unrhyw ddolen i
+          maniffest IIIF yma, a bydd yr UV yn ei arddangos!
+        </p>
+        <div class="url-input">
+          <input
+            type="text"
+            id="manifest-input"
+            placeholder="Dolen i'w arddangos…"
+          />
+          <button id="load-btn">Llwytho</button>
+        </div>
+      </div>
+
+      <div
+        class="controls-section"
+        id="customise"
+      >
+        <h3>Addasu</h3>
+        <div class="checkbox-grid">
+          <label
+            ><input
+              type="checkbox"
+              id="cfg-leftPanel"
+              checked
+            /> Panel chwith</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="cfg-rightPanel"
+              checked
+            /> Panel dde</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="cfg-footerPanel"
+              checked
+            /> Panel troedyn</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="cfg-headerPanel"
+              checked
+            /> Panel pennyn</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="cfg-showHomeControl"
+              checked
+            /> Botwm hafan</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="cfg-showAdjustImageControl"
+              checked
+            /> Botwm addasu’r ddelwedd</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="cfg-navigatorEnabled"
+              checked
+            /> Llywiwr</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              id="cfg-titleEnabled"
+              checked
+            /> Teitl</label
+          >
+        </div>
+      </div>
+
+      <div
+        class="controls-section"
+        id="advanced"
+      >
+        <h3>Demo Uwch</h3>
+        <p>
+          Efallai y bydd datblygwyr am weld y <a
+            href="https://universalviewer.dev">demo arloesol diweddaraf</a
+          > neu’r <a href="https://uv-v4.netlify.app"
+            >demo sefydlog diweddaraf</a
+          >, sy’n cynnwys rheolaethau mwy datblygedig ar gyfer ffurfweddu a
+          phrofi’r gwyliwr.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const select = document.getElementById('manifest-select');
+      const manifestInput = document.getElementById('manifest-input');
+      const loadButton = document.getElementById('load-btn');
+
+      let uv = null;
+      let currentManifestId = select.options[0]?.value ?? null;
+
+      function buildConfig() {
+        return {
+          options: {
+            leftPanelEnabled: document.getElementById('cfg-leftPanel').checked,
+            rightPanelEnabled:
+              document.getElementById('cfg-rightPanel').checked,
+            footerPanelEnabled:
+              document.getElementById('cfg-footerPanel').checked,
+            headerPanelEnabled:
+              document.getElementById('cfg-headerPanel').checked,
+            navigatorEnabled: document.getElementById('cfg-navigatorEnabled')
+              .checked,
+          },
+          modules: {
+            openSeadragonCenterPanel: {
+              options: {
+                showHomeControl: document.getElementById('cfg-showHomeControl')
+                  .checked,
+                showAdjustImageControl: document.getElementById(
+                  'cfg-showAdjustImageControl'
+                ).checked,
+                titleEnabled:
+                  document.getElementById('cfg-titleEnabled').checked,
+              },
+            },
+            avCenterPanel: {
+              options: {
+                titleEnabled:
+                  document.getElementById('cfg-titleEnabled').checked,
+              },
+            },
+            pdfCenterPanel: {
+              options: {
+                titleEnabled:
+                  document.getElementById('cfg-titleEnabled').checked,
+              },
+            },
+            mediaElementCenterPanel: {
+              options: {
+                titleEnabled:
+                  document.getElementById('cfg-titleEnabled').checked,
+              },
+            },
+          },
+        };
+      }
+
+      function loadManifest(manifestId) {
+        if (!manifestId) return;
+        currentManifestId = manifestId;
+
+        if (uv) {
+          try {
+            uv.dispose();
+          } catch {}
+          uv = null;
+        }
+
+        const urlAdapter = new UV.IIIFURLAdapter();
+        const data = urlAdapter.getInitialData({
+          iiifManifestId: manifestId,
+          locales: JSON.parse(document.getElementById('uv')?.dataset.locales),
+        });
+
+        uv = UV.init('uv', data);
+        urlAdapter.bindTo(uv);
+
+        uv.on('configure', ({ config, cb }) => {
+          cb(buildConfig());
+        });
+      }
+
+      // load first manifest on page load
+      loadManifest(currentManifestId);
+
+      select.addEventListener('change', () => {
+        loadManifest(select.value);
+      });
+
+      loadButton.addEventListener('click', () => {
+        const url = manifestInput.value.trim();
+        if (url) loadManifest(url);
+      });
+
+      manifestInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') loadButton.click();
+      });
+
+      [
+        'cfg-leftPanel',
+        'cfg-rightPanel',
+        'cfg-footerPanel',
+        'cfg-headerPanel',
+        'cfg-navigatorEnabled',
+        'cfg-showHomeControl',
+        'cfg-showAdjustImageControl',
+        'cfg-titleEnabled',
+      ].forEach((id) => {
+        document
+          .getElementById(id)
+          .addEventListener('change', () => loadManifest(currentManifestId));
+      });
+    });
+  </script>
 </BaseLayout>

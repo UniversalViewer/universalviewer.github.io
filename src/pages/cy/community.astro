@@ -1,7 +1,353 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-const pageTitle = 'Community'
+import EventsCalendar from '@components/EventsCalendar.astro';
+const pageTitle = 'Cymuned';
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="community-main"
+>
+  <div class="container">
+    <!-- Getting Started -->
+    <section id="getting-started">
+      <h1>{pageTitle}</h1>
+      <h2>Dechrau Arni</h2>
+      <p>
+        Mae’r Universal Viewer yn brosiect cod agored sy’n ffynnu ar gydweithio
+        cymunedol. Mae sawl ffordd o gymryd rhan - lle gwych i ddechrau yw ymuno
+        â’n <a href="https://universalviewer.slack.com">sianel Slack</a> a chysylltu
+        ag aelodau eraill o’r gymuned.
+      </p>
+      <p>
+        Cynhelir galwad gymunedol bob mis ar ddydd Iau cyntaf y mis, ac mae’n
+        agored i bawb. Mae’r galwadau hyn yn rhoi cyfle i drafod a symud ymlaen
+        bynciau sy’n ymwneud â’r UV, datrys unrhyw broblemau technegol, a
+        chysylltu â defnyddwyr eraill y Universal Viewer.
+      </p>
+      <p>
+        Mae ein <a
+          href="https://github.com/UniversalViewer/universalviewer?tab=readme-ov-file#-contributing-and-giving-feedback"
+          >canllaw cyfrannu</a
+        > yn esbonio sut i redeg, addasu a chyfrannu at y meddalwedd. Gellir dod o
+        hyd i ragor o wybodaeth yn ein dogfennaeth ar-lein. Our contributing guide
+        tells you how to run, modify and contribute to the software. Further information
+        can be found in our online documentation.
+      </p>
+    </section>
+
+    <!-- Community Sprints -->
+    <section id="community-sprints">
+      <h2>Prosiectau Cymunedol</h2>
+      <p>
+        Mae ein rhaglen prosiectau cymunedol yn hanfodol i ddatblygiad y
+        Universal Viewer, gan helpu i gadw’r prosiect yn gynaliadwy ac wedi’i
+        alinio’n agos ag anghenion defnyddwyr. Mae croeso i unrhyw un ymuno â’r
+        ymdrechion datblygu cydweithredol hyn, beth bynnag fo’u sgiliau
+        technegol. Rhestrir y prosiectau sydd i ddod ar ein <a href="/events"
+          >tudalen digwyddiadau</a
+        >, ac mae croeso i chi estyn allan ar <a
+          href="https://universalviewer.slack.com">Slack</a
+        > neu ymuno â galwad gymunedol i gael rhagor o wybodaeth am sut y gallwch
+        gyfrannu.
+      </p>
+
+      <div class="community-links">
+        <ul>
+          <li>
+            <a
+              href="/events"
+              class="community-link"
+              >Gweld digwyddiadau sydd ar y gweill</a
+            >
+          </li>
+          <li>
+            <a
+              href="/contact"
+              class="community-link"
+              >Cysylltwch â ni</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div class="logos-grid">
+        <a
+          href="https://github.com/UniversalViewer/universalviewer"
+          class="logo-item"
+          aria-label="GitHub"
+        >
+          <img
+            src="/img/logos/GitHub-Logo.png"
+            alt="GitHub"
+          />
+        </a>
+        <a
+          href="https://universalviewer.slack.com"
+          class="logo-item"
+          aria-label="Slack"
+        >
+          <img
+            src="/img/logos/slack.webp"
+            alt="Slack"
+          />
+        </a>
+        <a
+          href="https://bsky.app/profile/universalviewer.io"
+          class="logo-item"
+          aria-label="Bluesky"
+        >
+          <img
+            src="/img/logos/Bluesky_Logo.svg"
+            alt="Bluesky"
+          />
+        </a>
+        <a
+          href="https://glammr.us/@universalviewer"
+          class="logo-item"
+          aria-label="Mastodon"
+        >
+          <img
+            src="/img/logos/Mastodon.svg"
+            alt="Mastodon"
+          />
+        </a>
+      </div>
+    </section>
+
+    <!-- Steering Group -->
+    <section id="steering-group">
+      <h2>Grŵp Llywio</h2>
+      <p>
+        Rôl y Grŵp Llywio yw darparu cyfeiriad strategol unedig a chynaliadwyedd
+        i Gymuned yr UV, a dyrannu cronfeydd <a
+          href="https://opencollective.com/universalviewer">Open Collective</a
+        > fel y bo’n briodol.
+      </p>
+      <p>Mae cyfrifoldebau’r grŵp yn cynnwys:</p>
+      <ul>
+        <li>
+          datblygu cynnig gwerth a map ffordd rhyngsefydliadol ffurfiol ar gyfer
+          datblygiad y Universal Viewer
+        </li>
+        <li>
+          sicrhau cynaliadwyedd er mwyn galluogi perchnogaeth ar y cyd ac
+          amrywiaeth
+        </li>
+        <li>
+          gosod blaenoriaethau ar gyfer dyrannu’r cronfeydd Open Collective a
+          dderbynnir
+        </li>
+        <li>trafod ceisiadau datblygu a dderbynnir drwy straeon defnyddwyr</li>
+        <li>
+          trafod datblygiadau sy’n deillio o brosiectau a ariennir y tu allan
+          i’r OC
+        </li>
+      </ul>
+      <h3>Pwy yw aelodau’r Grŵp Llywio?</h3>
+      <p>
+        Ar hyn o bryd, cyfyngir aelodaeth i gynrychiolwyr sefydliadau sy’n
+        cyfrannu at <a href="https://opencollective.com/universalviewer"
+          >gronfa UV Open Collective</a
+        >, ond mae croeso i aelodau newydd ymuno ar unrhyw adeg.
+      </p>
+
+      <div
+        class="logos-grid"
+        id="steering-logos"
+      >
+        <a
+          href="https://www.library.wales"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/llgc-logo.png"
+            alt="National Library of Wales"
+          />
+        </a>
+        <a
+          href="https://www.bl.uk"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/330px-BritishLibrary.png"
+            alt="British Library"
+          />
+        </a>
+        <a
+          href="https://library.villanova.edu"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/villanova-TRANSPARENT.png"
+            alt="Falvey Library, Villanova University"
+          />
+        </a>
+        <a
+          href="https://www.tind.io"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/TIND-logo.png"
+            alt="TIND"
+          />
+        </a>
+        <a
+          href="https://library.princeton.edu"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/princeton university logo.png"
+            alt="Princeton University"
+          />
+        </a>
+        <a
+          href="https://library.ucla.edu"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/ucls-library.png"
+            alt="UCLA Library"
+          />
+        </a>
+        <a
+          href="https://www.st-andrews.ac.uk/library/"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/uni-st-andrews-standard-vertical-black.png"
+            alt="University of St Andrews"
+          />
+        </a>
+        <a
+          href="https://digirati.com"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/digirati-logo.png"
+            alt="Digirati"
+          />
+        </a>
+        <a
+          href="https://mnemoscene.io"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/mnemoscene logo.jfif"
+            alt="Mnemoscene"
+          />
+        </a>
+      </div>
+    </section>
+
+    <!-- Contributors -->
+    <section id="contributors">
+      <h2>Diolch i’n cyfranwyr</h2>
+      <p>
+        Mae’r Universal Viewer yn yn datblygu drwy fewnbwn y gymuned, ac rydym
+        yn ddiolchgar i’r cyfranwyr a’r sefydliadau y mae eu cefnogaeth yn helpu
+        i symud y prosiect ymlaen. Mae eu cydweithrediad a’u hymrwymiad yn
+        gwneud datblygiad parhaus a chynaliadwyedd yn bosibl.
+      </p>
+
+      <div
+        class="logos-grid"
+        id="contributors-logos"
+      >
+        <a
+          href="https://britishonlinearchives.com"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/british online archives logo.png"
+            alt="British Online Archives"
+          />
+        </a>
+        <a
+          href="https://www.nls.uk"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/National_Library_of_Scotland_logo.svg.png"
+            alt="National Library of Scotland"
+          />
+        </a>
+        <a
+          href="https://www.notch8.com"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/Notch8_Color.avif"
+            alt="Notch8"
+          />
+        </a>
+        <a
+          href="https://www.peoplescollection.wales"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/pcw.jpg"
+            alt="People's Collection Wales"
+          />
+        </a>
+        <a
+          href="https://www.cogapp.com"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/Cogapp_Logo_lg_black.png"
+            alt="Cogapp"
+          />
+        </a>
+        <a
+          href="https://www.vam.ac.uk"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/V&A.png"
+            alt="Victoria & Albert Museum"
+          />
+        </a>
+        <a
+          href="https://www.riksarkivet.se"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/Riksarkivet-swedish archives-TRANSPARENT.png"
+            alt="Riksarkivet"
+          />
+        </a>
+        <a
+          href="https://github.com/Geoffsc"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/geoff.jpeg"
+            alt="Geoff Scholl"
+          />
+        </a>
+        <a
+          href="https://github.com/staceyred"
+          class="logo-item"
+        >
+          <img
+            src="/img/logos/stacey.jpeg"
+            alt="Stacey Redick"
+          />
+        </a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    ['steering-logos', 'contributors-logos'].forEach((id) => {
+      const grid = document.getElementById(id);
+      if (!grid) return;
+      const items = Array.from(grid.children);
+      items.sort(() => Math.random() - 0.5);
+      items.forEach((item) => grid.appendChild(item));
+    });
+  });
+</script>

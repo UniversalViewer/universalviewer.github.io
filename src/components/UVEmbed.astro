@@ -1,12 +1,12 @@
 ---
 import { useTranslations } from '@i18n/utils';
 import type { Lang } from '@i18n/ui';
-import { uvLocales } from '@config/uv';
+import { uvLocaleStrings } from '@config/uv';
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
-const uvLocale = uvLocales[locale];
+const uvLocale = uvLocaleStrings[locale];
 ---
 
 <!-- UV embed -->

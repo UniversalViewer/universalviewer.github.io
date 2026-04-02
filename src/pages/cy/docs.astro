@@ -1,7 +1,27 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-const pageTitle = 'Docs'
+const pageTitle = 'Dogfennaeth';
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="docs-main"
+>
+  <p>
+    Gweler yr <a
+      href="https://github.com/UniversalViewer/universalviewer/wiki/UV-Examples"
+      >enghreifftiau</a
+    > i weld sut mae defnyddio'r UV mewn gwahanol sefyllfaoedd.
+  </p>
+  <p>
+    Darllenwch y <a href="https://docs.universalviewer.io/modules.html"
+      >dogfennau technegol</a
+    > i ddysgu mwy am y cod a'r opsiynau ffurfweddu sydd ar gael.
+  </p>
+  <p>
+    Darllenwch y <a
+      href="https://github.com/UniversalViewer/universalviewer/blob/dev/manual/index.md"
+      >llawlyfr</a
+    > i gael gwybodaeth am ddefnyddio, ffurfweddu a datblygu ar gyfer yr UV.
+  </p>
 </BaseLayout>

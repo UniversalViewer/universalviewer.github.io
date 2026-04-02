@@ -1,10 +1,14 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-const pageTitle = "Events";
+import BaseLayout from '@layouts/BaseLayout.astro';
+import EventsCalendar from '@components/EventsCalendar.astro';
+const pageTitle = 'Events';
 ---
 
-<BaseLayout pageTitle={pageTitle} mainClass="events-main">
-  <h1>Events</h1>
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="events-main"
+>
+  <h1>{pageTitle}</h1>
   <!-- <section class="upcoming-events">
     <h2>Upcoming Events</h2>
     <div class="events-row">
@@ -28,12 +32,7 @@ const pageTitle = "Events";
       </a>
     </div>
   </section> -->
-  <div class="calendar-embed">
-    <iframe
-      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FLondon&showPrint=0&showTitle=0&showTabs=0&showCalendars=0&src=dW5pdmVyc2Fsdmlld2VyYXBwQGdtYWlsLmNvbQ&color=%239e69af"
-      frameborder="0"
-      scrolling="no"></iframe>
-  </div>
+  <EventsCalendar />
   <!-- <section class="event-categories">
     <h2>Event Categories</h2>
     <div class="events-row">

@@ -1,0 +1,9 @@
+---
+import type { Lang } from '@i18n/ui';
+
+const locale = Astro.currentLocale as Lang;
+---
+<div class="calendar-embed">
+    <iframe src={`https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FLondon&showPrint=0&showTitle=0&showTabs=0&showCalendars=0&src=dW5pdmVyc2Fsdmlld2VyYXBwQGdtYWlsLmNvbQ&color=%239e69af&hl=${locale}`}
+    />
+</div>
