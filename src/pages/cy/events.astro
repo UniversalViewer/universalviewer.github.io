@@ -1,7 +1,13 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-const pageTitle = 'Events'
+import EventsCalendar from '@components/EventsCalendar.astro';
+const pageTitle = 'Digwyddiadau';
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="events-main"
+>
+  <h1>{pageTitle}</h1>
+  <EventsCalendar />
 </BaseLayout>
