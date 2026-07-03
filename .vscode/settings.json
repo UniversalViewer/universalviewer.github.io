@@ -10,7 +10,7 @@
 
   // Astro formatter
   "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // JS / JSON / Markdown / SCSS → Prettier
