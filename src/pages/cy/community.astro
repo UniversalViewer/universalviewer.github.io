@@ -1,21 +1,18 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { useTranslations } from '@i18n/utils';
-import type { Lang } from '@i18n/ui';
-import BaseLayout from '@layouts/BaseLayout.astro';
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
-const eventsPageUrl = getRelativeLocaleUrl(locale, '/events');
-const contactPageUrl = getRelativeLocaleUrl(locale, '/contact');
+const eventsPageUrl = getRelativeLocaleUrl(locale, "/events");
+const contactPageUrl = getRelativeLocaleUrl(locale, "/contact");
 
-const pageTitle = 'Cymuned';
+const pageTitle = "Cymuned";
 ---
 
-<BaseLayout
-  pageTitle={pageTitle}
-  mainClass="community-main"
->
+<BaseLayout pageTitle={pageTitle} mainClass="community-main">
   <div class="container">
     <!-- Getting Started -->
     <section id="getting-started">
@@ -63,18 +60,12 @@ const pageTitle = 'Cymuned';
       <div class="community-links">
         <ul>
           <li>
-            <a
-              href={eventsPageUrl}
-              class="community-link"
+            <a href={eventsPageUrl} class="community-link"
               >Gweld digwyddiadau sydd ar y gweill</a
             >
           </li>
           <li>
-            <a
-              href={contactPageUrl}
-              class="community-link"
-              >Cysylltwch â ni</a
-            >
+            <a href={contactPageUrl} class="community-link">Cysylltwch â ni</a>
           </li>
         </ul>
       </div>
@@ -85,40 +76,28 @@ const pageTitle = 'Cymuned';
           class="logo-item"
           aria-label="GitHub"
         >
-          <img
-            src="/img/logos/GitHub-Logo.png"
-            alt="GitHub"
-          />
+          <img src="/img/logos/GitHub-Logo.png" alt="GitHub" />
         </a>
         <a
           href="https://universalviewer.slack.com"
           class="logo-item"
           aria-label="Slack"
         >
-          <img
-            src="/img/logos/slack.webp"
-            alt="Slack"
-          />
+          <img src="/img/logos/slack.webp" alt="Slack" />
         </a>
         <a
           href="https://bsky.app/profile/universalviewer.io"
           class="logo-item"
           aria-label="Bluesky"
         >
-          <img
-            src="/img/logos/Bluesky_Logo.svg"
-            alt="Bluesky"
-          />
+          <img src="/img/logos/Bluesky_Logo.svg" alt="Bluesky" />
         </a>
         <a
           href="https://glammr.us/@universalviewer"
           class="logo-item"
           aria-label="Mastodon"
         >
-          <img
-            src="/img/logos/Mastodon.svg"
-            alt="Mastodon"
-          />
+          <img src="/img/logos/Mastodon.svg" alt="Mastodon" />
         </a>
       </div>
     </section>
@@ -160,90 +139,45 @@ const pageTitle = 'Cymuned';
         >, ond mae croeso i aelodau newydd ymuno ar unrhyw adeg.
       </p>
 
-      <div
-        class="logos-grid"
-        id="steering-logos"
-      >
-        <a
-          href="https://www.library.wales"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/llgc-logo.png"
-            alt="National Library of Wales"
-          />
+      <div class="logos-grid" id="steering-logos">
+        <a href="https://www.library.wales" class="logo-item">
+          <img src="/img/logos/llgc-logo.png" alt="National Library of Wales" />
         </a>
-        <a
-          href="https://www.bl.uk"
-          class="logo-item"
-        >
+        <a href="https://www.bl.uk" class="logo-item">
           <img
             src="/img/logos/330px-BritishLibrary.png"
             alt="British Library"
           />
         </a>
-        <a
-          href="https://library.villanova.edu"
-          class="logo-item"
-        >
+        <a href="https://library.villanova.edu" class="logo-item">
           <img
             src="/img/logos/villanova-TRANSPARENT.png"
             alt="Falvey Library, Villanova University"
           />
         </a>
-        <a
-          href="https://www.tind.io"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/TIND-logo.png"
-            alt="TIND"
-          />
+        <a href="https://www.tind.io" class="logo-item">
+          <img src="/img/logos/TIND-logo.png" alt="TIND" />
         </a>
-        <a
-          href="https://library.princeton.edu"
-          class="logo-item"
-        >
+        <a href="https://library.princeton.edu" class="logo-item">
           <img
             src="/img/logos/princeton university logo.png"
             alt="Princeton University"
           />
         </a>
-        <a
-          href="https://library.ucla.edu"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/ucls-library.png"
-            alt="UCLA Library"
-          />
+        <a href="https://library.ucla.edu" class="logo-item">
+          <img src="/img/logos/ucls-library.png" alt="UCLA Library" />
         </a>
-        <a
-          href="https://www.st-andrews.ac.uk/library/"
-          class="logo-item"
-        >
+        <a href="https://www.st-andrews.ac.uk/library/" class="logo-item">
           <img
             src="/img/logos/uni-st-andrews-standard-vertical-black.png"
             alt="University of St Andrews"
           />
         </a>
-        <a
-          href="https://digirati.com"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/digirati-logo.png"
-            alt="Digirati"
-          />
+        <a href="https://digirati.com" class="logo-item">
+          <img src="/img/logos/digirati-logo.png" alt="Digirati" />
         </a>
-        <a
-          href="https://mnemoscene.io"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/mnemoscene logo.jfif"
-            alt="Mnemoscene"
-          />
+        <a href="https://mnemoscene.io" class="logo-item">
+          <img src="/img/logos/mnemoscene logo.jfif" alt="Mnemoscene" />
         </a>
       </div>
     </section>
@@ -258,90 +192,42 @@ const pageTitle = 'Cymuned';
         gwneud datblygiad parhaus a chynaliadwyedd yn bosibl.
       </p>
 
-      <div
-        class="logos-grid"
-        id="contributors-logos"
-      >
-        <a
-          href="https://britishonlinearchives.com"
-          class="logo-item"
-        >
+      <div class="logos-grid" id="contributors-logos">
+        <a href="https://britishonlinearchives.com" class="logo-item">
           <img
             src="/img/logos/british online archives logo.png"
             alt="British Online Archives"
           />
         </a>
-        <a
-          href="https://www.nls.uk"
-          class="logo-item"
-        >
+        <a href="https://www.nls.uk" class="logo-item">
           <img
             src="/img/logos/National_Library_of_Scotland_logo.svg.png"
             alt="National Library of Scotland"
           />
         </a>
-        <a
-          href="https://www.notch8.com"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/Notch8_Color.avif"
-            alt="Notch8"
-          />
+        <a href="https://www.notch8.com" class="logo-item">
+          <img src="/img/logos/Notch8_Color.avif" alt="Notch8" />
         </a>
-        <a
-          href="https://www.peoplescollection.wales"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/pcw.jpg"
-            alt="Casgliad y Werin Cymru"
-          />
+        <a href="https://www.peoplescollection.wales" class="logo-item">
+          <img src="/img/logos/pcw.jpg" alt="Casgliad y Werin Cymru" />
         </a>
-        <a
-          href="https://www.cogapp.com"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/Cogapp_Logo_lg_black.png"
-            alt="Cogapp"
-          />
+        <a href="https://www.cogapp.com" class="logo-item">
+          <img src="/img/logos/Cogapp_Logo_lg_black.png" alt="Cogapp" />
         </a>
-        <a
-          href="https://www.vam.ac.uk"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/V&A.png"
-            alt="Victoria & Albert Museum"
-          />
+        <a href="https://www.vam.ac.uk" class="logo-item">
+          <img src="/img/logos/V&A.png" alt="Victoria & Albert Museum" />
         </a>
-        <a
-          href="https://www.riksarkivet.se"
-          class="logo-item"
-        >
+        <a href="https://www.riksarkivet.se" class="logo-item">
           <img
             src="/img/logos/Riksarkivet-swedish archives-TRANSPARENT.png"
             alt="Riksarkivet"
           />
         </a>
-        <a
-          href="https://github.com/Geoffsc"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/geoff.jpeg"
-            alt="Geoff Scholl"
-          />
+        <a href="https://github.com/Geoffsc" class="logo-item">
+          <img src="/img/logos/geoff.jpeg" alt="Geoff Scholl" />
         </a>
-        <a
-          href="https://github.com/staceyred"
-          class="logo-item"
-        >
-          <img
-            src="/img/logos/stacey.jpeg"
-            alt="Stacey Redick"
-          />
+        <a href="https://github.com/staceyred" class="logo-item">
+          <img src="/img/logos/stacey.jpeg" alt="Stacey Redick" />
         </a>
       </div>
     </section>
@@ -349,8 +235,8 @@ const pageTitle = 'Cymuned';
 </BaseLayout>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    ['steering-logos', 'contributors-logos'].forEach((id) => {
+  document.addEventListener("DOMContentLoaded", () => {
+    ["steering-logos", "contributors-logos"].forEach((id) => {
       const grid = document.getElementById(id);
       if (!grid) return;
       const items = Array.from(grid.children);
