@@ -1,7 +1,24 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-const pageTitle = 'Events'
+const pageTitle = 'Digwyddiadau';
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout
+  pageTitle={pageTitle}
+  mainClass="events-main"
+>
+  <h1>Digwyddiadau</h1>
+  <section class="upcoming-events">
+    <h2>Digwyddiadau’r Dyfodol</h2>
+    <p>Galw Cymunedol - y Dydd Iau cyntaf bob mis</p>
+  </section>
+  <div class="calendar-embed">
+    <iframe
+      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FLondon&showPrint=0&showTitle=0&showTabs=0&showCalendars=0&src=dW5pdmVyc2Fsdmlld2VyYXBwQGdtYWlsLmNvbQ&color=%239e69af&hl=cy"
+    ></iframe>
+  </div>
+  <section class="past-events">
+    <h2>Digwyddiadau Diwethaf</h2>
+    <p><a href="https://www.youtube.com/watch?v=HxFX4YF3xM4">UVCON 2025</a></p>
+  </section>
 </BaseLayout>
