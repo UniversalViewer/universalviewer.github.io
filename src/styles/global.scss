@@ -1,22 +1,23 @@
-@use 'sass:map';
-@use 'fn' as *;
-@use 'vars' as *;
-@use 'props';
-@use 'fonts';
-@use 'header';
-@use 'main-nav';
-@use 'lang-nav';
-@use 'events';
-@use 'demo';
-@use 'blog/index';
-@use 'blog/page';
-@use 'blog/post';
-@use 'home';
-@use 'community';
-@use 'contact';
+@use "sass:map";
+@use "fn" as *;
+@use "vars" as *;
+@use "props";
+@use "fonts";
+@use "header";
+@use "main-nav";
+@use "lang-nav";
+@use "events";
+@use "demo";
+@use "blog/index";
+@use "blog/page";
+@use "blog/post";
+@use "home";
+@use "community";
+@use "contact";
 
 html {
   background-color: #f1f5f9;
+  font-family: sans-serif;
 }
 
 *,
@@ -32,6 +33,16 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: var(--uv-font-family);
+}
+
+nav {
+  font-family: var(--uv-font-family-nav);
+  text-transform: uppercase;
+
+  a {
+    letter-spacing: 1px;
+  }
 }
 
 h1,
