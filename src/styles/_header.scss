@@ -4,17 +4,17 @@
 @use "props";
 
 .site-header {
-  position: var(--uv-header-position);
+  position: var(--uvio-header-position);
   top: 0;
   z-index: 100;
-  background: var(--uv-header-bg-color);
-  display: flex;
+  background: var(--uvio-header-bg-color);
+  display: grid;
   flex-wrap: wrap;
   align-items: center;
   padding: remval(12) 0;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
-    --uv-header-position: sticky;
+    --uvio-header-position: sticky;
 
     padding: remval(12) remval(24);
   }
@@ -23,7 +23,7 @@
 .logo-link {
   display: block;
   height: remval(56);
-  background: var(--uv-logo-bg-color);
+  background: var(--uvio-logo-bg-color);
   order: 1;
   aspect-ratio: cos(30deg);
   clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
@@ -46,7 +46,7 @@
   }
 
   &:hover {
-    background-color: var(--uv-logo-hover-bg-color);
+    background-color: var(--uvio-logo-hover-bg-color);
 
     span {
       text-decoration: underline;
