@@ -24,5 +24,14 @@
   --uvio-nav-link-color: var(--uvio-black);
 
   // HEADER
-  --uv-header-position: static;
+  --uvio-header-position: static;
+  --uvio-header-bg-color: var(--uvio-white);
+  --uvio-hamburger-color: var(--uvio-black);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    // HEADER
+    --uvio-header-bg-color: var(var(--uvio-black));
+  }
 }

@@ -9,7 +9,6 @@
   order: 4;
   margin-top: remval(12);
   margin-bottom: remval(-12);
-  background-color: #0003;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     width: auto;
