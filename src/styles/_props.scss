@@ -10,8 +10,10 @@
   --uv-white: #fbfbfc;
 
   // FONTS
-  --uv-font-family-dm-sans: "DM Sans", sans-serif;
-  --uv-font-family-headings: "DM Mono", sans-serif;
+  --uv-font-family: "Pavanam", sans-serif;
+  --uv-font-family-headings: "Onest", sans-serif;
+  --uv-font-family-nav: var(--uv-font-family-headings);
+  --uv-font-family-lang: var(--uv-font-family-nav);
 
   // GENERIC
   --uv-bg-color: var(--uv-primary);
@@ -28,5 +30,4 @@
   --uv-main-nav-link-color: var(--uv-white);
 
   // LANG NAV
-  --uv-lang-nav-font-family: #{$dm-sans-name}; // HOMEPAGE
 }

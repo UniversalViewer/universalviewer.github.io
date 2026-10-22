@@ -1,53 +1,46 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { useTranslations } from '@i18n/utils';
-import type { Lang } from '@i18n/ui';
-import MainNav from './MainNav.astro';
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+import MainNav from "./MainNav.astro";
 
 const locale = Astro.currentLocale as Lang;
 
 const t = useTranslations(locale);
 
 const currentPathWithoutLocale = Astro.url.pathname.replace(
-  new RegExp(`^/(?:${locale})(/|$)`, 'i'),
-  '/'
+  new RegExp(`^/(?:${locale})(/|$)`, "i"),
+  "/"
 );
 
-const homeUrl = getRelativeLocaleUrl(locale, '');
+const homeUrl = getRelativeLocaleUrl(locale, "");
 
 const localeMap = {
   en: {
-    localeName: 'English',
-    localeLangKey: 'locale.english',
+    localeName: "English",
+    localeLangKey: "locale.english",
   },
   cy: {
-    localeName: 'Cymraeg',
-    localeLangKey: 'locale.welsh',
+    localeName: "Cymraeg",
+    localeLangKey: "locale.welsh",
   },
 };
 
 const { localeName, localeLangKey } = localeMap[locale];
 
 const switchLangLink =
-  locale == 'en'
-    ? getRelativeLocaleUrl('cy', currentPathWithoutLocale)
-    : getRelativeLocaleUrl('en', currentPathWithoutLocale);
+  locale == "en"
+    ? getRelativeLocaleUrl("cy", currentPathWithoutLocale)
+    : getRelativeLocaleUrl("en", currentPathWithoutLocale);
 
-const switchLangLinkText = locale == 'en' ? 'Cymraeg' : 'English';
+const switchLangLinkText = locale == "en" ? "Cymraeg" : "English";
 ---
 
 <header class="site-header">
-  <a
-    href={homeUrl}
-    class="dm-sans-500-normal logo-link"
-  >
+  <a href={homeUrl} class="logo-link">
     <span>UV</span>
   </a>
-  <a
-    class="header-title"
-    href={homeUrl}
-    ><h1>Universal Viewer</h1></a
-  >
+  <a class="header-title" href={homeUrl}><h1>Universal Viewer</h1></a>
   <button
     type="button"
     id="mobileNavButton"
@@ -59,47 +52,10 @@ const switchLangLinkText = locale == 'en' ? 'Cymraeg' : 'English';
   </button>
   <MainNav />
   <div class="languages-container">
-    <a
-      href={switchLangLink}
-      class="switch-lang-link"
-    >
+    <a href={switchLangLink} class="switch-lang-link">
       {switchLangLinkText}
     </a>
   </div>
-  <!-- <div class="languages-container">
-    <button
-      type="button"
-      id="showLanguagesButton"
-      class="show-languages-button"
-      aria-label="Select language"
-      aria-expanded="false"
-    >
-      {localeName}</button
-    >
-    <nav
-      id="langNav"
-      class="lang-nav"
-    >
-      <ul class="lang-nav-list">
-        <li class="lang-nav-list-item">
-          <a
-            href={currentPathWithoutLocale}
-            class="lang-nav-link"
-          >
-            <span class="language-name">English</span>
-          </a>
-        </li>
-        <li class="lang-nav-list-item">
-          <a
-            href={`/cy${currentPathWithoutLocale}`}
-            class="lang-nav-link"
-          >
-            <span class="language-name">Cymraeg</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div> -->
 </header>
 <script>
   // alert(
@@ -108,31 +64,31 @@ const switchLangLinkText = locale == 'en' ? 'Cymraeg' : 'English';
   // alert('For blog homepage, slice as usual?');
   // alert('For pagination, do as usual?');
   // alert('For [id], see if post exists in CY collection, if not, use EN one.');
-  const langButton = document.getElementById('showLanguagesButton');
-  const langNav = document.getElementById('langNav');
-  langButton?.addEventListener('click', () => {
-    langNav?.classList.toggle('show');
+  const langButton = document.getElementById("showLanguagesButton");
+  const langNav = document.getElementById("langNav");
+  langButton?.addEventListener("click", () => {
+    langNav?.classList.toggle("show");
   });
 
-  document.addEventListener('click', (e: Event) => {
+  document.addEventListener("click", (e: Event) => {
     const target = e.target;
 
     if (!(target instanceof HTMLElement)) return;
 
     if (target != langButton && target.parentElement != langButton) {
-      langNav?.classList.remove('show');
+      langNav?.classList.remove("show");
     }
   });
 
-  const mobileNavButton = document.getElementById('mobileNavButton');
-  const mainNav = document.getElementById('mainNav');
-  mobileNavButton?.addEventListener('click', function () {
-    this.classList.toggle('active');
+  const mobileNavButton = document.getElementById("mobileNavButton");
+  const mainNav = document.getElementById("mainNav");
+  mobileNavButton?.addEventListener("click", function () {
+    this.classList.toggle("active");
 
-    if (this.classList.contains('active')) {
-      mainNav?.classList.add('show');
+    if (this.classList.contains("active")) {
+      mainNav?.classList.add("show");
     } else {
-      mainNav?.classList.remove('show');
+      mainNav?.classList.remove("show");
     }
   });
 </script>

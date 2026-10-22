@@ -1,13 +1,12 @@
 $breakpoints: (
   // 768px
-  'tablet': 48em,
+  "tablet": 48em,
   // 1024px
-  'tablet-l': 64em,
+  "tablet-l": 64em,
   // 1280px
-  'laptop': 80em,
+  "laptop": 80em,
   // 1920px
-  'desktop': 120em,
+  "desktop": 120em,
   // 2560px
-  'largedesktop': 160em
+  "largedesktop": 160em
 );
-$dm-sans-name: 'DM Sans', sans-serif;
