@@ -15,7 +15,21 @@
   }
 
   &.show {
-    display: block;
+    display: flex;
+    justify-content: center;
+    margin-top: remval(20);
+
+    @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+      margin-top: remval(0);
+    }
+
+    @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+      margin-top: remval(-20);
+    }
+
+    @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+      margin-top: 0;
+    }
   }
 }
 

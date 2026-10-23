@@ -1,25 +1,30 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-import UVHead from '@components/UVHead.astro';
-import UVEmbed from '@components/UVEmbed.astro';
-const pageTitle = 'Home';
+import BaseLayout from "@layouts/BaseLayout.astro";
+import UVHead from "@components/UVHead.astro";
+import UVEmbed from "@components/UVEmbed.astro";
+const pageTitle = "Home";
 ---
 
-<BaseLayout
-  pageTitle={pageTitle}
-  mainClass="home-main"
->
+<BaseLayout pageTitle={pageTitle} mainClass="home-main">
   <!-- <UVHead />
 
   <UVEmbed /> -->
 
-<section id="header">
-  <h1>Universal Viewer</h1>
+  <section id="header">
+    <div class="home-banner">
+      <div class="container">
+        <h1>
+          Help people explore more of your digital collection in one flexible
+          viewer.
+        </h1>
         <h3>
-        One interface for all of your content. Universal Viewer displays images, multimedia, documents and 3D models in
-        an extensible and embeddable open-source application.
-      </h3>
-</section>
+          Universal Viewer brings images, documents, audio, video and 3D
+          material together in an open-source viewer that can be added to your
+          existing website.
+        </h3>
+      </div>
+    </div>
+  </section>
 
   <!-- Showcase -->
   <section id="showcase">
@@ -121,7 +126,7 @@ const pageTitle = 'Home';
     </div>
   </section>
 
-    <!-- Features -->
+  <!-- Features -->
   <section id="features">
     <div class="container">
       <h2>Features</h2>
@@ -138,7 +143,10 @@ const pageTitle = 'Home';
             ></path></svg
           >
           <h3>Zoomable</h3>
-          <p><a href="https://openseadragon.github.io/">OpenSeadragon</a> image zooming using the <a href="http://iiif.io/api/image/">IIIF image API</a></p>
+          <p>
+            <a href="https://openseadragon.github.io/">OpenSeadragon</a> image zooming
+            using the <a href="http://iiif.io/api/image/">IIIF image API</a>
+          </p>
         </div>
         <div class="feature-card">
           <svg
@@ -186,8 +194,10 @@ const pageTitle = 'Home';
           >
           <h3>Configurable</h3>
           <p>
-            The UV is highly configurable with an array of <a href="https://github.com/UniversalViewer/universalviewer/blob/dev/manual/CONFIG.md">customisable
-            settings</a>.
+            The UV is highly configurable with an array of <a
+              href="https://github.com/UniversalViewer/universalviewer/blob/dev/manual/CONFIG.md"
+              >customisable settings</a
+            >.
           </p>
         </div>
         <div class="feature-card">
@@ -233,8 +243,9 @@ const pageTitle = 'Home';
           >
           <h3>Searchable</h3>
           <p>
-            Supports <a href="http://iiif.io/api/search/">search and autocomplete</a> service integration with overlaid
-            search results.
+            Supports <a href="http://iiif.io/api/search/"
+              >search and autocomplete</a
+            > service integration with overlaid search results.
           </p>
         </div>
         <div class="feature-card">
@@ -250,8 +261,9 @@ const pageTitle = 'Home';
           >
           <h3>Securable</h3>
           <p>
-            The UV supports the <a href="http://iiif.io/api/auth/">IIIF Auth API</a>, so your content can be password
-            protected.
+            The UV supports the <a href="http://iiif.io/api/auth/"
+              >IIIF Auth API</a
+            >, so your content can be password protected.
           </p>
         </div>
       </div>
@@ -263,10 +275,7 @@ const pageTitle = 'Home';
     <div class="container">
       <h2>Getting Started</h2>
       <div class="gs-grid">
-        <a
-          href="/docs"
-          class="gs-card"
-        >
+        <a href="/docs" class="gs-card">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -279,10 +288,7 @@ const pageTitle = 'Home';
           >
           <span>Are you integrating UV?</span>
         </a>
-        <a
-          href="/community"
-          class="gs-card"
-        >
+        <a href="/community" class="gs-card">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -295,10 +301,7 @@ const pageTitle = 'Home';
           >
           <span>Are you participating in the community?</span>
         </a>
-        <a
-          href="/demo"
-          class="gs-card"
-        >
+        <a href="/demo" class="gs-card">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24px"
@@ -315,165 +318,77 @@ const pageTitle = 'Home';
     </div>
   </section>
 
-
-
-
-
   <!-- Supported By -->
   <section id="supported-by">
     <h2>Supported By</h2>
 
     <h3>Steering Group Members</h3>
-    <div
-      class="logos-grid"
-      id="steering-logos"
-    >
-      <a
-        href="https://www.library.wales"
-        class="logo-item"
-      >
-        <img
-          src="/img/logos/llgc-logo.png"
-          alt="National Library of Wales"
-        />
+    <div class="logos-grid" id="steering-logos">
+      <a href="https://www.library.wales" class="logo-item">
+        <img src="/img/logos/llgc-logo.png" alt="National Library of Wales" />
       </a>
-      <a
-        href="https://www.bl.uk"
-        class="logo-item"
-      >
-        <img
-          src="/img/logos/330px-BritishLibrary.png"
-          alt="British Library"
-        />
+      <a href="https://www.bl.uk" class="logo-item">
+        <img src="/img/logos/330px-BritishLibrary.png" alt="British Library" />
       </a>
-      <a
-        href="https://library.villanova.edu"
-        class="logo-item"
-      >
+      <a href="https://library.villanova.edu" class="logo-item">
         <img
           src="/img/logos/villanova-TRANSPARENT.png"
           alt="Falvey Library, Villanova University"
         />
       </a>
-      <a
-        href="https://www.tind.io"
-        class="logo-item"
-      >
-        <img
-          src="/img/logos/TIND-logo.png"
-          alt="TIND"
-        />
+      <a href="https://www.tind.io" class="logo-item">
+        <img src="/img/logos/TIND-logo.png" alt="TIND" />
       </a>
-      <a
-        href="https://library.princeton.edu"
-        class="logo-item"
-      >
+      <a href="https://library.princeton.edu" class="logo-item">
         <img
           src="/img/logos/princeton university logo.png"
           alt="Princeton University"
         />
       </a>
-      <a
-        href="https://library.ucla.edu"
-        class="logo-item"
-      >
-        <img
-          src="/img/logos/ucls-library.png"
-          alt="UCLA Library"
-        />
+      <a href="https://library.ucla.edu" class="logo-item">
+        <img src="/img/logos/ucls-library.png" alt="UCLA Library" />
       </a>
-      <a
-        href="https://www.st-andrews.ac.uk/library/"
-        class="logo-item"
-      >
+      <a href="https://www.st-andrews.ac.uk/library/" class="logo-item">
         <img
           src="/img/logos/uni-st-andrews-standard-vertical-black.png"
           alt="University of St Andrews"
         />
       </a>
-      <a
-        href="https://digirati.com"
-        class="logo-item"
-      >
-        <img
-          src="/img/logos/digirati-logo.png"
-          alt="Digirati"
-        />
+      <a href="https://digirati.com" class="logo-item">
+        <img src="/img/logos/digirati-logo.png" alt="Digirati" />
       </a>
-      <a
-        href="https://mnemoscene.io"
-        class="logo-item"
-      >
-        <img
-          src="/img/logos/mnemoscene logo.jfif"
-          alt="Mnemoscene"
-        />
+      <a href="https://mnemoscene.io" class="logo-item">
+        <img src="/img/logos/mnemoscene logo.jfif" alt="Mnemoscene" />
       </a>
     </div>
 
     <h3>Major Contributors</h3>
-    <div
-      class="logos-grid"
-      id="contributors-logos"
-    >
-      <a
-        href="https://britishonlinearchives.com"
-        class="logo-item"
-      >
+    <div class="logos-grid" id="contributors-logos">
+      <a href="https://britishonlinearchives.com" class="logo-item">
         <img
           src="/img/logos/british online archives logo.png"
           alt="British Online Archives"
         />
       </a>
-      <a
-        href="https://www.nls.uk"
-        class="logo-item"
-      >
+      <a href="https://www.nls.uk" class="logo-item">
         <img
           src="/img/logos/National_Library_of_Scotland_logo.svg.png"
           alt="National Library of Scotland"
         />
       </a>
-      <a
-        href="https://www.notch8.com"
-        class="logo-item"
-      >
-        <img
-          src="/img/logos/Notch8_Color.avif"
-          alt="Notch8"
-        />
+      <a href="https://www.notch8.com" class="logo-item">
+        <img src="/img/logos/Notch8_Color.avif" alt="Notch8" />
       </a>
-      <a
-        href="https://www.peoplescollection.wales"
-        class="logo-item"
-      >
-        <img
-          src="/img/logos/pcw.jpg"
-          alt="People's Collection Wales"
-        />
+      <a href="https://www.peoplescollection.wales" class="logo-item">
+        <img src="/img/logos/pcw.jpg" alt="People's Collection Wales" />
       </a>
-      <a
-        href="https://www.cogapp.com"
-        class="logo-item"
-      >
-        <img
-          src="/img/logos/Cogapp_Logo_lg_black.png"
-          alt="Cogapp"
-        />
+      <a href="https://www.cogapp.com" class="logo-item">
+        <img src="/img/logos/Cogapp_Logo_lg_black.png" alt="Cogapp" />
       </a>
-      <a
-        href="https://www.vam.ac.uk"
-        class="logo-item"
-      >
-        <img
-          src="/img/logos/V&A.png"
-          alt="Victoria & Albert Museum"
-        />
+      <a href="https://www.vam.ac.uk" class="logo-item">
+        <img src="/img/logos/V&A.png" alt="Victoria & Albert Museum" />
       </a>
-      <a
-        href="https://www.riksarkivet.se"
-        class="logo-item"
-      >
+      <a href="https://www.riksarkivet.se" class="logo-item">
         <img
           src="/img/logos/Riksarkivet-swedish archives-TRANSPARENT.png"
           alt="Riksarkivet"
@@ -490,27 +405,27 @@ const pageTitle = 'Home';
 </BaseLayout>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const iframe = document.getElementById('uv');
-    const input = document.getElementById('manifest-url');
-    const button = document.getElementById('manifest-load');
+  document.addEventListener("DOMContentLoaded", () => {
+    const iframe = document.getElementById("uv");
+    const input = document.getElementById("manifest-url");
+    const button = document.getElementById("manifest-load");
 
     function loadManifest(url) {
       iframe.src = `https://universalviewer.dev/uv.html#?manifest=${encodeURIComponent(url)}`;
     }
 
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
       const url = input.value.trim();
       if (url) loadManifest(url);
     });
 
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') button.click();
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") button.click();
     });
   });
 
-  document.addEventListener('DOMContentLoaded', () => {
-    ['steering-logos', 'contributors-logos'].forEach((id) => {
+  document.addEventListener("DOMContentLoaded", () => {
+    ["steering-logos", "contributors-logos"].forEach((id) => {
       const grid = document.getElementById(id);
       if (!grid) return;
       const items = Array.from(grid.children);

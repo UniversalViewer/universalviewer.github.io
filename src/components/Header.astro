@@ -25,27 +25,31 @@ const { localeName, localeLangKey } = localeMap[locale];
 ---
 
 <header class="site-header">
-  <div class="header-logo">
-    <a class="logo-link" href={homeUrl}>
-      <h1 class="logo">
-        <span class="logo-corners">
-          <div class="logo-corners-top"></div>
-          <div class="logo-corners-bottom"></div>
+  <div class="container">
+    <div class="header-content">
+      <div class="header-logo">
+        <a class="logo-link" href={homeUrl}>
+          <div class="logo">
+            <span class="logo-corners">
+              <div class="logo-corners-top"></div>
+              <div class="logo-corners-bottom"></div>
+            </span>
+            Universal<br />Viewer
+          </div>
+        </a>
+      </div>
+      <button
+        type="button"
+        id="mobileNavButton"
+        class="hamburger mobile-main-nav-button"
+      >
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
         </span>
-        Universal<br />Viewer
-      </h1>
-    </a>
+      </button>
+      <MainNav />
+    </div>
   </div>
-  <button
-    type="button"
-    id="mobileNavButton"
-    class="hamburger mobile-main-nav-button"
-  >
-    <span class="hamburger-box">
-      <span class="hamburger-inner"></span>
-    </span>
-  </button>
-  <MainNav />
 </header>
 <script>
   const mobileNavButton = document.getElementById("mobileNavButton");

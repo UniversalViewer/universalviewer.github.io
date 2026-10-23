@@ -26,6 +26,10 @@
   padding: 0;
   width: auto;
   float: right;
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    margin-right: remval(-14);
+  }
 }
 
 .lang-nav-list-item {
