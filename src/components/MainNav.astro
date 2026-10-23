@@ -19,25 +19,21 @@ const currentPathWithoutLocale = Astro.url.pathname.replace(
   "/"
 );
 
-const switchLangLink =
-  locale == "en"
-    ? getRelativeLocaleUrl("cy", currentPathWithoutLocale)
-    : getRelativeLocaleUrl("en", currentPathWithoutLocale);
-
-const switchLangLinkText = locale == "en" ? "Cymraeg" : "English";
+const engLink = getRelativeLocaleUrl("en", currentPathWithoutLocale);
+const cymLink = getRelativeLocaleUrl("cy", currentPathWithoutLocale);
 ---
 
 <nav id="mainNav" class="main-nav">
   <ul class="main-nav-list">
-    <li class="main-nav-list-item">
+    <!-- <li class="main-nav-list-item">
       <a href={homeUrl} class="main-nav-link">{t("nav.home")}</a>
-    </li>
+    </li> -->
     <li class="main-nav-list-item">
       <a href={demoUrl} class="main-nav-link">{t("nav.demo")}</a>
     </li>
-    <li class="main-nav-list-item">
+    <!-- <li class="main-nav-list-item">
       <a href={eventsUrl} class="main-nav-link">{t("nav.events")}</a>
-    </li>
+    </li> -->
     <li class="main-nav-list-item">
       <a href={docsUrl} class="main-nav-link">{t("nav.documentation")}</a>
     </li>
@@ -50,8 +46,13 @@ const switchLangLinkText = locale == "en" ? "Cymraeg" : "English";
   </ul>
 </nav>
 
-<div class="languages-container">
-  <a href={switchLangLink} class="switch-lang-link">
-    {switchLangLinkText}
-  </a>
-</div>
+<nav id="langNav" class="languages-nav">
+  <ul class="lang-nav-list">
+    <li class="lang-nav-list-item">
+      <a href={engLink} class="lang-nav-link" aria-label="">Eng</a>
+    </li>
+    <li class="lang-nav-list-item">
+      <a href={cymLink} class="lang-nav-link" aria-label="">Cym</a>
+    </li>
+  </ul>
+</nav>

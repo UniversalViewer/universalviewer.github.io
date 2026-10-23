@@ -3,18 +3,59 @@
 @use "vars" as *;
 @use "props";
 
-.languages-container {
-  position: relative;
-  order: 2;
-  margin-left: auto;
+.languages-nav {
+  display: none;
+  margin: 0 auto;
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
-    flex-grow: 0;
-    flex-basis: auto;
+  &.show {
+    display: block;
   }
+}
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
-    order: 5;
-    margin-left: remval(8);
+@media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  .languages-nav {
+    display: block;
+    margin: 0;
+  }
+}
+
+.lang-nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  float: right;
+}
+
+.lang-nav-list-item {
+  margin: 0;
+  padding: 0;
+}
+
+.lang-nav-link {
+  display: block;
+  position: relative;
+  padding: remval(16);
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--uvio-nav-link-color);
+
+  &::before {
+    content: "|";
+    position: absolute;
+    left: remval(-2);
+  }
+}
+
+@media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  .lang-nav-link {
+    padding: remval(16) remval(12);
+  }
+}
+
+.lang-nav-list-item:first-child .lang-nav-link {
+  &::before {
+    display: none;
   }
 }
