@@ -9,15 +9,14 @@
     margin: 0;
   }
 
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
+  // .container {
+  //   max-width: 960px;
+  //   margin: 0 auto;
+  //   padding: 0 1rem;
+  // }
 
   h1 {
-        text-align: center;
-
+    text-align: center;
   }
 
   h2 {
@@ -28,12 +27,11 @@
 
   h3 {
     text-align: center;
-    margin: 0 0 2rem 0;
+    margin: 0 0 2rem;
   }
 }
 
 #header {
-  max-width: 720px;
   margin: 0 auto;
 
   h3 {
@@ -69,7 +67,7 @@
       text-shadow:
         1px 1px 0 #000,
         1px 1px 2px #000,
-        1px 1px 5px var(--uv-primary);
+        1px 1px 5px var(--uvio-primary);
       padding: 2rem 0;
       margin: 0;
     }

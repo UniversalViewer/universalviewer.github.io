@@ -33,11 +33,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: var(--uv-font-family);
+  font-family: var(--uvio-font-family);
 }
 
 nav {
-  font-family: var(--uv-font-family-nav);
+  font-family: var(--uvio-font-family-nav);
   text-transform: uppercase;
 
   a {
@@ -51,7 +51,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--uv-font-family-headings);
+  font-family: var(--uvio-font-family-headings);
   font-weight: 400;
 }
 
@@ -65,6 +65,7 @@ h2 {
 }
 
 a {
+  color: var(--uvio-link-color);
   text-decoration: underline;
   text-underline-offset: remval(2);
 
@@ -87,13 +88,22 @@ p {
 }
 
 ul {
-  max-width: 720px;
   padding-left: 1.5rem;
 
   li {
     margin-bottom: 0.5rem;
     line-height: 1.6;
   }
+}
+
+.container {
+  width: 100%;
+  padding: 0 remval(24);
+  max-width: remval(1660);
+  margin: 0 auto;
+
+  // @media screen and (min-width: #{map.get($breakpoints, "laptop")}) {
+  // }
 }
 
 // footer

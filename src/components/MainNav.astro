@@ -1,66 +1,58 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { useTranslations } from '@i18n/utils';
-import type { Lang } from '@i18n/ui';
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
 
 const locale = Astro.currentLocale as Lang;
 
 const t = useTranslations(locale);
 
-const homeUrl = getRelativeLocaleUrl(locale, '');
-const demoUrl = getRelativeLocaleUrl(locale, 'demo');
-const eventsUrl = getRelativeLocaleUrl(locale, 'events');
-const docsUrl = getRelativeLocaleUrl(locale, 'docs');
-const blogUrl = getRelativeLocaleUrl(locale, 'blog');
-const commUrl = getRelativeLocaleUrl(locale, 'community');
+const homeUrl = getRelativeLocaleUrl(locale, "");
+const demoUrl = getRelativeLocaleUrl(locale, "demo");
+const eventsUrl = getRelativeLocaleUrl(locale, "events");
+const docsUrl = getRelativeLocaleUrl(locale, "docs");
+const blogUrl = getRelativeLocaleUrl(locale, "blog");
+const commUrl = getRelativeLocaleUrl(locale, "community");
+
+const currentPathWithoutLocale = Astro.url.pathname.replace(
+  new RegExp(`^/(?:${locale})(/|$)`, "i"),
+  "/"
+);
+
+const engLink = getRelativeLocaleUrl("en", currentPathWithoutLocale);
+const cymLink = getRelativeLocaleUrl("cy", currentPathWithoutLocale);
 ---
 
-<nav
-  id="mainNav"
-  class="main-nav"
->
+<nav id="mainNav" class="main-nav">
   <ul class="main-nav-list">
+    <!-- <li class="main-nav-list-item">
+      <a href={homeUrl} class="main-nav-link">{t("nav.home")}</a>
+    </li> -->
     <li class="main-nav-list-item">
-      <a
-        href={homeUrl}
-        class="main-nav-link"
-        >{t('nav.home')}</a
-      >
+      <a href={demoUrl} class="main-nav-link">{t("nav.demo")}</a>
+    </li>
+    <!-- <li class="main-nav-list-item">
+      <a href={eventsUrl} class="main-nav-link">{t("nav.events")}</a>
+    </li> -->
+    <li class="main-nav-list-item">
+      <a href={docsUrl} class="main-nav-link">{t("nav.documentation")}</a>
     </li>
     <li class="main-nav-list-item">
-      <a
-        href={demoUrl}
-        class="main-nav-link"
-        >{t('nav.demo')}</a
-      >
+      <a href={blogUrl} class="main-nav-link">{t("nav.blog")}</a>
     </li>
     <li class="main-nav-list-item">
-      <a
-        href={eventsUrl}
-        class="main-nav-link"
-        >{t('nav.events')}</a
-      >
+      <a href={commUrl} class="main-nav-link">{t("nav.community")}</a>
     </li>
-    <li class="main-nav-list-item">
-      <a
-        href={docsUrl}
-        class="main-nav-link"
-        >{t('nav.documentation')}</a
-      >
+  </ul>
+</nav>
+
+<nav id="langNav" class="languages-nav">
+  <ul class="lang-nav-list">
+    <li class="lang-nav-list-item">
+      <a href={engLink} class="lang-nav-link" aria-label="">Eng</a>
     </li>
-    <li class="main-nav-list-item">
-      <a
-        href={blogUrl}
-        class="main-nav-link"
-        >{t('nav.blog')}</a
-      >
-    </li>
-    <li class="main-nav-list-item">
-      <a
-        href={commUrl}
-        class="main-nav-link"
-        >{t('nav.community')}</a
-      >
+    <li class="lang-nav-list-item">
+      <a href={cymLink} class="lang-nav-link" aria-label="">Cym</a>
     </li>
   </ul>
 </nav>

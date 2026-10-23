@@ -8,11 +8,6 @@ const locale = Astro.currentLocale as Lang;
 
 const t = useTranslations(locale);
 
-const currentPathWithoutLocale = Astro.url.pathname.replace(
-  new RegExp(`^/(?:${locale})(/|$)`, "i"),
-  "/"
-);
-
 const homeUrl = getRelativeLocaleUrl(locale, "");
 
 const localeMap = {
@@ -27,68 +22,47 @@ const localeMap = {
 };
 
 const { localeName, localeLangKey } = localeMap[locale];
-
-const switchLangLink =
-  locale == "en"
-    ? getRelativeLocaleUrl("cy", currentPathWithoutLocale)
-    : getRelativeLocaleUrl("en", currentPathWithoutLocale);
-
-const switchLangLinkText = locale == "en" ? "Cymraeg" : "English";
 ---
 
 <header class="site-header">
-  <a href={homeUrl} class="logo-link">
-    <span>UV</span>
-  </a>
-  <a class="header-title" href={homeUrl}><h1>Universal Viewer</h1></a>
-  <button
-    type="button"
-    id="mobileNavButton"
-    class="hamburger mobile-main-nav-button"
-  >
-    <span class="hamburger-box">
-      <span class="hamburger-inner"></span>
-    </span>
-  </button>
-  <MainNav />
-  <div class="languages-container">
-    <a href={switchLangLink} class="switch-lang-link">
-      {switchLangLinkText}
-    </a>
+  <div class="container">
+    <div class="header-content">
+      <div class="header-logo">
+        <a class="logo-link" href={homeUrl}>
+          <div class="logo">
+            <span class="logo-corners">
+              <div class="logo-corners-top"></div>
+              <div class="logo-corners-bottom"></div>
+            </span>
+            Universal<br />Viewer
+          </div>
+        </a>
+      </div>
+      <button
+        type="button"
+        id="mobileNavButton"
+        class="hamburger mobile-main-nav-button"
+      >
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      <MainNav />
+    </div>
   </div>
 </header>
 <script>
-  // alert(
-  //   'Get all en posts. Get all cy posts. Merge the two, overwriting en with cy.',
-  // );
-  // alert('For blog homepage, slice as usual?');
-  // alert('For pagination, do as usual?');
-  // alert('For [id], see if post exists in CY collection, if not, use EN one.');
-  const langButton = document.getElementById("showLanguagesButton");
-  const langNav = document.getElementById("langNav");
-  langButton?.addEventListener("click", () => {
-    langNav?.classList.toggle("show");
-  });
-
-  document.addEventListener("click", (e: Event) => {
-    const target = e.target;
-
-    if (!(target instanceof HTMLElement)) return;
-
-    if (target != langButton && target.parentElement != langButton) {
-      langNav?.classList.remove("show");
-    }
-  });
-
   const mobileNavButton = document.getElementById("mobileNavButton");
   const mainNav = document.getElementById("mainNav");
+  const langNav = document.getElementById("langNav");
   mobileNavButton?.addEventListener("click", function () {
     this.classList.toggle("active");
-
     if (this.classList.contains("active")) {
       mainNav?.classList.add("show");
+      langNav?.classList.add("show");
     } else {
       mainNav?.classList.remove("show");
+      langNav?.classList.remove("show");
     }
   });
 </script>

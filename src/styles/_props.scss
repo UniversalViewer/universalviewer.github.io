@@ -4,30 +4,34 @@
 
 :root {
   // COLORS
-  --uv-primary: #3e114e;
-  --uv-primary-dark: rgb(33 9 42);
-  --uv-secondary: #0098a6;
-  --uv-white: #fbfbfc;
+  --uvio-purple: #c596ff;
+  --uvio-purple-dark: #8a41e6;
+  --uvio-purple-light: #e8d6fe;
+  --uvio-black: #3e3e3e;
+  --uvio-grey: #f9f9f9;
+  --uvio-white: #fff;
 
   // FONTS
-  --uv-font-family: "Pavanam", sans-serif;
-  --uv-font-family-headings: "Onest", sans-serif;
-  --uv-font-family-nav: var(--uv-font-family-headings);
-  --uv-font-family-lang: var(--uv-font-family-nav);
+  --uvio-font-family: "Pavanam", sans-serif;
+  --uvio-font-family-headings: "Onest", sans-serif;
+  --uvio-font-family-nav: var(--uvio-font-family-headings);
+  --uvio-font-family-lang: var(--uvio-font-family-nav);
 
-  // GENERIC
-  --uv-bg-color: var(--uv-primary);
-  --uv-header-bg-color: #2d1f27;
+  // TYPOGRAPHY
+  --uvio-link-color: var(--uvio-purple-dark);
+
+  // NAV
+  --uvio-nav-link-color: var(--uvio-black);
 
   // HEADER
-  --uv-header-position: static;
+  --uvio-header-position: relative;
+  --uvio-header-bg-color: var(--uvio-white);
+  --uvio-hamburger-color: #000;
+}
 
-  // LOGO
-  --uv-logo-bg-color: var(--uv-primary);
-  --uv-logo-hover-bg-color: var(--uv-primary-dark);
-
-  // MAIN NAV
-  --uv-main-nav-link-color: var(--uv-white);
-
-  // LANG NAV
+@media (prefers-color-scheme: dark) {
+  :root {
+    // HEADER
+    --uvio-header-bg-color: var(var(--uvio-black));
+  }
 }
