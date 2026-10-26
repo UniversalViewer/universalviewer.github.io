@@ -4,62 +4,102 @@
 @use "props";
 
 .site-header {
-  position: var(--uv-header-position);
+  position: var(--uvio-header-position);
   top: 0;
   z-index: 100;
-  background: var(--uv-header-bg-color);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: remval(12) 0;
+  background: var(--uvio-header-bg-color);
+  box-shadow: 0 0 remval(60) remval(-16) #0006;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
-    --uv-header-position: sticky;
-
-    padding: remval(12) remval(24);
+    --uvio-header-position: sticky;
   }
 }
 
+.header-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: remval(14) 0;
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    padding: remval(14) 0;
+  }
+}
+
+.header-logo {
+  display: flex;
+}
+
 .logo-link {
-  display: block;
-  height: remval(56);
-  background: var(--uv-logo-bg-color);
-  order: 1;
-  aspect-ratio: cos(30deg);
-  clip-path: polygon(-50% 50%, 50% 100%, 150% 50%, 50% 0);
-  color: #fff;
-  font-size: remval(20);
-  position: relative;
-  margin-left: remval(16);
+  display: inline-block;
+  color: #000;
+  top: remval(16);
+  text-decoration: none;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     margin-left: 0;
   }
+}
 
-  span {
+.logo {
+  margin: 0;
+  font-family: Spectral, serif;
+  font-size: remval(24);
+  font-weight: 600;
+  letter-spacing: remval(-0.75);
+  line-height: remval(20);
+  padding: 0 0 0 remval(52);
+  position: relative;
+}
+
+.logo-corners {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  aspect-ratio: 1;
+}
+
+.logo-corners-top,
+.logo-corners-bottom {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  background: url("/img/corner.svg") no-repeat top left;
+  background-size: 77%;
+
+  &::after {
+    content: "";
+    background: url("/img/corner.svg") no-repeat top left;
+    background-size: 77%;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     width: 100%;
-    text-align: center;
-    letter-spacing: remval(1);
+    height: 100%;
+    left: 100%;
+    transform: rotate(90deg);
   }
+}
 
-  &:hover {
-    background-color: var(--uv-logo-hover-bg-color);
+.logo-corners-bottom {
+  top: 50%;
+  transform: rotate(270deg);
 
-    span {
-      text-decoration: underline;
-      text-underline-offset: remval(3);
-    }
+  &::after {
+    transform: rotate(270deg);
+    left: auto;
+    top: 100%;
   }
 }
 
 .mobile-main-nav-button {
-  order: 3;
   background: transparent;
   border: none;
-  margin: 0 remval(16);
+  margin: 0;
   padding: 0;
   position: relative;
   width: remval(44);
@@ -90,22 +130,14 @@
   height: remval(32);
 }
 
-.hamburger-inner,
-.hamburger-inner::before,
-.hamburger-inner::after {
-  transition-timing-function: ease;
-  transition-duration: 0.15s;
-  transition-property: transform;
-}
-
 .hamburger-inner {
   display: block;
   position: absolute;
   top: 50%;
-  height: remval(4);
+  height: remval(3);
   width: 100%;
   margin-top: remval(-2);
-  background-color: #fff;
+  background-color: var(--uvio-hamburger-color);
   border-radius: remval(4);
 }
 
@@ -114,7 +146,7 @@
   content: "";
   position: absolute;
   width: 100%;
-  height: 4px;
+  height: remval(3);
   background-color: inherit;
   border-radius: remval(8);
 }
@@ -127,16 +159,21 @@
   top: remval(10);
 }
 
+.hamburger.active .hamburger-inner {
+  transform: rotate(225deg);
+}
+
 .hamburger.active .hamburger-inner::before {
-  transform: translate3d(-8px, 4px, 0) rotate(-45deg) scale(0.6, 1);
+  top: 0;
+  opacity: 0;
 }
 
 .hamburger.active .hamburger-inner::after {
-  transform: translate3d(-8px, -4px, 0) rotate(45deg) scale(0.6, 1);
+  top: 1px;
+  transform: rotate(-90deg);
 }
 
 .header-title {
-  order: 2;
   color: #fff;
   text-decoration: none;
   margin-left: 1rem;

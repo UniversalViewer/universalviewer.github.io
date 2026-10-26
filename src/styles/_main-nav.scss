@@ -6,20 +6,30 @@
 .main-nav {
   width: 100%;
   display: none;
-  order: 4;
-  margin-top: remval(12);
-  margin-bottom: remval(-12);
-  background-color: #0003;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     width: auto;
     display: block;
-    margin: 0 0 0 auto;
+    margin: 0;
     background-color: transparent;
   }
 
   &.show {
-    display: block;
+    display: flex;
+    justify-content: center;
+    margin-top: remval(20);
+
+    @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+      margin-top: remval(0);
+    }
+
+    @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+      margin-top: remval(-20);
+    }
+
+    @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+      margin-top: 0;
+    }
   }
 }
 
@@ -43,12 +53,12 @@
 .main-nav-link {
   display: block;
   padding: remval(16);
-  color: var(--uv-main-nav-link-color);
   text-decoration: none;
   text-underline-offset: remval(2);
   text-align: center;
   font-size: remval(16);
   font-weight: 500;
+  color: var(--uvio-nav-link-color);
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     text-align: left;
