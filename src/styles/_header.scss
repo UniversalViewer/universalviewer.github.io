@@ -20,16 +20,12 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: remval(14) remval(0);
-
-  // box-shadow: 0 0 remval(60) remval(-16) #0006;
+  padding: remval(14) 0;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    padding: remval(14) remval(0);
-
-    // box-shadow: 0 0 remval(60) remval(-16) #0009;
+    padding: remval(14) 0;
   }
 }
 
