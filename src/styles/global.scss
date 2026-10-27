@@ -46,22 +46,76 @@ nav {
 }
 
 h1,
+.h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
+.h4,
 h5,
-h6 {
+.h5,
+h6,
+.h6 {
   font-family: var(--uvio-font-family-headings);
-  font-weight: 400;
+  font-weight: 600;
+  margin-bottom: remval(8);
 }
 
-h1 {
+h1,
+.h1 {
   line-height: 1.2;
 }
 
 h1,
-h2 {
-  font-weight: 500;
+.h1,
+h2,
+.h2 {
+  font-weight: 600;
+}
+
+h1,
+.h1 {
+  font-size: remval(32);
+}
+
+h2,
+.h2 {
+  font-size: remval(24);
+}
+
+h3,
+.h3 {
+  font-size: remval(18);
+}
+
+h4,
+.h4 {
+  font-size: remval(16);
+}
+
+h5,
+.h5 {
+  font-size: remval(13);
+}
+
+h6,
+.h6 {
+  font-size: remval(11);
+}
+
+p {
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+ul {
+  padding-left: 1.5rem;
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
 }
 
 a {
@@ -74,26 +128,11 @@ a {
   }
 }
 
+.text-center {
+  text-align: center;
+}
+
 main {
-  flex: 1;
-  margin: 0 auto;
-  padding: 2rem;
-  max-width: 70ch;
-}
-
-// global text styling
-
-p {
-  margin-bottom: 1rem;
-}
-
-ul {
-  padding-left: 1.5rem;
-
-  li {
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-  }
 }
 
 .container {
