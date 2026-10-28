@@ -30,12 +30,16 @@
   } */
 }
 
-#header {
-  margin: 0 auto;
-
-  h3 {
-    margin: 0;
-  }
+.home-banner {
+  height: 600px;
+  background: var(--uvio-home-banner-bg-2);
+  background: linear-gradient(
+    -185deg,
+    var(--uvio-home-banner-bg-1) 0%,
+    var(--uvio-home-banner-bg-2) 100%
+  );
+  padding: remval(48) 0 0;
+  margin: 0 0 remval(32);
 }
 
 // UV embed
@@ -180,7 +184,7 @@
 
 .showcase-list {
   list-style: none;
-  margin: 0;
+  margin: remval(32) 0 0;
   padding: 0;
   display: grid;
   grid-template-columns: auto;

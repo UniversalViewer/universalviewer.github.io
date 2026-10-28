@@ -11,7 +11,7 @@ const pageTitle = "Home";
 
   <UVEmbed /> -->
 
-  <section id="header">
+  <section id="homeBanner">
     <div class="home-banner">
       <div class="container">
         <h1 class="text-center">
@@ -31,7 +31,10 @@ const pageTitle = "Home";
     showcases.length > 0 && (
       <section id="showcase">
         <div class="container">
-          <h2>Showcase</h2>
+          <h2>
+            <span class="eyebrow">Showcase</span>
+            Universal Viewer in action
+          </h2>
           <ul class="showcase-list">
             {showcases.map(({ url, manifest, img, heading, text }) => (
               <li class="showcase-item">
