@@ -5,12 +5,10 @@
 
 .site-header {
   position: var(--uvio-header-position);
-
-  // top: 0;
-  // z-index: 100;
+  top: 0;
+  z-index: 100;
   background: var(--uvio-header-bg-color);
-
-  // box-shadow: 0 0 remval(60) remval(-16) #0006;
+  box-shadow: 0 0 remval(60) remval(-16) #0006;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     --uvio-header-position: relative;
