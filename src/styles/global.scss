@@ -16,11 +16,6 @@
 @use "community";
 @use "contact";
 
-html {
-  background-color: #f1f5f9;
-  font-family: sans-serif;
-}
-
 *,
 *::before,
 *::after {
@@ -47,22 +42,100 @@ nav {
 }
 
 h1,
+.h1,
 h2,
+.h2,
 h3,
+.h3,
 h4,
+.h4,
 h5,
-h6 {
+.h5,
+h6,
+.h6 {
   font-family: var(--uvio-font-family-headings);
-  font-weight: 400;
-}
-
-h1 {
-  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: remval(0);
 }
 
 h1,
-h2 {
-  font-weight: 500;
+.h1 {
+  font-size: remval(42);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h2,
+.h2 {
+  font-size: remval(32);
+  font-weight: 700;
+}
+
+h3,
+.h3 {
+  font-size: remval(18);
+}
+
+h4,
+.h4 {
+  font-size: remval(16);
+}
+
+h5,
+.h5 {
+  font-size: remval(13);
+  margin-bottom: remval(-4);
+}
+
+h6,
+.h6 {
+  font-size: remval(11);
+  margin-bottom: remval(-8);
+}
+
+.eyebrow {
+  display: block;
+  font-size: remval(14);
+  letter-spacing: remval(1.5);
+  color: var(--uvio-eyebrow-color);
+  text-transform: uppercase;
+  margin-bottom: remval(20);
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  &:has(.eyebrow) {
+    line-height: 1;
+  }
+}
+
+p {
+  margin: remval(16) 0 0;
+}
+
+ul,
+ol {
+  padding-left: remval(24);
+  margin: remval(16) 0 0;
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+}
+
+ol {
+  padding-left: remval(32);
 }
 
 a {
@@ -75,26 +148,8 @@ a {
   }
 }
 
-main {
-  flex: 1;
-  margin: 0 auto;
-  padding: 2rem;
-  max-width: 70ch;
-}
-
-// global text styling
-
-p {
-  margin-bottom: 1rem;
-}
-
-ul {
-  padding-left: 1.5rem;
-
-  li {
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-  }
+.text-center {
+  text-align: center;
 }
 
 .container {

@@ -11,7 +11,7 @@
   box-shadow: 0 0 remval(60) remval(-16) #0006;
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
-    --uvio-header-position: sticky;
+    --uvio-header-position: relative;
   }
 }
 

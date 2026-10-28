@@ -1,10 +1,15 @@
+@use "sass:map";
+@use "fn" as *;
+@use "vars" as *;
+@use "props";
+
 .home-main {
   padding: 0;
   margin: 0;
   width: 100%;
   max-width: 100%;
 
-  section {
+  /* section {
     padding: 2rem 0 3rem;
     margin: 0;
   }
@@ -22,15 +27,19 @@
   h3 {
     text-align: center;
     margin: 0 0 2rem;
-  }
+  } */
 }
 
-#header {
-  margin: 0 auto;
-
-  h3 {
-    margin: 0;
-  }
+.home-banner {
+  height: 600px;
+  background: var(--uvio-home-banner-bg-2);
+  background: linear-gradient(
+    -185deg,
+    var(--uvio-home-banner-bg-1) 0%,
+    var(--uvio-home-banner-bg-2) 100%
+  );
+  padding: remval(48) 0 0;
+  margin: 0 0 remval(32);
 }
 
 // UV embed
@@ -173,75 +182,61 @@
   line-height: 1.5;
 }
 
-// showcase
-#showcase {
-  padding-bottom: 0;
+.showcase-list {
+  list-style: none;
+  margin: remval(32) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: auto;
+  gap: remval(16);
 
-  .showcase-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-
-    @media (width >= 992px) {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+    grid-template-columns: auto auto;
   }
 
-  .showcase-box {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    text-decoration: none;
+  @media screen and (min-width: #{map.get($breakpoints, "laptop")}) {
+    grid-template-columns: auto auto auto;
+  }
+}
 
-    img {
-      width: 100%;
-      display: block;
+.showcase-item {
+  margin: 0 0 remval(16);
+  padding: 0;
+  min-width: 0;
+}
+
+.showcase-link {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  outline-offset: remval(8);
+
+  &:hover {
+    .showcase-image {
+      filter: brightness(80%);
     }
 
-    .showcase-box-caption {
-      color: #fff;
-      opacity: 0;
-      display: block;
-      background: rgb(62 17 78 / 90%);
-      position: absolute;
-      inset: 0;
-      text-align: center;
-      transition: opacity 0.2s;
-
-      .showcase-box-caption-content {
-        width: 100%;
-        text-align: center;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 0 15px;
-      }
-
-      .project-category {
-        color: rgb(255 255 255 / 70%);
-
-        @media (width >= 768px) {
-          font-size: 16px;
-        }
-      }
-
-      .project-name {
-        font-size: 18px;
-
-        @media (width >= 768px) {
-          font-size: 22px;
-        }
-      }
-    }
-
-    &:hover .showcase-box-caption {
-      opacity: 1;
-    }
-
-    &:focus {
-      outline: 0;
+    .showcase-item-heading {
+      text-decoration: underline;
+      text-decoration-thickness: remval(2);
     }
   }
+}
+
+.showcase-image {
+  display: block;
+  width: 100%;
+  border-radius: remval(8);
+}
+
+.showcase-item-heading {
+  margin: remval(16) 0 0;
+  line-height: 1.2;
+}
+
+.showcase-item-text {
+  margin: remval(4) 0 0;
+  line-height: 1.3;
 }
 
 // supported by
