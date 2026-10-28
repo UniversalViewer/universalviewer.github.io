@@ -5,6 +5,13 @@ export default {
     'nav.documentation': 'Documentation',
     'nav.blog': 'Blog',
     'nav.community': 'Community',
+    "nav.how-it-works": "How it works",
+    "nav.blog-and-events": "Blog and Events",
+    "nav.policies": "Policies",
+    "nav.contact-us": "Contact Us",
+    "nav.accessibility": "Accessibility",
+    "nav.roadmaps-and-strategies": "Roadmaps and Strategies",
+    "nav.contribution-members": "Contribution Members",
 
     'home.viewer.heading': 'One interface for all of your content',
     'home.viewer.view': 'View',
@@ -22,4 +29,5 @@ export default {
     'footer.accessibility': 'Accessibility',
     'footer.roadmap': 'Roadmap & Strategies',
     'footer.social': 'Social',
+    'footer.copyright': 'Copyright',
 }

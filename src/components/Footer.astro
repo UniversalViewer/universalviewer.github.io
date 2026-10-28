@@ -1,77 +1,120 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { useTranslations } from '@i18n/utils';
-import type { Lang } from '@i18n/ui';
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
-const policyUrl = getRelativeLocaleUrl(locale, 'policy');
-const contactUrl = getRelativeLocaleUrl(locale, 'contact');
-const accessibilityUrl = getRelativeLocaleUrl(locale, 'accessibility');
-const roadmapUrl = getRelativeLocaleUrl(locale, 'roadmap');
+const policyUrl = getRelativeLocaleUrl(locale, "policy");
+const contactUrl = getRelativeLocaleUrl(locale, "contact");
+const accessibilityUrl = getRelativeLocaleUrl(locale, "accessibility");
+const roadmapUrl = getRelativeLocaleUrl(locale, "roadmap");
+
+const nav1 = [
+  { slug: "how-it-works", key: "nav.how-it-works" },
+  { slug: "demo", key: "nav.demo" },
+  { slug: "documentation", key: "nav.documentation" },
+  { slug: "community", key: "nav.community" },
+  { slug: "blog-and-events", key: "nav.blog-and-events" },
+] as const;
+
+const nav2 = [
+  { slug: "policies", key: "nav.policies" },
+  { slug: "contact-us", key: "nav.contact-us" },
+  { slug: "accessibility", key: "nav.accessibility" },
+  { slug: "roadmaps-and-strategies", key: "nav.roadmaps-and-strategies" },
+  { slug: "contribution-members", key: "nav.contribution-members" },
+] as const;
 ---
 
 <footer>
-  <div class="footer-content">
-    <div class="footer-logo">
+  <div class="container">
+    <section class="footer-logo-and-contact">
       <h2>Universal Viewer</h2>
-    </div>
+    </section>
+    <section class="footer-navigation">
+      <nav aria-label="" class="footer-nav footer-nav-1">
+        <ul>
+          {
+            nav1.map((link, i) => (
+              <li>
+                <a href={getRelativeLocaleUrl(locale, link.slug)}>
+                  {t(link.key)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+      <nav aria-label="" class="footer-nav footer-nav-2">
+        <ul>
+          {
+            nav2.map((link, i) => (
+              <li>
+                <a href={getRelativeLocaleUrl(locale, link.slug)}>
+                  {t(link.key)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </section>
 
     <div class="footer-links">
-      <h3>{t('footer.links')}</h3>
       <ul>
         <li>
-          <a href={policyUrl}>{t('footer.policies')}</a>
+          <a href={policyUrl}>{t("footer.policies")}</a>
         </li>
         <li>
-          <a href={contactUrl}>{t('footer.contactus')}</a>
+          <a href={contactUrl}>{t("footer.contactus")}</a>
         </li>
         <li>
-          <a href={accessibilityUrl}>{t('footer.accessibility')}</a>
+          <a href={accessibilityUrl}>{t("footer.accessibility")}</a>
         </li>
         <li>
-          <a href={roadmapUrl}>{t('footer.roadmap')}</a>
+          <a href={roadmapUrl}>{t("footer.roadmap")}</a>
         </li>
       </ul>
     </div>
 
     <div class="footer-social">
-      <h3>{t('footer.social')}</h3>
       <ul>
         <li>
           <a
             href="https://github.com/universalviewer"
             target="_blank"
-            rel="noopener"
-            >GitHub</a
+            rel="noopener">GitHub</a
           >
         </li>
         <li>
           <a
             href="https://bsky.app/profile/universalviewer.io"
             target="_blank"
-            rel="noopener"
-            >BlueSky</a
+            rel="noopener">BlueSky</a
           >
         </li>
         <li>
           <a
             href="https://glammr.us/@universalviewer"
             target="_blank"
-            rel="noopener"
-            >Mastodon</a
+            rel="noopener">Mastodon</a
           >
         </li>
         <li>
           <a
             href="https://universalviewer.slack.com"
             target="_blank"
-            rel="noopener"
-            >Slack</a
+            rel="noopener">Slack</a
           >
         </li>
       </ul>
     </div>
+    <p class="footer-copyright">
+      <span aria-label={t("footer.copyright")}>&copy;</span> Universal Viewer {
+        new Date().getFullYear()
+      }
+    </p>
   </div>
 </footer>
