@@ -3,94 +3,101 @@
 @use "vars" as *;
 @use "props";
 
-footer {
-  width: 100%;
-  background-color: rgb(255 255 255);
-  border-top: 1px solid rgb(0 0 0 / 10%);
-  margin-top: 4rem;
-  padding: 2rem 1rem;
+.site-footer {
+  background-color: var(--uvio-footer-bg-color);
+  color: var(--uvio-footer-color);
+  padding: remval(32) 0;
+}
 
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+.footer-main {
+  display: grid;
+  grid-template-columns: auto;
+  gap: remval(32);
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+    grid-template-columns: 2fr 3fr 3fr;
   }
 
-  .footer-logo {
-    h2 {
-      margin: 0 0 0.5rem;
-      font-size: 1.5rem;
-      color: #333;
-    }
+  @media screen and (min-width: #{map.get($breakpoints, "laptop")}) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 
-    p {
-      margin: 0;
-      color: #666;
-      font-size: 0.9rem;
-      line-height: 1.4;
-    }
+.footer-logo {
+  display: flex;
+}
+
+.footer-logo-link {
+  color: var(--uvio-footer-color);
+}
+
+.footer-navigation {
+  display: grid;
+  grid-template-columns: auto;
+  gap: remval(0);
+
+  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    grid-template-columns: auto auto;
+    gap: (remval(32));
   }
 
-  .footer-links,
-  .footer-social {
-    h3 {
-      margin: 0 0 1rem;
-      font-weight: 600;
-      color: #333;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.85rem;
-    }
+  @media screen and (min-width: #{map.get($breakpoints, "laptop")}) {
+    grid-template-columns: auto auto;
+  }
+}
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+.footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-      li {
-        a {
-          display: inline-block;
-          padding: 0.25rem 0;
-          text-decoration: none;
-          color: #666;
-          font-size: 0.9rem;
-          transition: color 0.2s ease;
+.footer-nav-item {
+  margin: 0;
+  padding: 0;
+}
 
-          &:hover,
-          &:focus {
-            color: #000;
-            text-decoration: underline;
-          }
-        }
-      }
-    }
+.footer-nav-link {
+  color: var(--uvio-footer-color);
+  text-decoration: none;
+  display: block;
+  padding: remval(12) 0;
+  text-align: center;
+
+  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    text-align: left;
   }
 
-  @media (width >= 768px) {
-    padding: 3rem 2rem;
-
-    .footer-content {
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-
-    .footer-logo {
-      grid-column: 1 / -1;
-    }
+  &:hover {
+    text-decoration: underline;
   }
+}
 
-  @media (width >= 1024px) {
-    .footer-content {
-      grid-template-columns: 2fr 1fr 1fr;
-    }
+.footer-social-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: remval(42);
+}
 
-    .footer-logo {
-      grid-column: auto;
-    }
+.footer-social-item {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-social-link {
+  display: block;
+  color: #fff;
+  width: remval(42);
+  height: remval(42);
+
+  svg {
+    width: 100%;
+    height: 100%;
   }
+}
+
+.footer-copyright {
+  text-align: right;
+  margin: remval(32) 0 0;
 }

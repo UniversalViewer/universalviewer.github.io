@@ -28,6 +28,6 @@ export default {
     'footer.contactus': 'Cysylltwch â Ni',
     'footer.accessibility': 'Hygyrchedd',
     'footer.roadmap': 'Map Ffordd a Strategaethau',
-    'footer.social': 'Cymdeithasol',
+    'footer.connect': 'Cysylltu',
     'footer.copyright': 'Hawlfraint',
 }

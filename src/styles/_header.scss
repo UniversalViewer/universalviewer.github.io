@@ -66,12 +66,21 @@
 .logo-corners-top,
 .logo-corners-bottom {
   position: absolute;
-  width: 50%;
-  height: 50%;
+
+  // width: 50%;
+  // height: 50%;
   top: 0;
   left: 0;
-  background: url("/img/corner.svg") no-repeat top left;
+
+  // background: url("/img/corner.svg") no-repeat top left;
   background-size: 77%;
+  width: 38.5%;
+  height: 38.5%;
+  background-color: red;
+  mask-image: url("/img/corner.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
 
   &::after {
     content: "";
@@ -86,7 +95,8 @@
 }
 
 .logo-corners-bottom {
-  top: 50%;
+  top: auto;
+  bottom: 0;
   transform: rotate(270deg);
 
   &::after {
@@ -191,6 +201,11 @@
   @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
     display: block;
   }
+}
+
+.main-nav-link {
+  text-transform: uppercase;
+  letter-spacing: remval(1);
 }
 
 .switch-lang-link {

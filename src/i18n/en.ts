@@ -28,6 +28,6 @@ export default {
     'footer.contactus': 'Contact Us',
     'footer.accessibility': 'Accessibility',
     'footer.roadmap': 'Roadmap & Strategies',
-    'footer.social': 'Social',
+    'footer.connect': 'Connect',
     'footer.copyright': 'Copyright',
 }
