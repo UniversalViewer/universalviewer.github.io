@@ -3,44 +3,85 @@
 @use "vars" as *;
 @use "props";
 
-.logo-container {
-  display: flex;
+.logo {
+  display: inline-flex;
+  font-size: remval(24);
+  line-height: 0.85;
+  margin: 0;
+  font-family: Spectral, serif;
+  font-weight: 600;
+  letter-spacing: remval(-0.75);
+  position: relative;
+  padding: 0.475em 0 0.475em 2em;
 }
 
 .logo-link {
-  display: inline-block;
   text-decoration: none;
+  display: inline-block;
 }
 
-.logo {
-  margin: 0;
-  font-family: Spectral, serif;
-  font-size: remval(24);
-  font-weight: 600;
-  letter-spacing: remval(-0.75);
-  line-height: remval(20);
+.logo-text {
   position: relative;
+  top: 0.075em;
+  display: flex;
+  gap: 0.15em;
 }
 
-.logo-landscape,
 .logo-stacked {
-  padding: 0 0 0 remval(52);
-}
-
-.logo-stacked,
-.logo-alt {
-  height: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
 
   .logo-text {
-    span {
-      display: block;
-    }
+    flex-direction: column;
+    gap: 0;
   }
 }
 
-.logo-landscape {
-  line-height: remval(40);
-}
+// .logo-container {
+//   display: flex;
+//   font-size: remval(24);
+//   line-height: 0.8333;
+// }
+
+// .logo-link {
+//   display: inline-block;
+//   text-decoration: none;
+// }
+
+// .logo {
+//   margin: 0;
+//   font-family: Spectral, serif;
+//   font-weight: 600;
+//   letter-spacing: remval(-0.75);
+//   position: relative;
+// }
+
+// .logo-landscape {
+//   .logo-text {
+//     display: flex;
+//     gap: 0.15em;
+//   }
+// }
+
+// .logo-landscape,
+// .logo-stacked {
+//   padding: 0 0 0 remval(52);
+// }
+
+// .logo-stacked,
+// .logo-alt {
+//   height: 100%;
+
+//   .logo-text {
+//     span {
+//       display: block;
+//     }
+//   }
+// }
+
+// .logo-landscape {
+//   line-height: remval(40);
+// }
 
 .logo-corners {
   position: absolute;
