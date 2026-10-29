@@ -6,7 +6,7 @@
 .site-footer {
   background-color: var(--uvio-footer-bg-color);
   color: var(--uvio-footer-color);
-  padding: remval(32) 0;
+  padding: remval(56) 0;
 }
 
 .footer-main {
@@ -15,7 +15,7 @@
   gap: remval(32);
 
   @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
-    grid-template-columns: 2fr 3fr 3fr;
+    grid-template-columns: 2fr 4fr 3fr;
   }
 
   @media screen and (min-width: #{map.get($breakpoints, "laptop")}) {
@@ -24,6 +24,8 @@
 }
 
 .footer-logo {
+  --uvio-logo-corner-color: var(--uvio-footer-color);
+
   display: flex;
 }
 
@@ -32,9 +34,12 @@
 }
 
 .footer-navigation {
+  --uvio-footer-nav-link-padding: #{remval(12)};
+
   display: grid;
   grid-template-columns: auto;
   gap: remval(0);
+  margin-top: calc(-1 * var(--uvio-footer-nav-link-padding));
 
   @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
     grid-template-columns: auto auto;
@@ -61,7 +66,7 @@
   color: var(--uvio-footer-color);
   text-decoration: none;
   display: block;
-  padding: remval(12) 0;
+  padding: var(--uvio-footer-nav-link-padding) 0;
   text-align: center;
 
   @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
@@ -73,11 +78,33 @@
   }
 }
 
+.footer-social-heading {
+  margin-top: 0;
+  margin-bottom: remval(24);
+  text-align: center;
+
+  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    text-align: left;
+    margin-bottom: remval(32);
+  }
+}
+
 .footer-social-list {
+  --uvio-social-icon-size: #{remval(32)};
+  --uvio-social-icon-gap: #{remval(24)};
+
   list-style: none;
   padding: 0;
   display: flex;
-  gap: remval(42);
+  justify-content: center;
+  gap: var(--uvio-social-icon-gap);
+
+  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    --uvio-social-icon-gap: #{remval(42)};
+    --uvio-social-icon-size: #{remval(42)};
+
+    justify-content: flex-start;
+  }
 }
 
 .footer-social-item {
@@ -86,18 +113,26 @@
 }
 
 .footer-social-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
-  width: remval(42);
-  height: remval(42);
+  width: remval(44);
+  height: remval(44);
 
   svg {
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
+    width: var(--uvio-social-icon-size);
+    height: var(--uvio-social-icon-size);
   }
 }
 
 .footer-copyright {
-  text-align: right;
+  text-align: center;
   margin: remval(32) 0 0;
+
+  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    text-align: right;
+  }
 }

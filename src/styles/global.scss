@@ -3,6 +3,7 @@
 @use "vars" as *;
 @use "props";
 @use "fonts";
+@use "logo";
 @use "header";
 @use "footer";
 @use "main-nav";
@@ -30,6 +31,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: var(--uvio-font-family);
+  color: var(--uvio-black);
 }
 
 nav {
@@ -88,12 +90,16 @@ h6,
   margin-bottom: remval(-8);
 }
 
-.eyebrow {
+.eyebrow,
+.tiny-heading {
   display: block;
   font-size: remval(14);
   letter-spacing: remval(1.5);
-  color: var(--uvio-eyebrow-color);
   text-transform: uppercase;
+}
+
+.eyebrow {
+  color: var(--uvio-eyebrow-color);
   margin-bottom: remval(20);
 }
 

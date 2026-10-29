@@ -7,7 +7,8 @@
   --uvio-purple: #c596ff;
   --uvio-purple-dark: #8a41e6;
   --uvio-purple-light: #e8d6fe;
-  --uvio-black: #3e3e3e;
+  --uvio-black: #000;
+  --uvio-black2: #0a0b0d;
   --uvio-grey: #f9f9f9;
   --uvio-white: #fff;
 
@@ -20,6 +21,9 @@
   // TYPOGRAPHY
   --uvio-link-color: var(--uvio-purple-dark);
   --uvio-eyebrow-color: var(--uvio-purple-dark);
+
+  // LOGO
+  --uvio-logo-corner-color: var(--uvio-black);
 
   // NAV
   --uvio-nav-link-color: var(--uvio-black);

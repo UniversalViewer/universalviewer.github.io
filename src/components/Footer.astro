@@ -29,14 +29,35 @@ const nav2 = [
   <div class="container">
     <div class="footer-main">
       <section class="footer-logo-and-contact">
-        <div class="footer-logo">
-          <a class="logo-link footer-logo-link" href={homeUrl}>
-            <div class="logo">
+        <div class="logo-container">
+          <a class="logo-link footer-logo-link" href="">
+            <div class="logo logo-alt footer-logo">
               <span class="logo-corners">
-                <div class="logo-corners-top"></div>
-                <div class="logo-corners-bottom"></div>
+                <div class="logo-corner logo-corner-top-left">
+                  <svg>
+                    <use href="#corner"></use>
+                  </svg>
+                </div>
+                <div class="logo-corner logo-corner-top-right">
+                  <svg>
+                    <use href="#corner"></use>
+                  </svg>
+                </div>
+                <div class="logo-corner logo-corner-bottom-left">
+                  <svg>
+                    <use href="#corner"></use>
+                  </svg>
+                </div>
+                <div class="logo-corner logo-corner-bottom-right">
+                  <svg>
+                    <use href="#corner"></use>
+                  </svg>
+                </div>
               </span>
-              Universal<br />Viewer
+              <span class="logo-text">
+                <span>Universal</span>
+                <span>Viewer</span>
+              </span>
             </div>
           </a>
         </div>
@@ -78,7 +99,9 @@ const nav2 = [
       </section>
 
       <section class="footer-social">
-        <h2>{t("footer.connect")}</h2>
+        <h2 class="tiny-heading footer-social-heading">
+          {t("footer.connect")}
+        </h2>
         <ul class="footer-social-list">
           <li class="footer-social-item">
             <a

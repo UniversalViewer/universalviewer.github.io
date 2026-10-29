@@ -1,0 +1,116 @@
+@use "sass:map";
+@use "fn" as *;
+@use "vars" as *;
+@use "props";
+
+.logo-container {
+  display: flex;
+}
+
+.logo-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.logo {
+  margin: 0;
+  font-family: Spectral, serif;
+  font-size: remval(24);
+  font-weight: 600;
+  letter-spacing: remval(-0.75);
+  line-height: remval(20);
+  position: relative;
+}
+
+.logo-landscape,
+.logo-stacked {
+  padding: 0 0 0 remval(52);
+}
+
+.logo-stacked,
+.logo-alt {
+  height: 100%;
+
+  .logo-text {
+    span {
+      display: block;
+    }
+  }
+}
+
+.logo-landscape {
+  line-height: remval(40);
+}
+
+.logo-corners {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  aspect-ratio: 1;
+}
+
+.logo-corner {
+  position: absolute;
+  width: 39%;
+  height: 39%;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: var(--uvio-logo-corner-color);
+  }
+}
+
+.logo-corner-top-left {
+  top: 0;
+  left: 0;
+}
+
+.logo-corner-top-right {
+  top: 0;
+  right: 0;
+  transform: rotate(90deg);
+}
+
+.logo-corner-bottom-left {
+  bottom: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.logo-corner-bottom-right {
+  bottom: 0;
+  right: 0;
+  transform: rotate(180deg);
+}
+
+.logo-alt {
+  padding: remval(14.5);
+
+  .logo-corners {
+    right: 0;
+    aspect-ratio: auto;
+  }
+
+  .logo-corner {
+    width: auto;
+    aspect-ratio: 1;
+    height: 22%;
+  }
+
+  .logo-corner-top-right {
+    transform: rotate(90deg) translate(0, -20%);
+  }
+
+  .logo-corner-bottom-left {
+    transform: rotate(-90deg) translate(10%, 0);
+  }
+
+  .logo-corner-bottom-right {
+    transform: rotate(180deg) translate(-20%, 10%);
+  }
+}
