@@ -29,8 +29,10 @@
   }
 }
 
-.header-logo-link {
-  color: var(--uvio-black);
+.header-logo {
+  a {
+    color: var(--uvio-black);
+  }
 }
 
 .mobile-main-nav-button {

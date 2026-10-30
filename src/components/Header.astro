@@ -3,6 +3,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { useTranslations } from "@i18n/utils";
 import type { Lang } from "@i18n/ui";
 import MainNav from "./MainNav.astro";
+import Logo from "@components/Logo.astro";
 
 const locale = Astro.currentLocale as Lang;
 
@@ -27,36 +28,7 @@ const { localeName, localeLangKey } = localeMap[locale];
 <header class="site-header">
   <div class="container">
     <div class="header-content">
-      <div class="logo logo-stacked">
-        <a class="logo-link" href="">
-          <span class="logo-corners">
-            <div class="logo-corner logo-corner-top-left">
-              <svg>
-                <use href="#cornerTopLeft"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-top-right">
-              <svg>
-                <use href="#cornerTopRight"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-bottom-left">
-              <svg>
-                <use href="#cornerBottomLeft"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-bottom-right">
-              <svg>
-                <use href="#cornerBottomRight"></use>
-              </svg>
-            </div>
-          </span>
-          <span class="logo-text">
-            <span>Universal</span>
-            <span>Viewer</span>
-          </span>
-        </a>
-      </div>
+      <Logo type="stacked" name="header-logo" link={true} />
       <button
         type="button"
         id="mobileNavButton"
