@@ -1,0 +1,53 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { Lang } from "@i18n/ui";
+
+const locale = Astro.currentLocale as Lang;
+
+interface Props {
+  type: "landscape" | "stacked" | "alt" | "alt-stacked";
+  link?: boolean;
+  url?: string;
+  name?: string;
+}
+
+const { type, link = true, url = "", name = "" } = Astro.props;
+
+const Tag = link ? "a" : "span";
+let logoUrl = "";
+if (link) {
+  logoUrl = getRelativeLocaleUrl(locale, url);
+}
+const attrs = link ? { href: logoUrl } : {};
+---
+
+<div class={`logo logo-${type} ${name}`}>
+  <Tag class="logo-link" {...attrs}>
+    <span class="logo-corners">
+      <div class="logo-corner logo-corner-top-left">
+        <svg>
+          <use href="#cornerTopLeft"></use>
+        </svg>
+      </div>
+      <div class="logo-corner logo-corner-top-right">
+        <svg>
+          <use href="#cornerTopRight"></use>
+        </svg>
+      </div>
+      <div class="logo-corner logo-corner-bottom-left">
+        <svg>
+          <use href="#cornerBottomLeft"></use>
+        </svg>
+      </div>
+      <div class="logo-corner logo-corner-bottom-right">
+        <svg>
+          <use href="#cornerBottomRight"></use>
+        </svg>
+      </div>
+    </span>
+    <span class="logo-text">
+      <span>Universal</span>
+      <span>Viewer</span>
+    </span>
+  </Tag>
+</div>

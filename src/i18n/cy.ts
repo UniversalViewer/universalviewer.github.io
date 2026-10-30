@@ -5,6 +5,13 @@ export default {
     'nav.documentation': 'Dogfennaeth',
     'nav.blog': 'Blog',
     'nav.community': 'Cymuned',
+    "nav.how-it-works": "Sut mae'n gweithio",
+    "nav.blog-and-events": "Blog a Digwyddiadau",
+    "nav.policies": "Polisïau",
+    "nav.contact-us": "Cysylltwch â Ni",
+    "nav.accessibility": "Hygyrchedd",
+    "nav.roadmaps-and-strategies": "Mapiau Ffordd a Strategaethau",
+    "nav.contribution-members": "Aelodau sy'n Cyfrannu",
 
     'home.viewer.heading': 'Un rhyngwyneb ar gyfer eich holl gynnwys',
     'home.viewer.view': 'Golwg',
@@ -21,5 +28,6 @@ export default {
     'footer.contactus': 'Cysylltwch â Ni',
     'footer.accessibility': 'Hygyrchedd',
     'footer.roadmap': 'Map Ffordd a Strategaethau',
-    'footer.social': 'Cymdeithasol',
+    'footer.connect': 'Cysylltu',
+    'footer.copyright': 'Hawlfraint',
 }

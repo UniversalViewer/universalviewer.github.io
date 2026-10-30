@@ -27,6 +27,67 @@ const { pageTitle = "Universal Viewer", mainClass } = Astro.props;
     <slot name="head" />
   </head>
   <body>
+    <svg
+      width="217"
+      height="218"
+      viewBox="0 0 217 218"
+      xmlns="http://www.w3.org/2000/svg"
+      style="display: none;"
+    >
+      <defs>
+        <symbol id="cornerTopRight" viewBox="0 0 217 218">
+          <path
+            d="M184.159 217.24L216.583 217.24L216.583 109.421C216.583 97.9259 212.033 86.8975 203.927 78.7455L138.387 12.8295C130.222 4.61774 119.118 -4.26033e-06 107.536 -4.76659e-06L-0.000167847 -9.46715e-06L-0.000169293 33.0822L57.9772 33.0822C127.665 33.0824 184.159 89.5757 184.159 159.264L184.159 217.24Z"
+          ></path>
+        </symbol>
+      </defs>
+    </svg>
+    <svg
+      width="218"
+      height="217"
+      viewBox="0 0 218 217"
+      xmlns="http://www.w3.org/2000/svg"
+      style="display: none;"
+    >
+      <defs>
+        <symbol id="cornerTopLeft" viewBox="0 0 218 217">
+          <path
+            d="M217.24 32.4239V0L109.421 0C97.9259 9.59509e-05 86.8975 4.5501 78.7455 12.6556L12.8295 78.1959C4.61774 86.3614 0 97.4649 0 109.047L0 216.583H33.0822V158.606C33.0824 88.9177 89.5757 32.4239 159.264 32.4239H217.24Z"
+          ></path>
+        </symbol>
+      </defs>
+    </svg>
+    <svg
+      width="218"
+      height="217"
+      viewBox="0 0 218 217"
+      xmlns="http://www.w3.org/2000/svg"
+      style="display: none;"
+    >
+      <defs>
+        <symbol id="cornerBottomRight" viewBox="0 0 218 217">
+          <path
+            d="M0.000231716 184.159L0.000228882 216.583L107.819 216.583C119.314 216.583 130.343 212.033 138.495 203.927L204.411 138.387C212.622 130.222 217.24 119.118 217.24 107.536L217.24 -0.000167847L184.158 -0.000170739L184.158 57.9772C184.158 127.665 127.665 184.159 57.976 184.159L0.000231716 184.159Z"
+          ></path>
+        </symbol>
+      </defs>
+    </svg>
+    <svg
+      width="217"
+      height="218"
+      viewBox="0 0 217 218"
+      xmlns="http://www.w3.org/2000/svg"
+      style="display: none;"
+    >
+      <defs>
+        <symbol id="cornerBottomLeft" viewBox="0 0 217 218">
+          <path
+            d="M32.4239 0.000227465L-9.49586e-06 0.000228882L-4.78295e-06 107.819C9.16704e-05 119.314 4.55009 130.343 12.6556 138.495L78.1959 204.411C86.3614 212.622 97.4649 217.24 109.047 217.24L216.583 217.24L216.583 184.158L158.606 184.158C88.9177 184.158 32.4239 127.665 32.4239 57.976L32.4239 0.000227465Z"
+          ></path>
+        </symbol>
+      </defs>
+    </svg>
+
     <Header />
     <main class:list={["main", mainClass]}>
       <slot />

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Logo from "@components/Logo.astro";
 const pageTitle = "Typography";
 ---
 
@@ -10,6 +11,19 @@ const pageTitle = "Typography";
       Occaecat culpa nisi eiusmod id laboris aliqua nulla est nulla eiusmod
       sunt. Laboris proident excepteur reprehenderit labore.
     </p>
+    <section>
+      <div
+        class="logos-container"
+        style="margin-top:2em; display: flex; gap:2em; align-items: flex-start; justify-content: flex-start; flex-direction: column;"
+      >
+        <Logo link={true} type="landscape" />
+        <Logo link={true} url="blog" type="landscape" />
+        <Logo link={false} type="landscape" />
+        <Logo link={true} type="stacked" />
+        <Logo link={true} type="alt" />
+        <Logo link={true} type="alt-stacked" />
+      </div>
+    </section>
     <section>
       <h2>Level Two Heading</h2>
       <p>
@@ -102,6 +116,15 @@ const pageTitle = "Typography";
           consequat nisi qui in ipsum elit cillum magna quis eiusmod eu.
         </li>
       </ol>
+      <p>
+        Reprehenderit cillum dolore commodo adipisicing amet proident do mollit.
+        Ea magna aute dolore cillum pariatur amet et sint est culpa et officia.
+        Esse id cillum dolor culpa magna aliqua id. Pariatur anim officia mollit
+        proident ex nulla adipisicing exercitation exercitation excepteur duis
+        quis.
+      </p>
+      <br />
+      <br />
     </section>
   </div>
 </BaseLayout>
