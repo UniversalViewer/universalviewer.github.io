@@ -6,20 +6,40 @@
 .site-footer {
   background-color: var(--uvio-footer-bg-color);
   color: var(--uvio-footer-color);
-  padding: remval(56) 0;
+  padding: remval(48) 0 remval(56);
+
+  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    padding-top: remval(56);
+  }
+}
+
+.site-footer .container {
+  padding-right: remval(48);
+  padding-left: remval(48);
 }
 
 .footer-main {
   display: grid;
   grid-template-columns: auto;
-  gap: remval(32);
+  gap: remval(0);
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
-    grid-template-columns: 2fr 4fr 3fr;
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    gap: remval(32);
+    grid-template-columns: 3fr 5fr 2fr;
   }
 
   @media screen and (min-width: #{map.get($breakpoints, "laptop")}) {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 3fr 2fr;
+  }
+}
+
+.footer-logo-and-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    align-items: flex-start;
   }
 }
 
@@ -27,10 +47,38 @@
   --uvio-logo-corner-color: var(--uvio-footer-color);
 
   display: flex;
+  font-size: remval(28);
+
+  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    font-size: remval(32);
+  }
+
+  a {
+    color: var(--uvio-footer-color);
+  }
 }
 
-.footer-logo-link {
+.footer-contact-heading {
+  margin-top: remval(48);
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    margin-top: remval(48);
+  }
+}
+
+.footer-mailto {
   color: var(--uvio-footer-color);
+  text-decoration: none;
+  display: block;
+  margin-top: remval(12);
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    margin-top: remval(24);
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .footer-navigation {
@@ -39,15 +87,18 @@
   display: grid;
   grid-template-columns: auto;
   gap: remval(0);
-  margin-top: calc(-1 * var(--uvio-footer-nav-link-padding));
+  margin-top: remval(32);
 
   @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
     grid-template-columns: auto auto;
     gap: (remval(32));
+    margin-top: remval(42);
   }
 
-  @media screen and (min-width: #{map.get($breakpoints, "laptop")}) {
-    grid-template-columns: auto auto;
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    margin-top: calc(-1.2 * var(--uvio-footer-nav-link-padding));
+    grid-template-columns: auto 1fr;
+    gap: (remval(64));
   }
 }
 
@@ -70,6 +121,7 @@
   text-align: center;
 
   @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    display: inline-block;
     text-align: left;
   }
 
@@ -79,13 +131,17 @@
 }
 
 .footer-social-heading {
-  margin-top: 0;
+  margin-top: remval(48);
   margin-bottom: remval(24);
   text-align: center;
 
   @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
     text-align: left;
     margin-bottom: remval(32);
+  }
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    margin-top: 0;
   }
 }
 
@@ -105,11 +161,25 @@
 
     justify-content: flex-start;
   }
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    flex-wrap: wrap;
+  }
 }
 
 .footer-social-item {
   margin: 0;
   padding: 0;
+
+  &:nth-child(2) {
+    @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+      flex-basis: 45%;
+    }
+
+    @media screen and (min-width: #{map.get($breakpoints, "laptop")}) {
+      flex-basis: auto;
+    }
+  }
 }
 
 .footer-social-link {
@@ -126,13 +196,22 @@
     width: var(--uvio-social-icon-size);
     height: var(--uvio-social-icon-size);
   }
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .footer-copyright {
   text-align: center;
-  margin: remval(32) 0 0;
+  margin: remval(48) 0 0;
 
   @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    text-align: left;
+  }
+
+  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    margin-top: remval(42);
     text-align: right;
   }
 }

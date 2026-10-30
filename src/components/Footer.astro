@@ -2,6 +2,7 @@
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { useTranslations } from "@i18n/utils";
 import type { Lang } from "@i18n/ui";
+import Logo from "@components/Logo.astro";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
@@ -29,38 +30,12 @@ const nav2 = [
   <div class="container">
     <div class="footer-main">
       <section class="footer-logo-and-contact">
-        <div class="logo-container">
-          <a class="logo-link footer-logo-link" href="">
-            <div class="logo logo-alt footer-logo">
-              <span class="logo-corners">
-                <div class="logo-corner logo-corner-top-left">
-                  <svg>
-                    <use href="#corner"></use>
-                  </svg>
-                </div>
-                <div class="logo-corner logo-corner-top-right">
-                  <svg>
-                    <use href="#corner"></use>
-                  </svg>
-                </div>
-                <div class="logo-corner logo-corner-bottom-left">
-                  <svg>
-                    <use href="#corner"></use>
-                  </svg>
-                </div>
-                <div class="logo-corner logo-corner-bottom-right">
-                  <svg>
-                    <use href="#corner"></use>
-                  </svg>
-                </div>
-              </span>
-              <span class="logo-text">
-                <span>Universal</span>
-                <span>Viewer</span>
-              </span>
-            </div>
-          </a>
-        </div>
+        <Logo type="alt-stacked" name="footer-logo" />
+
+        <h2 class="tiny-heading footer-contact-heading">Contact</h2>
+        <a href="mailto:hello@universalviewer.io" class="footer-mailto"
+          >hello@universalviewer.io</a
+        >
       </section>
 
       <section class="footer-navigation">

@@ -12,7 +12,27 @@
   font-weight: 600;
   letter-spacing: remval(-0.75);
   position: relative;
-  padding: 0.475em 0 0.475em 2em;
+}
+
+.logo-landscape {
+  padding-top: 0.425em;
+  padding-bottom: 0.425em;
+}
+
+.logo-landscape,
+.logo-stacked {
+  padding-left: 2.2em;
+}
+
+.logo-stacked {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.logo-alt,
+.logo-alt-stacked {
+  padding: 0.64em;
+  padding-right: 0.8em;
 }
 
 .logo-link {
@@ -27,61 +47,13 @@
   gap: 0.15em;
 }
 
-.logo-stacked {
-  padding-top: 0;
-  padding-bottom: 0;
-
+.logo-stacked,
+.logo-alt-stacked {
   .logo-text {
     flex-direction: column;
     gap: 0;
   }
 }
-
-// .logo-container {
-//   display: flex;
-//   font-size: remval(24);
-//   line-height: 0.8333;
-// }
-
-// .logo-link {
-//   display: inline-block;
-//   text-decoration: none;
-// }
-
-// .logo {
-//   margin: 0;
-//   font-family: Spectral, serif;
-//   font-weight: 600;
-//   letter-spacing: remval(-0.75);
-//   position: relative;
-// }
-
-// .logo-landscape {
-//   .logo-text {
-//     display: flex;
-//     gap: 0.15em;
-//   }
-// }
-
-// .logo-landscape,
-// .logo-stacked {
-//   padding: 0 0 0 remval(52);
-// }
-
-// .logo-stacked,
-// .logo-alt {
-//   height: 100%;
-
-//   .logo-text {
-//     span {
-//       display: block;
-//     }
-//   }
-// }
-
-// .logo-landscape {
-//   line-height: remval(40);
-// }
 
 .logo-corners {
   position: absolute;
@@ -93,8 +65,8 @@
 
 .logo-corner {
   position: absolute;
-  width: 39%;
-  height: 39%;
+  width: 0.675em;
+  height: 0.675em;
 
   svg {
     width: 100%;
@@ -114,44 +86,40 @@
 .logo-corner-top-right {
   top: 0;
   right: 0;
-  transform: rotate(90deg);
 }
 
 .logo-corner-bottom-left {
   bottom: 0;
   left: 0;
-  transform: rotate(-90deg);
 }
 
 .logo-corner-bottom-right {
   bottom: 0;
   right: 0;
-  transform: rotate(180deg);
 }
 
-.logo-alt {
-  padding: remval(14.5);
-
+.logo-alt,
+.logo-alt-stacked {
   .logo-corners {
     right: 0;
     aspect-ratio: auto;
   }
 
   .logo-corner {
-    width: auto;
-    aspect-ratio: 1;
-    height: 22%;
+    // width: auto;
+    // aspect-ratio: 1;
+    // height: 1em;
   }
 
   .logo-corner-top-right {
-    transform: rotate(90deg) translate(0, -20%);
+    transform: translate(0, 0);
   }
 
   .logo-corner-bottom-left {
-    transform: rotate(-90deg) translate(10%, 0);
+    transform: translate(0, 0);
   }
 
   .logo-corner-bottom-right {
-    transform: rotate(180deg) translate(-20%, 10%);
+    transform: translate(0, 0);
   }
 }

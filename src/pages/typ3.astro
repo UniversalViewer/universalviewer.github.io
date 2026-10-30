@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Logo from "@components/Logo.astro";
 const pageTitle = "Typography";
 ---
 
@@ -11,166 +12,17 @@ const pageTitle = "Typography";
       sunt. Laboris proident excepteur reprehenderit labore.
     </p>
     <section>
-      <br />
-      <div class="logo logo-landscape">
-        <a class="logo-link" href="">
-          <span class="logo-corners">
-            <div class="logo-corner logo-corner-top-left">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-top-right">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-bottom-left">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-bottom-right">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-          </span>
-          <span class="logo-text">
-            <span>Universal</span>
-            <span>Viewer</span>
-          </span>
-        </a>
+      <div
+        class="logos-container"
+        style="margin-top:2em; display: flex; gap:2em; align-items: flex-start; justify-content: flex-start; flex-direction: column;"
+      >
+        <Logo link={true} type="landscape" />
+        <Logo link={true} url="blog" type="landscape" />
+        <Logo link={false} type="landscape" />
+        <Logo link={true} type="stacked" />
+        <Logo link={true} type="alt" />
+        <Logo link={true} type="alt-stacked" />
       </div>
-      <br />
-      <br />
-      <div class="logo logo-stacked">
-        <a class="logo-link" href="">
-          <span class="logo-corners">
-            <div class="logo-corner logo-corner-top-left">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-top-right">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-bottom-left">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-bottom-right">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-          </span>
-          <span class="logo-text">
-            <span>Universal</span>
-            <span>Viewer</span>
-          </span>
-        </a>
-      </div>
-      <br />
-      <br />
-      <div class="logo logo-alt">
-        <a class="logo-link" href="">
-          <span class="logo-corners">
-            <div class="logo-corner logo-corner-top-left">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-top-right">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-bottom-left">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-            <div class="logo-corner logo-corner-bottom-right">
-              <svg>
-                <use href="#corner"></use>
-              </svg>
-            </div>
-          </span>
-          <span class="logo-text">
-            <span>Universal</span>
-            <span>Viewer</span>
-          </span>
-        </a>
-      </div>
-      <!-- <div class="logo-container">
-        <a class="logo-link" href="">
-          <div class="logo logo-stacked header-logo">
-            <span class="logo-corners">
-              <div class="logo-corner logo-corner-top-left">
-                <svg>
-                  <use href="#corner"></use>
-                </svg>
-              </div>
-              <div class="logo-corner logo-corner-top-right">
-                <svg>
-                  <use href="#corner"></use>
-                </svg>
-              </div>
-              <div class="logo-corner logo-corner-bottom-left">
-                <svg>
-                  <use href="#corner"></use>
-                </svg>
-              </div>
-              <div class="logo-corner logo-corner-bottom-right">
-                <svg>
-                  <use href="#corner"></use>
-                </svg>
-              </div>
-            </span>
-            <span class="logo-text">
-              <span>Universal</span>
-              <span>Viewer</span>
-            </span>
-          </div>
-        </a>
-      </div>
-      <br />
-      <div class="logo-container">
-        <a class="logo-link" href="">
-          <div class="logo logo-alt header-logo">
-            <span class="logo-corners">
-              <div class="logo-corner logo-corner-top-left">
-                <svg>
-                  <use href="#corner"></use>
-                </svg>
-              </div>
-              <div class="logo-corner logo-corner-top-right">
-                <svg>
-                  <use href="#corner"></use>
-                </svg>
-              </div>
-              <div class="logo-corner logo-corner-bottom-left">
-                <svg>
-                  <use href="#corner"></use>
-                </svg>
-              </div>
-              <div class="logo-corner logo-corner-bottom-right">
-                <svg>
-                  <use href="#corner"></use>
-                </svg>
-              </div>
-            </span>
-            <span class="logo-text">
-              <span>Universal</span>
-              <span>Viewer</span>
-            </span>
-          </div>
-        </a>
-      </div> -->
     </section>
     <section>
       <h2>Level Two Heading</h2>
@@ -264,6 +116,15 @@ const pageTitle = "Typography";
           consequat nisi qui in ipsum elit cillum magna quis eiusmod eu.
         </li>
       </ol>
+      <p>
+        Reprehenderit cillum dolore commodo adipisicing amet proident do mollit.
+        Ea magna aute dolore cillum pariatur amet et sint est culpa et officia.
+        Esse id cillum dolor culpa magna aliqua id. Pariatur anim officia mollit
+        proident ex nulla adipisicing exercitation exercitation excepteur duis
+        quis.
+      </p>
+      <br />
+      <br />
     </section>
   </div>
 </BaseLayout>
