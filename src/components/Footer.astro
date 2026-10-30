@@ -9,7 +9,7 @@ const t = useTranslations(locale);
 
 const homeUrl = getRelativeLocaleUrl(locale, "");
 
-const nav1 = [
+const footerNavCol1 = [
   { slug: "how-it-works", key: "nav.how-it-works" },
   { slug: "demo", key: "nav.demo" },
   { slug: "documentation", key: "nav.documentation" },
@@ -17,7 +17,7 @@ const nav1 = [
   { slug: "blog-and-events", key: "nav.blog-and-events" },
 ] as const;
 
-const nav2 = [
+const footerNavCol2 = [
   { slug: "policies", key: "nav.policies" },
   { slug: "contact-us", key: "nav.contact-us" },
   { slug: "accessibility", key: "nav.accessibility" },
@@ -42,7 +42,7 @@ const nav2 = [
         <nav aria-label="" class="footer-nav footer-nav-1">
           <ul class="footer-nav-list">
             {
-              nav1.map((link, i) => (
+              footerNavCol1.map((link, i) => (
                 <li class="footer-nav-item">
                   <a
                     href={getRelativeLocaleUrl(locale, link.slug)}
@@ -58,7 +58,7 @@ const nav2 = [
         <nav aria-label="" class="footer-nav footer-nav-2">
           <ul class="footer-nav-list">
             {
-              nav2.map((link, i) => (
+              footerNavCol2.map((link, i) => (
                 <li class="footer-nav-item">
                   <a
                     href={getRelativeLocaleUrl(locale, link.slug)}
