@@ -1,6 +1,6 @@
 export default {
     'nav.home': 'Hafan',
-    'nav.demo': 'Arddangos',
+    'nav.demo': 'Arbrofi',
     'nav.events': 'Digwyddiadau',
     'nav.documentation': 'Dogfennaeth',
     'nav.blog': 'Blog',
@@ -10,11 +10,11 @@ export default {
     "nav.policies": "Polisïau",
     "nav.contact-us": "Cysylltwch â Ni",
     "nav.accessibility": "Hygyrchedd",
-    "nav.roadmaps-and-strategies": "Mapiau Ffordd a Strategaethau",
-    "nav.contribution-members": "Aelodau sy'n Cyfrannu",
+    "nav.roadmaps-and-strategies": "Mapiau Trywydd a Strategaethau",
+    "nav.contribution-members": "Cyfrannwyr",
 
     'home.viewer.heading': 'Un rhyngwyneb ar gyfer eich holl gynnwys',
-    'home.viewer.view': 'Golwg',
+    'home.viewer.view': 'Gweld',
 
     'blog.heading': 'Blog',
     'blog.page': 'Tudalen',
@@ -27,7 +27,7 @@ export default {
     'footer.policies': 'Polisïau',
     'footer.contactus': 'Cysylltwch â Ni',
     'footer.accessibility': 'Hygyrchedd',
-    'footer.roadmap': 'Map Ffordd a Strategaethau',
+    'footer.roadmap': 'Map Trywydd a Strategaethau',
     'footer.connect': 'Cysylltu',
     'footer.copyright': 'Hawlfraint',
 }
