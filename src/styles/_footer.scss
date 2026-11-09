@@ -8,7 +8,7 @@
   color: var(--uvio-footer-color);
   padding: remval(48) 0 remval(56);
 
-  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+  @include breakpoint-up("phablet") {
     padding-top: remval(56);
   }
 }
@@ -23,12 +23,12 @@
   grid-template-columns: auto;
   gap: remval(0);
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     gap: remval(32);
     grid-template-columns: 3fr 5fr 2fr;
   }
 
-  @media screen and (min-width: #{map.get($breakpoints, "laptop")}) {
+  @include breakpoint-up("laptop") {
     grid-template-columns: 2fr 3fr 2fr;
   }
 }
@@ -38,7 +38,7 @@
   flex-direction: column;
   align-items: center;
 
-  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+  @include breakpoint-up("phablet") {
     align-items: flex-start;
   }
 }
@@ -49,7 +49,7 @@
   display: flex;
   font-size: remval(28);
 
-  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+  @include breakpoint-up("phablet") {
     font-size: remval(32);
   }
 
@@ -61,7 +61,7 @@
 .footer-contact-heading {
   margin-top: remval(48);
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     margin-top: remval(48);
   }
 }
@@ -72,7 +72,7 @@
   display: block;
   margin-top: remval(12);
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     margin-top: remval(24);
   }
 
@@ -89,13 +89,13 @@
   gap: remval(0);
   margin-top: remval(32);
 
-  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+  @include breakpoint-up("phablet") {
     grid-template-columns: auto auto;
     gap: (remval(32));
     margin-top: remval(42);
   }
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     margin-top: calc(-1.2 * var(--uvio-footer-nav-link-padding));
     grid-template-columns: auto 1fr;
     gap: (remval(64));
@@ -120,7 +120,7 @@
   padding: var(--uvio-footer-nav-link-padding) 0;
   text-align: center;
 
-  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+  @include breakpoint-up("phablet") {
     display: inline-block;
     text-align: left;
   }
@@ -135,12 +135,12 @@
   margin-bottom: remval(24);
   text-align: center;
 
-  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+  @include breakpoint-up("phablet") {
     text-align: left;
     margin-bottom: remval(32);
   }
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     margin-top: 0;
   }
 }
@@ -155,14 +155,14 @@
   justify-content: center;
   gap: var(--uvio-social-icon-gap);
 
-  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+  @include breakpoint-up("phablet") {
     --uvio-social-icon-gap: #{remval(42)};
     --uvio-social-icon-size: #{remval(42)};
 
     justify-content: flex-start;
   }
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     flex-wrap: wrap;
   }
 }
@@ -172,11 +172,11 @@
   padding: 0;
 
   &:nth-child(2) {
-    @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    @include breakpoint-up("tablet-l") {
       flex-basis: 45%;
     }
 
-    @media screen and (min-width: #{map.get($breakpoints, "laptop")}) {
+    @include breakpoint-up("laptop") {
       flex-basis: auto;
     }
   }
@@ -204,11 +204,11 @@
   text-align: center;
   margin: remval(48) 0 0;
 
-  @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+  @include breakpoint-up("phablet") {
     text-align: left;
   }
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     margin-top: remval(42);
     text-align: right;
   }

@@ -10,7 +10,7 @@
   background: var(--uvio-header-bg-color);
   box-shadow: 0 0 remval(60) remval(-16) #0006;
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     --uvio-header-position: relative;
   }
 }
@@ -22,7 +22,7 @@
   align-items: center;
   padding: remval(14) 0;
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     padding: remval(14) 0;
@@ -50,7 +50,7 @@
     opacity: 1;
   }
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     display: none;
   }
 }
@@ -127,7 +127,7 @@
     font-size: inherit;
   }
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     display: block;
   }
 }
