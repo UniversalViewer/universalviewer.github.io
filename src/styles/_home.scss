@@ -40,6 +40,12 @@
   );
   padding: remval(48) 0 0;
   margin: 0 0 remval(32);
+
+  h1 {
+    max-width: remval(1088);
+    margin: 0 auto;
+    padding: 0 remval(32);
+  }
 }
 
 // UV embed
