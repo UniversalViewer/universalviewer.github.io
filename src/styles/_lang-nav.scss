@@ -45,6 +45,10 @@
   font-weight: 500;
   color: var(--uvio-nav-link-color);
 
+  &:hover {
+    text-decoration: underline;
+  }
+
   &::before {
     content: "|";
     position: absolute;
