@@ -1,0 +1,165 @@
+@use "fn" as *;
+@use "vars" as *;
+@use "props";
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  font-family: var(--uvio-font-family-headings);
+  font-weight: 600;
+  margin-bottom: remval(0);
+}
+
+h1,
+.h1 {
+  font-size: remval(32);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--uvio-h1-color);
+
+  @include breakpoint-up("phablet") {
+    font-size: remval(42);
+  }
+
+  @include breakpoint-up("tablet") {
+    font-size: remval(48);
+  }
+
+  @include breakpoint-up("tablet-l") {
+    font-size: remval(52);
+  }
+}
+
+h2,
+.h2 {
+  font-size: remval(24);
+  font-weight: 700;
+
+  @include breakpoint-up("phablet") {
+    font-size: remval(28);
+  }
+
+  @include breakpoint-up("tablet") {
+    font-size: remval(32);
+  }
+}
+
+h3,
+.h3 {
+  font-size: remval(20);
+}
+
+h4,
+.h4 {
+  font-size: remval(18);
+}
+
+h5,
+.h5 {
+  font-size: remval(14);
+  margin-bottom: remval(-4);
+}
+
+h6,
+.h6 {
+  font-size: remval(12);
+  margin-bottom: remval(-8);
+}
+
+.eyebrow,
+.tiny-heading {
+  display: block;
+  font-size: remval(14);
+  letter-spacing: remval(1.5);
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  color: var(--uvio-eyebrow-color);
+  margin-bottom: remval(20);
+}
+
+span.eyebrow {
+  font-size: remval(12);
+  margin-bottom: remval(20);
+
+  @include breakpoint-up("phablet") {
+    font-size: remval(13);
+    margin-bottom: remval(22);
+  }
+
+  @include breakpoint-up("tablet") {
+    font-size: remval(14);
+    margin-bottom: remval(24);
+  }
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+  &:has(.eyebrow) {
+    line-height: 1.2;
+
+    @include breakpoint-up("tablet") {
+      line-height: 1;
+    }
+  }
+}
+
+p {
+  margin: remval(16) 0 0;
+  font-size: remval(18);
+}
+
+ul,
+ol {
+  padding-left: remval(24);
+  margin: remval(16) 0 0;
+
+  li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+}
+
+ol {
+  padding-left: remval(32);
+}
+
+a {
+  color: var(--uvio-link-color);
+  text-decoration: underline;
+  text-underline-offset: remval(2);
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+@for $i from 1 through 96 {
+  .fs-#{$i} {
+    font-size: #{remval($i)};
+  }
+}

@@ -1,4 +1,3 @@
-@use "sass:map";
 @use "fn" as *;
 @use "vars" as *;
 @use "props";
@@ -12,7 +11,7 @@
   }
 }
 
-@media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+@include breakpoint-up("tablet-l") {
   .languages-nav {
     display: block;
     margin: 0;
@@ -27,7 +26,7 @@
   width: auto;
   float: right;
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     margin-right: remval(-14);
   }
 }
@@ -45,6 +44,10 @@
   font-weight: 500;
   color: var(--uvio-nav-link-color);
 
+  &:hover {
+    text-decoration: underline;
+  }
+
   &::before {
     content: "|";
     position: absolute;
@@ -52,7 +55,7 @@
   }
 }
 
-@media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+@include breakpoint-up("tablet-l") {
   .lang-nav-link {
     padding: remval(16) remval(12);
   }

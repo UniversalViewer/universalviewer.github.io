@@ -1,4 +1,3 @@
-@use "sass:map";
 @use "fn" as *;
 @use "vars" as *;
 @use "props";
@@ -57,16 +56,16 @@
 
 .logo-corners {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 0.12em;
+  bottom: 0.04em;
   left: 0;
   aspect-ratio: 1;
 }
 
 .logo-corner {
   position: absolute;
-  width: 0.675em;
-  height: 0.675em;
+  width: 0.6em;
+  height: 0.6em;
 
   svg {
     width: 100%;
@@ -102,8 +101,17 @@
 .logo-alt-stacked {
   .logo-corners {
     right: 0;
+    top: 0;
+    bottom: 0;
     aspect-ratio: auto;
   }
+
+  // leave this for now in case old size needed for compare
+
+  /* .logo-corner {
+    width: 0.675em;
+    height: 0.675em;
+  } */
 
   .logo-corner-top-right {
     transform: translate(0, 0);

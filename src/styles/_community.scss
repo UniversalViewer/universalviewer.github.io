@@ -1,24 +1,24 @@
 .community-links {
-    margin-right: 0;
+  margin-right: 0;
 
-    ul {
-        padding-left: 0;
+  ul {
+    padding-left: 0;
+  }
+
+  li {
+    list-style: none;
+    margin-left: none;
+  }
+
+  .community-link {
+    font-weight: 600;
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      text-decoration: underline;
     }
-
-    li {
-        list-style: none;
-            margin-left: none;
-    }
-
-    .community-link {
-        font-weight: 600;
-        text-decoration: none;
-        color: inherit;
-
-        &:hover {
-        text-decoration: underline;
-        }
-    }
+  }
 }
 
 .calendar-embed {
@@ -30,28 +30,3 @@
     width: 100%;
   }
 }
-
-
-  .logos-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem 3rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-
-  .logo-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      height: 50px;
-      width: auto;
-      max-width: 160px;
-      object-fit: contain;
-      display: block;
-    }
-  }

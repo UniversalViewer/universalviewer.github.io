@@ -1,0 +1,24 @@
+@use "fn" as *;
+@use "vars" as *;
+@use "props";
+
+button,
+.button {
+  display: inline-block;
+  padding: remval(9) remval(16) remval(7);
+  color: var(--uvio-button-color);
+  background-color: var(--uvio-button-bg-color);
+  border: none;
+  border-radius: remval(4);
+  line-height: 1.5;
+  font-size: remval(16);
+  font-weight: 600;
+  font-family: var(--uvio-font-family-buttons);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: remval(1);
+
+  &:hover {
+    background-color: var(--uvio-button-hover-bg-color);
+  }
+}

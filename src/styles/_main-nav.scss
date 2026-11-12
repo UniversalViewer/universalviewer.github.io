@@ -1,4 +1,3 @@
-@use "sass:map";
 @use "fn" as *;
 @use "vars" as *;
 @use "props";
@@ -7,7 +6,7 @@
   width: 100%;
   display: none;
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     width: auto;
     display: block;
     margin: 0;
@@ -19,15 +18,15 @@
     justify-content: center;
     margin-top: remval(20);
 
-    @media screen and (min-width: #{map.get($breakpoints, "phablet")}) {
+    @include breakpoint-up("phablet") {
       margin-top: remval(0);
     }
 
-    @media screen and (min-width: #{map.get($breakpoints, "tablet")}) {
+    @include breakpoint-up("tablet") {
       margin-top: remval(-20);
     }
 
-    @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+    @include breakpoint-up("tablet-l") {
       margin-top: 0;
     }
   }
@@ -40,7 +39,7 @@
   padding: 0;
   list-style: none;
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     flex-direction: row;
   }
 }
@@ -60,7 +59,7 @@
   font-weight: 500;
   color: var(--uvio-nav-link-color);
 
-  @media screen and (min-width: #{map.get($breakpoints, "tablet-l")}) {
+  @include breakpoint-up("tablet-l") {
     text-align: left;
     padding: remval(12) remval(16);
   }

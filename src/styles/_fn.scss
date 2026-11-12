@@ -1,5 +1,26 @@
-@use 'vars' as *;
+@use "sass:map";
+@use "vars" as *;
 
 @function remval($pxValue) {
   @return #{calc($pxValue / 16)}rem;
+}
+
+@mixin breakpoint-up($name) {
+  @media screen and (min-width: #{map.get($breakpoints, $name)}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($name) {
+  @media screen and (max-width: #{map.get($breakpoints, $name)}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-between($min, $max) {
+  @media screen
+    and (min-width: #{map.get($breakpoints, $min)})
+    and (max-width: #{map.get($breakpoints, $max)}) {
+    @content;
+  }
 }

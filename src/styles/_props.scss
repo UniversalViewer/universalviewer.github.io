@@ -1,4 +1,3 @@
-@use "sass:map";
 @use "fn" as *;
 @use "vars" as *;
 
@@ -6,10 +5,11 @@
   // COLORS
   --uvio-purple: #c596ff;
   --uvio-purple-dark: #8a41e6;
+  --uvio-purple-darker: #711cd9;
   --uvio-purple-light: #e8d6fe;
   --uvio-black: #000;
   --uvio-black2: #0a0b0d;
-  --uvio-grey: #f9f9f9;
+  --uvio-grey: #f8f8f8;
   --uvio-white: #fff;
 
   // FONTS
@@ -17,10 +17,17 @@
   --uvio-font-family-headings: "Onest", sans-serif;
   --uvio-font-family-nav: var(--uvio-font-family-headings);
   --uvio-font-family-lang: var(--uvio-font-family-nav);
+  --uvio-font-family-buttons: var(--uvio-font-family-headings);
 
   // TYPOGRAPHY
+  --uvio-h1-color: var(--uvio-purple-dark);
   --uvio-link-color: var(--uvio-purple-dark);
   --uvio-eyebrow-color: var(--uvio-purple-dark);
+
+  // BUTTONS
+  --uvio-button-bg-color: var(--uvio-purple-dark);
+  --uvio-button-hover-bg-color: var(--uvio-purple-darker);
+  --uvio-button-color: var(--uvio-white);
 
   // LOGO
   --uvio-logo-corner-color: var(--uvio-black);
@@ -37,7 +44,15 @@
   --uvio-footer-bg-color: var(--uvio-purple-dark);
   --uvio-footer-color: var(--uvio-white);
 
+  // CORNER BOX
+  --uvio-corner-box-border-color: #ccc;
+  --uvio-corner-box-corner-color: var(--uvio-logo-corner-color);
+
   // Home
+  --uvio-home-banner-h1-color: var(--uvio-black);
   --uvio-home-banner-bg-1: #cbc1b8;
   --uvio-home-banner-bg-2: #eae9e6;
+
+  // Communuity box
+  --uvio-community-icon-bg-color: var(--uvio-white);
 }
