@@ -1,6 +1,5 @@
 @use "fn" as *;
 @use "vars" as *;
-@use "props";
 
 h1,
 .h1,
@@ -131,12 +130,12 @@ p {
 
 ul,
 ol {
-  padding-left: remval(24);
+  padding-left: remval(36);
   margin: remval(16) 0 0;
 
   li {
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
+    margin: remval(16) 0 0;
+    font-size: remval(18);
   }
 }
 

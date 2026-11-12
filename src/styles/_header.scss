@@ -47,6 +47,7 @@
 
   &:hover {
     opacity: 1;
+    background-color: transparent;
   }
 
   @include breakpoint-up("tablet-l") {

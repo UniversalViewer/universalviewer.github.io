@@ -18,6 +18,7 @@
 @use "home";
 @use "community";
 @use "contact";
+@use "docs";
 
 *,
 *::before,
@@ -33,7 +34,7 @@ $edges: (
 );
 
 @each $e, $edge in $edges {
-  @for $i from 0 through 48 {
+  @for $i from 0 through 108 {
     .m#{$e}-#{$i} {
       margin-#{$edge}: #{remval($i)} !important;
     }
