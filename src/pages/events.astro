@@ -1,59 +1,80 @@
 ---
+import { Icon } from "astro-icon/components";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
 import BaseLayout from "@layouts/BaseLayout.astro";
 const pageTitle = "Events";
+
+const locale = Astro.currentLocale as Lang;
+
+const t = useTranslations(locale);
+
+const communityUrl = getRelativeLocaleUrl(locale, "community");
 ---
 
 <BaseLayout pageTitle={pageTitle} mainClass="events-main">
-  <h1>Events</h1>
-  <section class="upcoming-events">
-    <h2>Upcoming Events</h2>
-    <p>Community Call - first Thursday of every month</p>
-    <!-- <div class="events-row">
-      <a href="#" class="event-card">
-        <div class="event-placeholder"></div>
-      </a>
-      <a href="#" class="event-card">
-        <div class="event-placeholder"></div>
-      </a>
-      <a href="#" class="event-card">
-        <div class="event-placeholder"></div>
-      </a> 
-    </div> -->
-  </section>
-  <div class="calendar-embed">
-    <iframe
-      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FLondon&showPrint=0&showTitle=0&showTabs=0&showCalendars=0&src=dW5pdmVyc2Fsdmlld2VyYXBwQGdtYWlsLmNvbQ&color=%239e69af"
-      frameborder="0"
-      scrolling="no"></iframe>
+  <div class="container">
+    <div class="page-heading">
+      <h1>Upcoming Events</h1>
+      <p>Community Call - first Thursday of every month</p>
+    </div>
   </div>
-  <!--  <section class="event-categories">
-    <h2>Event Categories</h2>
-    <div class="events-row">
-      <a href="#" class="event-card">
-        <div class="event-placeholder"></div>
-      </a>
-      <a href="#" class="event-card">
-        <div class="event-placeholder"></div>
-      </a>
-      <a href="#" class="event-card">
-        <div class="event-placeholder"></div>
-      </a>
+
+  <div class="container">
+    <div class="calendar-embed">
+      <iframe
+        src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Europe%2FLondon&showPrint=0&showTitle=0&showTabs=0&showCalendars=0&src=dW5pdmVyc2Fsdmlld2VyYXBwQGdtYWlsLmNvbQ&color=%239e69af"
+      ></iframe>
     </div>
-  </section> -->
-  <section class="past-events">
-    <h2>Past Events</h2>
-    <p><a href="https://www.youtube.com/watch?v=HxFX4YF3xM4">UVCON 2025</a></p>
-    <!-- <div class="events-row">
-      <a href="#" class="event-card">
-        <div class="event-placeholder"></div>
-      </a>
-      <a href="#" class="event-card">
-        <div class="event-placeholder"></div>
-      </a>
-      <a href="#" class="event-card">
-        <div class="event-placeholder"></div>
-      </a>
+  </div>
+
+  <section class="mt-64 home-section community-section">
+    <div class="container">
+      <div class="community-box">
+        <div class="community-box-heading">
+          <h2 class="mt-0">
+            <span class="eyebrow"> Community </span>
+            Our community resources simplify the journey to mastering the Universal
+            Viewer.
+          </h2>
+          <a href={communityUrl} class="button community-box-heading-button"
+            >Learn more</a
+          >
+        </div>
+
+        <div class="community-box-content">
+          <div class="community-box-item">
+            <div class="community-box-item-icon">
+              <Icon name="slack" />
+            </div>
+            <p class="community-box-item-text">
+              New adopters can use the Universal Viewer Slack channel for direct
+              help while getting set up.
+            </p>
+          </div>
+
+          <div class="community-box-item">
+            <div class="community-box-item-icon">
+              <Icon name="video" />
+            </div>
+            <p class="community-box-item-text">
+              Monthly community calls also give organisations a place to ask
+              questions, work through problems and learn from other Universal
+              Viewer users.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-  </section> -->
   </section>
+
+  <div class="container">
+    <section class="mt-72 past-events">
+      <h2>Past Events</h2>
+      <p>
+        <a href="https://www.youtube.com/watch?v=HxFX4YF3xM4">UVCON 2025</a>
+      </p>
+    </section>
+  </div>
 </BaseLayout>

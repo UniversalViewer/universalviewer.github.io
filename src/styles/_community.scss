@@ -1,32 +1,12 @@
+@use "fn" as *;
+@use "vars" as *;
+
 .community-links {
-  margin-right: 0;
-
   ul {
-    padding-left: 0;
-  }
-
-  li {
+    padding: 0;
     list-style: none;
-    margin-left: none;
-  }
-
-  .community-link {
-    font-weight: 600;
-    text-decoration: none;
-    color: inherit;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-.calendar-embed {
-  margin: 2rem 0;
-  max-width: 720px;
-
-  iframe {
-    display: block;
-    width: 100%;
+    display: flex;
+    gap: remval(16);
+    margin: remval(32) auto 0;
   }
 }

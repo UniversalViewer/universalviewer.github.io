@@ -10,19 +10,19 @@ const t = useTranslations(locale);
 const homeUrl = getRelativeLocaleUrl(locale, "");
 
 const footerNavCol1 = [
-  { slug: "how-it-works", key: "nav.how-it-works" },
   { slug: "demo", key: "nav.demo" },
-  { slug: "documentation", key: "nav.documentation" },
+  { slug: "docs", key: "nav.documentation" },
   { slug: "community", key: "nav.community" },
-  { slug: "blog-and-events", key: "nav.blog-and-events" },
+  { slug: "blog", key: "nav.blog" },
+  { slug: "events", key: "nav.events" },
 ] as const;
 
 const footerNavCol2 = [
-  { slug: "policies", key: "nav.policies" },
-  { slug: "contact-us", key: "nav.contact-us" },
+  { slug: "policy", key: "nav.policies" },
+  { slug: "contact", key: "nav.contact-us" },
   { slug: "accessibility", key: "nav.accessibility" },
-  { slug: "roadmaps-and-strategies", key: "nav.roadmaps-and-strategies" },
-  { slug: "contribution-members", key: "nav.contribution-members" },
+  { slug: "roadmap", key: "nav.roadmaps-and-strategies" },
+  //{ slug: "contribution-members", key: "nav.contribution-members" },
 ] as const;
 ---
 

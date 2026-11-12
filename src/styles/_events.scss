@@ -1,15 +1,10 @@
-main.events-main {
-  text-align: center;
-  width: 100%;
-  max-width: 900px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+@use "fn" as *;
+@use "vars" as *;
 
 .calendar-embed {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4/3;
+  max-height: 80vh;
 
   iframe {
     width: 100%;

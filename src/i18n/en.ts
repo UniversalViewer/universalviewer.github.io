@@ -6,7 +6,6 @@ export default {
     'nav.blog': 'Blog',
     'nav.community': 'Community',
     "nav.how-it-works": "How it works",
-    "nav.blog-and-events": "Blog and Events",
     "nav.policies": "Policies",
     "nav.contact-us": "Contact Us",
     "nav.accessibility": "Accessibility",

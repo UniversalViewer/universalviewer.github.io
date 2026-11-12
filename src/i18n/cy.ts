@@ -6,7 +6,6 @@ export default {
     'nav.blog': 'Blog',
     'nav.community': 'Cymuned',
     "nav.how-it-works": "Sut mae'n gweithio",
-    "nav.blog-and-events": "Blog a Digwyddiadau",
     "nav.policies": "Polisïau",
     "nav.contact-us": "Cysylltwch â Ni",
     "nav.accessibility": "Hygyrchedd",
