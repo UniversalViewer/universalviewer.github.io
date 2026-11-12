@@ -1,48 +1,56 @@
-.demo-main {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  max-width: 100%;
-}
+@use "fn" as *;
+@use "vars" as *;
 
 #demo-layout {
-  display: flex;
-  flex-direction: column;
-  height: auto;
+  // display: flex;
+  // flex-direction: column;
+  // height: auto;
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-    height: calc(100vh - 150px);
+  // @include breakpoint-up("tablet-l") {
+  //   flex-direction: row;
+  // }
+
+  @include breakpoint-up("tablet-l") {
+    display: grid;
+    grid-template-columns: 6fr 3fr;
+    gap: remval(32);
+    margin-bottom: -72px;
+  }
+
+  @include breakpoint-up("laptop") {
+    grid-template-columns: 2fr 1fr;
   }
 }
 
 #uv {
   width: 100%;
-  height: 90vh;
-  margin: 0;
+  height: 80vh;
+  margin: remval(32) 0 0;
   order: 2;
   min-width: 0;
 
-  @media (min-width: 768px) {
+  @include breakpoint-up("tablet-l") {
     order: 1;
-    flex: 4;
-    height: 100%;
-    margin: 1rem;
+    flex: 4 0 0%;
+    margin-top: 0;
   }
 }
 
 #controls {
-  width: 100%;
-  overflow-y: auto;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   order: 1;
   min-width: 0;
 
-  @media (min-width: 768px) {
-    flex: 1;
+  @include breakpoint-up("tablet") {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include breakpoint-up("tablet-l") {
+    display: flex;
+    flex: 1 1 20%;
     height: 100%;
     order: 2;
   }
@@ -53,18 +61,18 @@
   flex-direction: column;
   gap: 0.5rem;
 
-  h2, h3 {
+  h2,
+  h3 {
     margin: 0;
+    line-height: 1;
+  }
+
+  h3 {
+    font-size: remval(18);
   }
 
   p {
-    margin: 0;
-    font-size: 0.875rem;
-    line-height: 1.5;
-  }
-
-  a {
-    font-size: 0.875rem;
+    margin-top: remval(4);
   }
 
   select {
@@ -83,23 +91,22 @@
 
   label {
     display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.875rem;
+    align-items: end;
+    line-height: 1.3;
     cursor: pointer;
+    gap: 0.5em;
+    font-size: remval(14);
+
+    @include breakpoint-up("tablet") {
+      font-size: remval(16);
+      align-items: baseline;
+    }
   }
 
   .checkbox-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.25rem 0.5rem;
-  }
-}
-
-  #customise, #advanced {
-  display: none;
-
-  @media (min-width: 768px) {
-    display: flex;
+    grid-template-columns: auto auto;
+    gap: remval(8);
+    margin-top: remval(12);
   }
 }

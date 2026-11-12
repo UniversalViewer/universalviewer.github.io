@@ -4,6 +4,7 @@
 @use "fonts";
 @use "typography";
 @use "buttons";
+@use "forms";
 @use "logo";
 @use "header";
 @use "footer";
@@ -68,6 +69,80 @@ nav {
   padding: 0 remval(24);
   max-width: remval(1440);
   margin: 0 auto;
+}
+
+.page-heading {
+  margin-top: remval(48);
+  margin-bottom: remval(48);
+
+  @include breakpoint-up("tablet") {
+    margin-top: remval(56);
+    margin-bottom: remval(56);
+  }
+
+  @include breakpoint-up("laptop") {
+    margin-top: remval(64);
+    margin-bottom: remval(64);
+  }
+
+  @include breakpoint-up("laptop-l") {
+    margin-top: remval(72);
+    margin-bottom: remval(72);
+  }
+
+  @include breakpoint-up("desktop") {
+    margin-top: remval(96);
+    margin-bottom: remval(96);
+  }
+
+  h1 {
+    text-align: center;
+    font-size: remval(32);
+
+    @include breakpoint-up("tablet") {
+      font-size: remval(42);
+    }
+
+    @include breakpoint-up("tablet-l") {
+      font-size: remval(48);
+    }
+
+    @include breakpoint-up("laptop") {
+      font-size: remval(52);
+    }
+  }
+
+  p {
+    font-size: remval(20);
+    text-align: center;
+    max-width: 90vw;
+
+    @include breakpoint-up("tablet") {
+      max-width: 80vw;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include breakpoint-up("tablet-l") {
+      font-size: remval(24);
+      max-width: 65vw;
+    }
+
+    @include breakpoint-up("laptop") {
+      font-size: remval(28);
+      max-width: 60vw;
+    }
+
+    @include breakpoint-up("laptop-l") {
+      font-size: remval(28);
+      max-width: 55vw;
+    }
+
+    @include breakpoint-up("desktop") {
+      font-size: remval(28);
+      max-width: 50vw;
+    }
+  }
 }
 
 .logos-grid {

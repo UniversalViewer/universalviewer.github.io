@@ -10,6 +10,7 @@
   --uvio-black: #000;
   --uvio-black2: #0a0b0d;
   --uvio-grey: #f8f8f8;
+  --uvio-grey-dark: #ddd;
   --uvio-white: #fff;
 
   // FONTS
@@ -18,6 +19,7 @@
   --uvio-font-family-nav: var(--uvio-font-family-headings);
   --uvio-font-family-lang: var(--uvio-font-family-nav);
   --uvio-font-family-buttons: var(--uvio-font-family-headings);
+  --uvio-font-family-form: var(--uvio-font-family);
 
   // TYPOGRAPHY
   --uvio-h1-color: var(--uvio-purple-dark);
@@ -28,6 +30,10 @@
   --uvio-button-bg-color: var(--uvio-purple-dark);
   --uvio-button-hover-bg-color: var(--uvio-purple-darker);
   --uvio-button-color: var(--uvio-white);
+
+  // FORMS
+  --uvio-form-element-border-color: var(--uvio-grey-dark);
+  --uvio-form-element-bg-color: var(--uvio-grey);
 
   // LOGO
   --uvio-logo-corner-color: var(--uvio-black);
@@ -43,6 +49,7 @@
   // FOOTER
   --uvio-footer-bg-color: var(--uvio-purple-dark);
   --uvio-footer-color: var(--uvio-white);
+  --uvio-footer-top-margin: #{remval(64)};
 
   // CORNER BOX
   --uvio-corner-box-border-color: #ccc;

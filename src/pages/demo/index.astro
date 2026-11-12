@@ -16,78 +16,86 @@ const pageTitle = "Demo";
     ></script>
   </fragment>
 
-  <div id="demo-layout">
-    <div id="uv" class="uv"></div>
+  <div class="container">
+    <div class="page-heading">
+      <h1>Universal Viewer Demo</h1>
+      <p>
+        Pick a content type to see how the Universal Viewer presents different
+        kinds of materials or load any <a href="https://iiif.io/"
+          >IIIF presentation manifest</a
+        >, a common mechanism for content sharing, to have the UV display it.
+      </p>
+    </div>
+    <div id="demo-layout">
+      <div id="controls" class="uvio-form">
+        <div class="controls-section" id="content-control">
+          <h3>Content types</h3>
+          <select id="manifest-select">
+            {
+              collection.manifests.map((m: any) => (
+                <option value={m["@id"]}>{m.label}</option>
+              ))
+            }
+          </select>
+        </div>
+        <div class="controls-section" id="iiif-selection">
+          <h3>Load IIIF Manifest</h3>
+          <div class="url-input">
+            <input
+              type="text"
+              id="manifest-input"
+              placeholder="Input manifest URL…"
+            />
+            <button id="load-btn">Load</button>
+          </div>
+        </div>
 
-    <div id="controls">
-      <div class="controls-section" id="content-control">
-        <h3>Content</h3>
-        <p>
-          Pick a content type from this menu to see how the Universal Viewer
-          presents different kinds of materials.
-        </p>
-        <select id="manifest-select">
-          {
-            collection.manifests.map((m: any) => (
-              <option value={m["@id"]}>{m.label}</option>
-            ))
-          }
-        </select>
-      </div>
-      <div class="controls-section" id="iiif-selection">
-        <h3>Load IIIF Manifest</h3>
-        <p>
-          The Universal Viewer supports <a href="https://iiif.io/">IIIF</a> presentation
-          manifests, a common mechanism for content sharing. You can paste any IIIF
-          Manifest URL here, and the UV will display it!
-        </p>
-        <div class="url-input">
-          <input type="text" id="manifest-input" placeholder="Input URL…" />
-          <button id="load-btn">Load</button>
+        <div class="controls-section" id="customise">
+          <h3>Customise</h3>
+          <div class="checkbox-grid">
+            <label
+              ><input type="checkbox" id="cfg-leftPanel" checked /> Left panel</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-rightPanel" checked /> Right panel</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-footerPanel" checked /> Footer panel</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-headerPanel" checked /> Header panel</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-showHomeControl" checked /> Home button</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-showAdjustImageControl" checked /> Adjust
+              image button</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-navigatorEnabled" checked /> Navigator</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-titleEnabled" checked /> Title</label
+            >
+          </div>
+        </div>
+
+        <div class="controls-section" id="advanced">
+          <h3>Advanced Demo</h3>
+          <p>
+            Developers may want to see the <a
+              target="_blank"
+              href="https://universalviewer.dev">bleeding edge demo</a
+            > or the <a target="_blank" href="https://uv-v4.netlify.app"
+              >latest stable demo</a
+            >, which include more advanced controls for configuring and testing
+            the viewer.
+          </p>
         </div>
       </div>
 
-      <div class="controls-section" id="customise">
-        <h3>Customise</h3>
-        <div class="checkbox-grid">
-          <label
-            ><input type="checkbox" id="cfg-leftPanel" checked /> Left panel</label
-          >
-          <label
-            ><input type="checkbox" id="cfg-rightPanel" checked /> Right panel</label
-          >
-          <label
-            ><input type="checkbox" id="cfg-footerPanel" checked /> Footer panel</label
-          >
-          <label
-            ><input type="checkbox" id="cfg-headerPanel" checked /> Header panel</label
-          >
-          <label
-            ><input type="checkbox" id="cfg-showHomeControl" checked /> Home button</label
-          >
-          <label
-            ><input type="checkbox" id="cfg-showAdjustImageControl" checked /> Adjust
-            image button</label
-          >
-          <label
-            ><input type="checkbox" id="cfg-navigatorEnabled" checked /> Navigator</label
-          >
-          <label
-            ><input type="checkbox" id="cfg-titleEnabled" checked /> Title</label
-          >
-        </div>
-      </div>
-
-      <div class="controls-section" id="advanced">
-        <h3>Advanced Demo</h3>
-        <p>
-          Developers may want to see the <a href="https://universalviewer.dev"
-            >bleeding edge demo</a
-          > or the <a href="https://uv-v4.netlify.app">latest stable demo</a>,
-          which include more advanced controls for configuring and testing the
-          viewer.
-        </p>
-      </div>
+      <div id="uv" class="uv"></div>
     </div>
   </div>
 
@@ -119,7 +127,7 @@ const pageTitle = "Demo";
                 showHomeControl: document.getElementById("cfg-showHomeControl")
                   .checked,
                 showAdjustImageControl: document.getElementById(
-                  "cfg-showAdjustImageControl",
+                  "cfg-showAdjustImageControl"
                 ).checked,
                 titleEnabled:
                   document.getElementById("cfg-titleEnabled").checked,
