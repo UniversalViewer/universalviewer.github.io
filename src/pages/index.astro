@@ -18,6 +18,8 @@ const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 
 const communityUrl = getRelativeLocaleUrl(locale, "community");
+const demoUrl = getRelativeLocaleUrl(locale, "demo");
+const docsUrl = getRelativeLocaleUrl(locale, "docs");
 ---
 
 <BaseLayout pageTitle={pageTitle} mainClass="home-main">
@@ -37,11 +39,12 @@ const communityUrl = getRelativeLocaleUrl(locale, "community");
           added to your existing website.
         </h2>
         <div class="home-banner-buttons">
-          <a href="" class="button home-banner-link home-banner-demo-button"
-            >View Demo</a
+          <a
+            href={demoUrl}
+            class="button home-banner-link home-banner-demo-button">View Demo</a
           >
-          <a href="" class="home-banner-link home-banner-how-link"
-            >How it works</a
+          <a href={docsUrl} class="home-banner-link home-banner-how-link"
+            >Documentation</a
           >
         </div>
         <img src="/img/banner-image-2.png" alt="" />
@@ -93,7 +96,7 @@ const communityUrl = getRelativeLocaleUrl(locale, "community");
               and video. Plus, managing your content is just as effortless,
               ensuring a smooth experience for both you and your visitors.
             </p>
-            <a href="" class="mt-28 button">Learn More</a>
+            <a href={docsUrl} class="mt-28 button">Documentation</a>
           </div>
           <Image
             src={howItWorksImage}
