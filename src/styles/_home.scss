@@ -254,12 +254,19 @@
 
   @include breakpoint-up("tablet-l") {
     padding: remval(64) remval(48) remval(48);
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 5fr 6fr;
     gap: remval(48);
+  }
+
+  @include breakpoint-up("laptop") {
+    grid-template-columns: 2fr 3fr;
   }
 }
 
 .community-box-heading {
+  h2 {
+    line-height: 1.2;
+  }
 }
 
 .community-box-heading-button {
@@ -267,6 +274,17 @@
 }
 
 .community-box-content {
+  @include breakpoint-up("tablet") {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: remval(48);
+  }
+
+  @include breakpoint-up("tablet-l") {
+    display: block;
+    margin-top: 0;
+  }
+
   @include breakpoint-up("laptop") {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -284,32 +302,44 @@
     justify-content: space-between;
   }
 
+  @include breakpoint-up("tablet") {
+    display: block;
+  }
+
+  @include breakpoint-up("tablet-l") {
+    display: flex;
+    gap: remval(32);
+    margin-top: remval(48);
+  }
+
   @include breakpoint-up("laptop") {
     margin-top: 0 !important;
     display: block;
   }
 
   &:nth-child(1) {
-    margin-top: remval(48);
-
     @include breakpoint-up("tablet-l") {
-      margin-top: remval(16);
+      margin-top: remval(8);
     }
   }
 }
 
 .community-box-item-icon {
   background: var(--uvio-community-icon-bg-color);
-
-  // display: flex;
   flex: 0 0 remval(96);
   margin: 0 auto;
   width: remval(96);
   height: remval(96);
-
-  // aspect-ratio: 1;
   border-radius: remval(10);
   position: relative;
+
+  @include breakpoint-up("tablet") {
+    margin: 0;
+  }
+
+  @include breakpoint-up("tablet-l") {
+    margin: 0 auto;
+  }
 
   @include breakpoint-up("laptop") {
     margin: 0;
@@ -333,12 +363,22 @@
   flex-grow: 1;
 
   @include breakpoint-up("phablet") {
-    margin-top: 0.25em;
+    margin-top: 0;
     text-align: left;
+  }
+
+  @include breakpoint-up("tablet") {
+    margin-top: 1em;
+    font-size: remval(20);
+  }
+
+  @include breakpoint-up("tablet-l") {
+    margin-top: 0;
   }
 
   @include breakpoint-up("laptop") {
     margin-top: remval(24);
+    font-size: remval(22);
   }
 }
 
