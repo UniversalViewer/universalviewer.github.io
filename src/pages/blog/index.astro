@@ -1,32 +1,31 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import { useTranslations } from '@i18n/utils';
-import type { Lang } from '@i18n/ui';
-import { siteConfig } from '@config/site';
-import { getBlogPosts } from '@utils/blog';
-import BaseLayout from '@layouts/BaseLayout.astro';
-import BlogPostItem from '@components/BlogPostItem.astro';
+import { Debug } from "astro:components";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+import { siteConfig } from "@config/site";
+import { getBlogPosts } from "@utils/blog";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BlogPostItem from "@components/BlogPostItem.astro";
 
 const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
-const blogPageTwoUrl = getRelativeLocaleUrl(locale, '/blog/page/2');
+const blogPageTwoUrl = getRelativeLocaleUrl(locale, "/blog/page/2");
 
 const posts = await getBlogPosts({ sort: true });
 
-const pageTitle = 'Blog';
+const pageTitle = "Blog";
 const morePages = Math.ceil(posts.length / siteConfig.blog.postsPerPage) > 1;
 const postsToShow = posts.slice(0, siteConfig.blog.postsPerPage);
 ---
 
-<BaseLayout
-  pageTitle={pageTitle}
-  mainClass="blog-index-main"
->
-  <header class="blog-header">
-    <div class="blog-hero">
-      <h1>{t('blog.heading')}</h1>
-    </div>
-  </header>
+<!-- <Debug posts={posts} /> -->
+<BaseLayout pageTitle={pageTitle} mainClass="blog-index-main">
+  <div class="container">
+    <header class="page-heading">
+      <h1>{t("blog.heading")}</h1>
+    </header>
+  </div>
 
   <section class="post-list">
     {
@@ -43,7 +42,7 @@ const postsToShow = posts.slice(0, siteConfig.blog.postsPerPage);
     {
       morePages && (
         <nav class="pagination blog-pagination">
-          <a href={blogPageTwoUrl}>{t('blog.olderPosts')} &rarr;</a>
+          <a href={blogPageTwoUrl}>{t("blog.olderPosts")} &rarr;</a>
         </nav>
       )
     }

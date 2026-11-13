@@ -1,5 +1,8 @@
-@use 'mixins' as *;
+@use "mixins" as *;
 
-.blog-index-main {
-  @include blog-container;
-}
+// @use "page";
+// @use "post";
+
+// .blog-index-main {
+//   @include blog-container;
+// }
