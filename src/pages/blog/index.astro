@@ -27,24 +27,28 @@ const postsToShow = posts.slice(0, siteConfig.blog.postsPerPage);
     </header>
   </div>
 
-  <section class="post-list">
-    {
-      postsToShow.length > 0 ? (
-        <ul>
-          {postsToShow.map((post) => (
-            <BlogPostItem post={post} />
-          ))}
-        </ul>
-      ) : (
-        <p>No posts</p>
-      )
-    }
-    {
-      morePages && (
-        <nav class="pagination blog-pagination">
-          <a href={blogPageTwoUrl}>{t("blog.olderPosts")} &rarr;</a>
-        </nav>
-      )
-    }
+  <section>
+    <div class="container">
+      {
+        postsToShow.length > 0 ? (
+          <ul class="blog-post-list">
+            {postsToShow.map((post) => (
+              <BlogPostItem post={post} />
+            ))}
+          </ul>
+        ) : (
+          <p>No posts</p>
+        )
+      }
+      {
+        morePages && (
+          <nav class="pagination blog-pagination">
+            <a href={blogPageTwoUrl} class="button blog-older-posts">
+              {t("blog.olderPosts")} &rarr;
+            </a>
+          </nav>
+        )
+      }
+    </div>
   </section>
 </BaseLayout>
