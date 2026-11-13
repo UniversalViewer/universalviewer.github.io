@@ -1,8 +1,8 @@
 ---
-import { Image } from 'astro:assets';
-import { getRelativeLocaleUrl } from 'astro:i18n';
-import type { Lang } from '@i18n/ui';
-import { useTranslations, getLocaleISOString } from '@i18n/utils';
+import { Image } from "astro:assets";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { Lang } from "@i18n/ui";
+import { useTranslations, getLocaleISOString } from "@i18n/utils";
 
 interface Props {
   post: any;
@@ -20,51 +20,57 @@ const { title, date, author } = post.data;
 const localeISOString = getLocaleISOString(locale);
 
 const formattedDate = date.toLocaleDateString(localeISOString, {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
+  year: "numeric",
+  month: "long",
+  day: "numeric",
 });
 
 function postUrl(p: any) {
   const d = new Date(p.data.date);
   return getRelativeLocaleUrl(
     locale,
-    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${p.id}`
+    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}/${p.id}`
   );
 }
 ---
 
 <article>
-  <header>
-    <p class="post-date">
-      <time datetime={date.toISOString()}>{formattedDate}</time>
-    </p>
-    <h1>{title}</h1>
-    {
-      post.data.cover && post.data.coverAlt && (
-        <div class="post-cover">
-          <Image
-            src={post.data.cover}
-            alt={post.data.coverAlt}
-          />
-        </div>
-      )
-    }
-    {
-      author && (
-        <p>
-          <span class="post-author">{author}</span>
-        </p>
-      )
-    }
-  </header>
-  <slot />
-  <nav class="post-nav">
+  <div class="container">
+    <header class="page-heading blog-post-heading">
+      <h1>{title}</h1>
+      <p><time datetime={date.toISOString()}>{formattedDate}</time></p>
+
+      {
+        author && (
+          <p class="mt-0">
+            <span class="post-author">{author}</span>
+          </p>
+        )
+      }
+      {
+        post.data.cover && post.data.coverAlt && (
+          <div class="text-center mt-32 post-cover">
+            <Image src={post.data.cover} alt={post.data.coverAlt} />
+          </div>
+        )
+      }
+    </header>
+  </div>
+
+  <div class="container">
+    <div class="blog-post">
+      <slot />
+    </div>
+  </div>
+</article>
+
+<div class="container">
+  <nav class="post-nav" aria-label="Blog post navigation">
     {
       prev && (
         <div class="prev-post">
           <>
-            <strong>{t('blog.previousPost')}</strong>
+            <strong>{t("blog.previousPost")}</strong>
             <br />
           </>
           <a href={postUrl(prev)}>{prev.data.title}</a>
@@ -75,7 +81,7 @@ function postUrl(p: any) {
       next && (
         <div class="next-post">
           <>
-            <strong>{t('blog.nextPost')}</strong>
+            <strong>{t("blog.nextPost")}</strong>
             <br />
           </>
           <a href={postUrl(next)}>{next.data.title}</a>
@@ -83,4 +89,4 @@ function postUrl(p: any) {
       )
     }
   </nav>
-</article>
+</div>

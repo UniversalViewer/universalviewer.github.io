@@ -12,9 +12,7 @@
 @use "lang-nav";
 @use "events";
 @use "demo";
-@use "blog/index";
-@use "blog/page";
-@use "blog/post";
+@use "blog";
 @use "home";
 @use "community";
 @use "contact";
@@ -53,7 +51,7 @@ body {
   display: flex;
   flex-direction: column;
   font-family: var(--uvio-font-family);
-  color: var(--uvio-black);
+  color: var(--uvio-body-color);
 }
 
 img {
