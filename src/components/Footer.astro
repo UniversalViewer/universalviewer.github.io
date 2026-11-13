@@ -32,14 +32,16 @@ const footerNavCol2 = [
       <section class="footer-logo-and-contact">
         <Logo type="alt-stacked" name="footer-logo" />
 
-        <h2 class="tiny-heading footer-contact-heading">Contact</h2>
+        <h2 class="tiny-heading footer-contact-heading">
+          {t("footer.contactus")}
+        </h2>
         <a href="mailto:hello@universalviewer.io" class="footer-mailto"
           >hello@universalviewer.io</a
         >
       </section>
 
       <section class="footer-navigation">
-        <nav aria-label="" class="footer-nav footer-nav-1">
+        <nav aria-label="Footer navigation" class="footer-nav footer-nav-1">
           <ul class="footer-nav-list">
             {
               footerNavCol1.map((link, i) => (

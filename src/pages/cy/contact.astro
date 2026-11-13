@@ -1,7 +1,80 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
-const pageTitle = 'Contact'
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+
+const locale = Astro.currentLocale as Lang;
+
+const t = useTranslations(locale);
+
+const pageTitle = t("nav.contact-us");
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} mainClass="contact-main">
+  <div class="container">
+    <header class="page-heading">
+      <h1>{pageTitle}</h1>
+    </header>
+  </div>
+  <div class="container">
+    <section id="getting-started">
+      <h2>How do I get in touch with the Steering Group?</h2>
+      <p>
+        Join us on the steering group by becoming a Sponsor of the project's <a
+          href="https://opencollective.com/universalviewer">Open Collective</a
+        >. To discuss the benefits of membership, email us at <a
+          href="mailto:universalviewerapp@gmail.com"
+          >universalviewerapp@gmail.com</a
+        >.
+      </p>
+      <h2 class="mt-36">How do I get in touch with community members?</h2>
+      <h3>Ask a question on Slack</h3>
+      <p>
+        The quickest way to get help is via our community <a
+          href="https://universalviewer.slack.com/">Slack</a
+        > workspace. Send an email to <a
+          href="mailto:universalviewerapp@gmail.com"
+          >universalviewerapp@gmail.com</a
+        > to request an invite.
+      </p>
+      <h3>Report a bug or suggest a feature or enhancement</h3>
+      <p>
+        If you’ve found a bug, or have an idea about an exciting new feature,
+        take a look at <a
+          href="https://github.com/UniversalViewer/universalviewer/issues"
+          >open issues in the Universal Viewer Github</a
+        > before adding a new issue. No Github account? Come to our community call
+        or contact us on <a href="https://universalviewer.slack.com/">Slack</a> to
+        discuss your ideas with the community.
+      </p>
+
+      <h2 class="mt-36">
+        Where can I find the Universal Viewer on social media?
+      </h2>
+      <div class="logos-grid">
+        <a
+          href="https://universalviewer.slack.com"
+          class="logo-item"
+          aria-label="Slack"
+        >
+          <img src="/img/logos/slack.webp" alt="Slack" />
+        </a>
+        <a
+          href="https://bsky.app/profile/universalviewer.io"
+          class="logo-item"
+          aria-label="Bluesky"
+        >
+          <img src="/img/logos/Bluesky_Logo.svg" alt="Bluesky" />
+        </a>
+        <a
+          href="https://glammr.us/@universalviewer"
+          class="logo-item"
+          aria-label="Mastodon"
+        >
+          <img src="/img/logos/Mastodon.svg" alt="Mastodon" />
+        </a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>

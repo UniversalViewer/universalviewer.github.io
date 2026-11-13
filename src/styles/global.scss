@@ -54,6 +54,10 @@ body {
   color: var(--uvio-body-color);
 }
 
+main {
+  min-height: 50vh;
+}
+
 img {
   max-width: 100%;
   height: auto;
