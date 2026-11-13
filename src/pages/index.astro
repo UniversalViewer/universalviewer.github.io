@@ -6,11 +6,9 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { useTranslations } from "@i18n/utils";
 import type { Lang } from "@i18n/ui";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import UVHead from "@components/UVHead.astro";
-import UVEmbed from "@components/UVEmbed.astro";
 import showcases from "@data/showcase.json";
-import supporters from "../data/supporters";
-import howItWorksImage from "../assets/images/uv-hiw.jpg";
+import supporters from "@data/supporters";
+import howItWorksImage from "@assets/images/uv-hiw.jpg";
 const pageTitle = "Home";
 
 const locale = Astro.currentLocale as Lang;
@@ -23,9 +21,6 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
 ---
 
 <BaseLayout pageTitle={pageTitle} mainClass="home-main">
-  <!-- <UVHead />
-
-  <UVEmbed /> -->
   <section id="homeBanner">
     <div class="home-banner">
       <div class="container">
@@ -44,7 +39,7 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
             class="button home-banner-link home-banner-demo-button">View Demo</a
           >
           <a href={docsUrl} class="home-banner-link home-banner-how-link"
-            >Documentation</a
+            >{t("nav.documentation")}</a
           >
         </div>
         <img src="/img/banner-image-3.png" alt="" />
@@ -96,7 +91,7 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
               and video. Plus, managing your content is just as effortless,
               ensuring a smooth experience for both you and your visitors.
             </p>
-            <a href={docsUrl} class="mt-28 button">Documentation</a>
+            <a href={docsUrl} class="mt-28 button">{t("nav.documentation")}</a>
           </div>
           <Image
             src={howItWorksImage}
@@ -276,25 +271,6 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
 </BaseLayout>
 
 <script is:inline>
-  /**document.addEventListener("DOMContentLoaded", () => {
-    const iframe = document.getElementById("uv");
-    const input = document.getElementById("manifest-url");
-    const button = document.getElementById("manifest-load");
-
-    function loadManifest(url) {
-      iframe.src = `https://universalviewer.dev/uv.html#?manifest=${encodeURIComponent(url)}`;
-    }
-
-    button.addEventListener("click", () => {
-      const url = input.value.trim();
-      if (url) loadManifest(url);
-    });
-
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") button.click();
-    });
-  });*/
-
   document.addEventListener("DOMContentLoaded", () => {
     ["steering-logos", "contributors-logos"].forEach((id) => {
       const grid = document.getElementById(id);

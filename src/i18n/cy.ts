@@ -1,6 +1,6 @@
 export default {
     'nav.home': 'Hafan',
-    'nav.demo': 'Arbrofi',
+    'nav.demo': 'Arddangos',
     'nav.events': 'Digwyddiadau',
     'nav.documentation': 'Dogfennaeth',
     'nav.blog': 'Blog',
