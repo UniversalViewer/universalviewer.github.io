@@ -1,0 +1,55 @@
+---
+import { Debug } from "astro:components";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+import { siteConfig } from "@config/site";
+import { getBlogPosts } from "@utils/blog";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BlogPostItem from "@components/BlogPostItem.astro";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+const blogPageTwoUrl = getRelativeLocaleUrl(locale, "/blog/page/2");
+
+const posts = await getBlogPosts({ sort: true, locale: locale });
+
+const pageTitle = "Blog";
+const morePages = Math.ceil(posts.length / siteConfig.blog.postsPerPage) > 1;
+const postsToShow = posts.slice(0, siteConfig.blog.postsPerPage);
+---
+
+<!-- <Debug locale={locale} />
+<Debug posts={posts} /> -->
+<BaseLayout pageTitle={pageTitle} mainClass="blog-index-main">
+  <div class="container">
+    <header class="page-heading">
+      <h1>{t("blog.heading")}</h1>
+    </header>
+  </div>
+
+  <section>
+    <div class="container">
+      {
+        postsToShow.length > 0 ? (
+          <ul class="blog-post-list">
+            {postsToShow.map((post) => (
+              <BlogPostItem post={post} />
+            ))}
+          </ul>
+        ) : (
+          <p>No posts</p>
+        )
+      }
+      {
+        morePages && (
+          <nav class="pagination blog-pagination">
+            <a href={blogPageTwoUrl} class="button blog-older-posts">
+              {t("blog.olderPosts")} &rarr;
+            </a>
+          </nav>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>

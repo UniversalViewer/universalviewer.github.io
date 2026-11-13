@@ -1,0 +1,21 @@
+@use "fn" as *;
+@use "vars" as *;
+
+.uvio-form {
+  label {
+    font-family: var(--uvio-font-family-form);
+    font-size: remval(18);
+  }
+
+  input[type="text"],
+  select {
+    border-width: remval(1);
+    border-style: solid;
+    border-color: var(--uvio-form-element-border-color);
+    border-radius: remval(4);
+    background-color: var(--uvio-form-element-bg-color);
+    font-family: var(--uvio-font-family-form);
+    font-size: remval(16);
+    padding: remval(8) remval(10);
+  }
+}

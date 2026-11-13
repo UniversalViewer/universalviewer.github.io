@@ -1,0 +1,16 @@
+$breakpoints: (
+  // 480px
+  "phablet": 30em,
+  // 768px
+  "tablet": 48em,
+  // 1024px
+  "tablet-l": 64em,
+  // 1280px
+  "laptop": 80em,
+  // 1366px
+  "laptop-l": 85.375em,
+  // 1920px
+  "desktop": 120em,
+  // 2560px
+  "largedesktop": 160em
+);

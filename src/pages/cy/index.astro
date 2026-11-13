@@ -1,0 +1,281 @@
+---
+import { Debug } from "astro:components";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import showcases from "@data/showcase.json";
+import supporters from "@data/supporters";
+import howItWorksImage from "@assets/images/uv-hiw.jpg";
+const pageTitle = "Home";
+
+const locale = Astro.currentLocale as Lang;
+
+const t = useTranslations(locale);
+
+const communityUrl = getRelativeLocaleUrl(locale, "community");
+const demoUrl = getRelativeLocaleUrl(locale, "demo");
+const docsUrl = getRelativeLocaleUrl(locale, "docs");
+---
+
+<BaseLayout pageTitle={pageTitle} mainClass="home-main">
+  <section id="homeBanner">
+    <div class="home-banner">
+      <div class="container">
+        <h1 class="text-center">
+          Help people explore more of your digital collection in one flexible
+          viewer.
+        </h1>
+        <h2 class="h3 text-center">
+          Universal Viewer brings images, documents, audio, video and 3D
+          material together in an open-source, IIIF compliant viewer that can be
+          added to your existing website.
+        </h2>
+        <div class="home-banner-buttons">
+          <a
+            href={demoUrl}
+            class="button home-banner-link home-banner-demo-button">View Demo</a
+          >
+          <a href={docsUrl} class="home-banner-link home-banner-how-link"
+            >{t("nav.documentation")}</a
+          >
+        </div>
+        <img src="/img/banner-image-3.png" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <section id="supported-by" class="home-section supported-section">
+    <div class="container">
+      <h2 class="text-center">Cefnogwyd Gan</h2>
+      <h3 class="eyebrow text-center">Aelodau’r Grŵp Llywio</h3>
+      <div class="logos-grid" id="steering-logos">
+        {
+          supporters.steering.map((member) => (
+            <a href={member.url} class="logo-item">
+              <img src={`/img/logos/${member.logo}`} alt={member.name} />
+            </a>
+          ))
+        }
+      </div>
+
+      <h3 class="eyebrow text-center contributors-heading">Prif Gyfranwyr</h3>
+      <div class="logos-grid" id="steering-logos">
+        {
+          supporters.contributors.map((member) => (
+            <a href={member.url} class="logo-item">
+              <img src={`/img/logos/${member.logo}`} alt={member.name} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="home-section how-it-works-section">
+    <div class="container">
+      <div class="corner-box">
+        <div class="corner-box-content how-it-works-content">
+          <div class="how-it-works-text">
+            <h2>
+              <span class="eyebrow">How It Works</span>
+              It's easy to install and manage
+            </h2>
+            <p>
+              The intuitive interface allows users to easily navigate through
+              features, making it simple to display images, documents, audio,
+              and video. Plus, managing your content is just as effortless,
+              ensuring a smooth experience for both you and your visitors.
+            </p>
+            <a href={docsUrl} class="mt-28 button">{t("nav.documentation")}</a>
+          </div>
+          <Image
+            src={howItWorksImage}
+            layout="constrained"
+            alt=""
+            class="how-it-works-image"
+          />
+        </div>
+        <div class="corner-box-corner corner-box-tl">
+          <svg>
+            <use href="#cornerTopLeft"></use>
+          </svg>
+        </div>
+        <div class="corner-box-corner corner-box-tr">
+          <svg>
+            <use href="#cornerTopRight"></use>
+          </svg>
+        </div>
+        <div class="corner-box-corner corner-box-bl">
+          <svg>
+            <use href="#cornerBottomLeft"></use>
+          </svg>
+        </div>
+        <div class="corner-box-corner corner-box-br">
+          <svg>
+            <use href="#cornerBottomRight"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="home-section features-section">
+    <div class="container">
+      <div class="features-box">
+        <h2 class="mt-0">
+          <span class="eyebrow"> Key Features </span>
+          Why choose Universal Viewer?
+        </h2>
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">
+              <Icon name="media" />
+            </div>
+            <div class="feature-content">
+              <h3>More ways to explore</h3>
+              <p>
+                Bring images, documents, audio, video and 3D content into one
+                viewer, with tools that help visitors <a
+                  href="https://openseadragon.github.io/">zoom</a
+                >, <a href="http://iiif.io/api/search/">search</a> and explore the
+                detail.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">
+              <Icon name="embed" />
+            </div>
+            <div class="feature-content">
+              <h3>Make collections easier to access</h3>
+              <p>
+                Built with accessibility in mind, with keyboard and screen
+                reader support and a multilingual interface for audiences around
+                the world.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">
+              <Icon name="accessible" />
+            </div>
+            <div class="feature-content">
+              <h3>Fits your website and your needs</h3>
+              <p>
+                Add Universal Viewer to your existing website and configure it
+                around your collection. Your technical team can customise or
+                extend it further when needed.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">
+              <Icon name="oss" />
+            </div>
+            <div class="feature-content">
+              <h3>Open, trusted and supported</h3>
+              <p>
+                An open-source viewer used by cultural organisations around the
+                world, with options for protected content and an active
+                community there to help.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    showcases.length > 0 && (
+      <section id="showcase" class="home-section showcase-section">
+        <div class="container">
+          <h2>
+            <span class="eyebrow">Arddangos</span>
+            Universal Viewer in action
+          </h2>
+          <ul class="showcase-list">
+            {showcases.map(({ url, manifest, img, heading, text }) => (
+              <li class="showcase-item">
+                <a
+                  href={url}
+                  data-manifest={manifest}
+                  target="_blank"
+                  class="showcase-link"
+                >
+                  <img
+                    src={`/img/showcase/${img}`}
+                    alt=""
+                    class="showcase-image"
+                  />
+                  <div class="showcase-text">
+                    <h3 class="showcase-item-heading">{heading}</h3>
+                    <p class="showcase-item-text">{text}</p>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="home-section community-section">
+    <div class="container">
+      <div class="community-box">
+        <div class="community-box-heading">
+          <h2 class="mt-0">
+            <span class="eyebrow"> Cymuned </span>
+            Our community resources simplify the journey to mastering the Universal
+            Viewer.
+          </h2>
+          <a href={communityUrl} class="button community-box-heading-button"
+            >Learn more</a
+          >
+        </div>
+
+        <div class="community-box-content">
+          <div class="community-box-item">
+            <div class="community-box-item-icon">
+              <Icon name="slack" />
+            </div>
+            <p class="community-box-item-text">
+              New adopters can use the Universal Viewer Slack channel for direct
+              help while getting set up.
+            </p>
+          </div>
+
+          <div class="community-box-item">
+            <div class="community-box-item-icon">
+              <Icon name="video" />
+            </div>
+            <p class="community-box-item-text">
+              Monthly community calls also give organisations a place to ask
+              questions, work through problems and learn from other Universal
+              Viewer users.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    ["steering-logos", "contributors-logos"].forEach((id) => {
+      const grid = document.getElementById(id);
+      if (!grid) return;
+      const items = Array.from(grid.children);
+      items.sort(() => Math.random() - 0.5);
+      items.forEach((item) => grid.appendChild(item));
+    });
+  });
+</script>

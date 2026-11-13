@@ -1,0 +1,42 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SVGs from "../components/SVGs.astro";
+import "../styles/global.scss";
+
+interface Props {
+  pageTitle?: string;
+  mainClass?: string;
+}
+
+const { pageTitle = "Universal Viewer", mainClass } = Astro.props;
+---
+
+<html lang="en" class="dm-sans-regular">
+  <head>
+    <meta charset="utf-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&family=Pavanam&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <SVGs />
+
+    <Header />
+    <main class:list={["main", mainClass]}>
+      <slot />
+    </main>
+    <Footer />
+    <!-- <script>
+      import "../scripts/menu.js";
+    </script> -->
+  </body>
+</html>

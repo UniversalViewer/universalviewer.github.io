@@ -1,0 +1,191 @@
+---
+import { Icon } from "astro-icon/components";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+import BaseLayout from "@layouts/BaseLayout.astro";
+const pageTitle = "Dogfennaeth";
+
+const locale = Astro.currentLocale as Lang;
+
+const t = useTranslations(locale);
+
+const communityUrl = getRelativeLocaleUrl(locale, "community");
+---
+
+<BaseLayout pageTitle={pageTitle} mainClass="docs-main">
+  <div class="container">
+    <header class="page-heading">
+      <h1>Dogfennaeth</h1>
+      <p>
+        Explore our resources and guidance to help you deploy the Universal
+        Viewer and ensure you get the most out of it.
+      </p>
+    </header>
+  </div>
+
+  <section class="doc-boxes-section">
+    <div class="container">
+      <div class="doc-boxes">
+        <div class="corner-box doc-box">
+          <div class="corner-box-content doc-box-content">
+            <div class="doc-box-icon">
+              <Icon name="mouse" />
+            </div>
+            <div class="doc-box-text">
+              <h2>Darllenwch y llawlyfr</h2>
+              <p>
+                Darllenwch y llawlyfr i gael gwybodaeth am ddefnyddio,
+                ffurfweddu a datblygu ar gyfer yr UV.
+              </p>
+              <a
+                href="https://github.com/UniversalViewer/universalviewer/blob/dev/manual/index.md"
+                target="_blank"
+                class="mt-28 button">Llawlyfr</a
+              >
+            </div>
+          </div>
+          <div class="corner-box-corner corner-box-tl">
+            <svg>
+              <use href="#cornerTopLeft"></use>
+            </svg>
+          </div>
+          <div class="corner-box-corner corner-box-tr">
+            <svg>
+              <use href="#cornerTopRight"></use>
+            </svg>
+          </div>
+          <div class="corner-box-corner corner-box-bl">
+            <svg>
+              <use href="#cornerBottomLeft"></use>
+            </svg>
+          </div>
+          <div class="corner-box-corner corner-box-br">
+            <svg>
+              <use href="#cornerBottomRight"></use>
+            </svg>
+          </div>
+        </div>
+        <div class="corner-box doc-box">
+          <div class="corner-box-content doc-box-content">
+            <div class="doc-box-icon">
+              <Icon name="settings" />
+            </div>
+            <div class="doc-box-text">
+              <h2>Dogfennau technegol</h2>
+              <p>
+                Ready to get started? Find the technical guidance your
+                development team needs to set up and configure Universal Viewer.
+              </p>
+              <a
+                target="_blank"
+                href="https://github.com/UniversalViewer/universalviewer/blob/dev/manual/CONFIG.md"
+                class="mt-28 button">Config guide</a
+              >
+            </div>
+          </div>
+          <div class="corner-box-corner corner-box-tl">
+            <svg>
+              <use href="#cornerTopLeft"></use>
+            </svg>
+          </div>
+          <div class="corner-box-corner corner-box-tr">
+            <svg>
+              <use href="#cornerTopRight"></use>
+            </svg>
+          </div>
+          <div class="corner-box-corner corner-box-bl">
+            <svg>
+              <use href="#cornerBottomLeft"></use>
+            </svg>
+          </div>
+          <div class="corner-box-corner corner-box-br">
+            <svg>
+              <use href="#cornerBottomRight"></use>
+            </svg>
+          </div>
+        </div>
+        <div class="corner-box doc-box">
+          <div class="corner-box-content doc-box-content">
+            <div class="doc-box-icon">
+              <Icon name="video" />
+            </div>
+            <div class="doc-box-text">
+              <h2>Enghreifftiau Gweithredu</h2>
+              <p>
+                Gweler yr enghreifftiau i weld sut mae defnyddio'r UV mewn
+                gwahanol sefyllfaoedd.
+              </p>
+              <a
+                href="https://github.com/UniversalViewer/universalviewer/wiki/UV-Examples"
+                target="_blank"
+                class="mt-28 button"
+              >
+                Enghreifftiau</a
+              >
+            </div>
+          </div>
+          <div class="corner-box-corner corner-box-tl">
+            <svg>
+              <use href="#cornerTopLeft"></use>
+            </svg>
+          </div>
+          <div class="corner-box-corner corner-box-tr">
+            <svg>
+              <use href="#cornerTopRight"></use>
+            </svg>
+          </div>
+          <div class="corner-box-corner corner-box-bl">
+            <svg>
+              <use href="#cornerBottomLeft"></use>
+            </svg>
+          </div>
+          <div class="corner-box-corner corner-box-br">
+            <svg>
+              <use href="#cornerBottomRight"></use>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mt-72 community-section">
+    <div class="container">
+      <div class="community-box">
+        <div class="community-box-heading">
+          <h2 class="mt-0">
+            <span class="eyebrow"> Support when you need it </span>
+            Help is available throughout setup and beyond.
+          </h2>
+          <a href={communityUrl} class="button community-box-heading-button"
+            >Learn more</a
+          >
+        </div>
+
+        <div class="community-box-content">
+          <div class="community-box-item">
+            <div class="community-box-item-icon">
+              <Icon name="slack" />
+            </div>
+            <p class="community-box-item-text">
+              New adopters can use the Universal Viewer Slack channel for direct
+              help while getting set up.
+            </p>
+          </div>
+
+          <div class="community-box-item">
+            <div class="community-box-item-icon">
+              <Icon name="video" />
+            </div>
+            <p class="community-box-item-text">
+              Monthly community calls also give organisations a place to ask
+              questions, work through problems and learn from other Universal
+              Viewer users.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

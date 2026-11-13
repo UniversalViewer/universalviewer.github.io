@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { Image } from "astro:assets";
+import type { Lang } from "@i18n/ui";
+import { getLocaleISOString } from "@i18n/utils";
+
+const locale = Astro.currentLocale as Lang;
+
+interface Props {
+  post: CollectionEntry<"blog" | "blogCy">;
+}
+
+const { post } = Astro.props;
+
+function postUrl(post: CollectionEntry<"blog" | "blogCy">) {
+  const d = new Date(post.data.date);
+  return getRelativeLocaleUrl(
+    locale,
+    `/blog/${d.getFullYear()}/${String(d.getMonth() + 1).padStart(2, "0")}/${String(d.getDate()).padStart(2, "0")}/${post.id}`
+  );
+}
+
+const localeISOString = getLocaleISOString(locale);
+
+const date = new Date(post.data.date);
+const formattedDate = date.toLocaleDateString(localeISOString, {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+---
+
+<li class="post-item">
+  <a href={postUrl(post)} class="post-item-link">
+    <article>
+      {
+        post.data.cover && post.data.coverAlt && (
+          <div class="post-item-thumbnail">
+            <Image src={post.data.cover} alt={post.data.coverAlt} />
+          </div>
+        )
+      }
+      <div class="post-item-meta">
+        <p class="post-item-date">
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+        </p>
+        <h2>{post.data.title}</h2>
+        {post.data.author && <p class="post-item-author">{post.data.author}</p>}
+        {
+          post.data.description && (
+            <p class="post-item-description">{post.data.description}</p>
+          )
+        }
+      </div>
+    </article>
+  </a>
+</li>

@@ -1,0 +1,82 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import { getBlogPosts } from "@utils/blog";
+import { siteConfig } from "@config/site";
+import BlogPostItem from "@components/BlogPostItem.astro";
+import type { Lang } from "@i18n/ui";
+import { useTranslations } from "@i18n/utils";
+
+const locale = Astro.currentLocale as Lang;
+const t = useTranslations(locale);
+
+// paginate:any is just to stop TS error which isn't a real error in Astro
+export async function getStaticPaths({ paginate }: { paginate: any }) {
+  const posts = await getBlogPosts({ sort: true, locale: locale });
+  return paginate(posts, { pageSize: siteConfig.blog.postsPerPage });
+}
+
+// manually defined so vscode doesn't show errors
+// it will still work without
+interface Props {
+  page: {
+    data: CollectionEntry<"blog" | "blogCy">[];
+    start: number;
+    end: number;
+    size: number;
+    total: number;
+    currentPage: number;
+    lastPage: number;
+    url: {
+      prev?: string;
+      next?: string;
+    };
+  };
+}
+
+const { page } = Astro.props as Props;
+const pageTitle = `${t("blog.heading")} ${t("blog.page")}  ${page.currentPage}`;
+---
+
+<BaseLayout pageTitle={pageTitle} mainClass="blog-page-main">
+  <div class="container">
+    <header class="page-heading">
+      <h1>
+        {t("blog.heading")}
+        {
+          page.currentPage > 1 && (
+            <span>
+              {" "}
+              {t("blog.page")} {page.currentPage}
+            </span>
+          )
+        }
+      </h1>
+    </header>
+  </div>
+
+  <section>
+    <div class="container">
+      <ul class="blog-post-list">
+        {page.data.map((post) => <BlogPostItem post={post} />)}
+      </ul>
+
+      <nav class="pagination blog-pagination">
+        {
+          page.url.prev && (
+            <a href={page.url.prev} class="button blog-newer-posts">
+              &larr; {t("blog.newerPosts")}
+            </a>
+          )
+        }
+        {
+          page.url.next && (
+            <a href={page.url.next} class="button blog-older-posts">
+              {t("blog.olderPosts")} &rarr;
+            </a>
+          )
+        }
+      </nav>
+    </div>
+  </section>
+</BaseLayout>

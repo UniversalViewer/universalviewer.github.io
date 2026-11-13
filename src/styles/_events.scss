@@ -1,0 +1,26 @@
+@use "fn" as *;
+@use "vars" as *;
+
+.calendar-embed {
+  width: 100%;
+  aspect-ratio: 4/3;
+  max-height: 80vh;
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: solid 1px #777;
+  }
+}
+
+.events-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.event-card {
+  flex: 1;
+  display: block;
+  aspect-ratio: 16 / 9;
+  border: 1px solid gray;
+}

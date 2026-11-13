@@ -1,0 +1,219 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import * as collection from "./demo_collection.json";
+const pageTitle = "Arddangos";
+---
+
+<BaseLayout pageTitle={pageTitle} mainClass="demo-main">
+  <fragment slot="head">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/universalviewer@latest/dist/uv.css"
+    />
+    <script
+      is:inline
+      src="https://cdn.jsdelivr.net/npm/universalviewer@latest/dist/umd/UV.js"
+    ></script>
+  </fragment>
+
+  <div class="container">
+    <header class="page-heading">
+      <h1>Universal Viewer Demo</h1>
+      <p>
+        Dewiswch fath o gynnwys i weld sut mae’r Universal Viewer yn dangos
+        gwahanol fathau o ddeunyddiau neu lwytho unrhyw fath o <a
+          target="_blank"
+          href="https://iiif.io/">maniffest cyflwyno IIIF</a
+        >, sef dull cyffredin o rannu cynnwys, a bydd yr UV yn ei arddangos
+      </p>
+    </header>
+    <div id="demo-layout">
+      <div id="controls" class="uvio-form">
+        <div class="controls-section" id="content-control">
+          <h3>Cynnwys</h3>
+          <select id="manifest-select">
+            {
+              collection.manifests.map((m: any) => (
+                <option value={m["@id"]}>{m.label}</option>
+              ))
+            }
+          </select>
+        </div>
+        <div class="controls-section" id="iiif-selection">
+          <h3>Llwytho Maniffest IIIF</h3>
+          <div class="url-input">
+            <input
+              type="text"
+              id="manifest-input"
+              placeholder="Input manifest URL…"
+            />
+            <button id="load-btn">Llwytho</button>
+          </div>
+        </div>
+
+        <div class="controls-section" id="customise">
+          <h3>Addasu</h3>
+          <div class="checkbox-grid">
+            <label
+              ><input type="checkbox" id="cfg-leftPanel" checked /> Panel chwith</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-rightPanel" checked /> Panel dde</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-footerPanel" checked /> Panel troedyn</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-headerPanel" checked /> Panel pennyn</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-showHomeControl" checked /> Botwm hafan</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-showAdjustImageControl" checked /> Botwm
+              addasu’r ddelwedd</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-navigatorEnabled" checked /> Llywiwr</label
+            >
+            <label
+              ><input type="checkbox" id="cfg-titleEnabled" checked /> Teitl</label
+            >
+          </div>
+        </div>
+
+        <div class="controls-section" id="advanced">
+          <h3>Demo Uwch</h3>
+          <p>
+            Efallai y bydd datblygwyr am weld y <a
+              target="_blank"
+              href="https://universalviewer.dev">demo arloesol diweddaraf</a
+            > neu’r <a target="_blank" href="https://uv-v4.netlify.app"
+              >demo sefydlog diweddaraf</a
+            >, sy’n cynnwys rheolaethau mwy datblygedig ar gyfer ffurfweddu a
+            phrofi’r gwyliwr.
+          </p>
+        </div>
+      </div>
+
+      <div id="uv" class="uv"></div>
+    </div>
+  </div>
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const select = document.getElementById("manifest-select");
+      const manifestInput = document.getElementById("manifest-input");
+      const loadButton = document.getElementById("load-btn");
+
+      let uv = null;
+      let currentManifestId = select.options[0]?.value ?? null;
+
+      function buildConfig() {
+        return {
+          options: {
+            locales: [
+              {
+                name: "cy-GB",
+              },
+            ],
+            leftPanelEnabled: document.getElementById("cfg-leftPanel").checked,
+            rightPanelEnabled:
+              document.getElementById("cfg-rightPanel").checked,
+            footerPanelEnabled:
+              document.getElementById("cfg-footerPanel").checked,
+            headerPanelEnabled:
+              document.getElementById("cfg-headerPanel").checked,
+            navigatorEnabled: document.getElementById("cfg-navigatorEnabled")
+              .checked,
+          },
+          modules: {
+            openSeadragonCenterPanel: {
+              options: {
+                showHomeControl: document.getElementById("cfg-showHomeControl")
+                  .checked,
+                showAdjustImageControl: document.getElementById(
+                  "cfg-showAdjustImageControl"
+                ).checked,
+                titleEnabled:
+                  document.getElementById("cfg-titleEnabled").checked,
+              },
+            },
+            avCenterPanel: {
+              options: {
+                titleEnabled:
+                  document.getElementById("cfg-titleEnabled").checked,
+              },
+            },
+            pdfCenterPanel: {
+              options: {
+                titleEnabled:
+                  document.getElementById("cfg-titleEnabled").checked,
+              },
+            },
+            mediaElementCenterPanel: {
+              options: {
+                titleEnabled:
+                  document.getElementById("cfg-titleEnabled").checked,
+              },
+            },
+          },
+        };
+      }
+
+      function loadManifest(manifestId) {
+        if (!manifestId) return;
+        currentManifestId = manifestId;
+
+        if (uv) {
+          try {
+            uv.dispose();
+          } catch {}
+          uv = null;
+        }
+
+        const urlAdapter = new UV.IIIFURLAdapter();
+        const data = urlAdapter.getInitialData({
+          iiifManifestId: manifestId,
+        });
+        uv = UV.init("uv", data);
+        urlAdapter.bindTo(uv);
+
+        uv.on("configure", ({ config, cb }) => {
+          cb(buildConfig());
+        });
+      }
+
+      // load first manifest on page load
+      loadManifest(currentManifestId);
+
+      select.addEventListener("change", () => {
+        loadManifest(select.value);
+      });
+
+      loadButton.addEventListener("click", () => {
+        const url = manifestInput.value.trim();
+        if (url) loadManifest(url);
+      });
+
+      manifestInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") loadButton.click();
+      });
+
+      [
+        "cfg-leftPanel",
+        "cfg-rightPanel",
+        "cfg-footerPanel",
+        "cfg-headerPanel",
+        "cfg-navigatorEnabled",
+        "cfg-showHomeControl",
+        "cfg-showAdjustImageControl",
+        "cfg-titleEnabled",
+      ].forEach((id) => {
+        document
+          .getElementById(id)
+          .addEventListener("change", () => loadManifest(currentManifestId));
+      });
+    });
+  </script>
+</BaseLayout>

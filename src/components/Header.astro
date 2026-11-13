@@ -1,0 +1,60 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+import MainNav from "./MainNav.astro";
+import Logo from "@components/Logo.astro";
+
+const locale = Astro.currentLocale as Lang;
+
+const t = useTranslations(locale);
+
+const homeUrl = getRelativeLocaleUrl(locale, "");
+
+const localeMap = {
+  en: {
+    localeName: "English",
+    localeLangKey: "locale.english",
+  },
+  cy: {
+    localeName: "Cymraeg",
+    localeLangKey: "locale.welsh",
+  },
+};
+
+const { localeName, localeLangKey } = localeMap[locale];
+---
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-content">
+      <Logo type="stacked" name="header-logo" link={true} />
+      <button
+        type="button"
+        id="mobileNavButton"
+        class="hamburger mobile-main-nav-button"
+        aria-label="Toggle main navigation"
+      >
+        <span class="hamburger-box">
+          <span class="hamburger-inner"></span>
+        </span>
+      </button>
+      <MainNav />
+    </div>
+  </div>
+</header>
+<script>
+  const mobileNavButton = document.getElementById("mobileNavButton");
+  const mainNav = document.getElementById("mainNav");
+  const langNav = document.getElementById("langNav");
+  mobileNavButton?.addEventListener("click", function () {
+    this.classList.toggle("active");
+    if (this.classList.contains("active")) {
+      mainNav?.classList.add("show");
+      langNav?.classList.add("show");
+    } else {
+      mainNav?.classList.remove("show");
+      langNav?.classList.remove("show");
+    }
+  });
+</script>

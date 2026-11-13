@@ -1,0 +1,84 @@
+@use "fn" as *;
+@use "vars" as *;
+
+.doc-boxes {
+  display: grid;
+  grid-template-columns: auto;
+  gap: remval(24);
+
+  @include breakpoint-up("tablet-l") {
+    grid-template-columns: repeat(3, 32%);
+    gap: 0;
+    justify-content: space-between;
+  }
+}
+
+.doc-box-content {
+  display: block;
+
+  @include breakpoint-up("phablet") {
+    display: flex;
+    gap: remval(48);
+  }
+
+  @include breakpoint-up("tablet") {
+    gap: remval(64);
+  }
+
+  @include breakpoint-up("tablet-l") {
+    display: block;
+  }
+}
+
+.doc-box-icon {
+  width: remval(64);
+  aspect-ratio: 1;
+  display: flex;
+
+  @include breakpoint-up("phablet") {
+    flex-shrink: 0;
+    justify-content: center;
+    width: remval(72);
+  }
+
+  @include breakpoint-up("tablet") {
+    width: remval(96);
+  }
+
+  @include breakpoint-up("tablet-l") {
+    width: remval(64);
+    justify-content: start;
+  }
+
+  svg {
+    color: var(--uvio-purple-dark);
+    width: auto;
+    height: 100%;
+
+    @include breakpoint-up("phablet") {
+      max-height: remval(72);
+    }
+
+    @include breakpoint-up("tablet-l") {
+      max-height: remval(64);
+    }
+  }
+}
+
+.doc-box-text {
+  margin-top: remval(24);
+
+  @include breakpoint-up("phablet") {
+    margin-top: remval(0);
+  }
+
+  @include breakpoint-up("tablet-l") {
+    margin-top: remval(32);
+  }
+
+  h2 {
+    @include breakpoint-up("tablet-l") {
+      font-size: remval(24);
+    }
+  }
+}

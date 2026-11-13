@@ -1,0 +1,68 @@
+{
+  "@context": "http://iiif.io/api/presentation/2/context.json",
+  "@id": "http://universalviewer.io/manifests.json",
+  "@type": "sc:Collection",
+  "label": "Demo Manifests",
+  "manifests": [
+    {
+      "label": "Book | Wellcome Library",
+      "@type": "sc:Manifest",
+      "@id": "https://wellcomelibrary.org/iiif/b18035723/manifest"
+    },
+    {
+      "label": "Manuscript | British Library",
+      "@type": "sc:Manifest",
+      "@id": "https://bl.digirati.io/iiif/ark:/81055/vdc_100104060212.0x000001"
+    },
+    {
+      "@id": "https://iiif.library.ucla.edu/ark%3A%2F21198%2Fzz001nwthk/manifest",
+      "@type": "sc:Manifest",
+      "label": "Scroll (Vertical) | UCLA Library"
+    },
+    {
+      "@id": "https://data.idp.bl.uk/iiif/3/manifest/967B14BF8CFF43A3B12837F2829B7BAE",
+      "@type": "sc:Manifest",
+      "label": "Scroll (Horizontal) | British Library"
+    },
+    {
+      "@id": "https://wellcomelibrary.org/iiif/b23984958/manifest",
+      "@type": "sc:Manifest",
+      "label": "Image | Wellcome Collection"
+    },
+    {
+      "@id": "https://damsssl.llgc.org.uk/iiif/2.0/2373813/manifest.json",
+      "@type": "sc:Collection",
+      "label": "IIIF Collection | The National Library of Wales"
+    },
+    {
+      "@id": "https://biiif-template-example-3kntb3jpl-mnemoscene.vercel.app/audio/index.json",
+      "@type": "sc:Manifest",
+      "label": "Audio",
+      "visible": true
+    },
+    {
+      "@id": "https://iiif.io/api/cookbook/recipe/0064-opera-one-canvas/manifest.json",
+      "@type": "sc:Manifest",
+      "label": "Video",
+      "visible": true
+    },
+    {
+      "@id": "https://ebook-test-manifests.netlify.app/collection/alice-in-wonderland/index.json",
+      "@type": "sc:Manifest",
+      "label": "Ebook",
+      "visible": true
+    },
+    {
+      "label": "PDF | Villanova University",
+      "@type": "sc:Manifest",
+      "@id": "https://digital.library.villanova.edu/Item/vudl:294631/Manifest",
+      "visible": true
+    },
+    {
+      "@id": "https://biiif-template-example-3kntb3jpl-mnemoscene.vercel.app/3d/index.json",
+      "@type": "sc:Manifest",
+      "label": "3D",
+      "visible": true
+    }
+  ]
+}
