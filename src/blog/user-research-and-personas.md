@@ -51,7 +51,9 @@ We reflected our findings in the design and architecture choices we made for the
 
 But if you’re one of those people who takes personality quizzes, you might want to know which audience group you fall into. And for that, we have personas.
 
-We initially developed them along the lines of the original audience groups we created, but we realized that wasn’t as accurate as it could be, based on our findings. For instance, many users we assumed would be technical described themselves as decidedly not technical. To make the personas more relevant to you, our real users, we focused on _activities or actions performed_, instead of professional or UV-related _role_. Here’s what we came up with:
+We initially developed them along the lines of the original audience groups we created, but we realized that wasn’t as accurate as it could be, based on our findings. For instance, many users we assumed would be technical described themselves as decidedly not technical. To make the personas more relevant to you, our real users, we focused on _activities or actions performed_, instead of professional or UV-related _role_.
+
+**Here’s what we came up with:**
 
 ![](./images/user-research/user-research-1.png)
 
