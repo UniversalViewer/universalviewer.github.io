@@ -170,6 +170,11 @@ const pageTitle = "Demo";
         const urlAdapter = new UV.IIIFURLAdapter();
         const data = urlAdapter.getInitialData({
           iiifManifestId: manifestId,
+          locales: [
+            {
+              name: "en-GB",
+            },
+          ],
         });
         uv = UV.init("uv", data);
         urlAdapter.bindTo(uv);

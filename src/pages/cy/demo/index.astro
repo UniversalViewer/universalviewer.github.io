@@ -175,6 +175,11 @@ const pageTitle = "Arddangos";
         const urlAdapter = new UV.IIIFURLAdapter();
         const data = urlAdapter.getInitialData({
           iiifManifestId: manifestId,
+          locales: [
+            {
+              name: "cy-GB",
+            },
+          ],
         });
         uv = UV.init("uv", data);
         urlAdapter.bindTo(uv);
