@@ -12,7 +12,7 @@ const locale = Astro.currentLocale as Lang;
 const t = useTranslations(locale);
 const blogPageTwoUrl = getRelativeLocaleUrl(locale, "/blog/page/2");
 
-const posts = await getBlogPosts({ sort: true, locale: locale });
+const posts = await getBlogPosts({ sort: true, locale: "cy" });
 
 const pageTitle = "Blog";
 const morePages = Math.ceil(posts.length / siteConfig.blog.postsPerPage) > 1;
