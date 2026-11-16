@@ -30,8 +30,11 @@ const pageTitle = "Arddangos";
     <div id="demo-layout">
       <div id="controls" class="uvio-form">
         <div class="controls-section" id="content-control">
-          <h3>Cynnwys</h3>
-          <select id="manifest-select">
+          <h2 class="h3" id="demoContentTypesHeading">Cynnwys</h2>
+          <select
+            id="manifest-select"
+            aria-labelledby="demoContentTypesHeading"
+          >
             {
               collection.manifests.map((m: any) => (
                 <option value={m["@id"]}>{m.label}</option>
@@ -40,12 +43,13 @@ const pageTitle = "Arddangos";
           </select>
         </div>
         <div class="controls-section" id="iiif-selection">
-          <h3>Llwytho Maniffest IIIF</h3>
+          <h2 class="h3" id="demoLoadIIIFHeading">Llwytho Maniffest IIIF</h2>
           <div class="url-input">
             <input
               type="text"
               id="manifest-input"
               placeholder="Input manifest URL…"
+              aria-labelledby="demoLoadIIIFHeading"
             />
             <button id="load-btn">Llwytho</button>
           </div>

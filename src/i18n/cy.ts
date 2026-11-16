@@ -1,4 +1,8 @@
 export default {
+    'site.header': 'Universal Viewer site header',
+    'site.main': 'Universal Viewer main content area',
+    'site.footer': 'Universal Viewer site footer',
+
     'nav.home': 'Hafan',
     'nav.demo': 'Arddangos',
     'nav.events': 'Digwyddiadau',

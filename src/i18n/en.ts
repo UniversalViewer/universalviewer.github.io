@@ -1,4 +1,8 @@
 export default {
+    'site.header': 'Universal Viewer site header',
+    'site.main': 'Universal Viewer main content area',
+    'site.footer': 'Universal Viewer site footer',
+
     'nav.home': 'Home',
     'nav.demo': 'Demo',
     'nav.events': 'Events',
@@ -21,6 +25,8 @@ export default {
     'blog.newerPosts': 'Newer posts',
     'blog.nextPost': 'Next post',
     'blog.previousPost': 'Previous post',
+
+    'events.calendarLabel': 'Universal Viewer events calendar',
 
     'footer.links': 'Links',
     'footer.policies': 'Policies',
