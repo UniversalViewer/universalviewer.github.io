@@ -1,7 +1,7 @@
 export default {
-    'site.header': 'Universal Viewer site header',
+    'site.header': 'Pennyn gwefan Universal Viewer',
     'site.main': 'Prif ardal gynnwys Universal Viewer',
-    'site.footer': 'Universal Viewer site footer',
+    'site.footer': 'Troedyn gwefan Universal Viewer',
 
     'general.english': 'Saesneg',
     'general.welsh': 'Cymraeg',
@@ -40,7 +40,7 @@ export default {
 
     'footer.links': 'Cysylltiadau',
     'footer.policies': 'Polisïau',
-    'footer.contact': 'Cysylltwch',
+    'footer.contact': 'Cysylltu',
     'footer.contactus': 'Cysylltwch â Ni',
     'footer.accessibility': 'Hygyrchedd',
     'footer.roadmap': 'Map Trywydd a Strategaethau',
