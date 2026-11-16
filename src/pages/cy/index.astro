@@ -25,18 +25,19 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
     <div class="home-banner">
       <div class="container">
         <h1 class="text-center">
-          Help people explore more of your digital collection in one flexible
-          viewer.
+          Ei gwneud hi'n haws i bobl archwilio eich casgliadau digidol mewn un
+          syllwr hyblyg
         </h1>
         <h2 class="h3 text-center">
-          Universal Viewer brings images, documents, audio, video and 3D
-          material together in an open-source, IIIF compliant viewer that can be
-          added to your existing website.
+          Un syllwr ffynhonnell agored ar gyfer delweddau, dogfennau, sain,
+          fideo a chynnwys 3D. Yn cydymffurfio â safonau IIIF ac yn hawdd ei
+          integreiddio â'ch gwefan bresennol.
         </h2>
         <div class="home-banner-buttons">
           <a
             href={demoUrl}
-            class="button home-banner-link home-banner-demo-button">View Demo</a
+            class="button home-banner-link home-banner-demo-button"
+            >Gweld demo</a
           >
           <a href={docsUrl} class="home-banner-link home-banner-how-link"
             >{t("nav.documentation")}</a
@@ -80,14 +81,14 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
         <div class="corner-box-content how-it-works-content">
           <div class="how-it-works-text">
             <h2>
-              <span class="eyebrow">How It Works</span>
-              It's easy to install and manage
+              <span class="eyebrow">Sut Mae'n Gweithio</span>
+              Hawdd ei osod a'i reoli
             </h2>
             <p>
-              The intuitive interface allows users to easily navigate through
-              features, making it simple to display images, documents, audio,
-              and video. Plus, managing your content is just as effortless,
-              ensuring a smooth experience for both you and your visitors.
+              Rhyngwyneb syml a greddfol sy’n galluogi defnyddwyr i archwilio
+              delweddau, dogfennau, sain a fideo yn rhwydd. Gyda nodweddion
+              hawdd eu defnyddio a dull syml o reoli cynnwys, cewch chi a’ch
+              ymwelwyr brofiad hwylus o’r dechrau i’r diwedd.
             </p>
             <a href={docsUrl} class="mt-28 button">{t("nav.documentation")}</a>
           </div>
@@ -126,8 +127,8 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
     <div class="container">
       <div class="features-box">
         <h2 class="mt-0">
-          <span class="eyebrow"> Key Features </span>
-          Why choose Universal Viewer?
+          <span class="eyebrow"> Prif nodweddion </span>
+          Pam dewis Universal Viewer?
         </h2>
         <div class="features-grid">
           <div class="feature">
@@ -135,13 +136,13 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
               <Icon name="media" />
             </div>
             <div class="feature-content">
-              <h3>More ways to explore</h3>
+              <h3>Archwilio mwy</h3>
               <p>
-                Bring images, documents, audio, video and 3D content into one
-                viewer, with tools that help visitors <a
-                  href="https://openseadragon.github.io/">zoom</a
-                >, <a href="http://iiif.io/api/search/">search</a> and explore the
-                detail.
+                Dewch â delweddau, dogfennau, sain, fideo a chynnwys 3D ynghyd
+                mewn un syllwr sy’n galluogi ymwelwyr i <a
+                  href="https://openseadragon.github.io/">chwyddo</a
+                >, <a href="http://iiif.io/api/search/">chwilio</a> ac archwilio’r
+                manylion
               </p>
             </div>
           </div>
@@ -151,11 +152,11 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
               <Icon name="embed" />
             </div>
             <div class="feature-content">
-              <h3>Make collections easier to access</h3>
+              <h3>Gwneud casgliadau’n haws eu defnyddio</h3>
               <p>
-                Built with accessibility in mind, with keyboard and screen
-                reader support and a multilingual interface for audiences around
-                the world.
+                Wedi’i ddatblygu gyda hygyrchedd mewn golwg, gyda chefnogaeth ar
+                gyfer bysellfyrddau a darllenwyr sgrin, a rhyngwyneb amlieithog
+                ar gyfer cynulleidfaoedd ledled y byd.
               </p>
             </div>
           </div>
@@ -165,11 +166,11 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
               <Icon name="accessible" />
             </div>
             <div class="feature-content">
-              <h3>Fits your website and your needs</h3>
+              <h3>Yn addas i’ch gwefan a’ch anghenion</h3>
               <p>
-                Add Universal Viewer to your existing website and configure it
-                around your collection. Your technical team can customise or
-                extend it further when needed.
+                Ychwanegwch Universal Viewer at eich gwefan a’i addasu i weddu
+                i’ch casgliad. Gall eich tîm technegol ei addasu neu ychwanegu
+                ato ymhellach yn ôl yr angen.
               </p>
             </div>
           </div>
@@ -179,11 +180,11 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
               <Icon name="oss" />
             </div>
             <div class="feature-content">
-              <h3>Open, trusted and supported</h3>
+              <h3>Agored, dibynadwy a gyda chefnogaeth</h3>
               <p>
-                An open-source viewer used by cultural organisations around the
-                world, with options for protected content and an active
-                community there to help.
+                Syllwr ffynhonnell agored sy’n cael ei ddefnyddio gan
+                sefydliadau diwylliannol ledled y byd, gydag opsiynau ar gyfer
+                cynnwys gwarchodedig a chymuned weithgar wrth law i helpu.
               </p>
             </div>
           </div>
@@ -198,7 +199,7 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
         <div class="container">
           <h2>
             <span class="eyebrow">Arddangos</span>
-            Universal Viewer in action
+            Universal Viewer ar waith
           </h2>
           <ul class="showcase-list">
             {showcases.map(({ url, manifest, img, heading, text }) => (
@@ -233,11 +234,10 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
         <div class="community-box-heading">
           <h2 class="mt-0">
             <span class="eyebrow"> Cymuned </span>
-            Our community resources simplify the journey to mastering the Universal
-            Viewer.
+            {t("general.communityResources")}
           </h2>
           <a href={communityUrl} class="button community-box-heading-button"
-            >Learn more</a
+            >{t("general.learnMore")}</a
           >
         </div>
 
@@ -247,8 +247,7 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
               <Icon name="slack" />
             </div>
             <p class="community-box-item-text">
-              New adopters can use the Universal Viewer Slack channel for direct
-              help while getting set up.
+              {t("general.slack")}
             </p>
           </div>
 
@@ -257,9 +256,7 @@ const docsUrl = getRelativeLocaleUrl(locale, "docs");
               <Icon name="video" />
             </div>
             <p class="community-box-item-text">
-              Monthly community calls also give organisations a place to ask
-              questions, work through problems and learn from other Universal
-              Viewer users.
+              {t("general.calls")}
             </p>
           </div>
         </div>

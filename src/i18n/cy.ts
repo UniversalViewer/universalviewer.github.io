@@ -1,4 +1,20 @@
 export default {
+    'site.header': 'Pennyn gwefan Universal Viewer',
+    'site.main': 'Prif ardal gynnwys Universal Viewer',
+    'site.footer': 'Troedyn gwefan Universal Viewer',
+
+    'general.english': 'Saesneg',
+    'general.welsh': 'Cymraeg',
+    'general.learnMore': 'Dysgu mwy',
+    'general.communityResources': 'Mae ein hadnoddau cymunedol yn ei gwneud hi’n haws i chi ddysgu sut i ddefnyddio Universal Viewer yn effeithiol.',
+    'general.slack': 'Gall sefydliadau sy’n dechrau defnyddio Universal Viewer gael cymorth uniongyrchol drwy sianel Slack Universal Viewer wrth fynd ati i’w osod.',
+    'general.calls': 'Mae ein cyfarfodydd cymunedol misol hefyd yn rhoi cyfle i sefydliadau ofyn cwestiynau, datrys problemau a dysgu o brofiadau defnyddwyr eraill Universal Viewer.',
+
+    'nav.mainNavigation': 'Prif ddewislen',
+    'nav.languageNavigation': 'Dewis iaith',
+    'nav.toggleMainNav': 'Agor neu gau\'r brif ddewislen',
+    'nav.footerNavigation': 'Dewislen troedyn y wefan',
+    'nav.blogPostNavigation': 'Llywio rhwng cofnodion y blog',
     'nav.home': 'Hafan',
     'nav.demo': 'Arddangos',
     'nav.events': 'Digwyddiadau',
@@ -22,8 +38,11 @@ export default {
     'blog.nextPost': 'Post nesaf',
     'blog.previousPost': 'Post blaenorol',
 
+    'events.calendarLabel': 'Calendr digwyddiadau Universal Viewer',
+
     'footer.links': 'Cysylltiadau',
     'footer.policies': 'Polisïau',
+    'footer.contact': 'Cysylltu',
     'footer.contactus': 'Cysylltwch â Ni',
     'footer.accessibility': 'Hygyrchedd',
     'footer.roadmap': 'Map Trywydd a Strategaethau',

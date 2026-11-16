@@ -117,9 +117,20 @@
   margin-left: auto;
 }
 
+.post-cover {
+  max-width: 60em;
+  margin: 0 auto;
+}
+
 .blog-post {
   max-width: 60em;
   margin: 0 auto;
+
+  img {
+    display: block;
+    margin: remval(32) auto;
+    max-width: 90%;
+  }
 }
 
 .post-nav {

@@ -26,14 +26,14 @@ const footerNavCol2 = [
 ] as const;
 ---
 
-<footer class="site-footer">
+<footer class="site-footer" aria-label={t("site.footer")}>
   <div class="container">
     <div class="footer-main">
       <section class="footer-logo-and-contact">
         <Logo type="alt-stacked" name="footer-logo" />
 
         <h2 class="tiny-heading footer-contact-heading">
-          {t("footer.contactus")}
+          {t("footer.contact")}
         </h2>
         <a href="mailto:hello@universalviewer.io" class="footer-mailto"
           >hello@universalviewer.io</a
@@ -41,7 +41,10 @@ const footerNavCol2 = [
       </section>
 
       <section class="footer-navigation">
-        <nav aria-label="Footer navigation" class="footer-nav footer-nav-1">
+        <nav
+          aria-label={t("nav.footerNavigation")}
+          class="footer-nav footer-nav-1"
+        >
           <ul class="footer-nav-list">
             {
               footerNavCol1.map((link, i) => (

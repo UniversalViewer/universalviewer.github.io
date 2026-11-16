@@ -20,18 +20,22 @@ const pageTitle = "Arddangos";
     <header class="page-heading">
       <h1>Universal Viewer Demo</h1>
       <p>
-        Dewiswch fath o gynnwys i weld sut mae’r Universal Viewer yn dangos
-        gwahanol fathau o ddeunyddiau neu lwytho unrhyw fath o <a
+        Dewiswch fath o gynnwys i weld sut mae Universal Viewer yn arddangos
+        gwahanol fathau o ddeunydd, neu lwythwch unrhyw <a
           target="_blank"
-          href="https://iiif.io/">maniffest cyflwyno IIIF</a
-        >, sef dull cyffredin o rannu cynnwys, a bydd yr UV yn ei arddangos
+          href="https://iiif.io/">faniffest IIIF Presentation</a
+        > i’w arddangos yn y syllwr. Mae manifest IIIF yn ffordd safonol o rannu a
+        chyflwyno cynnwys digidol.
       </p>
     </header>
     <div id="demo-layout">
       <div id="controls" class="uvio-form">
         <div class="controls-section" id="content-control">
-          <h3>Cynnwys</h3>
-          <select id="manifest-select">
+          <h2 class="h3" id="demoContentTypesHeading">Cynnwys</h2>
+          <select
+            id="manifest-select"
+            aria-labelledby="demoContentTypesHeading"
+          >
             {
               collection.manifests.map((m: any) => (
                 <option value={m["@id"]}>{m.label}</option>
@@ -40,12 +44,13 @@ const pageTitle = "Arddangos";
           </select>
         </div>
         <div class="controls-section" id="iiif-selection">
-          <h3>Llwytho Maniffest IIIF</h3>
+          <h2 class="h3" id="demoLoadIIIFHeading">Llwytho Maniffest IIIF</h2>
           <div class="url-input">
             <input
               type="text"
               id="manifest-input"
-              placeholder="Input manifest URL…"
+              placeholder="Mewnosod ddolen i faniffest…"
+              aria-labelledby="demoLoadIIIFHeading"
             />
             <button id="load-btn">Llwytho</button>
           </div>
@@ -175,6 +180,11 @@ const pageTitle = "Arddangos";
         const urlAdapter = new UV.IIIFURLAdapter();
         const data = urlAdapter.getInitialData({
           iiifManifestId: manifestId,
+          locales: [
+            {
+              name: "cy-GB",
+            },
+          ],
         });
         uv = UV.init("uv", data);
         urlAdapter.bindTo(uv);

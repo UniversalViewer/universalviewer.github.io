@@ -18,8 +18,8 @@ const communityUrl = getRelativeLocaleUrl(locale, "community");
     <header class="page-heading">
       <h1>Dogfennaeth</h1>
       <p>
-        Explore our resources and guidance to help you deploy the Universal
-        Viewer and ensure you get the most out of it.
+        Archwiliwch ein hadnoddau a’n canllawiau i’ch helpu i osod Universal
+        Viewer a gwneud y gorau o’i nodweddion.
       </p>
     </header>
   </div>
@@ -74,13 +74,14 @@ const communityUrl = getRelativeLocaleUrl(locale, "community");
             <div class="doc-box-text">
               <h2>Dogfennau technegol</h2>
               <p>
-                Ready to get started? Find the technical guidance your
-                development team needs to set up and configure Universal Viewer.
+                Yn barod i ddechrau? Dewch o hyd i’r canllawiau technegol sydd
+                eu hangen ar eich tîm datblygu i osod a ffurfweddu Universal
+                Viewer.
               </p>
               <a
                 target="_blank"
-                href="https://github.com/UniversalViewer/universalviewer/blob/dev/manual/CONFIG.md"
-                class="mt-28 button">Config guide</a
+                href="https://docs.universalviewer.io/"
+                class="mt-28 button">Dogfennau</a
               >
             </div>
           </div>
@@ -155,11 +156,11 @@ const communityUrl = getRelativeLocaleUrl(locale, "community");
       <div class="community-box">
         <div class="community-box-heading">
           <h2 class="mt-0">
-            <span class="eyebrow"> Support when you need it </span>
-            Help is available throughout setup and beyond.
+            <span class="eyebrow"> Cymorth pan fydd ei angen arnoch </span>
+            Cymorth ar gael drwy'r broses osod a thu hwnt.
           </h2>
           <a href={communityUrl} class="button community-box-heading-button"
-            >Learn more</a
+            >{t("general.learnMore")}</a
           >
         </div>
 
@@ -169,8 +170,7 @@ const communityUrl = getRelativeLocaleUrl(locale, "community");
               <Icon name="slack" />
             </div>
             <p class="community-box-item-text">
-              New adopters can use the Universal Viewer Slack channel for direct
-              help while getting set up.
+              {t("general.slack")}
             </p>
           </div>
 
@@ -179,9 +179,7 @@ const communityUrl = getRelativeLocaleUrl(locale, "community");
               <Icon name="video" />
             </div>
             <p class="community-box-item-text">
-              Monthly community calls also give organisations a place to ask
-              questions, work through problems and learn from other Universal
-              Viewer users.
+              {t("general.calls")}
             </p>
           </div>
         </div>

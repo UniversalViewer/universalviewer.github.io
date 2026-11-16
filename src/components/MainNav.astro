@@ -23,7 +23,7 @@ const engLink = getRelativeLocaleUrl("en", currentPathWithoutLocale);
 const cymLink = getRelativeLocaleUrl("cy", currentPathWithoutLocale);
 ---
 
-<nav id="mainNav" class="main-nav" aria-label="Main navigation">
+<nav id="mainNav" class="main-nav" aria-label={t("nav.mainNavigation")}>
   <ul class="main-nav-list">
     <!-- <li class="main-nav-list-item">
       <a href={homeUrl} class="main-nav-link">{t("nav.home")}</a>
@@ -46,13 +46,21 @@ const cymLink = getRelativeLocaleUrl("cy", currentPathWithoutLocale);
   </ul>
 </nav>
 
-<nav id="langNav" class="languages-nav" aria-label="Language navigation">
+<nav
+  id="langNav"
+  class="languages-nav"
+  aria-label={t("nav.languageNavigation")}
+>
   <ul class="lang-nav-list">
     <li class="lang-nav-list-item">
-      <a href={engLink} class="lang-nav-link" aria-label="English">Eng</a>
+      <a href={engLink} class="lang-nav-link" aria-label={t("general.english")}
+        >Eng</a
+      >
     </li>
     <li class="lang-nav-list-item">
-      <a href={cymLink} class="lang-nav-link" aria-label="Welsh">Cym</a>
+      <a href={cymLink} class="lang-nav-link" aria-label={t("general.welsh")}
+        >Cym</a
+      >
     </li>
   </ul>
 </nav>

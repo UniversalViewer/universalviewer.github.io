@@ -1,8 +1,16 @@
 ---
+import type { Lang } from "@i18n/ui";
+import { useTranslations } from "@i18n/utils";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SVGs from "../components/SVGs.astro";
 import "../styles/global.scss";
+
+const locale = Astro.currentLocale as Lang;
+
+const t = useTranslations(locale);
+
+const langAttr = locale == "cy" ? "cy-GB" : "en";
 
 interface Props {
   pageTitle?: string;
@@ -12,7 +20,7 @@ interface Props {
 const { pageTitle = "Universal Viewer", mainClass } = Astro.props;
 ---
 
-<html lang="en" class="dm-sans-regular">
+<html lang={langAttr} class="dm-sans-regular">
   <head>
     <meta charset="utf-8" />
     <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
@@ -31,7 +39,7 @@ const { pageTitle = "Universal Viewer", mainClass } = Astro.props;
     <SVGs />
 
     <Header />
-    <main class:list={["main", mainClass]}>
+    <main class:list={["main", mainClass]} aria-label={t("site.main")}>
       <slot />
     </main>
     <Footer />

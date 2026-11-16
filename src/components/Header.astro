@@ -25,7 +25,7 @@ const localeMap = {
 const { localeName, localeLangKey } = localeMap[locale];
 ---
 
-<header class="site-header">
+<header class="site-header" aria-label={t("site.header")}>
   <div class="container">
     <div class="header-content">
       <Logo type="stacked" name="header-logo" link={true} />
@@ -33,7 +33,7 @@ const { localeName, localeLangKey } = localeMap[locale];
         type="button"
         id="mobileNavButton"
         class="hamburger mobile-main-nav-button"
-        aria-label="Toggle main navigation"
+        aria-label={t("nav.toggleMainNav")}
       >
         <span class="hamburger-box">
           <span class="hamburger-inner"></span>

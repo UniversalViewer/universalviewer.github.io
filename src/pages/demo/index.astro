@@ -30,8 +30,11 @@ const pageTitle = "Demo";
     <div id="demo-layout">
       <div id="controls" class="uvio-form">
         <div class="controls-section" id="content-control">
-          <h3>Content types</h3>
-          <select id="manifest-select">
+          <h2 class="h3" id="demoContentTypesHeading">Content types</h2>
+          <select
+            id="manifest-select"
+            aria-labelledby="demoContentTypesHeading"
+          >
             {
               collection.manifests.map((m: any) => (
                 <option value={m["@id"]}>{m.label}</option>
@@ -40,12 +43,13 @@ const pageTitle = "Demo";
           </select>
         </div>
         <div class="controls-section" id="iiif-selection">
-          <h3>Load IIIF Manifest</h3>
+          <h2 class="h3" id="demoLoadIIIFHeading">Load IIIF Manifest</h2>
           <div class="url-input">
             <input
               type="text"
               id="manifest-input"
               placeholder="Input manifest URL…"
+              aria-labelledby="demoLoadIIIFHeading"
             />
             <button id="load-btn">Load</button>
           </div>
@@ -170,6 +174,11 @@ const pageTitle = "Demo";
         const urlAdapter = new UV.IIIFURLAdapter();
         const data = urlAdapter.getInitialData({
           iiifManifestId: manifestId,
+          locales: [
+            {
+              name: "en-GB",
+            },
+          ],
         });
         uv = UV.init("uv", data);
         urlAdapter.bindTo(uv);

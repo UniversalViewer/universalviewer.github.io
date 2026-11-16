@@ -48,9 +48,9 @@ function postUrl(p: any) {
         )
       }
       {
-        post.data.cover && post.data.coverAlt && (
+        post.data.cover && (
           <div class="text-center mt-32 post-cover">
-            <Image src={post.data.cover} alt={post.data.coverAlt} />
+            <Image src={post.data.cover} alt={post.data.coverAlt ?? ""} />
           </div>
         )
       }
@@ -65,7 +65,7 @@ function postUrl(p: any) {
 </article>
 
 <div class="container">
-  <nav class="post-nav" aria-label="Blog post navigation">
+  <nav class="post-nav" aria-label={t("nav.blogPostNavigation")}>
     {
       prev && (
         <div class="prev-post">
