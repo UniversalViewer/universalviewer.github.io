@@ -24,6 +24,7 @@ export default {
 
     'footer.links': 'Cysylltiadau',
     'footer.policies': 'Polisïau',
+    'footer.contact': 'Cysylltwch',
     'footer.contactus': 'Cysylltwch â Ni',
     'footer.accessibility': 'Hygyrchedd',
     'footer.roadmap': 'Map Trywydd a Strategaethau',

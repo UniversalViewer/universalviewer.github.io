@@ -24,6 +24,7 @@ export default {
 
     'footer.links': 'Links',
     'footer.policies': 'Policies',
+    'footer.contact': 'Contact',
     'footer.contactus': 'Contact Us',
     'footer.accessibility': 'Accessibility',
     'footer.roadmap': 'Roadmap & Strategies',
