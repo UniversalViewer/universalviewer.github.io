@@ -38,6 +38,8 @@ export default {
     'blog.nextPost': 'Post nesaf',
     'blog.previousPost': 'Post blaenorol',
 
+    'events.calendarLabel': 'Calendr digwyddiadau Universal Viewer',
+
     'footer.links': 'Cysylltiadau',
     'footer.policies': 'Polisïau',
     'footer.contact': 'Cysylltu',

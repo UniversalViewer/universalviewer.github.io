@@ -48,9 +48,9 @@ function postUrl(p: any) {
         )
       }
       {
-        post.data.cover && post.data.coverAlt && (
+        post.data.cover && (
           <div class="text-center mt-32 post-cover">
-            <Image src={post.data.cover} alt={post.data.coverAlt} />
+            <Image src={post.data.cover} alt={post.data.coverAlt ?? ""} />
           </div>
         )
       }

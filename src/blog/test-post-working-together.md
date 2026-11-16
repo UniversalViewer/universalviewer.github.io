@@ -1,11 +1,13 @@
 ---
-title: 'Working Together: The UV Community Sprint Experience'
-description: 'A test blog post taken from an old BL blog'
+title: "Working Together: The UV Community Sprint Experience"
+description: "A test blog post taken from an old BL blog"
 date: 2026-02-17
-language: 'en'
-author: 'Universal Viewer Steering Group'
-cover: './images/zoom.png'
-coverAlt: 'A screenshot of a UV community sprint zoom call'
+language: "en"
+author: "Universal Viewer Steering Group"
+thumb: "./images/zoom.png"
+thumbAlt: "A screenshot of a UV community sprint zoom call"
+cover: "./images/zoom.png"
+coverAlt: "A screenshot of a UV community sprint zoom call"
 ---
 
 _How do you collaborate on a piece of software with a community of users and developers distributed around the world? Lanie and Saira from the [British Library's Universal Viewer team](https://blogs.bl.uk/digital-scholarship/2024/05/meet-our-new-universal-viewer-product-team.html) share their recent experience with a 'community sprint'..._
