@@ -27,7 +27,7 @@
     var(--uvio-home-banner-bg-1) 0%,
     var(--uvio-home-banner-bg-2) 100%
   );
-  padding: remval(32) 0;
+  padding: remval(32) 0 0;
   margin: 0 0 remval(32);
 
   @include breakpoint-up("phablet") {
@@ -65,7 +65,6 @@
   }
 
   img {
-    display: none;
     width: 90vw;
     max-width: min(100%, remval(1200));
     margin: remval(40) auto 0;
