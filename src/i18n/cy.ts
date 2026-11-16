@@ -1,8 +1,20 @@
 export default {
     'site.header': 'Universal Viewer site header',
-    'site.main': 'Universal Viewer main content area',
+    'site.main': 'Prif ardal gynnwys Universal Viewer',
     'site.footer': 'Universal Viewer site footer',
 
+    'general.english': 'Saesneg',
+    'general.welsh': 'Cymraeg',
+    'general.learnMore': 'Dysgu mwy',
+    'general.communityResources': 'Mae ein hadnoddau cymunedol yn ei gwneud hi’n haws i chi ddysgu sut i ddefnyddio Universal Viewer yn effeithiol.',
+    'general.slack': 'Gall sefydliadau sy’n dechrau defnyddio Universal Viewer gael cymorth uniongyrchol drwy sianel Slack Universal Viewer wrth fynd ati i’w osod.',
+    'general.calls': 'Mae ein cyfarfodydd cymunedol misol hefyd yn rhoi cyfle i sefydliadau ofyn cwestiynau, datrys problemau a dysgu o brofiadau defnyddwyr eraill Universal Viewer.',
+
+    'nav.mainNavigation': '',
+    'nav.languageNavigation': '',
+    'nav.toggleMainNav': '',
+    'nav.footerNavigation': '',
+    'nav.blogPostNavigation': '',
     'nav.home': 'Hafan',
     'nav.demo': 'Arddangos',
     'nav.events': 'Digwyddiadau',

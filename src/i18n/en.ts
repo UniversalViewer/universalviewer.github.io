@@ -3,6 +3,18 @@ export default {
     'site.main': 'Universal Viewer main content area',
     'site.footer': 'Universal Viewer site footer',
 
+    'general.english': 'English',
+    'general.welsh': 'Welsh',
+    'general.learnMore': 'Learn more',
+    'general.communityResources': 'Our community resources simplify the journey to mastering the Universal Viewer.',
+    'general.slack': 'New adopters can use the Universal Viewer Slack channel for direct help while getting set up.',
+    'general.calls': 'Monthly community calls also give organisations a place to ask questions, work through problems and learn from other Universal Viewer users.',
+
+    'nav.mainNavigation': 'Main navigation',
+    'nav.languageNavigation': 'Language navigation',
+    'nav.toggleMainNav': 'Toggle main navigation',
+    'nav.footerNavigation': 'Footer navigation',
+    'nav.blogPostNavigation': 'Blog post navigation',
     'nav.home': 'Home',
     'nav.demo': 'Demo',
     'nav.events': 'Events',

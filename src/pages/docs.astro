@@ -158,7 +158,7 @@ const communityUrl = getRelativeLocaleUrl(locale, "community");
             Help is available throughout setup and beyond.
           </h2>
           <a href={communityUrl} class="button community-box-heading-button"
-            >Learn more</a
+            >{t("general.learnMore")}</a
           >
         </div>
 
@@ -168,8 +168,7 @@ const communityUrl = getRelativeLocaleUrl(locale, "community");
               <Icon name="slack" />
             </div>
             <p class="community-box-item-text">
-              New adopters can use the Universal Viewer Slack channel for direct
-              help while getting set up.
+              {t("general.slack")}
             </p>
           </div>
 
@@ -178,9 +177,7 @@ const communityUrl = getRelativeLocaleUrl(locale, "community");
               <Icon name="video" />
             </div>
             <p class="community-box-item-text">
-              Monthly community calls also give organisations a place to ask
-              questions, work through problems and learn from other Universal
-              Viewer users.
+              {t("general.calls")}
             </p>
           </div>
         </div>
