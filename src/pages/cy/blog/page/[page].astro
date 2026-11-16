@@ -12,7 +12,7 @@ const t = useTranslations(locale);
 
 // paginate:any is just to stop TS error which isn't a real error in Astro
 export async function getStaticPaths({ paginate }: { paginate: any }) {
-  const posts = await getBlogPosts({ sort: true, locale: locale });
+  const posts = await getBlogPosts({ sort: true, locale: "cy" });
   return paginate(posts, { pageSize: siteConfig.blog.postsPerPage });
 }
 
