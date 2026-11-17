@@ -20,6 +20,8 @@
 }
 
 .home-banner {
+  --uvio-home-banner-padding-top: #{remval(32)};
+
   min-height: 600px;
   background: var(--uvio-home-banner-bg-2);
   background: linear-gradient(
@@ -27,7 +29,7 @@
     var(--uvio-home-banner-bg-1) 0%,
     var(--uvio-home-banner-bg-2) 100%
   );
-  padding: remval(32) 0 0;
+  padding: var(--uvio-home-banner-padding-top) 0 0;
   margin: 0 0 remval(32);
 
   @include breakpoint-up("phablet") {
@@ -35,15 +37,29 @@
     padding-top: remval(48);
   }
 
-  @include breakpoint-up("tablet") {
+  @include breakpoint-up("tablet-l") {
+    padding-top: remval(64);
+  }
+
+  @include breakpoint-up("desktop") {
     padding-top: remval(96);
   }
 
   h1 {
-    max-width: remval(1088);
+    --uvio-banner-h1-p1-display: block;
+
+    max-width: remval(1248);
     margin: 0 auto;
-    padding: 0 remval(32);
+    padding: 0 remval(16);
     color: var(--uvio-home-banner-h1-color);
+
+    @include breakpoint-up("tablet") {
+      padding: 0 remval(32);
+    }
+
+    .part1 {
+      display: var(--uvio-banner-h1-p1-display);
+    }
   }
 
   h2 {
@@ -52,7 +68,7 @@
     font-size: remval(24);
     max-width: remval(1000);
     margin: remval(20) auto 0;
-    padding: 0 remval(32);
+    padding: 0;
     line-height: 1.2;
 
     @include breakpoint-up("phablet") {
@@ -61,6 +77,7 @@
 
     @include breakpoint-up("tablet") {
       font-size: remval(29);
+      padding: 0 remval(16);
     }
   }
 
@@ -75,12 +92,54 @@
   }
 }
 
+[lang="en"] {
+  .home-banner {
+    h1 {
+      @include breakpoint-up("phablet") {
+        --uvio-banner-h1-p1-display: inline;
+      }
+
+      @include breakpoint-up("tablet-l") {
+        --uvio-banner-h1-p1-display: block;
+      }
+
+      @include breakpoint-up("laptop") {
+        --uvio-banner-h1-p1-display: inline;
+      }
+    }
+  }
+}
+
+[lang="cy-GB"] {
+  .home-banner {
+    h1 {
+      @include breakpoint-up("tablet") {
+        --uvio-banner-h1-p1-display: inline;
+      }
+
+      @include breakpoint-up("tablet-l") {
+        --uvio-banner-h1-p1-display: block;
+      }
+
+      @include breakpoint-up("laptop") {
+        --uvio-banner-h1-p1-display: inline;
+      }
+    }
+  }
+}
+
 .home-banner-buttons {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: remval(32) auto 0;
-  gap: remval(40);
+  gap: remval(20);
+
+  @include breakpoint-up("phablet") {
+    flex-direction: row;
+    gap: remval(40);
+  }
 }
 
 .home-banner-link {
