@@ -1,0 +1,70 @@
+@use "fn" as *;
+@use "vars" as *;
+
+:root {
+  // COLORS
+  --uvio-purple: #c596ff;
+  --uvio-purple-dark: #8a41e6;
+  --uvio-purple-darker: #711cd9;
+  --uvio-purple-light: #e8d6fe;
+  --uvio-black: #000;
+  --uvio-black2: #0a0b0d;
+  --uvio-grey: #f8f8f8;
+  --uvio-grey-dark: #ddd;
+  --uvio-grey-darker: #666;
+  --uvio-white: #fff;
+
+  // FONTS
+  --uvio-font-family: "Pavanam", sans-serif;
+  --uvio-font-family-headings: "Onest", sans-serif;
+  --uvio-font-family-nav: var(--uvio-font-family-headings);
+  --uvio-font-family-lang: var(--uvio-font-family-nav);
+  --uvio-font-family-buttons: var(--uvio-font-family-headings);
+  --uvio-font-family-form: var(--uvio-font-family);
+
+  // TYPOGRAPHY
+  --uvio-body-color: var(--uvio-black);
+  --uvio-h1-color: var(--uvio-purple-dark);
+  --uvio-link-color: var(--uvio-purple-dark);
+  --uvio-eyebrow-color: var(--uvio-purple-dark);
+
+  // BUTTONS
+  --uvio-button-bg-color: var(--uvio-purple-dark);
+  --uvio-button-hover-bg-color: var(--uvio-purple-darker);
+  --uvio-button-color: var(--uvio-white);
+
+  // FORMS
+  --uvio-form-element-border-color: var(--uvio-grey-dark);
+  --uvio-form-element-bg-color: var(--uvio-grey);
+
+  // LOGO
+  --uvio-logo-corner-color: var(--uvio-black);
+
+  // NAV
+  --uvio-nav-link-color: var(--uvio-black);
+
+  // HEADER
+  --uvio-header-position: relative;
+  --uvio-header-bg-color: var(--uvio-white);
+  --uvio-hamburger-color: #000;
+
+  // FOOTER
+  --uvio-footer-bg-color: var(--uvio-purple-dark);
+  --uvio-footer-color: var(--uvio-white);
+  --uvio-footer-top-margin: #{remval(64)};
+
+  // CORNER BOX
+  --uvio-corner-box-border-color: #ccc;
+  --uvio-corner-box-corner-color: var(--uvio-logo-corner-color);
+
+  // Home
+  --uvio-home-banner-h1-color: var(--uvio-black);
+  --uvio-home-banner-bg-1: #cbc1b8;
+  --uvio-home-banner-bg-2: #eae9e6;
+
+  // Communuity box
+  --uvio-community-icon-bg-color: var(--uvio-white);
+
+  // Blog
+  --uvio-blog-meta-text-color: var(--uvio-grey-darker);
+}

@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BlogLayout from "@layouts/BlogLayout.astro";
+import { siteConfig, blogCollectionLocales } from "@config/site";
+import { getBlogPosts, mapBlogPosts } from "@utils/blog";
+
+export async function getStaticPaths() {
+  const posts = await getBlogPosts({ locale: "cy" });
+  return mapBlogPosts(posts);
+}
+
+const { id } = Astro.params;
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const posts = await getBlogPosts({ sort: true, locale: "cy" });
+
+// 3. Find current post
+const index = posts.findIndex((p) => p.id === id);
+const entry = posts[index];
+if (!entry) throw new Error(`Post not found: ${id}`);
+
+// 4. Compute previous & next
+const prev = posts[index + 1]; // because sorted descending
+const next = posts[index - 1];
+---
+
+<BaseLayout pageTitle={post.data.title} mainClass="blog-post-main">
+  <BlogLayout post={post} prev={prev} next={next}>
+    <Content />
+  </BlogLayout>
+</BaseLayout>

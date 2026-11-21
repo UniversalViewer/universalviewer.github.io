@@ -1,0 +1,219 @@
+@use "fn" as *;
+@use "vars" as *;
+@use "props";
+@use "fonts";
+@use "typography";
+@use "buttons";
+@use "forms";
+@use "logo";
+@use "header";
+@use "footer";
+@use "main-nav";
+@use "lang-nav";
+@use "events";
+@use "demo";
+@use "blog";
+@use "home";
+@use "community";
+@use "contact";
+@use "docs";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+$edges: (
+  "t": "top",
+  "r": "right",
+  "b": "bottom",
+  "l": "left",
+);
+
+@each $e, $edge in $edges {
+  @for $i from 0 through 108 {
+    .m#{$e}-#{$i} {
+      margin-#{$edge}: #{remval($i)} !important;
+    }
+
+    .p#{$e}-#{$i} {
+      padding-#{$edge}: #{remval($i)} !important;
+    }
+  }
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--uvio-font-family);
+  color: var(--uvio-body-color);
+}
+
+main {
+  min-height: 50vh;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+nav {
+  font-family: var(--uvio-font-family-nav);
+}
+
+.container {
+  width: 100%;
+  padding: 0 remval(24);
+  max-width: remval(1440);
+  margin: 0 auto;
+}
+
+.page-heading {
+  margin-top: remval(48);
+  margin-bottom: remval(48);
+
+  @include breakpoint-up("tablet") {
+    margin-top: remval(56);
+    margin-bottom: remval(56);
+  }
+
+  @include breakpoint-up("laptop") {
+    margin-top: remval(64);
+    margin-bottom: remval(64);
+  }
+
+  @include breakpoint-up("laptop-l") {
+    margin-top: remval(72);
+    margin-bottom: remval(72);
+  }
+
+  @include breakpoint-up("desktop") {
+    margin-top: remval(96);
+    margin-bottom: remval(96);
+  }
+
+  h1 {
+    text-align: center;
+    font-size: remval(32);
+
+    @include breakpoint-up("tablet") {
+      font-size: remval(42);
+    }
+
+    @include breakpoint-up("tablet-l") {
+      font-size: remval(48);
+    }
+
+    @include breakpoint-up("laptop") {
+      font-size: remval(52);
+    }
+  }
+
+  p {
+    font-size: remval(20);
+    text-align: center;
+    max-width: 90vw;
+
+    @include breakpoint-up("tablet") {
+      max-width: 80vw;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @include breakpoint-up("tablet-l") {
+      font-size: remval(24);
+      max-width: 65vw;
+    }
+
+    @include breakpoint-up("laptop") {
+      font-size: remval(28);
+      max-width: 60vw;
+    }
+
+    @include breakpoint-up("laptop-l") {
+      font-size: remval(28);
+      max-width: 55vw;
+    }
+
+    @include breakpoint-up("desktop") {
+      font-size: remval(28);
+      max-width: 50vw;
+    }
+  }
+}
+
+.logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: remval(32) remval(48);
+  margin-top: remval(48);
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: 50px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+.corner-box {
+  border: 1px solid var(--uvio-corner-box-border-color);
+  position: relative;
+  padding: remval(48);
+  border-radius: 0.9em;
+  font-size: remval(24);
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.corner-box-corner {
+  position: absolute;
+  width: 1em;
+  aspect-ratio: 1;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    fill: var(--uvio-corner-box-corner-color);
+  }
+}
+
+.corner-box-tl {
+  top: -1px;
+  left: -1px;
+}
+
+.corner-box-tr {
+  top: -1px;
+  right: -1px;
+}
+
+.corner-box-bl {
+  bottom: -1px;
+  left: -1px;
+}
+
+.corner-box-br {
+  bottom: -1px;
+  right: -1px;
+}

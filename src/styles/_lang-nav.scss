@@ -1,0 +1,68 @@
+@use "fn" as *;
+@use "vars" as *;
+@use "props";
+
+.languages-nav {
+  display: none;
+  margin: 0 auto;
+
+  &.show {
+    display: block;
+  }
+}
+
+@include breakpoint-up("tablet-l") {
+  .languages-nav {
+    display: block;
+    margin: 0;
+  }
+}
+
+.lang-nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  float: right;
+
+  @include breakpoint-up("tablet-l") {
+    margin-right: remval(-14);
+  }
+}
+
+.lang-nav-list-item {
+  margin: 0;
+  padding: 0;
+}
+
+.lang-nav-link {
+  display: block;
+  position: relative;
+  padding: remval(16);
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--uvio-nav-link-color);
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &::before {
+    content: "|";
+    position: absolute;
+    left: remval(-2);
+  }
+}
+
+@include breakpoint-up("tablet-l") {
+  .lang-nav-link {
+    padding: remval(16) remval(12);
+  }
+}
+
+.lang-nav-list-item:first-child .lang-nav-link {
+  &::before {
+    display: none;
+  }
+}

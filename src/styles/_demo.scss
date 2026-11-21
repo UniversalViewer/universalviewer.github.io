@@ -1,0 +1,112 @@
+@use "fn" as *;
+@use "vars" as *;
+
+#demo-layout {
+  // display: flex;
+  // flex-direction: column;
+  // height: auto;
+
+  // @include breakpoint-up("tablet-l") {
+  //   flex-direction: row;
+  // }
+
+  @include breakpoint-up("tablet-l") {
+    display: grid;
+    grid-template-columns: 6fr 3fr;
+    gap: remval(32);
+    margin-bottom: -72px;
+  }
+
+  @include breakpoint-up("laptop") {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+#uv {
+  width: 100%;
+  height: 80vh;
+  margin: remval(32) 0 0;
+  order: 2;
+  min-width: 0;
+
+  @include breakpoint-up("tablet-l") {
+    order: 1;
+    flex: 4 0 0%;
+    margin-top: 0;
+  }
+}
+
+#controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  order: 1;
+  min-width: 0;
+
+  @include breakpoint-up("tablet") {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include breakpoint-up("tablet-l") {
+    display: flex;
+    flex: 1 1 20%;
+    height: 100%;
+    order: 2;
+  }
+}
+
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  h2,
+  h3 {
+    margin: 0;
+    line-height: 1;
+  }
+
+  h3 {
+    font-size: remval(18);
+  }
+
+  p {
+    margin-top: remval(4);
+  }
+
+  select {
+    width: 100%;
+  }
+
+  .url-input {
+    display: flex;
+    gap: 0.35rem;
+
+    input {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+
+  label {
+    display: flex;
+    align-items: end;
+    line-height: 1.3;
+    cursor: pointer;
+    gap: 0.5em;
+    font-size: remval(14);
+
+    @include breakpoint-up("tablet") {
+      font-size: remval(16);
+      align-items: baseline;
+    }
+  }
+
+  .checkbox-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: remval(8);
+    margin-top: remval(12);
+  }
+}
