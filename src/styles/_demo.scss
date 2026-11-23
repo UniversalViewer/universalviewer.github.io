@@ -110,3 +110,14 @@
     margin-top: remval(12);
   }
 }
+
+.uv-iiif-extension-host {
+  &.uv-openseadragon-extension {
+    /* stylelint-disable-next-line selector-class-pattern */
+    .footerPanel .search .searchTextContainer .imageButton.searchButton {
+      padding: 0;
+      position: relative;
+      top: 1px;
+    }
+  }
+}
