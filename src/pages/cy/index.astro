@@ -1,0 +1,278 @@
+---
+import { Debug } from "astro:components";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { useTranslations } from "@i18n/utils";
+import type { Lang } from "@i18n/ui";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import showcases from "@data/showcase.json";
+import supporters from "@data/supporters";
+import howItWorksImage from "@assets/images/uv-hiw.jpg";
+const pageTitle = "Home";
+
+const locale = Astro.currentLocale as Lang;
+
+const t = useTranslations(locale);
+
+const communityUrl = getRelativeLocaleUrl(locale, "community");
+const demoUrl = getRelativeLocaleUrl(locale, "demo");
+const docsUrl = getRelativeLocaleUrl(locale, "docs");
+---
+
+<BaseLayout pageTitle={pageTitle} mainClass="home-main">
+  <section id="homeBanner">
+    <div class="home-banner">
+      <div class="container">
+        <h1 class="text-center">
+          <span class="part1">Un syllwr. </span>
+          Cysylltu pobl a chasgliadau.
+        </h1>
+        <h2 class="h3 text-center">
+          Un syllwr ffynhonnell agored ar gyfer delweddau, dogfennau, sain,
+          fideo a chynnwys 3D. Yn cydymffurfio â safonau IIIF ac yn hawdd ei
+          integreiddio â'ch gwefan bresennol.
+        </h2>
+        <div class="home-banner-buttons">
+          <a
+            href={demoUrl}
+            class="button home-banner-link home-banner-demo-button"
+            >Gweld demo</a
+          >
+          <a href={docsUrl} class="home-banner-link home-banner-how-link"
+            >{t("nav.documentation")}</a
+          >
+        </div>
+        <img src="/img/banner-image-3.png" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <section id="supported-by" class="home-section supported-section">
+    <div class="container">
+      <h2 class="text-center">Cefnogwyd Gan</h2>
+      <h3 class="eyebrow text-center">Aelodau’r Grŵp Llywio</h3>
+      <div class="logos-grid" id="steering-logos">
+        {
+          supporters.steering.map((member) => (
+            <a href={member.url} class="logo-item">
+              <img src={`/img/logos/${member.logo}`} alt={member.name} />
+            </a>
+          ))
+        }
+      </div>
+
+      <h3 class="eyebrow text-center contributors-heading">Prif Gyfranwyr</h3>
+      <div class="logos-grid" id="steering-logos">
+        {
+          supporters.contributors.map((member) => (
+            <a href={member.url} class="logo-item">
+              <img src={`/img/logos/${member.logo}`} alt={member.name} />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="home-section how-it-works-section">
+    <div class="container">
+      <div class="corner-box">
+        <div class="corner-box-content how-it-works-content">
+          <div class="how-it-works-text">
+            <h2>
+              <span class="eyebrow">Sut Mae'n Gweithio</span>
+              Hawdd ei osod a'i reoli
+            </h2>
+            <p>
+              Rhyngwyneb syml a greddfol sy’n galluogi defnyddwyr i archwilio
+              delweddau, dogfennau, sain a fideo yn rhwydd. Gyda nodweddion
+              hawdd eu defnyddio a dull syml o reoli cynnwys, cewch chi a’ch
+              ymwelwyr brofiad hwylus o’r dechrau i’r diwedd.
+            </p>
+            <a href={docsUrl} class="mt-28 button">{t("nav.documentation")}</a>
+          </div>
+          <Image
+            src={howItWorksImage}
+            layout="constrained"
+            alt=""
+            class="how-it-works-image"
+          />
+        </div>
+        <div class="corner-box-corner corner-box-tl">
+          <svg>
+            <use href="#cornerTopLeft"></use>
+          </svg>
+        </div>
+        <div class="corner-box-corner corner-box-tr">
+          <svg>
+            <use href="#cornerTopRight"></use>
+          </svg>
+        </div>
+        <div class="corner-box-corner corner-box-bl">
+          <svg>
+            <use href="#cornerBottomLeft"></use>
+          </svg>
+        </div>
+        <div class="corner-box-corner corner-box-br">
+          <svg>
+            <use href="#cornerBottomRight"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="home-section features-section">
+    <div class="container">
+      <div class="features-box">
+        <h2 class="mt-0">
+          <span class="eyebrow"> Prif nodweddion </span>
+          Pam dewis Universal Viewer?
+        </h2>
+        <div class="features-grid">
+          <div class="feature">
+            <div class="feature-icon">
+              <Icon name="media" />
+            </div>
+            <div class="feature-content">
+              <h3>Archwilio mwy</h3>
+              <p>
+                Dewch â delweddau, dogfennau, sain, fideo a chynnwys 3D ynghyd
+                mewn un syllwr sy’n galluogi ymwelwyr i <a
+                  href="https://openseadragon.github.io/">chwyddo</a
+                >, <a href="http://iiif.io/api/search/">chwilio</a> ac archwilio’r
+                manylion
+              </p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">
+              <Icon name="embed" />
+            </div>
+            <div class="feature-content">
+              <h3>Gwneud casgliadau’n haws eu defnyddio</h3>
+              <p>
+                Wedi’i ddatblygu gyda hygyrchedd mewn golwg, gyda chefnogaeth ar
+                gyfer bysellfyrddau a darllenwyr sgrin, a rhyngwyneb amlieithog
+                ar gyfer cynulleidfaoedd ledled y byd.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">
+              <Icon name="accessible" />
+            </div>
+            <div class="feature-content">
+              <h3>Yn addas i’ch gwefan a’ch anghenion</h3>
+              <p>
+                Ychwanegwch Universal Viewer at eich gwefan a’i addasu i weddu
+                i’ch casgliad. Gall eich tîm technegol ei addasu neu ychwanegu
+                ato ymhellach yn ôl yr angen.
+              </p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="feature-icon">
+              <Icon name="oss" />
+            </div>
+            <div class="feature-content">
+              <h3>Agored, dibynadwy a gyda chefnogaeth</h3>
+              <p>
+                Syllwr ffynhonnell agored sy’n cael ei ddefnyddio gan
+                sefydliadau diwylliannol ledled y byd, gydag opsiynau ar gyfer
+                cynnwys gwarchodedig a chymuned weithgar wrth law i helpu.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {
+    showcases.length > 0 && (
+      <section id="showcase" class="home-section showcase-section">
+        <div class="container">
+          <h2>
+            <span class="eyebrow">Arddangos</span>
+            Universal Viewer ar waith
+          </h2>
+          <ul class="showcase-list">
+            {showcases.map(({ url, manifest, img, heading, text }) => (
+              <li class="showcase-item">
+                <a
+                  href={url}
+                  data-manifest={manifest}
+                  target="_blank"
+                  class="showcase-link"
+                >
+                  <img
+                    src={`/img/showcase/${img}`}
+                    alt=""
+                    class="showcase-image"
+                  />
+                  <div class="showcase-text">
+                    <h3 class="showcase-item-heading">{heading}</h3>
+                    <p class="showcase-item-text">{text}</p>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )
+  }
+
+  <section class="home-section community-section">
+    <div class="container">
+      <div class="community-box">
+        <div class="community-box-heading">
+          <h2 class="mt-0">
+            <span class="eyebrow"> Cymuned </span>
+            {t("general.communityResources")}
+          </h2>
+          <a href={communityUrl} class="button community-box-heading-button"
+            >{t("general.learnMore")}</a
+          >
+        </div>
+
+        <div class="community-box-content">
+          <div class="community-box-item">
+            <div class="community-box-item-icon">
+              <Icon name="slack" />
+            </div>
+            <p class="community-box-item-text">
+              {t("general.slack")}
+            </p>
+          </div>
+
+          <div class="community-box-item">
+            <div class="community-box-item-icon">
+              <Icon name="video" />
+            </div>
+            <p class="community-box-item-text">
+              {t("general.calls")}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    ["steering-logos", "contributors-logos"].forEach((id) => {
+      const grid = document.getElementById(id);
+      if (!grid) return;
+      const items = Array.from(grid.children);
+      items.sort(() => Math.random() - 0.5);
+      items.forEach((item) => grid.appendChild(item));
+    });
+  });
+</script>
